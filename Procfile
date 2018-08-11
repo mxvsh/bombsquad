@@ -1,2 +1,2 @@
-worker: python3 index.py
+worker: python bombsquad_server
 
