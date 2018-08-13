@@ -1,8 +1,10 @@
 # place any of your own overrides here.
 # see bombsquad_server for details on what you can override
 # examples (uncomment to use):
-# config['partyName'] = 'My Awesome Party'
-# config['sessionType'] = 'teams'
-# config['maxPartySize'] = 6
+config['partyName'] = 'XensParty'
+config['sessionType'] = 'teams'
+config['maxPartySize'] = 6
+config['partyIsPublic'] = False
+
 # config['port'] = 43209
-# config['playlistCode'] = 1242
+config['playlistCode'] = 194835

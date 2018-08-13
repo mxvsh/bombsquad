@@ -41,7 +41,7 @@ config['partyName'] = 'FFA'
 
 # If True, your party will show up in the global public party list
 # Otherwise it will still be joinable via LAN or connecting by IP address
-config['partyIsPublic'] = True
+config['partyIsPublic'] = False
 
 # UDP port to host on. Change this to work around firewalls or run multiple
 # servers on one machine.
