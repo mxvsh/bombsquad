@@ -125,7 +125,7 @@ class BombFactory(object):
         shared instance.
         """
 
-        self.bombModel = bs.getModel('bomb')
+        self.bombModel = bs.getModel('zoeHead')
         self.stickyBombModel = bs.getModel('bombSticky')
         self.impactBombModel = bs.getModel('impactBomb')
         self.landMineModel = bs.getModel('landMine')
@@ -308,7 +308,7 @@ class Blast(bs.Actor):
                               emitType='tendrils',tendrilType='thinSmoke')
         bs.emitBGDynamics(
             position=position, velocity=velocity,
-            count=int(4.0+random.random()*4), emitType='tendrils',
+            count=int(2.0+random.random()*4), emitType='tendrils',
             tendrilType='ice' if self.blastType == 'ice' else 'smoke')
         bs.emitBGDynamics(
             position=position, emitType='distortion',
@@ -398,15 +398,15 @@ class Blast(bs.Actor):
         light = bs.newNode('light', attrs={
             'position':position,
             'volumeIntensityScale': 10.0,
-            'color': ((0.6, 2.6, 1.0) if self.blastType == 'ice'
-                      else (1, 0.3, 0.1))})
+            'color': ((1.6, 0.6, 2.0) if self.blastType == 'ice'
+                      else (1, 1.3, 0.1))})
 
         s = random.uniform(0.6,0.9)
         scorchRadius = lightRadius = self.radius
         if self.blastType == 'tnt':
-            lightRadius *= 3.4
-            scorchRadius *= 2.15
-            s *= 3.0
+            lightRadius *= 4.4
+            scorchRadius *= 4.15
+            s *= 2.0
 
         iScale = 1.6
         bsUtils.animate(light,"intensity", {
@@ -426,7 +426,7 @@ class Blast(bs.Actor):
             'size':scorchRadius*0.5,
             'big':(self.blastType == 'tnt')})
         if self.blastType == 'ice':
-            scorch.color = (2.1,0.4,1.5)
+            scorch.color = (0.1,1.4,3.5)
 
         bsUtils.animate(scorch,"presence",{3000:1, 13000:0})
         bs.gameTimer(13000,scorch.delete)
@@ -464,9 +464,9 @@ class Blast(bs.Actor):
 
                 # new
                 mag = 2000.0
-                if self.blastType == 'ice': mag *= 0.6
-                elif self.blastType == 'landMine': mag *= 2.5
-                elif self.blastType == 'tnt': mag *= 4.0
+                if self.blastType == 'ice': mag *= 0.3
+                elif self.blastType == 'landMine': mag *= 1.5
+                elif self.blastType == 'tnt': mag *= 3.0
 
                 node.handleMessage(bs.HitMessage(
                     pos=t,
@@ -512,7 +512,7 @@ class Bomb(bs.Actor):
         if self.bombType == 'sticky': self._lastStickySoundTime = 0
 
         self.blastRadius = blastRadius
-        if self.bombType == 'ice': self.blastRadius *= 2.2
+        if self.bombType == 'ice': self.blastRadius *= 1.2
         elif self.bombType == 'impact': self.blastRadius *= 0.7
         elif self.bombType == 'landMine': self.blastRadius *= 0.7
         elif self.bombType == 'tnt': self.blastRadius *= 3.45
@@ -578,7 +578,7 @@ class Bomb(bs.Actor):
                 'shadowSize':0.5,
                 'colorTexture':factory.tntTex,
                 'reflection':'soft',
-                'reflectionScale':[0.23],
+                'reflectionScale':[0.7],
                 'materials':materials})
             
         elif self.bombType == 'impact':
@@ -588,7 +588,7 @@ class Bomb(bs.Actor):
                 'velocity':velocity,
                 'body':'sphere',
                 'model':factory.impactBombModel,
-                'shadowSize':0.3,
+                'shadowSize':0.7,
                 'colorTexture':factory.impactTex,
                 'reflection':'powerup',
                 'reflectionScale':[1.5],
@@ -600,7 +600,7 @@ class Bomb(bs.Actor):
                                                   WarnMessage()))
 
         else:
-            fuseTime = 3000
+            fuseTime = 4000
             if self.bombType == 'sticky':
                 sticky = True
                 model = factory.stickyBombModel

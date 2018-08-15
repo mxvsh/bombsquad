@@ -7,4 +7,4 @@ config['maxPartySize'] = 10
 config['partyIsPublic'] = True
 
 # config['port'] = 43209
-config['playlistCode'] = 194835
+config['playlistCode'] = 195023
