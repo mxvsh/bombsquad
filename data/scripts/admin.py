@@ -53,10 +53,10 @@ class PermissionEffect(object):
         if self.owner.exists():
             vel = 4
             bs.emitBGDynamics(position=(self.owner.torsoPosition[0]-0.25+random.random()*0.5,self.owner.torsoPosition[1]-0.25+random.random()*0.5,self.owner.torsoPosition[2]-0.25+random.random()*0.5),
-                              velocity=((-vel+(random.random()*(vel*2)))+self.owner.velocity[0]*2,(-vel+(random.random()*(vel*2)))+self.owner.velocity[1]*4,(-vel+(random.random()*(vel*2)))+self.owner.velocity[2]*2),
-                              count=10,
-                              scale=0.3+random.random()*1.1,
-                              spread=0.1,
+                              velocity=((-vel+(random.random()*(vel*3)))+self.owner.velocity[0]*2,(-vel+(random.random()*(vel*2)))+self.owner.velocity[1]*4,(-vel+(random.random()*(vel*2)))+self.owner.velocity[2]*2),
+                              count=16,
+                              scale=0.2+random.random()*1.1,
+                              spread=0.3,
                               chunkType='sweat')
                               #emitType = 'stickers')
 def __init__(self,color=(1,1,1),highlight=(0.5,0.5,0.5),character="Spaz",player=None,powerupsExpire=True):

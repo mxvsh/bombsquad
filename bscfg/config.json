@@ -129,15 +129,15 @@
  "Campaigns": {}, 
  "Default Player Profiles": {
   "Client Input Device #1": "__account__", 
-  "Client Input Device #10": "__account__", 
-  "Client Input Device #2": "Amir", 
+  "Client Input Device #10": "Jack-a-boy", 
+  "Client Input Device #2": "ZOE HR\ud83d\udc8e\ud83d\udc90", 
   "Client Input Device #3": "__account__", 
-  "Client Input Device #4": "LONG EARS", 
-  "Client Input Device #5": "(\u0e51\u00af\u0e34\u03b5\u00af\u0e34\u0e51)", 
+  "Client Input Device #4": "__account__", 
+  "Client Input Device #5": "__account__", 
   "Client Input Device #6": "__account__", 
-  "Client Input Device #7": "\u26a0\u062e\u0637\u0631 \u26a0", 
+  "Client Input Device #7": "__account__", 
   "Client Input Device #8": "__account__", 
-  "Client Input Device #9": "M\u0430\u0445\u0430"
+  "Client Input Device #9": "Amjad.Hm"
  }, 
  "Free-for-All Playlist Randomize": true, 
  "Free-for-All Playlist Selection": "__default__", 
@@ -510,7 +510,7 @@
    "_name": "Folder"
   }
  }, 
- "launchCount": 24, 
+ "launchCount": 35, 
  "lc14": 1, 
  "lc14146": 1, 
  "lc14173": 1, 
@@ -1155,7 +1155,7 @@
      }, 
      "version": 1.1
     }, 
-    1534321077.937825
+    1534420971.183426
    ]
   }
  }

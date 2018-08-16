@@ -86,7 +86,7 @@ config['autoBalanceTeams'] = True
 # off any fancy features in your telnet client to get it to work.
 # There is no password protection so make sure to only enable this if access to
 # this port is fully trusted (behind a firewall, etc)
-config['enableTelnet'] = False
+config['enableTelnet'] = True
 
 # Series length in teams mode (7 == 'best-of-7' series; a team must get 4 wins)
 config['teamsSeriesLength'] = 7

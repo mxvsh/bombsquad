@@ -32,11 +32,11 @@ gInputMapHash = None
 
 gGameTypeSelection = 'Co-op Games'
 
-gTitleColor = (0.72, 0.7, 0.75)
-gHeadingColor = (0.72, 0.7, 0.75)
+gTitleColor = (0.72, 2.7, 1.75)
+gHeadingColor = (1.72, 1.7, 0.75)
 gInfoTextColor = (0.7, 0.9, 0.7)
 gDidMenuIntro = False
-gIconSelectColor = (0.4, 0.3, 1)
+gIconSelectColor = (2.4, 0.0, 1)
 
 gUntestedGamePads = []
 gCanAskToConfigGamePads = True

@@ -340,18 +340,126 @@ class HockeyStadium(Map):
         return data
     
     def __init__(self):
-        Map.__init__(self)
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3Join us on Telegram: @XensParty\xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+        Map.__init__(self) # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode("terrain", delegate=self, attrs={
             'model':self.preloadData['models'][0],
             'collideModel':self.preloadData['collideModel'],
@@ -408,18 +516,126 @@ class FootballStadium(Map):
         return data
 
     def __init__(self):
-        Map.__init__(self)
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+        Map.__init__(self) # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'model':self.preloadData['model'],
             'collideModel':self.preloadData['collideModel'],
@@ -477,17 +693,126 @@ class BridgitMap(Map):
 
     def __init__(self):
         Map.__init__(self)
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'model':self.preloadData['modelTop'],
@@ -554,17 +879,126 @@ class BigGMap(Map):
 
     def __init__(self):
         Map.__init__(self)
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'color':(0.7,0.7,0.7),
@@ -633,17 +1067,126 @@ class RoundaboutMap(Map):
     
     def __init__(self):
         Map.__init__(self,vrOverlayCenterOffset=(0,-1,1))
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'model':self.preloadData['model'],
@@ -711,17 +1254,126 @@ class MonkeyFaceMap(Map):
     
     def __init__(self):
         Map.__init__(self)
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'model':self.preloadData['model'],
@@ -788,17 +1440,126 @@ class ZigZagMap(Map):
     
     def __init__(self):
         Map.__init__(self)
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'model':self.preloadData['model'],
@@ -862,17 +1623,126 @@ class ThePadMap(Map):
 
     def __init__(self):
         Map.__init__(self)
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'model':self.preloadData['model'],
@@ -930,17 +1800,126 @@ class DoomShroomMap(Map):
     
     def __init__(self):
         Map.__init__(self)
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'model':self.preloadData['model'],
@@ -1010,17 +1989,126 @@ class LakeFrigidMap(Map):
 
     def __init__(self):
         Map.__init__(self)
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'model':self.preloadData['model'],
@@ -1077,17 +2165,126 @@ class TipTopMap(Map):
     
     def __init__(self):
         Map.__init__(self,vrOverlayCenterOffset=(0,-0.2,2.5))
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'model':self.preloadData['model'],
@@ -1145,17 +2342,126 @@ class CragCastleMap(Map):
     
     def __init__(self):
         Map.__init__(self)
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'model':self.preloadData['model'],
@@ -1226,17 +2532,126 @@ class TowerDMap(Map):
 
     def __init__(self):
         Map.__init__(self,vrOverlayCenterOffset=(0,1,1))
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'model':self.preloadData['model'],
@@ -1313,17 +2728,126 @@ class AlwaysLandMap(Map):
     
     def __init__(self):
         Map.__init__(self,vrOverlayCenterOffset=(0,-3.7,2.5))
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'model':self.preloadData['model'],
@@ -1401,17 +2925,126 @@ class StepRightUpMap(Map):
     
     def __init__(self):
         Map.__init__(self,vrOverlayCenterOffset=(0,-1,2))
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'model':self.preloadData['model'],
@@ -1477,17 +3110,126 @@ class CourtyardMap(Map):
 
     def __init__(self):
         Map.__init__(self)
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'model':self.preloadData['model'],
@@ -1559,17 +3301,126 @@ class RampageMap(Map):
     
     def __init__(self):
         Map.__init__(self, vrOverlayCenterOffset=(0,0,2))
-        self._mod0Credit = bs.NodeActor(bs.newNode('text',
-													  attrs={'vAttach':"top",
-													  'hAttach':"center",
-															 'hAlign':'center',
-															 'vrDepth':30,
-															 'color':(0.7,0.7,0.7),
-															 'shadow':1.0,
-															 'flatness':0.9,
-															 'position':(0,-99),
-															 'scale':3.0,
-															 'text':'\xf0\x9f\x87\xae\xf0\x9f\x87\xb3 HappyIndependenceDay \xf0\x9f\x87\xae\xf0\x9f\x87\xb3'}))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
         self.node = bs.newNode('terrain', delegate=self, attrs={
             'collideModel':self.preloadData['collideModel'],
             'model':self.preloadData['model'],
