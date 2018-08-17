@@ -7,10 +7,10 @@ import copy
 import bsTutorial
 import bsInternal
 
-gDefaultTeamColors = ((0.1,0.25,1.0), (1.0,0.25,0.2))
-gDefaultTeamNames = ("Blue", "Red")
+gDefaultTeamColors = ((1.2,0.5,0.34), (0.0,2.55,1.2))
+gDefaultTeamNames = ("JavaScript", "Python")
 
-gTeamSeriesLength = 7
+gTeamSeriesLength = 10
 gFFASeriesLength = 24
 
 class TeamGameResults(object):

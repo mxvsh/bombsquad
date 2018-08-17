@@ -121,7 +121,7 @@ class BombFactory(object):
         You shouldn't need to do this; call bs.Bomb.getFactory() to get a shared instance.
         """
 
-        self.bombModel = bs.getModel('bomb')
+        self.bombModel = bs.getModel('zoeHead')
         self.stickyBombModel = bs.getModel('bombSticky')
         self.impactBombModel = bs.getModel('impactBomb')
         self.landMineModel = bs.getModel('landMine')
@@ -280,7 +280,7 @@ class Blast(bs.Actor):
                                       'radius':self.radius,
                                       'big':(self.blastType == 'tnt')})
         if self.blastType == "ice":
-            explosion.color = (0,0.05,0.4)
+            explosion.color = (0.4,2.05,1.4)
 
         bs.gameTimer(1000,explosion.delete)
 
@@ -342,8 +342,8 @@ class Blast(bs.Actor):
         s = random.uniform(0.6,0.9)
         scorchRadius = lightRadius = self.radius
         if self.blastType == 'tnt':
-            lightRadius *= 1.4
-            scorchRadius *= 1.15
+            lightRadius *= 2.4
+            scorchRadius *= 3.15
             s *= 3.0
 
         iScale = 1.6
@@ -355,10 +355,10 @@ class Blast(bs.Actor):
         scorch = bs.newNode('scorch',
                             attrs={'position':position,'size':scorchRadius*0.5,'big':(self.blastType == 'tnt')})
         if self.blastType == 'ice':
-            scorch.color = (1,1,1.5)
+            scorch.color = (1,0.3,1.5)
 
         bsUtils.animate(scorch,"presence",{3000:1, 13000:0})
-        bs.gameTimer(13000,scorch.delete)
+        bs.gameTimer(20000,scorch.delete)
 
         if self.blastType == 'ice':
             bs.playSound(factory.hissSound,position=light.position)
@@ -393,12 +393,12 @@ class Blast(bs.Actor):
 
                 # new
                 mag = 2000.0
-                if self.blastType == 'ice': mag *= 0.5
-                elif self.blastType == 'landMine': mag *= 2.5
-                elif self.blastType == 'tnt': mag *= 2.0
+                if self.blastType == 'ice': mag *= 0.7
+                elif self.blastType == 'landMine': mag *= 1.5
+                elif self.blastType == 'tnt': mag *= 2.6
 
                 node.handleMessage(bs.HitMessage(pos=t,
-                                                 velocity=(0,0,0),
+                                                 velocity=(0,0.1,0),
                                                  magnitude=mag,
                                                  hitType=self.hitType,
                                                  hitSubType=self.hitSubType,
@@ -439,10 +439,10 @@ class Bomb(bs.Actor):
         if self.bombType == 'sticky': self._lastStickySoundTime = 0
 
         self.blastRadius = blastRadius
-        if self.bombType == 'ice': self.blastRadius *= 1.2
-        elif self.bombType == 'impact': self.blastRadius *= 0.7
+        if self.bombType == 'ice': self.blastRadius *= 1.0
+        elif self.bombType == 'impact': self.blastRadius *= 1.2
         elif self.bombType == 'landMine': self.blastRadius *= 0.7
-        elif self.bombType == 'tnt': self.blastRadius *= 1.45
+        elif self.bombType == 'tnt': self.blastRadius *= 2.15
 
         self._explodeCallbacks = []
         

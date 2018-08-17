@@ -1,1 +1,1163 @@
-{"lc14173": 1, "Show Tutorial": false, "launchCount": 43, "lc14292": 1, "Team Tournament Playlists": {"xens": [{"type": "bsCaptureTheFlag.CTFGame", "settings": {"map": "Rampage", "Score to Win": 4, "Flag Idle Return Time": 30, "Flag Touch Return Time": 0, "Respawn Times": 0.5, "Time Limit": 300, "Epic Mode": 1}}, {"type": "bsAssault.AssaultGame", "settings": {"Time Limit": 300, "Epic Mode": false, "Respawn Times": 0.5, "Score to Win": 3, "map": "Step Right Up"}}, {"type": "bsElimination.EliminationGame", "settings": {"map": "Rampage", "Balance Total Lives": 1, "Respawn Times": 0.5, "Solo Mode": true, "Time Limit": 1200, "Epic Mode": 1, "Lives Per Player": 3}}, {"type": "bsDeathMatch.DeathMatchGame", "settings": {"Time Limit": 300, "Epic Mode": false, "Kills to Win Per Player": 5, "Respawn Times": 0.5, "map": "Roundabout"}}, {"type": "bsElimination.EliminationGame", "settings": {"map": "Monkey Face", "Balance Total Lives": 1, "Respawn Times": 0.5, "Solo Mode": 1, "Time Limit": 300, "Epic Mode": 1, "Lives Per Player": 2}}, {"type": "bsKeepAway.KeepAwayGame", "settings": {"Time Limit": 300, "map": "Happy Thoughts", "Hold Time": 30, "Respawn Times": 1.0}}, {"type": "boxing.DeathMatchGame", "settings": {"Time Limit": 300, "Epic Mode": true, "KOs to Win Per Player": 6, "Respawn Times": 0.5, "map": "Football Stadium"}}, {"type": "bsElimination.EliminationGame", "settings": {"map": "The Pad", "Balance Total Lives": false, "Respawn Times": 1.0, "Solo Mode": 1, "Time Limit": 120, "Epic Mode": 0, "Lives Per Player": 1}}, {"type": "bsAssault.AssaultGame", "settings": {"Time Limit": 300, "Epic Mode": false, "Respawn Times": 0.5, "Score to Win": 3, "map": "Crag Castle"}}, {"type": "bsDeathMatch.DeathMatchGame", "settings": {"Time Limit": 300, "Epic Mode": false, "Kills to Win Per Player": 5, "Respawn Times": 1.0, "map": "Doom Shroom"}}, {"type": "bsMeteorShower.MeteorShowerGame", "settings": {"Epic Mode": false, "map": "Rampage"}}, {"type": "bsCaptureTheFlag.CTFGame", "settings": {"map": "Roundabout", "Score to Win": 2, "Flag Idle Return Time": 30, "Flag Touch Return Time": 0, "Respawn Times": 1.0, "Time Limit": 600, "Epic Mode": false}}, {"type": "bsAssault.AssaultGame", "settings": {"Time Limit": 120, "Epic Mode": true, "Respawn Times": 0.25, "Score to Win": 3, "map": "Bridgit"}}, {"type": "bsTargetPractice.TargetPracticeGame", "settings": {"Enable Impact Bombs": 1, "Target Count": 2, "map": "Doom Shroom", "Enable Triple Bombs": false}}, {"type": "bsKingOfTheHill.KingOfTheHillGame", "settings": {"Time Limit": 300, "map": "Tip Top", "Hold Time": 30, "Respawn Times": 1.0}}, {"type": "bsAssault.AssaultGame", "settings": {"Time Limit": 300, "Epic Mode": false, "Respawn Times": 1.0, "Score to Win": 2, "map": "Zigzag"}}, {"type": "bsCaptureTheFlag.CTFGame", "settings": {"map": "Happy Thoughts", "Score to Win": 3, "Flag Idle Return Time": 30, "Flag Touch Return Time": 0, "Respawn Times": 1.0, "Time Limit": 300, "Epic Mode": false}}, {"type": "bsRace.RaceGame", "settings": {"map": "Big G", "Laps": 1, "Entire Team Must Finish": false, "Epic Mode": true, "Time Limit": 300, "Mine Spawning": 2000, "Bomb Spawning": 1000}}, {"type": "bsDeathMatch.DeathMatchGame", "settings": {"Time Limit": 300, "Epic Mode": false, "Kills to Win Per Player": 5, "Respawn Times": 1.0, "map": "Monkey Face"}}, {"type": "bsKeepAway.KeepAwayGame", "settings": {"Time Limit": 300, "map": "Lake Frigid", "Hold Time": 30, "Respawn Times": 1.0}}, {"type": "bsCaptureTheFlag.CTFGame", "settings": {"map": "Tip Top", "Score to Win": 2, "Flag Idle Return Time": 30, "Flag Touch Return Time": 3, "Respawn Times": 1.0, "Time Limit": 300, "Epic Mode": false}}, {"type": "bsElimination.EliminationGame", "settings": {"map": "Crag Castle", "Balance Total Lives": false, "Respawn Times": 1.0, "Solo Mode": 1, "Time Limit": 300, "Epic Mode": false, "Lives Per Player": 2}}, {"type": "bsElimination.EliminationGame", "settings": {"map": "Step Right Up", "Balance Total Lives": 1, "Respawn Times": 0.5, "Solo Mode": false, "Time Limit": 300, "Epic Mode": false, "Lives Per Player": 2}}, {"type": "bsConquest.ConquestGame", "settings": {"Time Limit": 120, "Epic Mode": true, "Respawn Times": 0.25, "map": "Zigzag"}}, {"type": "boxing.DeathMatchGame", "settings": {"Time Limit": 300, "Epic Mode": 1, "KOs to Win Per Player": 5, "Respawn Times": 0.25, "map": "Crag Castle"}}, {"type": "bomb_on_my_head.BombOnMyHead", "settings": {"Time Limit": 300, "Epic Mode": false, "Max Bomb Limit": 2.0, "map": "Happy Thoughts"}}, {"type": "GuessTheBomb.GuessTheBombGame", "settings": {"Epic Mode": 1, "map": "Rampage"}}], "Nur Fahne erobern Kopieren": [{"type": "bsCaptureTheFlag.CTFGame", "settings": {"map": "Bridgit", "Score to Win": 3, "Flag Idle Return Time": 30, "Flag Touch Return Time": 0, "Respawn Times": 1.0, "Time Limit": 600, "Epic Mode": false}}, {"type": "bsCaptureTheFlag.CTFGame", "settings": {"map": "Roundabout", "Score to Win": 2, "Flag Idle Return Time": 30, "Flag Touch Return Time": 0, "Respawn Times": 1.0, "Time Limit": 600, "Epic Mode": false}}, {"type": "bsCaptureTheFlag.CTFGame", "settings": {"map": "Tip Top", "Score to Win": 2, "Flag Idle Return Time": 30, "Flag Touch Return Time": 3, "Respawn Times": 1.0, "Time Limit": 300, "Epic Mode": false}}]}, "Player Profiles": {"__account__": {"color": [0.5, 0.25, 1.0], "highlight": [0.5, 0.25, 1.0], "character": "Spaz"}}, "Achievements": {"Flawless Victory": {"Complete": false}, "Free Loader": {"Complete": true}, "Last Stand Wizard": {"Complete": false}, "The Great Wall": {"Complete": false}, "Gold Miner": {"Complete": false}, "Onslaught Training Victory": {"Complete": false}, "TNT Terror": {"Complete": false}, "Stayin' Alive": {"Complete": false}, "In Control": {"Complete": false}, "The Wall": {"Complete": false}, "Boxer": {"Complete": false}, "Rookie Onslaught Victory": {"Complete": false}, "Rookie Football Shutout": {"Complete": false}, "Uber Football Shutout": {"Complete": false}, "Uber Football Victory": {"Complete": false}, "Pro Onslaught Victory": {"Complete": false}, "Mine Games": {"Complete": false}, "Onslaught Master": {"Complete": false}, "Onslaught Wizard": {"Complete": false}, "Team Player": {"Complete": true}, "Super Punch": {"Complete": false}, "Dual Wielding": {"Complete": false}, "Pro Football Shutout": {"Complete": false}, "Got the Moves": {"Complete": false}, "Pro Football Victory": {"Complete": false}, "Sharing is Caring": {"Complete": false}, "Last Stand God": {"Complete": false}, "Runaround Wizard": {"Complete": false}, "Onslaught God": {"Complete": false}, "Pro Boxer": {"Complete": false}, "Boom Goes the Dynamite": {"Complete": false}, "Runaround Master": {"Complete": false}, "Uber Onslaught Victory": {"Complete": false}, "Uber Runaround Victory": {"Complete": false}, "Precision Bombing": {"Complete": false}, "Super Mega Punch": {"Complete": false}, "Last Stand Master": {"Complete": false}, "Pro Runaround Victory": {"Complete": false}, "Rookie Football Victory": {"Complete": false}, "Off You Go Then": {"Complete": false}, "Runaround God": {"Complete": false}}, "Default Player Profiles": {"Client Input Device #18": "__account__", "Client Input Device #16": "__account__", "Client Input Device #17": "termineitor  2", "Client Input Device #14": "Tarek$", "Client Input Device #15": "__account__", "Client Input Device #12": "__account__", "Client Input Device #13": "__account__", "Client Input Device #10": "__account__", "Client Input Device #11": "SINA", "Client Input Device #4": "__account__", "Client Input Device #5": "Vampir", "Client Input Device #6": "Pingu  noot noot", "Client Input Device #7": "__account__", "Client Input Device #1": "__account__", "Client Input Device #2": "__account__", "Client Input Device #3": "__account__", "Client Input Device #8": "__account__", "Client Input Device #9": "AMIRHOSSEIN\ud83d\ude08\ud83d\ude08"}, "Team Tournament Playlist Selection": "xens", "Campaigns": {}, "Signed In Last Session": false, "lc14": 1, "Lang": "English", "Team Tournament Playlist Randomize": true, "Free-for-All Playlists": {}, "auto_reloader": {"folder": {"_default": "auto_reloader_mods", "_name": "Folder"}, "enabled": {"_default": true, "_name": "Enable"}, "_version": 1, "check_interval": {"_inc": 0.5, "_default": 2.5, "_name": "Check interval", "_min": 1, "_max": 10}, "_name": "Auto Reload"}, "lc14146": 1, "lc14c": 1, "Auto Balance Teams": true, "Local Account Name": "Server22637", "mod_manager_config": {"web_cache": {"https://raw.githubusercontent.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/master/index.json": [{"mods": {"iceDeathmatch": {"category": "minigames", "name": "Ice Deathmatch", "changelog": ["bump all mod api versions", "add \"Ice Deathmatch\" by SoKpl#7"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/iceDeathmatch.py", "author": "SoKpl", "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", "filename": "iceDeathmatch.py", "old_md5s": ["9796fed0dd67c68a9e7eef95d4a51da1"], "md5": "052236109d110187da641b2dd5964ae1"}, "bomberman": {"category": "minigames", "name": "Bomberman", "changelog": ["bump all mod api versions", "refactoring"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/bomberman.py", "author": "Mrmaxmeier", "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", "filename": "bomberman.py", "tag": "experimental", "old_md5s": ["5019f3cb21e319b175bbeba4378e0926", "1eafb570a01dcb157f737ff391424cdf"], "md5": "b683a0481e1ef2f06525d6e3ff754fce"}, "puckDeathmatch": {"category": "minigames", "name": "Puck Deathmatch", "changelog": ["bump all mod api versions", "puck timeout"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/puckDeathmatch.py", "author": "Mrmaxmeier", "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", "filename": "puckDeathmatch.py", "old_md5s": ["8c4f61495cd1cb5221be02cfa8a58e45", "034af0481765c2502dc184e5657dc435"], "md5": "4ee530ed550d4adcd1f5b2600688c066"}, "BuddyBunny": {"category": "libraries", "name": "Buddy Bunny powerup", "changelog": ["convert a bunch of files to linux line feeds (#25)", "Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know."], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/a483c74a4b6a9c540ae58904bce5164dcfd5f4d4/mods/BuddyBunny.py", "author": "joshville79", "commit_sha": "a483c74a4b6a9c540ae58904bce5164dcfd5f4d4", "filename": "BuddyBunny.py", "old_md5s": ["2e1bd9ed5b9dab8c2fb4eb21a88689ec"], "md5": "794110f3e9c9cecb6e3294cf1c829b67"}, "arms_race": {"category": "minigames", "name": "Arms Race", "changelog": ["prevent arms race upgrade on team kill (fixes #22)", "bump all mod api versions"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/4044dd3363efc75421db36cef3f770d499811d47/mods/arms_race.py", "author": "Mrmaxmeier", "commit_sha": "4044dd3363efc75421db36cef3f770d499811d47", "filename": "arms_race.py", "old_md5s": ["812023fcef83769a5a937cb8e8b90d44", "e23a86e0b95291192c1d3463df3b0605", "6ff1810f9d73a2b698d19216b36a4413", "b725e48f91fa04197aea4cc1eefc1cbf"], "md5": "6ef1cf7e90801851caf145ec1cb24f06"}, "ZombieHorde": {"category": "minigames", "name": "Zombie Horde", "changelog": ["Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know.", "Add files via uploadHey, I have no idea if I did this right.  I made a few mods and got requests to add to your mod manager.  Let me know if I screwed up the process."], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/f0771dc63724a5b92c95a52d6ee74d4cab35eaf0/mods/ZombieHorde.py", "author": "joshville79", "commit_sha": "f0771dc63724a5b92c95a52d6ee74d4cab35eaf0", "filename": "ZombieHorde.py", "old_md5s": ["716d5b347b42f18156e7cc85a4a175ee"], "md5": "2117baf2a313305199b39ce75970aba4"}, "HazardousCargo": {"category": "minigames", "name": "Hazardous Cargo", "changelog": ["convert a bunch of files to linux line feeds (#25)", "Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know."], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/a483c74a4b6a9c540ae58904bce5164dcfd5f4d4/mods/HazardousCargo.py", "author": "joshville79", "commit_sha": "a483c74a4b6a9c540ae58904bce5164dcfd5f4d4", "filename": "HazardousCargo.py", "old_md5s": ["266a2b0a26d9a8c19fb8ab1afcaead83"], "md5": "1cb82c35c92a821a19d635854a1b7183"}, "FillErUp": {"category": "minigames", "name": "Fill 'Er Up", "changelog": ["Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know."], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/f0771dc63724a5b92c95a52d6ee74d4cab35eaf0/mods/FillErUp.py", "author": "joshville79", "commit_sha": "f0771dc63724a5b92c95a52d6ee74d4cab35eaf0", "filename": "FillErUp.py", "old_md5s": [], "md5": "e0f7e8c5b259c090269d269eca139106"}, "snowyPowerup": {"category": "libraries", "name": "Modified bsPowerup.py", "changelog": ["fix for bsFootball's powerup handling", "Renabe bsPowerup to snowyPowerup, utilize monkey patching (#25)"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/017a13dbe85c78220175fb795bd81e1b5e66c0e9/mods/snowyPowerup.py", "author": "joshville79", "commit_sha": "017a13dbe85c78220175fb795bd81e1b5e66c0e9", "filename": "snowyPowerup.py", "requires": ["BuddyBunny", "SnoBallz"], "old_md5s": ["9a5abe159a10e15f5219dce1ac7e6176"], "md5": "ce805e9d11cef2002d24b9dab6654595"}, "boxing": {"category": "minigames", "name": "Boxing", "changelog": ["bump all mod api versions", "Merge pull request #6 from TheMikirog/masterBoxing: Gameplay changes"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/boxing.py", "author": "TheMikirog", "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", "filename": "boxing.py", "old_md5s": ["f60cfb347f93e1fa25f56cad057ab0d5", "9485eac414e791f8eb06b7e93e0897e4"], "md5": "119d3ea4808d79d6c92942821565aec5"}, "catch_to_live": {"category": "minigames", "name": "CatchToLive", "changelog": ["Add more settings and change color to normal", "rename game"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/352e1a82a46c431459842c2a302a31385aa1e872/mods/catch_to_live.py", "author": "Deva", "commit_sha": "352e1a82a46c431459842c2a302a31385aa1e872", "filename": "catch_to_live.py", "old_md5s": ["d279afd2952852bafb99d04a63d92e60"], "md5": "23530bf4ea77e546dd99212203864409"}, "Infection": {"category": "minigames", "name": "Infection", "changelog": ["convert a bunch of files to linux line feeds (#25)", "Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know."], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/a483c74a4b6a9c540ae58904bce5164dcfd5f4d4/mods/Infection.py", "author": "joshville79", "commit_sha": "a483c74a4b6a9c540ae58904bce5164dcfd5f4d4", "filename": "Infection.py", "old_md5s": ["a72d024cee252ae53039f2ad0936b198"], "md5": "b15d9384ea106b69b93c403d7a185f8f"}, "Protection": {"category": "minigames", "name": "Protection", "changelog": ["Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know.", "move new mods to mods folder"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/f0771dc63724a5b92c95a52d6ee74d4cab35eaf0/mods/Protection.py", "author": "joshville79", "commit_sha": "f0771dc63724a5b92c95a52d6ee74d4cab35eaf0", "filename": "Protection.py", "old_md5s": ["a8fee2500811ab273f0db546d7dceba8"], "md5": "82d3509f2d8a99381a6b82db8a7ef716"}, "fightOfFaith": {"category": "minigames", "name": "Fight of Faith", "changelog": ["bump all mod api versions", "added 'Fight of Faith', see #1"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/fightOfFaith.py", "author": "SoKpl", "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", "filename": "fightOfFaith.py", "old_md5s": ["c7f6864575253c2d4f594cb08daf2769"], "md5": "8acf4285dee7fb154290b2709006521d"}, "bsBoxingOfTheHill": {"category": "minigames", "name": "Boxing Of The Hill", "changelog": ["Add files via uploadHey, I have no idea if I did this right.  I made a few mods and got requests to add to your mod manager.  Let me know if I screwed up the process."], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/09be1d940c0db5f01587911930cc212982a7b020/mods/bsBoxingOfTheHill.py", "author": "joshville79", "commit_sha": "09be1d940c0db5f01587911930cc212982a7b020", "filename": "bsBoxingOfTheHill.py", "old_md5s": [], "md5": "dd81f8f2ccb148a6e88dd96d9e91f248"}, "quickGameButton": {"category": "utilities", "name": "Quick-Game Button", "changelog": ["update quickGameButton to API v4", "replace bs.getResource calls"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/fe003e0c92d84b2c3cee09c8b584fc5fe006c313/mods/quickGameButton.py", "author": "Mrmaxmeier", "commit_sha": "fe003e0c92d84b2c3cee09c8b584fc5fe006c313", "filename": "quickGameButton.py", "old_md5s": ["210c7ea410f847b8d4146801f7108471", "5b22370f25e872746283d45790af7e67", "9dbbc871cc8457bbced9420c11681c72", "a9d97c3630a84baafc34e68968d86eb7", "4cdb9f64a727685e83171477f496b4bc"], "md5": "090df7b52669e73b3a898788d73a6bf8"}, "bomb_on_my_head": {"category": "minigames", "name": "Bomb on my Head", "changelog": ["bump all mod api versions", "refactoring"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/bomb_on_my_head.py", "author": "Mrmaxmeier", "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", "filename": "bomb_on_my_head.py", "old_md5s": ["c16286fe16dd5f2594e0836953fdfd68", "6963c68439371d19fb52458e064dc930"], "md5": "0a2d23af4260764799268cf5bc3bdb43"}, "modManager": {"category": "utilities", "name": "Mod Manager (this thingy)", "changelog": ["only generate uuid if the stat server is enabled", "end smash game if team leaves completly"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/3672c8fdd3a6a26aa7321e264f33a9e9a83232e8/mods/modManager.py", "author": "Mrmaxmeier", "commit_sha": "3672c8fdd3a6a26aa7321e264f33a9e9a83232e8", "filename": "modManager.py", "requires": ["ui_wrappers", "settings_patcher"], "old_md5s": ["79fad6241b448f45be7a97b7c5aa3dd9", "95137096a9c415267e4bfb4ee75c9b73", "5c0fac4ce24659ae410a56faced81d25", "72efc28be645667697116e6191ababfe", "d0619dbfde6337d656482312f38d4574"], "md5": "536b069e5b60bbeee052b03464991ce9"}, "bsKillZone": {"category": "minigames", "name": "Kill Zone", "changelog": ["convert a bunch of files to linux line feeds (#25)", "Add files via uploadHey, I have no idea if I did this right.  I made a few mods and got requests to add to your mod manager.  Let me know if I screwed up the process."], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/a483c74a4b6a9c540ae58904bce5164dcfd5f4d4/mods/bsKillZone.py", "author": "joshville79", "commit_sha": "a483c74a4b6a9c540ae58904bce5164dcfd5f4d4", "filename": "bsKillZone.py", "old_md5s": ["1b5c3d11a408f1cb78a09f0758b6e980"], "md5": "15040077256ea55a394cb28badd7ee06"}, "ui_wrappers": {"category": "libraries", "name": "ui_wrappers", "changelog": ["add note about textWidget.set(text=...)", "more flake8"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/f2c1140ba899c0a5dbbe683fd767343449258942/mods/ui_wrappers.py", "author": "Mrmaxmeier", "commit_sha": "f2c1140ba899c0a5dbbe683fd767343449258942", "filename": "ui_wrappers.py", "old_md5s": ["9f813943333a21f139b45487c0579224", "069d4605c92528211e0a8c8bb67a3c22", "cbfce8f368e32a21159b1ed94f2d55b1", "7df3a7c699903f8a0c8b8d6c847b0840", "8d1e6e55ae9a953de95278d5317c3476"], "md5": "421c7d87f4d832e2d2e42c462fc3d63a"}, "auto_reloader": {"category": "utilities", "name": "Auto Reloader", "changelog": ["bump all mod api versions", "rating ui"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/auto_reloader.py", "author": "Mrmaxmeier", "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", "filename": "auto_reloader.py", "supports": ["config_editor"], "old_md5s": ["d7924cf4c9e684120f376d0710114391", "48611852f3386839093cd9115c2d6152", "115932c45f0443290c3798e8762b6e9e", "969de56c489c774d116eed0a40632b11", "41588189e303988a9151523e71e689b0"], "md5": "c80cb4f40bf8f9bd9b7a4f75b0eb0a9d"}, "surviveCurse": {"category": "minigames", "name": "Survive the Curse!", "changelog": ["move new mods to mods folder"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/22846a813dc5a550a49a74307d86c3601d58cf4e/mods/surviveCurse.py", "author": "joshville79", "commit_sha": "22846a813dc5a550a49a74307d86c3601d58cf4e", "filename": "surviveCurse.py", "old_md5s": [], "md5": "29e21b16f3d7e4003532f0155a175ac3"}, "BackToYou": {"category": "minigames", "name": "Back To You", "changelog": ["Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know.", "Add files via uploadHey, I have no idea if I did this right.  I made a few mods and got requests to add to your mod manager.  Let me know if I screwed up the process."], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/f0771dc63724a5b92c95a52d6ee74d4cab35eaf0/mods/BackToYou.py", "author": "joshville79", "commit_sha": "f0771dc63724a5b92c95a52d6ee74d4cab35eaf0", "filename": "BackToYou.py", "old_md5s": ["ec65e09ff91f1535252718d3580ac927"], "md5": "8b672f5a8d2876391bddbecdfed9b970"}, "SnoBallz": {"category": "libraries", "name": "SnoBallz powerup", "changelog": ["convert a bunch of files to linux line feeds (#25)", "Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know."], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/a483c74a4b6a9c540ae58904bce5164dcfd5f4d4/mods/SnoBallz.py", "author": "joshville79", "commit_sha": "a483c74a4b6a9c540ae58904bce5164dcfd5f4d4", "filename": "SnoBallz.py", "old_md5s": ["a05749ae364883a4f23d05d6788c9edb"], "md5": "ad1b04613718179b8e901b7ceafd8384"}, "snake": {"category": "minigames", "name": "Snake", "changelog": ["bump all mod api versions", "refactoring"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/snake.py", "author": "Mrmaxmeier", "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", "filename": "snake.py", "old_md5s": ["b7ed1f0b4f5ad311b2f35406ff07588f", "76032fe956ce6b9805bcb2453a1decf5"], "md5": "49d878c10214d4ccec5df70b17e3793a"}, "settings_patcher": {"category": "libraries", "name": "settings_patcher", "changelog": ["replace bs.getResource calls", "even more flake8"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/724587f96a6011b863903b389ef7babce70976a7/mods/settings_patcher.py", "author": "Mrmaxmeier", "commit_sha": "724587f96a6011b863903b389ef7babce70976a7", "filename": "settings_patcher.py", "old_md5s": ["b47906864b52626ccde30eba89491674", "fcfa6832da8c59e08afd1eef0d8139b5", "85217ec90f53b02dc3646030796f3dd5", "474dbf37a8b1f36e532e0e936f9c0f4b"], "md5": "2a39de960bfcc989876e6f843df456a2"}, "Greed": {"category": "minigames", "name": "Greed", "changelog": ["Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know.", "move new mods to mods folder"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/f0771dc63724a5b92c95a52d6ee74d4cab35eaf0/mods/Greed.py", "author": "joshville79", "commit_sha": "f0771dc63724a5b92c95a52d6ee74d4cab35eaf0", "filename": "Greed.py", "old_md5s": ["716fc4ab7c3c5f2562540dd2aa4b9531"], "md5": "c997ab2e55fc0f52a015a0109e0dd6c2"}, "smash": {"category": "minigames", "name": "Super Smash", "changelog": ["end smash game if team leaves completly", "bump all mod api versions"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/86072bfdadbd9205f897396825a8104fe2cbb630/mods/smash.py", "author": "Mrmaxmeier", "commit_sha": "86072bfdadbd9205f897396825a8104fe2cbb630", "filename": "smash.py", "old_md5s": ["44452c0419bb398be64dbac6379ba560", "339ab2df890ae78b57507224bab11985", "5916f2a3a15b623802e454dba70fb7f2", "5dd773cb8407f92618b29da5134cd6d2"], "md5": "1210d0a95ee6fd3c9e05066dbc8a7c0b"}, "SnowBallFight": {"category": "minigames", "name": "Snowball Fight (requires SnoBallz.py)", "changelog": ["Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know."], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/f0771dc63724a5b92c95a52d6ee74d4cab35eaf0/mods/SnowBallFight.py", "author": "joshville79", "commit_sha": "f0771dc63724a5b92c95a52d6ee74d4cab35eaf0", "filename": "SnowBallFight.py", "requires": ["SnoBallz"], "old_md5s": [], "md5": "aaaaa9c177f0726d761eb18782dbee9f"}, "brainFreeze": {"category": "minigames", "name": "Brain Freeze", "changelog": ["bump all mod api versions", "Rename brainFreeze to brainFreeze.py"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/brainFreeze.py", "author": "TheMikirog", "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", "filename": "brainFreeze.py", "old_md5s": ["3a9b5bbdb96deacdb4504a752b3618ee"], "md5": "bc7b703a365c67c5b37d6c6cb2c94f02"}, "GuessTheBomb": {"category": "minigames", "name": "Guess The Bomb", "changelog": ["convert a bunch of files to linux line feeds (#25)", "New minigameThis is just another meteor shower game but the bombs fall randomly"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/a483c74a4b6a9c540ae58904bce5164dcfd5f4d4/mods/GuessTheBomb.py", "author": "Paolo Valerdi", "commit_sha": "a483c74a4b6a9c540ae58904bce5164dcfd5f4d4", "filename": "GuessTheBomb.py", "old_md5s": ["069221cf6a656d3efe1ea69dabc12e8f"], "md5": "0c56aef73be562024b896e3ceef05cce"}, "LandGrab": {"category": "minigames", "name": "Land Grab", "changelog": ["rename \"Land Grab.py\" to \"LandGrab.py\" (#25)"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8f28b96d4ae9df51bbc8718a932f5d17938c5ce4/mods/LandGrab.py", "author": "joshville79", "commit_sha": "8f28b96d4ae9df51bbc8718a932f5d17938c5ce4", "filename": "LandGrab.py", "old_md5s": [], "md5": "95526447f0031c1fcb1e2488a50e0db9"}, "frozenone": {"category": "minigames", "name": "The Frozen One", "changelog": ["bump all mod api versions", "refactoring"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/frozenone.py", "author": "Mrmaxmeier", "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", "filename": "frozenone.py", "old_md5s": ["c99d65d6b3051cb60d48c565c6b2b66e", "483fe2ea852fe51525748f472d7d787b", "0de2033b65a83260413a5a49607bb4c5", "0a6a3366c7103712a7119e5efc4d4a15"], "md5": "e37c20cad5f7e6e54c9961e15d30ce70"}, "WizardWar": {"category": "minigames", "name": "WizardWar", "changelog": ["Update game for advent of WizardNow that the game has a \"Grumbledorf\" character, I've put together this little mod to show off the new guy.", "Rename Wizard War.py to WizardWar.py"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/33e6d75ee504241c4206c6bd3e986e52ffa1b0d7/mods/WizardWar.py", "author": "MattZ45986", "commit_sha": "33e6d75ee504241c4206c6bd3e986e52ffa1b0d7", "filename": "WizardWar.py", "old_md5s": ["46315134786af3bf46396918d663137d"], "md5": "dd76a8d19ca21e33332153a0ce454ee1"}, "airStrike": {"category": "minigames", "name": "Air Strike", "changelog": ["bump all mod api versions", "add Air Strike, see #4"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/airStrike.py", "author": "SoKpl", "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", "filename": "airStrike.py", "old_md5s": ["23a8cefb018aefae51442b0554fa6e64"], "md5": "6cfa8b25079832edec4862958fc223f2"}, "magic_box": {"category": "minigames", "name": "Magic Box", "changelog": ["bump all mod api versions", "cleanup magic_box"], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/magic_box.py", "author": "Mrmaxmeier", "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", "filename": "magic_box.py", "old_md5s": ["7fae4c59cb8bfe02936722c1ac17a4bc", "244b4fcbdc2c74904254d47272bc4b9e", "3aac96b22db7dbc1e6cf2306d3454228", "2340f5eee0252ac43a2e2fb96e73700e"], "md5": "15f629062771aa87e538dc697c5eb525"}, "Collector": {"category": "minigames", "name": "Collector", "changelog": ["Colletor - (fixes continued)- Changed game music\r- Made capsules fly from enemies much less violently, so they don't fall off cliff that easily\r- Added some tips at the start of the game", "Collector - fixesThis gamemode had some serious flaws that made it unplayable or unfair.\r- Now deposit points in Team games are always in the center. Deposit points only change in FFA games.\r- Now capsules don't roll around as much, so there's less risk they would fall down the pit."], "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/0ebd80ae04e67629b2cc1be3e76fa96b68e2a42f/mods/Collector.py", "author": "TheMikirog", "commit_sha": "0ebd80ae04e67629b2cc1be3e76fa96b68e2a42f", "filename": "Collector.py", "old_md5s": ["9f38dfeff4590bd1073d2397867d2fc9", "6fd8ec35e9ced9d961e2efbd7f96b990", "571ec87186cd1b74a0ba196b2a263648", "9db6ae29f084aaa7afdd81953b6f5937"], "md5": "da460fcf6c5cc622709141a3aa133e48"}}, "version": 1.1}, 1534496638.668795]}}, "PSTR": 0, "Free-for-All Playlist Randomize": true, "Auto Account State": "Server", "Free-for-All Playlist Selection": "__default__", "Port": 43210}
+{
+ "Achievements": {
+  "Boom Goes the Dynamite": {
+   "Complete": false
+  }, 
+  "Boxer": {
+   "Complete": false
+  }, 
+  "Dual Wielding": {
+   "Complete": false
+  }, 
+  "Flawless Victory": {
+   "Complete": false
+  }, 
+  "Free Loader": {
+   "Complete": true
+  }, 
+  "Gold Miner": {
+   "Complete": false
+  }, 
+  "Got the Moves": {
+   "Complete": false
+  }, 
+  "In Control": {
+   "Complete": false
+  }, 
+  "Last Stand God": {
+   "Complete": false
+  }, 
+  "Last Stand Master": {
+   "Complete": false
+  }, 
+  "Last Stand Wizard": {
+   "Complete": false
+  }, 
+  "Mine Games": {
+   "Complete": false
+  }, 
+  "Off You Go Then": {
+   "Complete": false
+  }, 
+  "Onslaught God": {
+   "Complete": false
+  }, 
+  "Onslaught Master": {
+   "Complete": false
+  }, 
+  "Onslaught Training Victory": {
+   "Complete": false
+  }, 
+  "Onslaught Wizard": {
+   "Complete": false
+  }, 
+  "Precision Bombing": {
+   "Complete": false
+  }, 
+  "Pro Boxer": {
+   "Complete": false
+  }, 
+  "Pro Football Shutout": {
+   "Complete": false
+  }, 
+  "Pro Football Victory": {
+   "Complete": false
+  }, 
+  "Pro Onslaught Victory": {
+   "Complete": false
+  }, 
+  "Pro Runaround Victory": {
+   "Complete": false
+  }, 
+  "Rookie Football Shutout": {
+   "Complete": false
+  }, 
+  "Rookie Football Victory": {
+   "Complete": false
+  }, 
+  "Rookie Onslaught Victory": {
+   "Complete": false
+  }, 
+  "Runaround God": {
+   "Complete": false
+  }, 
+  "Runaround Master": {
+   "Complete": false
+  }, 
+  "Runaround Wizard": {
+   "Complete": false
+  }, 
+  "Sharing is Caring": {
+   "Complete": false
+  }, 
+  "Stayin' Alive": {
+   "Complete": false
+  }, 
+  "Super Mega Punch": {
+   "Complete": false
+  }, 
+  "Super Punch": {
+   "Complete": false
+  }, 
+  "TNT Terror": {
+   "Complete": false
+  }, 
+  "Team Player": {
+   "Complete": true
+  }, 
+  "The Great Wall": {
+   "Complete": false
+  }, 
+  "The Wall": {
+   "Complete": false
+  }, 
+  "Uber Football Shutout": {
+   "Complete": false
+  }, 
+  "Uber Football Victory": {
+   "Complete": false
+  }, 
+  "Uber Onslaught Victory": {
+   "Complete": false
+  }, 
+  "Uber Runaround Victory": {
+   "Complete": false
+  }
+ }, 
+ "Auto Account State": "Server", 
+ "Auto Balance Teams": true, 
+ "Campaigns": {}, 
+ "Default Player Profiles": {
+  "Client Input Device #1": "__account__", 
+  "Client Input Device #10": "kohay", 
+  "Client Input Device #11": "__account__", 
+  "Client Input Device #12": "__account__", 
+  "Client Input Device #13": "\ud83d\udc8eCORINGA\ud83d\udc8e", 
+  "Client Input Device #14": "__account__", 
+  "Client Input Device #15": "__account__", 
+  "Client Input Device #16": "__account__", 
+  "Client Input Device #17": "__account__", 
+  "Client Input Device #18": "__account__", 
+  "Client Input Device #2": "suhel ali", 
+  "Client Input Device #3": "\ud83d\ude12Maximusperra", 
+  "Client Input Device #4": "esqueleto loco\ud83d\ude2c", 
+  "Client Input Device #5": "__account__", 
+  "Client Input Device #6": "Naruto usakrack", 
+  "Client Input Device #7": "__account__", 
+  "Client Input Device #8": "__account__"
+ }, 
+ "Free-for-All Playlist Randomize": true, 
+ "Free-for-All Playlist Selection": "__default__", 
+ "Free-for-All Playlists": {}, 
+ "Lang": "English", 
+ "Local Account Name": "Server22637", 
+ "PSTR": 0, 
+ "Player Profiles": {
+  "__account__": {
+   "character": "Spaz", 
+   "color": [
+    0.5, 
+    0.25, 
+    1.0
+   ], 
+   "highlight": [
+    0.5, 
+    0.25, 
+    1.0
+   ]
+  }
+ }, 
+ "Port": 43210, 
+ "Show Tutorial": false, 
+ "Signed In Last Session": false, 
+ "Team Tournament Playlist Randomize": true, 
+ "Team Tournament Playlist Selection": "xens", 
+ "Team Tournament Playlists": {
+  "Nur Fahne erobern Kopieren": [
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Flag Idle Return Time": 30, 
+     "Flag Touch Return Time": 0, 
+     "Respawn Times": 1.0, 
+     "Score to Win": 3, 
+     "Time Limit": 600, 
+     "map": "Bridgit"
+    }, 
+    "type": "bsCaptureTheFlag.CTFGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Flag Idle Return Time": 30, 
+     "Flag Touch Return Time": 0, 
+     "Respawn Times": 1.0, 
+     "Score to Win": 2, 
+     "Time Limit": 600, 
+     "map": "Roundabout"
+    }, 
+    "type": "bsCaptureTheFlag.CTFGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Flag Idle Return Time": 30, 
+     "Flag Touch Return Time": 3, 
+     "Respawn Times": 1.0, 
+     "Score to Win": 2, 
+     "Time Limit": 300, 
+     "map": "Tip Top"
+    }, 
+    "type": "bsCaptureTheFlag.CTFGame"
+   }
+  ], 
+  "xens": [
+   {
+    "settings": {
+     "Epic Mode": 1, 
+     "Flag Idle Return Time": 30, 
+     "Flag Touch Return Time": 0, 
+     "Respawn Times": 0.5, 
+     "Score to Win": 4, 
+     "Time Limit": 300, 
+     "map": "Rampage"
+    }, 
+    "type": "bsCaptureTheFlag.CTFGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Respawn Times": 0.5, 
+     "Score to Win": 3, 
+     "Time Limit": 300, 
+     "map": "Step Right Up"
+    }, 
+    "type": "bsAssault.AssaultGame"
+   }, 
+   {
+    "settings": {
+     "Balance Total Lives": 1, 
+     "Epic Mode": 1, 
+     "Lives Per Player": 3, 
+     "Respawn Times": 0.5, 
+     "Solo Mode": true, 
+     "Time Limit": 1200, 
+     "map": "Rampage"
+    }, 
+    "type": "bsElimination.EliminationGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Kills to Win Per Player": 5, 
+     "Respawn Times": 0.5, 
+     "Time Limit": 300, 
+     "map": "Roundabout"
+    }, 
+    "type": "bsDeathMatch.DeathMatchGame"
+   }, 
+   {
+    "settings": {
+     "Balance Total Lives": 1, 
+     "Epic Mode": 1, 
+     "Lives Per Player": 2, 
+     "Respawn Times": 0.5, 
+     "Solo Mode": 1, 
+     "Time Limit": 300, 
+     "map": "Monkey Face"
+    }, 
+    "type": "bsElimination.EliminationGame"
+   }, 
+   {
+    "settings": {
+     "Hold Time": 30, 
+     "Respawn Times": 1.0, 
+     "Time Limit": 300, 
+     "map": "Happy Thoughts"
+    }, 
+    "type": "bsKeepAway.KeepAwayGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": true, 
+     "KOs to Win Per Player": 6, 
+     "Respawn Times": 0.5, 
+     "Time Limit": 300, 
+     "map": "Football Stadium"
+    }, 
+    "type": "boxing.DeathMatchGame"
+   }, 
+   {
+    "settings": {
+     "Balance Total Lives": false, 
+     "Epic Mode": 0, 
+     "Lives Per Player": 1, 
+     "Respawn Times": 1.0, 
+     "Solo Mode": 1, 
+     "Time Limit": 120, 
+     "map": "The Pad"
+    }, 
+    "type": "bsElimination.EliminationGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Respawn Times": 0.5, 
+     "Score to Win": 3, 
+     "Time Limit": 300, 
+     "map": "Crag Castle"
+    }, 
+    "type": "bsAssault.AssaultGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Kills to Win Per Player": 5, 
+     "Respawn Times": 1.0, 
+     "Time Limit": 300, 
+     "map": "Doom Shroom"
+    }, 
+    "type": "bsDeathMatch.DeathMatchGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "map": "Rampage"
+    }, 
+    "type": "bsMeteorShower.MeteorShowerGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Flag Idle Return Time": 30, 
+     "Flag Touch Return Time": 0, 
+     "Respawn Times": 1.0, 
+     "Score to Win": 2, 
+     "Time Limit": 600, 
+     "map": "Roundabout"
+    }, 
+    "type": "bsCaptureTheFlag.CTFGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": true, 
+     "Respawn Times": 0.25, 
+     "Score to Win": 3, 
+     "Time Limit": 120, 
+     "map": "Bridgit"
+    }, 
+    "type": "bsAssault.AssaultGame"
+   }, 
+   {
+    "settings": {
+     "Enable Impact Bombs": 1, 
+     "Enable Triple Bombs": false, 
+     "Target Count": 2, 
+     "map": "Doom Shroom"
+    }, 
+    "type": "bsTargetPractice.TargetPracticeGame"
+   }, 
+   {
+    "settings": {
+     "Hold Time": 30, 
+     "Respawn Times": 1.0, 
+     "Time Limit": 300, 
+     "map": "Tip Top"
+    }, 
+    "type": "bsKingOfTheHill.KingOfTheHillGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Respawn Times": 1.0, 
+     "Score to Win": 2, 
+     "Time Limit": 300, 
+     "map": "Zigzag"
+    }, 
+    "type": "bsAssault.AssaultGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Flag Idle Return Time": 30, 
+     "Flag Touch Return Time": 0, 
+     "Respawn Times": 1.0, 
+     "Score to Win": 3, 
+     "Time Limit": 300, 
+     "map": "Happy Thoughts"
+    }, 
+    "type": "bsCaptureTheFlag.CTFGame"
+   }, 
+   {
+    "settings": {
+     "Bomb Spawning": 1000, 
+     "Entire Team Must Finish": false, 
+     "Epic Mode": true, 
+     "Laps": 1, 
+     "Mine Spawning": 2000, 
+     "Time Limit": 300, 
+     "map": "Big G"
+    }, 
+    "type": "bsRace.RaceGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Kills to Win Per Player": 5, 
+     "Respawn Times": 1.0, 
+     "Time Limit": 300, 
+     "map": "Monkey Face"
+    }, 
+    "type": "bsDeathMatch.DeathMatchGame"
+   }, 
+   {
+    "settings": {
+     "Hold Time": 30, 
+     "Respawn Times": 1.0, 
+     "Time Limit": 300, 
+     "map": "Lake Frigid"
+    }, 
+    "type": "bsKeepAway.KeepAwayGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Flag Idle Return Time": 30, 
+     "Flag Touch Return Time": 3, 
+     "Respawn Times": 1.0, 
+     "Score to Win": 2, 
+     "Time Limit": 300, 
+     "map": "Tip Top"
+    }, 
+    "type": "bsCaptureTheFlag.CTFGame"
+   }, 
+   {
+    "settings": {
+     "Balance Total Lives": false, 
+     "Epic Mode": false, 
+     "Lives Per Player": 2, 
+     "Respawn Times": 1.0, 
+     "Solo Mode": 1, 
+     "Time Limit": 300, 
+     "map": "Crag Castle"
+    }, 
+    "type": "bsElimination.EliminationGame"
+   }, 
+   {
+    "settings": {
+     "Balance Total Lives": 1, 
+     "Epic Mode": false, 
+     "Lives Per Player": 2, 
+     "Respawn Times": 0.5, 
+     "Solo Mode": false, 
+     "Time Limit": 300, 
+     "map": "Step Right Up"
+    }, 
+    "type": "bsElimination.EliminationGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": true, 
+     "Respawn Times": 0.25, 
+     "Time Limit": 120, 
+     "map": "Zigzag"
+    }, 
+    "type": "bsConquest.ConquestGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": 1, 
+     "KOs to Win Per Player": 5, 
+     "Respawn Times": 0.25, 
+     "Time Limit": 300, 
+     "map": "Crag Castle"
+    }, 
+    "type": "boxing.DeathMatchGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Max Bomb Limit": 2.0, 
+     "Time Limit": 300, 
+     "map": "Happy Thoughts"
+    }, 
+    "type": "bomb_on_my_head.BombOnMyHead"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": 1, 
+     "map": "Rampage"
+    }, 
+    "type": "GuessTheBomb.GuessTheBombGame"
+   }
+  ]
+ }, 
+ "auto_reloader": {
+  "_name": "Auto Reload", 
+  "_version": 1, 
+  "check_interval": {
+   "_default": 2.5, 
+   "_inc": 0.5, 
+   "_max": 10, 
+   "_min": 1, 
+   "_name": "Check interval"
+  }, 
+  "enabled": {
+   "_default": true, 
+   "_name": "Enable"
+  }, 
+  "folder": {
+   "_default": "auto_reloader_mods", 
+   "_name": "Folder"
+  }
+ }, 
+ "launchCount": 46, 
+ "lc14": 1, 
+ "lc14146": 1, 
+ "lc14173": 1, 
+ "lc14292": 1, 
+ "lc14c": 1, 
+ "mod_manager_config": {
+  "web_cache": {
+   "https://raw.githubusercontent.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/master/index.json": [
+    {
+     "mods": {
+      "BackToYou": {
+       "author": "joshville79", 
+       "category": "minigames", 
+       "changelog": [
+        "Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know.", 
+        "Add files via uploadHey, I have no idea if I did this right.  I made a few mods and got requests to add to your mod manager.  Let me know if I screwed up the process."
+       ], 
+       "commit_sha": "f0771dc63724a5b92c95a52d6ee74d4cab35eaf0", 
+       "filename": "BackToYou.py", 
+       "md5": "8b672f5a8d2876391bddbecdfed9b970", 
+       "name": "Back To You", 
+       "old_md5s": [
+        "ec65e09ff91f1535252718d3580ac927"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/f0771dc63724a5b92c95a52d6ee74d4cab35eaf0/mods/BackToYou.py"
+      }, 
+      "BuddyBunny": {
+       "author": "joshville79", 
+       "category": "libraries", 
+       "changelog": [
+        "convert a bunch of files to linux line feeds (#25)", 
+        "Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know."
+       ], 
+       "commit_sha": "a483c74a4b6a9c540ae58904bce5164dcfd5f4d4", 
+       "filename": "BuddyBunny.py", 
+       "md5": "794110f3e9c9cecb6e3294cf1c829b67", 
+       "name": "Buddy Bunny powerup", 
+       "old_md5s": [
+        "2e1bd9ed5b9dab8c2fb4eb21a88689ec"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/a483c74a4b6a9c540ae58904bce5164dcfd5f4d4/mods/BuddyBunny.py"
+      }, 
+      "Collector": {
+       "author": "TheMikirog", 
+       "category": "minigames", 
+       "changelog": [
+        "Colletor - (fixes continued)- Changed game music\r- Made capsules fly from enemies much less violently, so they don't fall off cliff that easily\r- Added some tips at the start of the game", 
+        "Collector - fixesThis gamemode had some serious flaws that made it unplayable or unfair.\r- Now deposit points in Team games are always in the center. Deposit points only change in FFA games.\r- Now capsules don't roll around as much, so there's less risk they would fall down the pit."
+       ], 
+       "commit_sha": "0ebd80ae04e67629b2cc1be3e76fa96b68e2a42f", 
+       "filename": "Collector.py", 
+       "md5": "da460fcf6c5cc622709141a3aa133e48", 
+       "name": "Collector", 
+       "old_md5s": [
+        "9f38dfeff4590bd1073d2397867d2fc9", 
+        "6fd8ec35e9ced9d961e2efbd7f96b990", 
+        "571ec87186cd1b74a0ba196b2a263648", 
+        "9db6ae29f084aaa7afdd81953b6f5937"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/0ebd80ae04e67629b2cc1be3e76fa96b68e2a42f/mods/Collector.py"
+      }, 
+      "FillErUp": {
+       "author": "joshville79", 
+       "category": "minigames", 
+       "changelog": [
+        "Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know."
+       ], 
+       "commit_sha": "f0771dc63724a5b92c95a52d6ee74d4cab35eaf0", 
+       "filename": "FillErUp.py", 
+       "md5": "e0f7e8c5b259c090269d269eca139106", 
+       "name": "Fill 'Er Up", 
+       "old_md5s": [], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/f0771dc63724a5b92c95a52d6ee74d4cab35eaf0/mods/FillErUp.py"
+      }, 
+      "Greed": {
+       "author": "joshville79", 
+       "category": "minigames", 
+       "changelog": [
+        "Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know.", 
+        "move new mods to mods folder"
+       ], 
+       "commit_sha": "f0771dc63724a5b92c95a52d6ee74d4cab35eaf0", 
+       "filename": "Greed.py", 
+       "md5": "c997ab2e55fc0f52a015a0109e0dd6c2", 
+       "name": "Greed", 
+       "old_md5s": [
+        "716fc4ab7c3c5f2562540dd2aa4b9531"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/f0771dc63724a5b92c95a52d6ee74d4cab35eaf0/mods/Greed.py"
+      }, 
+      "GuessTheBomb": {
+       "author": "Paolo Valerdi", 
+       "category": "minigames", 
+       "changelog": [
+        "convert a bunch of files to linux line feeds (#25)", 
+        "New minigameThis is just another meteor shower game but the bombs fall randomly"
+       ], 
+       "commit_sha": "a483c74a4b6a9c540ae58904bce5164dcfd5f4d4", 
+       "filename": "GuessTheBomb.py", 
+       "md5": "0c56aef73be562024b896e3ceef05cce", 
+       "name": "Guess The Bomb", 
+       "old_md5s": [
+        "069221cf6a656d3efe1ea69dabc12e8f"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/a483c74a4b6a9c540ae58904bce5164dcfd5f4d4/mods/GuessTheBomb.py"
+      }, 
+      "HazardousCargo": {
+       "author": "joshville79", 
+       "category": "minigames", 
+       "changelog": [
+        "convert a bunch of files to linux line feeds (#25)", 
+        "Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know."
+       ], 
+       "commit_sha": "a483c74a4b6a9c540ae58904bce5164dcfd5f4d4", 
+       "filename": "HazardousCargo.py", 
+       "md5": "1cb82c35c92a821a19d635854a1b7183", 
+       "name": "Hazardous Cargo", 
+       "old_md5s": [
+        "266a2b0a26d9a8c19fb8ab1afcaead83"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/a483c74a4b6a9c540ae58904bce5164dcfd5f4d4/mods/HazardousCargo.py"
+      }, 
+      "Infection": {
+       "author": "joshville79", 
+       "category": "minigames", 
+       "changelog": [
+        "convert a bunch of files to linux line feeds (#25)", 
+        "Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know."
+       ], 
+       "commit_sha": "a483c74a4b6a9c540ae58904bce5164dcfd5f4d4", 
+       "filename": "Infection.py", 
+       "md5": "b15d9384ea106b69b93c403d7a185f8f", 
+       "name": "Infection", 
+       "old_md5s": [
+        "a72d024cee252ae53039f2ad0936b198"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/a483c74a4b6a9c540ae58904bce5164dcfd5f4d4/mods/Infection.py"
+      }, 
+      "LandGrab": {
+       "author": "joshville79", 
+       "category": "minigames", 
+       "changelog": [
+        "rename \"Land Grab.py\" to \"LandGrab.py\" (#25)"
+       ], 
+       "commit_sha": "8f28b96d4ae9df51bbc8718a932f5d17938c5ce4", 
+       "filename": "LandGrab.py", 
+       "md5": "95526447f0031c1fcb1e2488a50e0db9", 
+       "name": "Land Grab", 
+       "old_md5s": [], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8f28b96d4ae9df51bbc8718a932f5d17938c5ce4/mods/LandGrab.py"
+      }, 
+      "Protection": {
+       "author": "joshville79", 
+       "category": "minigames", 
+       "changelog": [
+        "Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know.", 
+        "move new mods to mods folder"
+       ], 
+       "commit_sha": "f0771dc63724a5b92c95a52d6ee74d4cab35eaf0", 
+       "filename": "Protection.py", 
+       "md5": "82d3509f2d8a99381a6b82db8a7ef716", 
+       "name": "Protection", 
+       "old_md5s": [
+        "a8fee2500811ab273f0db546d7dceba8"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/f0771dc63724a5b92c95a52d6ee74d4cab35eaf0/mods/Protection.py"
+      }, 
+      "SnoBallz": {
+       "author": "joshville79", 
+       "category": "libraries", 
+       "changelog": [
+        "convert a bunch of files to linux line feeds (#25)", 
+        "Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know."
+       ], 
+       "commit_sha": "a483c74a4b6a9c540ae58904bce5164dcfd5f4d4", 
+       "filename": "SnoBallz.py", 
+       "md5": "ad1b04613718179b8e901b7ceafd8384", 
+       "name": "SnoBallz powerup", 
+       "old_md5s": [
+        "a05749ae364883a4f23d05d6788c9edb"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/a483c74a4b6a9c540ae58904bce5164dcfd5f4d4/mods/SnoBallz.py"
+      }, 
+      "SnowBallFight": {
+       "author": "joshville79", 
+       "category": "minigames", 
+       "changelog": [
+        "Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know."
+       ], 
+       "commit_sha": "f0771dc63724a5b92c95a52d6ee74d4cab35eaf0", 
+       "filename": "SnowBallFight.py", 
+       "md5": "aaaaa9c177f0726d761eb18782dbee9f", 
+       "name": "Snowball Fight (requires SnoBallz.py)", 
+       "old_md5s": [], 
+       "requires": [
+        "SnoBallz"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/f0771dc63724a5b92c95a52d6ee74d4cab35eaf0/mods/SnowBallFight.py"
+      }, 
+      "WizardWar": {
+       "author": "MattZ45986", 
+       "category": "minigames", 
+       "changelog": [
+        "Update game for advent of WizardNow that the game has a \"Grumbledorf\" character, I've put together this little mod to show off the new guy.", 
+        "Rename Wizard War.py to WizardWar.py"
+       ], 
+       "commit_sha": "33e6d75ee504241c4206c6bd3e986e52ffa1b0d7", 
+       "filename": "WizardWar.py", 
+       "md5": "dd76a8d19ca21e33332153a0ce454ee1", 
+       "name": "WizardWar", 
+       "old_md5s": [
+        "46315134786af3bf46396918d663137d"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/33e6d75ee504241c4206c6bd3e986e52ffa1b0d7/mods/WizardWar.py"
+      }, 
+      "ZombieHorde": {
+       "author": "joshville79", 
+       "category": "minigames", 
+       "changelog": [
+        "Here's a bunch of new and updated minigames!Important notes:bsPowerup.py is a modified version of the game file. It has to replace the original game file.  Can mod manager do this? The modification is that it adds 2 new powerups: Snowballs and a Bunny helper bot that attacks other players (not you). For this to work it also requires BunnyBuddy.py and SnoBallz.py.  I put that requirement (I think) in the bsPowerup.json file. You can see these in action on my game server. I couldn't figure out any other way to add the new powerups to every game other than modifying the original bsPowerup file.The Snowball Fight minigame also requires SnoBallz.py.  I added a \"requires\" line in the .json file. It's the only minigame here that's not completely standalone.I called BuddyBunny, SnoBallz, and bsPowerup all \"utilities\" instead of \"minigames\" or \"libraries\" in the json files.  I wasn't sure what would be best.  If there's any way I can help, please let me know.", 
+        "Add files via uploadHey, I have no idea if I did this right.  I made a few mods and got requests to add to your mod manager.  Let me know if I screwed up the process."
+       ], 
+       "commit_sha": "f0771dc63724a5b92c95a52d6ee74d4cab35eaf0", 
+       "filename": "ZombieHorde.py", 
+       "md5": "2117baf2a313305199b39ce75970aba4", 
+       "name": "Zombie Horde", 
+       "old_md5s": [
+        "716d5b347b42f18156e7cc85a4a175ee"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/f0771dc63724a5b92c95a52d6ee74d4cab35eaf0/mods/ZombieHorde.py"
+      }, 
+      "airStrike": {
+       "author": "SoKpl", 
+       "category": "minigames", 
+       "changelog": [
+        "bump all mod api versions", 
+        "add Air Strike, see #4"
+       ], 
+       "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", 
+       "filename": "airStrike.py", 
+       "md5": "6cfa8b25079832edec4862958fc223f2", 
+       "name": "Air Strike", 
+       "old_md5s": [
+        "23a8cefb018aefae51442b0554fa6e64"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/airStrike.py"
+      }, 
+      "arms_race": {
+       "author": "Mrmaxmeier", 
+       "category": "minigames", 
+       "changelog": [
+        "prevent arms race upgrade on team kill (fixes #22)", 
+        "bump all mod api versions"
+       ], 
+       "commit_sha": "4044dd3363efc75421db36cef3f770d499811d47", 
+       "filename": "arms_race.py", 
+       "md5": "6ef1cf7e90801851caf145ec1cb24f06", 
+       "name": "Arms Race", 
+       "old_md5s": [
+        "812023fcef83769a5a937cb8e8b90d44", 
+        "e23a86e0b95291192c1d3463df3b0605", 
+        "6ff1810f9d73a2b698d19216b36a4413", 
+        "b725e48f91fa04197aea4cc1eefc1cbf"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/4044dd3363efc75421db36cef3f770d499811d47/mods/arms_race.py"
+      }, 
+      "auto_reloader": {
+       "author": "Mrmaxmeier", 
+       "category": "utilities", 
+       "changelog": [
+        "bump all mod api versions", 
+        "rating ui"
+       ], 
+       "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", 
+       "filename": "auto_reloader.py", 
+       "md5": "c80cb4f40bf8f9bd9b7a4f75b0eb0a9d", 
+       "name": "Auto Reloader", 
+       "old_md5s": [
+        "d7924cf4c9e684120f376d0710114391", 
+        "48611852f3386839093cd9115c2d6152", 
+        "115932c45f0443290c3798e8762b6e9e", 
+        "969de56c489c774d116eed0a40632b11", 
+        "41588189e303988a9151523e71e689b0"
+       ], 
+       "supports": [
+        "config_editor"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/auto_reloader.py"
+      }, 
+      "bomb_on_my_head": {
+       "author": "Mrmaxmeier", 
+       "category": "minigames", 
+       "changelog": [
+        "bump all mod api versions", 
+        "refactoring"
+       ], 
+       "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", 
+       "filename": "bomb_on_my_head.py", 
+       "md5": "0a2d23af4260764799268cf5bc3bdb43", 
+       "name": "Bomb on my Head", 
+       "old_md5s": [
+        "c16286fe16dd5f2594e0836953fdfd68", 
+        "6963c68439371d19fb52458e064dc930"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/bomb_on_my_head.py"
+      }, 
+      "bomberman": {
+       "author": "Mrmaxmeier", 
+       "category": "minigames", 
+       "changelog": [
+        "bump all mod api versions", 
+        "refactoring"
+       ], 
+       "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", 
+       "filename": "bomberman.py", 
+       "md5": "b683a0481e1ef2f06525d6e3ff754fce", 
+       "name": "Bomberman", 
+       "old_md5s": [
+        "5019f3cb21e319b175bbeba4378e0926", 
+        "1eafb570a01dcb157f737ff391424cdf"
+       ], 
+       "tag": "experimental", 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/bomberman.py"
+      }, 
+      "boxing": {
+       "author": "TheMikirog", 
+       "category": "minigames", 
+       "changelog": [
+        "bump all mod api versions", 
+        "Merge pull request #6 from TheMikirog/masterBoxing: Gameplay changes"
+       ], 
+       "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", 
+       "filename": "boxing.py", 
+       "md5": "119d3ea4808d79d6c92942821565aec5", 
+       "name": "Boxing", 
+       "old_md5s": [
+        "f60cfb347f93e1fa25f56cad057ab0d5", 
+        "9485eac414e791f8eb06b7e93e0897e4"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/boxing.py"
+      }, 
+      "brainFreeze": {
+       "author": "TheMikirog", 
+       "category": "minigames", 
+       "changelog": [
+        "bump all mod api versions", 
+        "Rename brainFreeze to brainFreeze.py"
+       ], 
+       "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", 
+       "filename": "brainFreeze.py", 
+       "md5": "bc7b703a365c67c5b37d6c6cb2c94f02", 
+       "name": "Brain Freeze", 
+       "old_md5s": [
+        "3a9b5bbdb96deacdb4504a752b3618ee"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/brainFreeze.py"
+      }, 
+      "bsBoxingOfTheHill": {
+       "author": "joshville79", 
+       "category": "minigames", 
+       "changelog": [
+        "Add files via uploadHey, I have no idea if I did this right.  I made a few mods and got requests to add to your mod manager.  Let me know if I screwed up the process."
+       ], 
+       "commit_sha": "09be1d940c0db5f01587911930cc212982a7b020", 
+       "filename": "bsBoxingOfTheHill.py", 
+       "md5": "dd81f8f2ccb148a6e88dd96d9e91f248", 
+       "name": "Boxing Of The Hill", 
+       "old_md5s": [], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/09be1d940c0db5f01587911930cc212982a7b020/mods/bsBoxingOfTheHill.py"
+      }, 
+      "bsKillZone": {
+       "author": "joshville79", 
+       "category": "minigames", 
+       "changelog": [
+        "convert a bunch of files to linux line feeds (#25)", 
+        "Add files via uploadHey, I have no idea if I did this right.  I made a few mods and got requests to add to your mod manager.  Let me know if I screwed up the process."
+       ], 
+       "commit_sha": "a483c74a4b6a9c540ae58904bce5164dcfd5f4d4", 
+       "filename": "bsKillZone.py", 
+       "md5": "15040077256ea55a394cb28badd7ee06", 
+       "name": "Kill Zone", 
+       "old_md5s": [
+        "1b5c3d11a408f1cb78a09f0758b6e980"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/a483c74a4b6a9c540ae58904bce5164dcfd5f4d4/mods/bsKillZone.py"
+      }, 
+      "catch_to_live": {
+       "author": "Deva", 
+       "category": "minigames", 
+       "changelog": [
+        "Add more settings and change color to normal", 
+        "rename game"
+       ], 
+       "commit_sha": "352e1a82a46c431459842c2a302a31385aa1e872", 
+       "filename": "catch_to_live.py", 
+       "md5": "23530bf4ea77e546dd99212203864409", 
+       "name": "CatchToLive", 
+       "old_md5s": [
+        "d279afd2952852bafb99d04a63d92e60"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/352e1a82a46c431459842c2a302a31385aa1e872/mods/catch_to_live.py"
+      }, 
+      "fightOfFaith": {
+       "author": "SoKpl", 
+       "category": "minigames", 
+       "changelog": [
+        "bump all mod api versions", 
+        "added 'Fight of Faith', see #1"
+       ], 
+       "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", 
+       "filename": "fightOfFaith.py", 
+       "md5": "8acf4285dee7fb154290b2709006521d", 
+       "name": "Fight of Faith", 
+       "old_md5s": [
+        "c7f6864575253c2d4f594cb08daf2769"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/fightOfFaith.py"
+      }, 
+      "frozenone": {
+       "author": "Mrmaxmeier", 
+       "category": "minigames", 
+       "changelog": [
+        "bump all mod api versions", 
+        "refactoring"
+       ], 
+       "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", 
+       "filename": "frozenone.py", 
+       "md5": "e37c20cad5f7e6e54c9961e15d30ce70", 
+       "name": "The Frozen One", 
+       "old_md5s": [
+        "c99d65d6b3051cb60d48c565c6b2b66e", 
+        "483fe2ea852fe51525748f472d7d787b", 
+        "0de2033b65a83260413a5a49607bb4c5", 
+        "0a6a3366c7103712a7119e5efc4d4a15"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/frozenone.py"
+      }, 
+      "iceDeathmatch": {
+       "author": "SoKpl", 
+       "category": "minigames", 
+       "changelog": [
+        "bump all mod api versions", 
+        "add \"Ice Deathmatch\" by SoKpl#7"
+       ], 
+       "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", 
+       "filename": "iceDeathmatch.py", 
+       "md5": "052236109d110187da641b2dd5964ae1", 
+       "name": "Ice Deathmatch", 
+       "old_md5s": [
+        "9796fed0dd67c68a9e7eef95d4a51da1"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/iceDeathmatch.py"
+      }, 
+      "magic_box": {
+       "author": "Mrmaxmeier", 
+       "category": "minigames", 
+       "changelog": [
+        "bump all mod api versions", 
+        "cleanup magic_box"
+       ], 
+       "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", 
+       "filename": "magic_box.py", 
+       "md5": "15f629062771aa87e538dc697c5eb525", 
+       "name": "Magic Box", 
+       "old_md5s": [
+        "7fae4c59cb8bfe02936722c1ac17a4bc", 
+        "244b4fcbdc2c74904254d47272bc4b9e", 
+        "3aac96b22db7dbc1e6cf2306d3454228", 
+        "2340f5eee0252ac43a2e2fb96e73700e"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/magic_box.py"
+      }, 
+      "modManager": {
+       "author": "Mrmaxmeier", 
+       "category": "utilities", 
+       "changelog": [
+        "only generate uuid if the stat server is enabled", 
+        "end smash game if team leaves completly"
+       ], 
+       "commit_sha": "3672c8fdd3a6a26aa7321e264f33a9e9a83232e8", 
+       "filename": "modManager.py", 
+       "md5": "536b069e5b60bbeee052b03464991ce9", 
+       "name": "Mod Manager (this thingy)", 
+       "old_md5s": [
+        "79fad6241b448f45be7a97b7c5aa3dd9", 
+        "95137096a9c415267e4bfb4ee75c9b73", 
+        "5c0fac4ce24659ae410a56faced81d25", 
+        "72efc28be645667697116e6191ababfe", 
+        "d0619dbfde6337d656482312f38d4574"
+       ], 
+       "requires": [
+        "ui_wrappers", 
+        "settings_patcher"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/3672c8fdd3a6a26aa7321e264f33a9e9a83232e8/mods/modManager.py"
+      }, 
+      "puckDeathmatch": {
+       "author": "Mrmaxmeier", 
+       "category": "minigames", 
+       "changelog": [
+        "bump all mod api versions", 
+        "puck timeout"
+       ], 
+       "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", 
+       "filename": "puckDeathmatch.py", 
+       "md5": "4ee530ed550d4adcd1f5b2600688c066", 
+       "name": "Puck Deathmatch", 
+       "old_md5s": [
+        "8c4f61495cd1cb5221be02cfa8a58e45", 
+        "034af0481765c2502dc184e5657dc435"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/puckDeathmatch.py"
+      }, 
+      "quickGameButton": {
+       "author": "Mrmaxmeier", 
+       "category": "utilities", 
+       "changelog": [
+        "update quickGameButton to API v4", 
+        "replace bs.getResource calls"
+       ], 
+       "commit_sha": "fe003e0c92d84b2c3cee09c8b584fc5fe006c313", 
+       "filename": "quickGameButton.py", 
+       "md5": "090df7b52669e73b3a898788d73a6bf8", 
+       "name": "Quick-Game Button", 
+       "old_md5s": [
+        "210c7ea410f847b8d4146801f7108471", 
+        "5b22370f25e872746283d45790af7e67", 
+        "9dbbc871cc8457bbced9420c11681c72", 
+        "a9d97c3630a84baafc34e68968d86eb7", 
+        "4cdb9f64a727685e83171477f496b4bc"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/fe003e0c92d84b2c3cee09c8b584fc5fe006c313/mods/quickGameButton.py"
+      }, 
+      "settings_patcher": {
+       "author": "Mrmaxmeier", 
+       "category": "libraries", 
+       "changelog": [
+        "replace bs.getResource calls", 
+        "even more flake8"
+       ], 
+       "commit_sha": "724587f96a6011b863903b389ef7babce70976a7", 
+       "filename": "settings_patcher.py", 
+       "md5": "2a39de960bfcc989876e6f843df456a2", 
+       "name": "settings_patcher", 
+       "old_md5s": [
+        "b47906864b52626ccde30eba89491674", 
+        "fcfa6832da8c59e08afd1eef0d8139b5", 
+        "85217ec90f53b02dc3646030796f3dd5", 
+        "474dbf37a8b1f36e532e0e936f9c0f4b"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/724587f96a6011b863903b389ef7babce70976a7/mods/settings_patcher.py"
+      }, 
+      "smash": {
+       "author": "Mrmaxmeier", 
+       "category": "minigames", 
+       "changelog": [
+        "end smash game if team leaves completly", 
+        "bump all mod api versions"
+       ], 
+       "commit_sha": "86072bfdadbd9205f897396825a8104fe2cbb630", 
+       "filename": "smash.py", 
+       "md5": "1210d0a95ee6fd3c9e05066dbc8a7c0b", 
+       "name": "Super Smash", 
+       "old_md5s": [
+        "44452c0419bb398be64dbac6379ba560", 
+        "339ab2df890ae78b57507224bab11985", 
+        "5916f2a3a15b623802e454dba70fb7f2", 
+        "5dd773cb8407f92618b29da5134cd6d2"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/86072bfdadbd9205f897396825a8104fe2cbb630/mods/smash.py"
+      }, 
+      "snake": {
+       "author": "Mrmaxmeier", 
+       "category": "minigames", 
+       "changelog": [
+        "bump all mod api versions", 
+        "refactoring"
+       ], 
+       "commit_sha": "8d599cb0829b4f28d03db30e61ac618e8f1e0779", 
+       "filename": "snake.py", 
+       "md5": "49d878c10214d4ccec5df70b17e3793a", 
+       "name": "Snake", 
+       "old_md5s": [
+        "b7ed1f0b4f5ad311b2f35406ff07588f", 
+        "76032fe956ce6b9805bcb2453a1decf5"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/8d599cb0829b4f28d03db30e61ac618e8f1e0779/mods/snake.py"
+      }, 
+      "snowyPowerup": {
+       "author": "joshville79", 
+       "category": "libraries", 
+       "changelog": [
+        "fix for bsFootball's powerup handling", 
+        "Renabe bsPowerup to snowyPowerup, utilize monkey patching (#25)"
+       ], 
+       "commit_sha": "017a13dbe85c78220175fb795bd81e1b5e66c0e9", 
+       "filename": "snowyPowerup.py", 
+       "md5": "ce805e9d11cef2002d24b9dab6654595", 
+       "name": "Modified bsPowerup.py", 
+       "old_md5s": [
+        "9a5abe159a10e15f5219dce1ac7e6176"
+       ], 
+       "requires": [
+        "BuddyBunny", 
+        "SnoBallz"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/017a13dbe85c78220175fb795bd81e1b5e66c0e9/mods/snowyPowerup.py"
+      }, 
+      "surviveCurse": {
+       "author": "joshville79", 
+       "category": "minigames", 
+       "changelog": [
+        "move new mods to mods folder"
+       ], 
+       "commit_sha": "22846a813dc5a550a49a74307d86c3601d58cf4e", 
+       "filename": "surviveCurse.py", 
+       "md5": "29e21b16f3d7e4003532f0155a175ac3", 
+       "name": "Survive the Curse!", 
+       "old_md5s": [], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/22846a813dc5a550a49a74307d86c3601d58cf4e/mods/surviveCurse.py"
+      }, 
+      "ui_wrappers": {
+       "author": "Mrmaxmeier", 
+       "category": "libraries", 
+       "changelog": [
+        "add note about textWidget.set(text=...)", 
+        "more flake8"
+       ], 
+       "commit_sha": "f2c1140ba899c0a5dbbe683fd767343449258942", 
+       "filename": "ui_wrappers.py", 
+       "md5": "421c7d87f4d832e2d2e42c462fc3d63a", 
+       "name": "ui_wrappers", 
+       "old_md5s": [
+        "9f813943333a21f139b45487c0579224", 
+        "069d4605c92528211e0a8c8bb67a3c22", 
+        "cbfce8f368e32a21159b1ed94f2d55b1", 
+        "7df3a7c699903f8a0c8b8d6c847b0840", 
+        "8d1e6e55ae9a953de95278d5317c3476"
+       ], 
+       "url": "https://cdn.rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/f2c1140ba899c0a5dbbe683fd767343449258942/mods/ui_wrappers.py"
+      }
+     }, 
+     "version": 1.1
+    }, 
+    1534512293.426415
+   ]
+  }
+ }
+}
