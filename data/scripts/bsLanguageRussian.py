@@ -636,7 +636,6 @@ values = {
     'defaultNewTeamGameListNameText':'Мои командные игры',
     'defaultTeamGameListNameText':'Стандартные командные игры',
     'deleteText':'Удалить',
-    'demoText':'демонстрация',
     'denyText':'Отклонить',
     'desktopResText':'Разреш. экрана',
     'difficultyEasyText':'Легкий',
@@ -831,8 +830,7 @@ values = {
         'dedicatedServerInfoText':'Для лучшего результата создайте отдельный сервер. Смотри bombsquadgame.com/server',
         'disconnectClientsText':('Это отключит ${COUNT} игроков\n'
                                  'в вашем лобби. Вы уверены?'),
-        'earnTicketsForRecommendingAmountText':('Друзья получат ${COUNT} билетов, если они активируют ваш код\n'
-                                                '(а вы будете получать ${YOU_COUNT} билетов за каждую активацию)'),
+        'earnTicketsForRecommendingAmountText':'Друзья получит ${COUNT} билеты, если они пытаются игру (и вы будете получать ${YOU_COUNT} для каждого, кто делает)',
         'earnTicketsForRecommendingText':('Поделись игрой\n'
                                           'Получи билеты...'),
         'emailItText':'Послать Email',
@@ -958,7 +956,7 @@ values = {
         'fullScreenCtrlText':'Полноэкранный (Ctrl-F)',
         'gammaText':'Гамма',
         'highText':'Высокий',
-        'higherText':'Ультра',
+        'higherText':'Выше',
         'lowText':'Низкий',
         'mediumText':'Средний',
         'neverText':'Никогда',
@@ -1272,7 +1270,6 @@ values = {
     'onText':'Вкл',
     'onslaughtRespawnText':'${PLAYER} возродится в ${WAVE} волне',
     'orText':'${A} или ${B}',
-    'otherText':'Другие...',
     'outOfText':'(${RANK} из ${ALL})',
     'ownFlagAtYourBaseWarning':('Чтобы набрать очки, ваш собственный\n'
                                 'флаг должен быть на вашей базе!'),
@@ -1352,7 +1349,7 @@ values = {
         'codeTextDescription':'Промо-код',
         'enterText':'Отправить'
     },
-    'promoSubmitErrorText':'Ошибка отправки кода, проверьте своё интернете соединение',
+    'promoSubmitErrorText':'Ошибка отправки промо-кода, проверьте свое интернет-соединение',
     'ps3ControllersWindow':{
         'macInstructionsText':('Выключите питание на задней панели PS3, убедитесь, что Bluetooth\n'
                                'включен на вашем компьютере, а затем подключите контроллер к Маку\n'
@@ -1520,7 +1517,7 @@ values = {
     'shareText':'Поделиться',
     'sharingText':'Делимся...',
     'showText':'Показать',
-    'signInForPromoCodeText':'Вы должны войти в аккаунт для активации кода.',
+    'signInForPromoCodeText':'Вы должны войти в аккаунт для активации промо-кода.',
     'signInWithGameCenterText':('Чтобы использовать аккаунт GameCenter,\n'
                                 'войдите через GameCenter.'),
     'singleGamePlaylistNameText':'Просто ${GAME}',
@@ -1549,7 +1546,6 @@ values = {
         'Victory':'Табло финального счета'
     },
     'spaceKeyText':'пробел',
-    'statsText':'Статистика',
     'storagePermissionAccessText':'Это требует доступа к хранилищу',
     'store':{
         'alreadyOwnText':'У вас уже есть ${NAME}!',
@@ -1619,8 +1615,7 @@ values = {
         'teamUpAgainstComputerText':'Команды против компьютера.'
     },
     'storeText':'Магазин',
-    'submitText':'Отправить',
-    'submittingPromoCodeText':'Активация кода....',
+    'submittingPromoCodeText':'Активация промо-кода...',
     'teamNamesColorText':'имена/цвета команд',
     'teamsText':'Команды',
     'telnetAccessGrantedText':'Доступ Telnet включен.',
@@ -1928,7 +1923,6 @@ values = {
             'Invalid promo code.':'Неверный промо-код.',
             'Invalid purchase.':'Ошибка транзакции.',
             'Invalid tournament entry; score will be ignored.':'Неверная заявка на турнир; счет будет проигнорирован.',
-            'Item unlocked!':'Предмет разблокирован!!!',
             ('LINKING DENIED. ${ACCOUNT} contains\n'
              'significant data that would ALL BE LOST.\n'
              'You can link in the opposite order if you\'d like\n'
@@ -1962,8 +1956,6 @@ values = {
             'This account cannot be unlinked for ${NUM} days.':'Этот аккаунт невозможно отвязать в течение ${NUM} дней.',
             'This code cannot be used on the account that created it.':'Этот код не может быть использован его создателем.',
             'This requires version ${VERSION} or newer.':'Для этого необходима версия ${VERSION} или новее.',
-            'Tournaments disabled due to rooted device.':'Турниры отключены из-за корневого устройства.',
-            'Tournaments require ${VERSION} or newer':'Для турниров требуется версия ${VERSION} или выше.',
             ('Unlink ${ACCOUNT} from this account?\n'
              'All data on ${ACCOUNT} will be reset.\n'
              '(except for achievements in some cases)'):('Отвязать ${ACCOUNT} от этого аккаунта?\n'

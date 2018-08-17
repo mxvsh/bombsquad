@@ -5,161 +5,161 @@ values = {
         'accountNameRules':'أسماء الحسابات لا يمكن أن تحتوي على أيقونات أو رموز خاصة',
         'accountProfileText':'معلومات اللاعبين',
         'accountsText':'حسابات',
-        'achievementProgressText':'${TOTAL} من اصل ${COUNT} انجازاتك:انجزت',
+        'achievementProgressText':'الإنجازات: ${COUNT} من ${TOTAL}',
         'campaignProgressText':'تقدم الحملة [HARD]:${PROGRESS}',
-        'changeOncePerSeason':'يمكنك تغييره مرة واحدة في الموسم',
+        'changeOncePerSeason':'يمكنك تغيير هذا مرة واحدة في الموسم',
         'changeOncePerSeasonError':'يجب عليك الانتظار حتى الموسم القادم لتغيير هذا مجددا (${NUM} أيام )',
-        'customName':'الإسم المخصص',
-        'linkAccountsEnterCodeText':'أدخل الرمز',
-        'linkAccountsGenerateCodeText':'أنشئ رمز',
-        'linkAccountsInfoText':'(مشاركة التقدمك مع الاجهزة الاخرى)',
-        'linkAccountsInstructionsNewText':('لربط حسابين،- انشئ رمز من الجهاز المراد انشاء الحساب فية*\n'
-                                           '- ًوقم بأدخال الرمز في جهاز المربوط بة حساب مسبقا\n'
+        'customName':'الإسم الخاص',
+        'linkAccountsEnterCodeText':'أدخل رمز',
+        'linkAccountsGenerateCodeText':'انشاء رمز',
+        'linkAccountsInfoText':'(مشاركة التقدم مع الانظمة الاخرى)',
+        'linkAccountsInstructionsNewText':('لربط حسابين، أنشاء رمز على الأولى\n'
+                                           'وأدخل هذا الرمز في الثاني. \n'
+                                           'البيانات من الحساب الاول سوف يتم مشاركتها بين الجهازين .\n'
+                                           '(سيتم فقدان البيانات من الحساب الأول)\n'
                                            '\n'
-                                           'البيانات من الحساب الاول سوف يتم مشاركتها بين الجهازين*\n'
+                                           'يمكنك ربط ما يصل إلى ${COUNT} من الحسابات.\n'
                                            '\n'
-                                           '  من الحسابات كحد اقصى ${COUNT} يمكنك انشاء*\n'
-                                           '\n'
-                                           'هام : اربط حسابات غير مستخدمة والتي تكون خاصة بك\n'
-                                           '\n'
-                                           'لا يمكنك لعب بنفس الحساب في جهازين في انٍ واحد'),
+                                           'هام: ربط الحسابات التي تمتلكها فقط؛\n'
+                                           'إذا كنت ربط مع حسابات الأصدقاء أنك لن\n'
+                                           'تكون قادرة على اللعب على الانترنت في نفس الوقت.'),
         'linkAccountsInstructionsText':('لربط حسابين, انتج كود على احد الحسابين \n'
                                         'و ادخل  هذا الكود على الاخر.\n'
                                         'التقدم و المخزون سيشتركا.\n'
                                         'يمكنك ربط حتى ${COUNT} حسابات.\n'
                                         '\n'
                                         'كن حذراً; هذا لا يمكن استرجاعه'),
-        'linkAccountsText':'ربط حساب',
-        'linkedAccountsText':': حساباتي المرتبطة',
-        'nameChangeConfirm':'?${NAME} هل تريد تغير اسم حسابك الى',
-        'resetProgressConfirmNoAchievementsText':('سوف يحذف هذا الخيار تقدمك في الحملات التعاونية ولم يحذف تذاكرك\n'
+        'linkAccountsText':'ربط الحسابات',
+        'linkedAccountsText':'الحسابات المرتبطة:',
+        'nameChangeConfirm':'تغيير اسم حسابك إلى ${إسم} ؟',
+        'resetProgressConfirmNoAchievementsText':('سيمسح هذا نقاطك العليى و تقدم الحملة التعاونية كو-وب و لكن لن يمسح تذاكرك\n'
                                                   'لا يمكن إلغاء هذا الخيار\n'
                                                   'هل أنت متأكد ؟'),
-        'resetProgressConfirmText':(':عند موافقتك على هذا الاخيار سوف يتم\n'
-                                    'حذف انجازاتك وتقدمك الحالي\n'
-                                    'اذا وافقت على هذا القرار لا يمكنك تراجع عنه\n'
-                                    'هل أنت متأكد؟'),
-        'resetProgressText':'إمسح تقدمك',
-        'setAccountName':'حدد إسم للحساب',
-        'setAccountNameDesc':('..اختر اسم لحسابك\n'
-                              'يمكنك اختيار نفس اسم حساباتك الاخرى\n'
-                              'ولاكن يجب ان يكون مختلف قليلاً'),
-        'signInInfoText':('قم بتسجيل دخولك لتجمع بطاقات, وتتحدى الاعبين حول العالم\n'
-                          'و لحفظ ونشر تقدمك عبر الاجهزة'),
+        'resetProgressConfirmText':('سيتم إلغاء تقدمك في اللعبة،\n'
+                                    'انجازاتك، أعلى النتائج المحلية.\n'
+                                    'اذا استمريت في العملية لا يمكنك التراجع.\n'
+                                    'هل أنت متأكد من هذا الأمر؟'),
+        'resetProgressText':'إمسح التقدم',
+        'setAccountName':'حدد إسم الحساب',
+        'setAccountNameDesc':('إختر الإسم المعروض لحسابك.\n'
+                              '\n'
+                              'يمكنك اختيار الإسم من أحد الحسابات المتعلقة أو إنشاء إسم جديد.'),
+        'signInInfoText':('قم بتسجيل دخولك لتجمع بطاقات, تحدي عبر الانترنت,\n'
+                          'و نشر تقدمك عبر الاجهزة'),
         'signInText':'تسجيل الدخول',
-        'signInWithDeviceInfoText':'الحساب التلقائي متوفر فقط على هذا الجهاز',
-        'signInWithDeviceText':'سجل دخولك بحساب الجهاز',
+        'signInWithDeviceInfoText':'(يتوفر من هذا الجهاز حساب تلقائي فقط)',
+        'signInWithDeviceText':'سجل دخولك بجهاز الحساب',
         'signInWithGameCircleText':'سجل دخولك بدائرة اللعبة',
-        'signInWithGooglePlayText':'Google Play سجل الدخول عبر',
+        'signInWithGooglePlayText':'سجل الدخول عبر جوجل بلاي',
         'signInWithTestAccountInfoText':'(نوع حساب ارثي; استخدم حسابات الجهاز متجهه للامام)',
         'signInWithTestAccountText':'سجل الدخول مع اختبار الحساب',
         'signOutText':'تسجيل الخروج',
-        'signingInText':'...جاري تسجيل دخولك',
-        'signingOutText':'...جاري تسجيل خروجك',
+        'signingInText':'جاري تسجيل الدخول',
+        'signingOutText':'جاري تسجيل الخروج',
         'testAccountWarningOculusText':('تحذير: انت تقوم بتسجيل الدخول باستخدام حساب تجريبي.\n'
                                         'سيستبدل بحساب حقيقي خلال هذا العام الذي من خلاله\n'
                                         'سوف تقدر على شراء البطاقات ومزايا أخرى.\n'
                                         '\n'
                                         'إلى الان يمكنك الحصول على جميع البطافات في اللعبة.\n'
                                         '(على الرغم من ذلك، قم بالحصول على حساب متقدم مجانا)'),
-        'ticketsText':'${COUNT} :بطاقاتك الحالية',
+        'ticketsText':'البطافات: ${COUNT}',
         'titleText':'الحساب',
-        'unlinkAccountsInstructionsText':'حدد حسابا لإلغاء ربطة',
+        'unlinkAccountsInstructionsText':'حدد حسابا لإلغاء الربط',
         'unlinkAccountsText':'إلغاء ربط الحسابات',
         'viaAccount':'(عبر الحساب ${NAME} )',
-        'youAreSignedInAsText':': قمت بتسجيل الدخول كـ'
+        'youAreSignedInAsText':'قمت بتسجيل الدخول كـ:'
     },
     'achievementChallengesText':'إنجازات التحديات',
     'achievementText':'إنجاز',
     'achievements':{
         'Boom Goes the Dynamite':{
-            'description':'TNT اقتل 3 خصوم مرة واحد بأستخدام صندوق',
-            'descriptionComplete':'تم قتل 3 خصوم بلمتفجرات',
-            'descriptionFull':'${LEVEL} تم قتل 3 خصوم في المرحلة',
-            'descriptionFullComplete':'${LEVEL} ثم قتل 3 خصوم بلمتفجرات في المرحلة',
-            'name':'TNT قنبلة بقوة'
+            'description':'اقتل 3 اشخاص اشرار باستخدام المتفجرات',
+            'descriptionComplete':'تم قتل 3 أشخاص اشرار بالمتفجرات',
+            'descriptionFull':'قتل ثلاثة أشخاص سيئين بالمتفجرات بالمرحلة ${LEVEL}',
+            'descriptionFullComplete':'تم قتل ثلاثة أشخاص سيئين بالمتفجرات بالمرحلة ${LEVEL}',
+            'name':'قنبلة تذهب الديناميت'
         },
         'Boxer':{
-            'description':'فز بدون استخدامك للقنابل',
-            'descriptionComplete':'لقد فزت بدون استخدام القنابل',
-            'descriptionFull':'بدون استخدام القنابل ${LEVEL} قم بإكمال المرحلة',
-            'descriptionFullComplete':'بدون استخدام اي قنبلة ${LEVEL}اكمل',
-            'name':'ملاكم حر'
+            'description':'الفوز دون استخدام المتفجرات',
+            'descriptionComplete':'تم الفوز دون استخدام المتفجرات',
+            'descriptionFull':'قم بإكمال مرحلة ${LEVEL} دون استخدام المتفجرات',
+            'descriptionFullComplete':'بدون استخدام اي قنبله${LEVEL}اكمل',
+            'name':'ملاكم'
         },
         'Dual Wielding':{
-            'descriptionFull':'{اتصل بجهازي تحكم عن بعد {جهاز او تطبيق',
-            'descriptionFullComplete':'{متصل بجهازي تحكم {جهاز او تطبيق',
-            'name':'اللكمة المزدوجة'
+            'descriptionFull':'اتصل جهازي تحكم (عتاد أو تطبيق)',
+            'descriptionFullComplete':'متصل جهازين تحكم (عتاد أو تطبيق)',
+            'name':'مزدوج'
         },
         'Flawless Victory':{
-            'description':'انتصر بدون تعرض للأذى',
-            'descriptionComplete':'لقد فزت بدون تعرضك للأذى',
-            'descriptionFull':'بدون تعرضك للأذى ${LEVEL} انتصر بلمرحلة',
-            'descriptionFullComplete':'بدون تعرضك للأذى ${LEVEL} لقد فزت بلمرحلة',
-            'name':'الفوز المستحق'
+            'description':'الفوز دون التعرض للضرب',
+            'descriptionComplete':'تم الفوز دون التعرض للضرب',
+            'descriptionFull':'الفوز بالمرحلة ${LEVEL} دون التعرض للضرب',
+            'descriptionFullComplete':'تم الفوز بالمرحلة ${LEVEL} دون التعرض للضرب',
+            'name':'فوز مستحق'
         },
         'Free Loader':{
-            'descriptionFull':'ابدأ اللعب الحر في جميع المراحل مع اكثر من لاعبين',
-            'descriptionFullComplete':'ابدأ لعبة جماعية مع اكثر من لاعبين',
-            'name':'الفريق المجاني'
+            'descriptionFull':'بدا العب الحر ل كل الاالعاب مع اكثر من لاعبين',
+            'descriptionFullComplete':'ابدأ مباراه الجميع ضد الجميع مع اكثر من 2 لاعبين',
+            'name':'المستغل'
         },
         'Gold Miner':{
-            'description':'اقتل 6 خصوم بأستخدام الالغام',
+            'description':'أقتل 6 اشخاص سيئين عبر الالغام',
             'descriptionComplete':'أقتل 6 اشاص سيئين عبر الالغام',
-            'descriptionFull':'بأستخدام الالغام ${LEVEL} اقتل 6 خصوم في المرحلة',
-            'descriptionFullComplete':'بأستخدام الالغام ${LEVEL} اقتل 6 خصوم في المرحلة',
-            'name':'منقب الذهب'
+            'descriptionFull':'اقتل ست اشخاص سيئين بالالغام',
+            'descriptionFullComplete':'قتل 6 سيئين في المستوى ${LEVEL}',
+            'name':'عامل منجم الذهب'
         },
         'Got the Moves':{
-            'description':'انتصر بدون استخدام اللكمات او القنابل',
-            'descriptionComplete':'لقد انتصرت بدون استخدامك للكمات او القنابل',
-            'descriptionFull':'بدون استخدام اللكمات او القنابل ${LEVEL}  فز فى المستوى',
-            'descriptionFullComplete':'بدون استخدام اللكمات او القنابل ${LEVEL} لقد ربحت في المرحلة',
-            'name':'الاسلحة المخفية'
+            'description':'فز دون استخدام اللكمات او قنابل',
+            'descriptionComplete':'ربحت بدون استخدام القنابل او عملية شراء',
+            'descriptionFull':'ربحت المستوى ${LEVEL} بدون قنابل او عملية شراء',
+            'descriptionFullComplete':'ربحت المستوى ${LEVEL} بدون قنابل او عملية شراء',
+            'name':'حصلت على حركات'
         },
         'In Control':{
-            'descriptionFull':'تم توصيل جهاز التحكم',
-            'descriptionFullComplete':'تم توصيل جهاز تحكم',
-            'name':'تحت التحكم'
+            'descriptionFull':'وصل المتحكم (عتاد أو تطبيق)',
+            'descriptionFullComplete':'المتحكم متصل (عتاد أو تطبيق)',
+            'name':'في  التحكم'
         },
         'Last Stand God':{
             'description':'سجل 1000 نقطة',
-            'descriptionComplete':'!لقد سجلت 1000 نقطة',
-            'descriptionFull':'${LEVEL} سجل 1000 نقطة في المرحلة',
-            'descriptionFullComplete':'${LEVEL} لقد سجلت 1000 نقطة في المرحلة',
-            'name':'القائد ${LEVEL}'
+            'descriptionComplete':'سجلت ألف نقطة',
+            'descriptionFull':'النقاط 1000 نقطة في المستوى ${LEVEL}',
+            'descriptionFullComplete':'سجلت 1000 نقطة في المستوى ${LEVEL}',
+            'name':'${LEVEL} القائد'
         },
         'Last Stand Master':{
-            'description':'سجل 250 نقطة',
-            'descriptionComplete':'!سجلت 250 نقطة',
-            'descriptionFull':'${LEVEL} سجل 250 نقطة في المرحلة',
-            'descriptionFullComplete':'${LEVEL} لقد سجلت 250 نقطة في المرحلة',
-            'name':'معَلّم ${LEVEL}'
+            'description':'النقاط 250 نقطة',
+            'descriptionComplete':'سجلت 250 نقطة',
+            'descriptionFull':'النقاط 250 في المستوى ${LEVEL}',
+            'descriptionFullComplete':'سجل 250 نقطة في ${LEVEL}',
+            'name':'${LEVEL} معلم'
         },
         'Last Stand Wizard':{
             'description':'سجل 500 نقطة',
             'descriptionComplete':'سجل 500 نقطة',
-            'descriptionFull':'${LEVEL} سجل 500 نقطة في المرحلة',
-            'descriptionFullComplete':'${LEVEL} لقد سجلت 500 نقطة في المرحلة',
-            'name':'ساحر ${LEVEL}'
+            'descriptionFull':'سجل 500 نقطة في ${LEVEL}',
+            'descriptionFullComplete':'سجل 500 نقطة في ${LEVEL}',
+            'name':'${LEVEL} ساحر'
         },
         'Mine Games':{
-            'description':'اقتل 3 خصوم بإستخدام الالغام',
-            'descriptionComplete':'لقد قتلت 3 خصوم بلالغام',
-            'descriptionFull':'${LEVEL} قتل 3 خصوم بالالغام في المرحلة',
-            'descriptionFullComplete':'${LEVEL} لقد قتلت 3خصوم بإستخدام الالغام في المرحلة',
-            'name':'منقب الالعاب'
+            'description':'اقتل 3 سيئون  بالألغام',
+            'descriptionComplete':'قتل 3 سيئون بالألغام',
+            'descriptionFull':'اقتل 3 سيئون بالألغام في ${LEVEL}',
+            'descriptionFullComplete':'قتل 3 سيئون بالالغام في ${LEVEL}',
+            'name':'العاب المنجم'
         },
         'Off You Go Then':{
-            'description':'إرمِ 3 خصوم خارج الحلبة',
-            'descriptionComplete':'لقد رميت 3 خصوم خارج الحلبة',
-            'descriptionFull':'${LEVEL} ارمِ 3 خصوم خارج الحلبة في المرحلة',
-            'descriptionFullComplete':'${LEVEL} لقد رميت 3 خصوم خارج الحلبة في المرحلة',
-            'name':'المنجنيق البشري'
+            'description':'إرم 3 اشرار من على الخريطة',
+            'descriptionComplete':'إرم 3 اشرار من على الخريطة',
+            'descriptionFull':'ارمي 3 اشرار من على الخريطة في ${LEVEL}',
+            'descriptionFullComplete':'رمى 3 اشرار من على الخريطة في ${LEVEL}',
+            'name':'توقف ثم إذهب'
         },
         'Onslaught God':{
             'description':'سجل 5000 نقطة',
-            'descriptionComplete':'!لقد سجلت 5000 نقطة',
+            'descriptionComplete':'سجل 5000 نقطة',
             'descriptionFull':'سجل 5000 نقطة في ${LEVEL}',
             'descriptionFullComplete':'سجل 5000 نقطة في ${LEVEL}',
             'name':'${LEVEL} بطل'
@@ -599,7 +599,6 @@ values = {
     'defaultGameListNameText':'الافتراضي ${PLAYMODE} قائمة التشغيل',
     'defaultNewGameListNameText':'قائمة تشغيل ${PLAYMODE}',
     'deleteText':'حذف',
-    'demoText':'عرض',
     'denyText':'أنكر',
     'desktopResText':'ديسكتوب ريس',
     'difficultyEasyText':'سهل',
@@ -1189,7 +1188,6 @@ values = {
     'onText':'تشغيل',
     'onslaughtRespawnText':'${PLAYER} سيخرج مجددا في الموجة ${WAVE}',
     'orText':'${A} أو ${B}',
-    'otherText':'آخر...',
     'outOfText':'(#${RANK} خرج من ${ALL})',
     'ownFlagAtYourBaseWarning':('يجب على العلم الخاص بك ان يكون في قاعدتك\n'
                                 '!لتسجل نقطة'),
@@ -1261,7 +1259,7 @@ values = {
         'codeText':'رمز',
         'enterText':'ادخل'
     },
-    'promoSubmitErrorText':'خطأ في إرسال الكود: تحقق من اتصالك بالإنترنت',
+    'promoSubmitErrorText':'خطأ في ادخال الكود افحص اتصالك في الانترنت',
     'ps3ControllersWindow':{
         'macInstructionsText':('إيقاف الطاقة على الجزء الخلفي من PS3 الخاص بك، تأكد\n'
                                'يتم تمكين البلوتوث على جهاز ماك، ثم توصيل وحدة التحكم\n'
@@ -1426,7 +1424,7 @@ values = {
     'shareText':'شارك',
     'sharingText':'مشاركة...',
     'showText':'تبين',
-    'signInForPromoCodeText':'يجب تسجيل الدخول إلى حساب لكي يتم تفعيل الرموز.',
+    'signInForPromoCodeText':'يجب تسجيل الدخول إلى حساب للرموز الترويجية لتصبح نافذة المفعول.',
     'signInWithGameCenterText':('لاستخدام حساب مركز الألعاب،\n'
                                 'سجل الدخول باستخدام تطبيق مركز الألعاب.'),
     'singleGamePlaylistNameText':'فقط ${GAME}',
@@ -1455,7 +1453,6 @@ values = {
         'Victory':'شاشه النتيجه النهائيه'
     },
     'spaceKeyText':'الفراغ',
-    'statsText':'النتائج',
     'storagePermissionAccessText':'وهذا يتطلب الوصول إلى التخزين',
     'store':{
         'alreadyOwnText':'أنت تملك بالفعل ${NAME}!',
@@ -1516,8 +1513,7 @@ values = {
         'teamUpAgainstComputerText':'فريق ضد الكمبيوتر.'
     },
     'storeText':'متجر',
-    'submitText':'Submit',
-    'submittingPromoCodeText':'تقديم الكود ...',
+    'submittingPromoCodeText':'جار إرسال الرمز الترويجي ...',
     'teamNamesColorText':'اسماء/الوان الفرق...',
     'telnetAccessGrantedText':'تم تمكين الوصول تلنيت.',
     'telnetAccessText':'تم الكشف عن الوصول تلنيت. السماح؟',
@@ -1778,7 +1774,6 @@ values = {
             'Invalid promo code.':'الرمز الترويجي غير صالح.',
             'Invalid purchase.':'عملية شراء غير صالحة.',
             'Invalid tournament entry; score will be ignored.':'دخول البطولة غير صالح؛ سيتم تجاهل النتيجة.',
-            'Item unlocked!':'العنصر غير مقفلة!',
             ('LINKING DENIED. ${ACCOUNT} contains\n'
              'significant data that would ALL BE LOST.\n'
              'You can link in the opposite order if you\'d like\n'
@@ -1812,8 +1807,6 @@ values = {
             'This account cannot be unlinked for ${NUM} days.':'لا يمكن إلغاء ربط هذا الحساب بمبلغ ${NUM} من الأيام.',
             'This code cannot be used on the account that created it.':'لا يمكن استخدام هذا الرمز على الحساب الذي أنشأه.',
             'This requires version ${VERSION} or newer.':'يتطلب هذا الإصدار ${VERSION} أو أحدث.',
-            'Tournaments disabled due to rooted device.':'تم تعطيل الدورات نظراً لوجود روت',
-            'Tournaments require ${VERSION} or newer':'تتطلب الدورات ${VERSION} أو أحدث',
             ('Unlink ${ACCOUNT} from this account?\n'
              'All data on ${ACCOUNT} will be reset.\n'
              '(except for achievements in some cases)'):('هل تريد إلغاء ربط ${ACCOUNT} من هذا الحساب؟\n'
@@ -2009,40 +2002,40 @@ values = {
     'tutorial':{
         'cpuBenchmarkText':'(CPU تشغيل البرنامج التعليمي بالسرعة المثيرة للسخرية (رئيسيا لتجريب سرعة',
         'phrase01Text':'!مرحبا',
-        'phrase02Text':'!${APP_NAME} أهلا بك في',
-        'phrase03Text':'إليك بعض النصائح للتحكم بشخصيتك',
-        'phrase04Text':'قد درست فيزيائيا ${APP_NAME} أمور كثيرة في',
+        'phrase02Text':'!${APP_NAME} مرحبا بك في',
+        'phrase03Text':':هذه بعض النصائح لتحكم بشخصيتك',
+        'phrase04Text':'مدروسة فيزيائيا ${APP_NAME} عدة اشياء في',
         'phrase05Text':'...,على سبيل المثال, عندما تلكم',
         'phrase06Text':'الضرر مبني على سرعة لكماتك',
-        'phrase07Text':'${NAME} كما ترى, نحن لا نتحرك لهذا بالكاد نصيب',
-        'phrase08Text':'الآن قم بالقفز والدوران لكسب زخم اكثر',
-        'phrase09Text':'!آه هذا أفضل',
+        'phrase07Text':'${NAME} رأيت, نحن لا نتحرك لهذا اصيب بالكاد',
+        'phrase08Text':'الآن اقفز و در للحصول على سرعة اكثر',
+        'phrase09Text':'اوه, هذا افضل',
         'phrase10Text':'الجري يساعد ايضا',
         'phrase11Text':'استمر في الضغط على اي زر للجري',
         'phrase12Text':'للحصول على لكمة رائعة اضافية, جرب الجري و الدوران',
-        'phrase13Text':'${NAME} أوبس؛ اعتذر بشأن هذا يا',
+        'phrase13Text':'اوبس؛ آسف \'اشتريت هذا ${NAME}',
         'phrase14Text':'${NAME} يمكنك امساك ورمي الاشياء مثل الاعلام .. أو',
-        'phrase15Text':'أخيرا, هناك القنابل',
-        'phrase16Text':'رمي القنابل يحتاج للتدريب',
+        'phrase15Text':'اخيرا, هناك قنابل',
+        'phrase16Text':'رمي القنابل يحتاج تدريب',
         'phrase17Text':'اوو! لم تكن رمية جيدة',
         'phrase18Text':'التحرك يساعدك على الرمي ابعد',
         'phrase19Text':'القفز يساعدك على الرمي اعلى',
-        'phrase20Text':'فجر"قنابلك لمدى حتى أبعد من ذلك"',
-        'phrase21Text':'توقيت القنبلة يمكن أن يكون مخادعا',
-        'phrase22Text':'!بووم',
+        'phrase20Text':'"الاصابة" القنابل الخاصة بك لفترة أطول يلقي.',
+        'phrase21Text':'توقيت القنبلة يمكن ان يكون خدعة',
+        'phrase22Text':'Dang.',
         'phrase23Text':'جرب امساك القنبلة ليذوب الفتيل لثانية او اثنتين',
-        'phrase24Text':'مرحى! لقد تم شواؤه بشكل رائع',
+        'phrase24Text':'Hooray! طهو جيد',
         'phrase25Text':'حسنا, هذا كل ما في الامر',
-        'phrase26Text':'!والآن؛ اذهب ونل منهم يا نمر',
-        'phrase27Text':'إن تذكرت تدريبك.. فستعود حيا',
+        'phrase26Text':'!يا نمر \'em, اذهب للحصول على',
+        'phrase27Text':'!تذكر تدريبك,  وستعود حيا',
         'phrase28Text':'...حسنا, ربما...',
         'phrase29Text':'!حظا سعيدا',
         'randomName1Text':'فريد',
-        'randomName2Text':'هاني',
-        'randomName3Text':'باسل',
+        'randomName2Text':'هاري',
+        'randomName3Text':'كارل',
         'randomName4Text':'كيفن',
         'randomName5Text':'جوني',
-        'skipConfirmText':'حقا تريد تخطي البرنامج التعليمي؟ إلمس أو اضغط بإستمرار',
+        'skipConfirmText':'حقا تخطي البرنامج التعليمي؟ إلمس أو اضغط للإستمرار',
         'skipVoteCountText':'تخطي اصوات ${COUNT}/${TOTAL}',
         'skippingText':'جاري تخطي البرنامج التعليمي....',
         'toSkipPressAnythingText':'(إلمس او إضغظ اي شئ لتخطي البرنامج التعليمي)'

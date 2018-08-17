@@ -672,7 +672,6 @@ values = {
     'defaultNewTeamGameListNameText':'Meus Jogos em Equipe',
     'defaultTeamGameListNameText':'Jogos em Equipe Padrão',
     'deleteText':'Excluir',
-    'demoText':'Teste',
     'denyText':'Recusar',
     'desktopResText':'Resolução da área de trabalho',
     'difficultyEasyText':'Fácil',
@@ -1315,7 +1314,6 @@ values = {
     'onText':'Ligar',
     'onslaughtRespawnText':'${PLAYER} vai renascer na onda ${WAVE}',
     'orText':'${A} ou ${B}',
-    'otherText':'Other...',
     'outOfText':'(#${RANK} de ${ALL})',
     'ownFlagAtYourBaseWarning':('Sua própria bandeira deve estar\n'
                                 'em sua base para fazer um ponto!'),
@@ -1395,7 +1393,7 @@ values = {
         'codeTextDescription':'Código Promocional',
         'enterText':'Entrar'
     },
-    'promoSubmitErrorText':'Erro verifique sua internet',
+    'promoSubmitErrorText':'Erro ao enviar o código promocional; verifique sua conexão com a internet',
     'ps3ControllersWindow':{
         'macInstructionsText':('Desligue a energia na parte traseira do seu PS3, verifique se\n'
                                'o Bluetooth do seu Mac está ativado, em seguida conecte o seu controle\n'
@@ -1570,7 +1568,7 @@ values = {
     'shareText':'Compartilhar',
     'sharingText':'Compartilhando...',
     'showText':'Mostrar',
-    'signInForPromoCodeText':'Você deve iniciar uma sessão em uma  conta para que os códigos promocionais se efetuem.',
+    'signInForPromoCodeText':'Você deve iniciar uma sessão em uma conta para que os códigos promocionais se efetuem.',
     'signInWithGameCenterText':('Para usar uma conta Game Center,\n'
                                 'inicie a sessão com o aplicativo Game Center.'),
     'singleGamePlaylistNameText':'Somente ${GAME}',
@@ -1599,7 +1597,6 @@ values = {
         'Victory':'Tela de pontuação final'
     },
     'spaceKeyText':'espaço',
-    'statsText':'Estatísticas',
     'storagePermissionAccessText':'É necessário acesso ao armazenamento',
     'store':{
         'alreadyOwnText':'Você já possui ${NAME}!',
@@ -1670,7 +1667,6 @@ values = {
         'teamUpAgainstComputerText':'Una-se a outros contra o computador.'
     },
     'storeText':'Loja',
-    'submitText':'Valor',
     'submittingPromoCodeText':'Enviando código promocional...',
     'teamNamesColorText':'Nome/cores das equipes...',
     'teamsText':'Times',
@@ -1979,7 +1975,6 @@ values = {
             'Invalid promo code.':'Código promocional invalido.',
             'Invalid purchase.':'Compra inválida.',
             'Invalid tournament entry; score will be ignored.':'Entrada errada de treinamento; pontuação será ignorada.',
-            'Item unlocked!':'Item unlocked',
             ('LINKING DENIED. ${ACCOUNT} contains\n'
              'significant data that would ALL BE LOST.\n'
              'You can link in the opposite order if you\'d like\n'
@@ -2013,8 +2008,6 @@ values = {
             'This account cannot be unlinked for ${NUM} days.':'Esta conta não pode ser desvinculada por ${NUM} dias.',
             'This code cannot be used on the account that created it.':'Este código não pode ser usado pela conta que o criou.',
             'This requires version ${VERSION} or newer.':'Isso requer a versão ${VERSION} ou novo.',
-            'Tournaments disabled due to rooted device.':'Torneios desativados devido ao dispositivo estar rooteado.',
-            'Tournaments require ${VERSION} or newer':'Torneios requerem   ${VERSION} ou mais recente',
             ('Unlink ${ACCOUNT} from this account?\n'
              'All data on ${ACCOUNT} will be reset.\n'
              '(except for achievements in some cases)'):('Desvincular ${ACCOUNT} dessa conta?\n'

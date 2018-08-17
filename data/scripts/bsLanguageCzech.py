@@ -415,9 +415,6 @@ values = {
     'cancelText':'Zrušit',
     'cantConfigureDeviceText':'Omlouváme se, ale ${DEVICE} není nastavitelné',
     'challengeEndedText':'Tato výzva již byla ukončena.',
-    'chatMuteText':'Ztlumit Chat',
-    'chatMutedText':'Chat ztlumen',
-    'chatUnMuteText':'Obnovit chat',
     'choosingPlayerText':'<vybírá hráče>',
     'completeThisLevelToProceedText':('Musíte dokončit\n'
                                       'tento level abyste mohli pokračovat!'),
@@ -627,7 +624,6 @@ values = {
     'defaultGameListNameText':'Výchozí ${PLAYMODE} Playlist',
     'defaultNewGameListNameText':'Můj ${PLAYMODE} Playlist',
     'deleteText':'Vymaž',
-    'demoText':'Demo',
     'denyText':'Zakázat',
     'desktopResText':'Rozlišení Plochy',
     'difficultyEasyText':'Lehká',
@@ -823,11 +819,11 @@ values = {
         'friendHasSentPromoCodeText':'${COUNT} ${APP_NAME} kupónů od ${NAME}',
         'friendPromoCodeAwardText':'Získáte ${COUNT} kupónů pokaždé, jakmile je použit.',
         'friendPromoCodeExpireText':'Kód vyprší za ${EXPIRE_HOURS} hodin a je funkční pouze pro nové hráče.',
-        'friendPromoCodeInstructionsText':('Pro použití otevřete ${APP_NAME} a jděte do ,,Nastavení->Pokročilé->Vložit kód"\n'
-                                           'Podívejte se na bombsquadgame.com na odkazy k stažení na všechny podporované platformy.'),
+        'friendPromoCodeInstructionsText':('Pro použití otevřete ${APP_NAME} a jděte do ,,Nastavení->Pokročilé->Vložit Promo kód"\n'
+                                           'Podívejte se na bombsquadgame.com na odkazy k stažení na všechny platformy.'),
         'friendPromoCodeRedeemLongText':'Může z něj být získáno ${COUNT} kupónů zdarma, až pro ${MAX_USES} lidí.',
         'friendPromoCodeRedeemShortText':'Může být použit pro získání ${COUNT} kupónů do hry.',
-        'friendPromoCodeWhereToEnterText':'(v "Nastavení->Pokročilé->Vložit Kód")',
+        'friendPromoCodeWhereToEnterText':'(v "Nastavení->Pokročilé->Vložit Promo Kód")',
         'getFriendInviteCodeText':'Získat kód pro pozvání přátel',
         'googlePlayDescriptionText':'Pozvěte Google Play hráče do vaší Party:',
         'googlePlayInviteText':'Pozvat',
@@ -1228,7 +1224,6 @@ values = {
     'onText':'Zap',
     'onslaughtRespawnText':'${PLAYER} se oživí ve vlně ${WAVE}',
     'orText':'${A} nebo ${B}',
-    'otherText':'Ostatní...',
     'outOfText':'(#${RANK} z ${ALL})',
     'ownFlagAtYourBaseWarning':('Vaše vlajka musí být\n'
                                 'na vaší základně, abyste mohli skórovat!'),
@@ -1302,7 +1297,7 @@ values = {
         'codeTextDescription':'Promo Kód',
         'enterText':'Vložit'
     },
-    'promoSubmitErrorText':'Chyba při odesílání kódu; zkontrolujte internetové připojení',
+    'promoSubmitErrorText':'Chyba při odesílání promo kódu; zkontrolute internetové připojení',
     'ps3ControllersWindow':{
         'macInstructionsText':('Vypněte na zadní straně své PS3, ujistěte se, že\n'
                                'je na Vašem Mac zaplý Bluetooth, a poté připojte Váš ovladač\n'
@@ -1441,7 +1436,7 @@ values = {
         'disableThisNotice':'(můžete si toto oznámení vypnout v pokročilých nastaveních)',
         'enablePackageModsDescriptionText':'(zapíná extra modovací možnosti, ale vypíná hru po síti)',
         'enablePackageModsText':'Zapnout Lokální Balíčky Módů',
-        'enterPromoCodeText':'Zadat kód',
+        'enterPromoCodeText':'Zadat Promo kód',
         'forTestingText':'Poznámka: Tyto hodnoty sou pouze pro test. Obnoví se po restartu.',
         'helpTranslateText':('Jiné než anglické verze ${APP_NAME} jsou komunitně\n'
                              'podporovanou záležitostí. Pokud byste chtěli přidat\n'
@@ -1468,7 +1463,7 @@ values = {
     'shareText':'Sdílet',
     'sharingText':'Sdílení...',
     'showText':'Zobrazit',
-    'signInForPromoCodeText':'Musíte se přihlásit k účtu, aby mohly kódy fungovat.',
+    'signInForPromoCodeText':'Musíte se přihlásit k účtu, aby mohly promo-kódy fungovat.',
     'signInWithGameCenterText':('Pro použití účtu Game Center se přihlaste\n'
                                 's pomocí aplikace Game Center.'),
     'singleGamePlaylistNameText':'Jen ${GAME}',
@@ -1497,7 +1492,6 @@ values = {
         'Victory':'Obrazovka Konečného Skóre'
     },
     'spaceKeyText':'mezera',
-    'statsText':'Statistiky',
     'storagePermissionAccessText':'Tohle vyžaduje přístup k úložišti',
     'store':{
         'alreadyOwnText':'Už vlastníš ${NAME}!',
@@ -1566,9 +1560,7 @@ values = {
         'teamUpAgainstComputerText':'Sjednoťte se proti počítači.'
     },
     'storeText':'Obchod',
-    'submitText':'Odeslat',
-    'submittingPromoCodeText':'Odesílám kód...',
-    'teamNamesColorText':'Týmové Jména/Barvy...',
+    'submittingPromoCodeText':'Odesílám Promo kód...',
     'telnetAccessGrantedText':'Přístup k telnetu zapnut.',
     'telnetAccessText':'Detekován přístup k telnetu; povolit?',
     'testBuildErrorText':'Tento testovací build již není dlouho aktivní; podívejte se prosím po nové verzi.',
@@ -1751,7 +1743,6 @@ values = {
             'Portuguese':'Portugalština',
             'Romanian':'Rumunština',
             'Russian':'Ruština',
-            'Serbian':'Srbština',
             'Spanish':'Španělština',
             'Swedish':'Švédština',
             'Turkish':'Turečtina',
@@ -1800,8 +1791,6 @@ values = {
             'Account linking successful!':'Spojení účtu úspěšné!',
             'Account unlinking successful!':'Účet úspěšně odpojen!',
             'Accounts are already linked.':'Účty jsou již spojeny.',
-            'An error has occurred; (${ERROR})':'Nastala chyba; (${ERROR})',
-            'An error has occurred; please contact support. (${ERROR})':'Nastala chyba; kontaktujete prosím podporu. (${ERROR})',
             'An error has occurred; please contact support@froemling.net.':'Stala se chyba; prosím kontaktujte support@froemling.net.',
             'An error has occurred; please try again later.':'Vyskytla se chyba; prosím zkuste to znova za chvilku',
             ('Are you sure you want to link these accounts?\n'
@@ -1828,14 +1817,6 @@ values = {
             'Invalid promo code.':'Neplatný Promo kód.',
             'Invalid purchase.':'Neplatná koupě.',
             'Invalid tournament entry; score will be ignored.':'Neplatný turnaj; skóre bude ignorováno.',
-            'Item unlocked!':'Položka odemčena!',
-            ('LINKING DENIED. ${ACCOUNT} contains\n'
-             'significant data that would ALL BE LOST.\n'
-             'You can link in the opposite order if you\'d like\n'
-             '(and lose THIS account\'s data instead)'):('Propojení zamítnuto. ${ACCOUNT} obsahuje\n'
-                                                         'značné data, které by byly ZCELA ZTRACENY.\n'
-                                                         'Pokud chcete, můžete připojit účet v opačném\n'
-                                                         'pořadí (a ztratit tak data TOHOTO účtu)'),
             ('Link account ${ACCOUNT} to this account?\n'
              'All existing data on ${ACCOUNT} will be lost.\n'
              'This can not be undone.  Are you sure?'):('Chcete spojit účet ${ACCOUNT} s tímto účtem?\n'
@@ -1862,8 +1843,6 @@ values = {
             'This account cannot be unlinked for ${NUM} days.':'Tento účet nelze odpojit po dobu ${NUM} dnů.',
             'This code cannot be used on the account that created it.':'Tento kód nemůže být použit na účtu, na kterém byl vytvořen.',
             'This requires version ${VERSION} or newer.':'Toto vyžaduje verzi ${VERSION} nebo vyšší.',
-            'Tournaments disabled due to rooted device.':'Turnaje nedostupné na zařízeních s rootem.',
-            'Tournaments require ${VERSION} or newer':'Turnaje vyžadují ${VERSION} nebo novější',
             ('Unlink ${ACCOUNT} from this account?\n'
              'All data on ${ACCOUNT} will be reset.\n'
              '(except for achievements in some cases)'):('Odpojit ${ACCOUNT} od tohoto účtu?\n'
@@ -1944,8 +1923,7 @@ values = {
         },
         'statements':{
             '${TEAM} is disqualified because ${PLAYER} left':'Diskvalifikuji ${TEAM} tým protože ${PLAYER} opustil hru.',
-            'Killing ${NAME} for skipping part of the track!':'Zabíjím ${NAME} kvůli přeskočení části tratě!',
-            'Warning to ${NAME}:  turbo / button-spamming knocks you out.':'Varování pro ${NAME}: Turbo / spamování tlačítek tě vyhodí'
+            'Killing ${NAME} for skipping part of the track!':'Zabíjím ${NAME} kvůli přeskočení části tratě!'
         },
         'teamNames':{
             'Bad Guys':'Padouši',
@@ -2134,7 +2112,6 @@ values = {
                                   'Záznam'),
         'myReplaysText':'Moje záznamy',
         'noReplaySelectedErrorText':'Nevybrán žádný záznam',
-        'playbackSpeedText':'Rychlost přehrávání: ${SPEED}',
         'renameReplayButtonText':('Přejmenovat\n'
                                   'Záznam'),
         'renameReplayText':'Přejmenovat "${REPLAY}" na:',

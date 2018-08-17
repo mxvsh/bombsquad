@@ -1,7 +1,9 @@
 import bs
 import random
 
+
 defaultPowerupInterval = 8000
+
 
 class PowerupMessage(object):
     """
@@ -14,8 +16,7 @@ class PowerupMessage(object):
     Attributes:
     
        powerupType
-          The type of powerup to be granted (a string).
-          See bs.Powerup.powerupType for available type values.
+          The type of powerup to be granted (a string). See bs.Powerup.powerupType for available type values.
 
        sourceNode
           The node the powerup game from, or an empty bs.Node ref otherwise.
@@ -107,8 +108,7 @@ class PowerupFactory(object):
     def __init__(self):
         """
         Instantiate a PowerupFactory.
-        You shouldn't need to do this; call bs.Powerup.getFactory()
-        to get a shared instance.
+        You shouldn't need to do this; call bs.Powerup.getFactory() to get a shared instance.
         """
 
         self._lastPowerupType = None
@@ -146,13 +146,11 @@ class PowerupFactory(object):
 
         # we dont wanna be picked up
         self.powerupMaterial.addActions(
-            conditions=("theyHaveMaterial",
-                        bs.getSharedObject('pickupMaterial')),
+            conditions=("theyHaveMaterial",bs.getSharedObject('pickupMaterial')),
             actions=( ("modifyPartCollision","collide",False)))
 
         self.powerupMaterial.addActions(
-            conditions=("theyHaveMaterial",
-                        bs.getSharedObject('footingMaterial')),
+            conditions=("theyHaveMaterial",bs.getSharedObject('footingMaterial')),
             actions=(("impactSound",self.dropSound,0.5,0.1)))
 
         self._powerupDist = []
@@ -165,24 +163,21 @@ class PowerupFactory(object):
         Returns a random powerup type (string).
         See bs.Powerup.powerupType for available type values.
 
-        There are certain non-random aspects to this; a 'curse' powerup,
-        for instance, is always followed by a 'health' powerup (to keep things
-        interesting). Passing 'forceType' forces a given returned type while
-        still properly interacting with the non-random aspects of the system
-        (ie: forcing a 'curse' powerup will result
+        There are certain non-random aspects to this; a 'curse' powerup, for instance,
+        is always followed by a 'health' powerup (to keep things interesting).
+        Passing 'forceType' forces a given returned type while still properly interacting
+        with the non-random aspects of the system (ie: forcing a 'curse' powerup will result
         in the next powerup being health).
         """
         if forceType:
             t = forceType
         else:
-            # if the last one was a curse, make this one a health to
-            # provide some hope
+            # if the last one was a curse, make this one a health to provide some hope
             if self._lastPowerupType == 'curse':
                 t = 'health'
             else:
                 while True:
-                    t = self._powerupDist[
-                        random.randint(0, len(self._powerupDist)-1)]
+                    t = self._powerupDist[random.randint(0,len(self._powerupDist)-1)]
                     if t not in excludeTypes:
                         break
         self._lastPowerupType = t
@@ -245,29 +240,25 @@ class Powerup(bs.Actor):
 
         if len(position) != 3: raise Exception("expected 3 floats for position")
         
-        self.node = bs.newNode(
-            'prop',
-            delegate=self,
-            attrs={'body':'box',
-                   'position':position,
-                   'model':factory.model,
-                   'lightModel':factory.modelSimple,
-                   'shadowSize':0.5,
-                   'colorTexture':tex,
-                   'reflection':'powerup',
-                   'reflectionScale':[1.0],
-                   'materials':(factory.powerupMaterial,
-                                bs.getSharedObject('objectMaterial'))})
+        self.node = bs.newNode('prop',
+                               delegate=self,
+                               attrs={'body':'box',
+                                      'position':position,
+                                      'model':factory.model,
+                                      'lightModel':factory.modelSimple,
+                                      'shadowSize':0.5,
+                                      'colorTexture':tex,
+                                      'reflection':'powerup',
+                                      'reflectionScale':[1.0],
+                                      'materials':(factory.powerupMaterial,bs.getSharedObject('objectMaterial'))})
 
         # animate in..
         curve = bs.animate(self.node,"modelScale",{0:0,140:1.6,200:1})
         bs.gameTimer(200,curve.delete)
 
         if expire:
-            bs.gameTimer(defaultPowerupInterval-2500,
-                         bs.WeakCall(self._startFlashing))
-            bs.gameTimer(defaultPowerupInterval-1000,
-                         bs.WeakCall(self.handleMessage, bs.DieMessage()))
+            bs.gameTimer(defaultPowerupInterval-2500,bs.WeakCall(self._startFlashing))
+            bs.gameTimer(defaultPowerupInterval-1000,bs.WeakCall(self.handleMessage, bs.DieMessage()))
 
     @classmethod
     def getFactory(cls):
@@ -291,8 +282,7 @@ class Powerup(bs.Actor):
         if isinstance(msg, PowerupAcceptMessage):
             factory = self.getFactory()
             if self.powerupType == 'health':
-                bs.playSound(factory.healthPowerupSound, 3,
-                             position=self.node.position)
+                bs.playSound(factory.healthPowerupSound, 3, position=self.node.position)
             bs.playSound(factory.powerupSound, 3, position=self.node.position)
             self._powersGiven = True
             self.handleMessage(bs.DieMessage())
@@ -301,8 +291,7 @@ class Powerup(bs.Actor):
             if not self._powersGiven:
                 node = bs.getCollisionInfo("opposingNode")
                 if node is not None and node.exists():
-                    node.handleMessage(PowerupMessage(self.powerupType,
-                                                      sourceNode=self.node))
+                    node.handleMessage(PowerupMessage(self.powerupType, sourceNode=self.node))
 
         elif isinstance(msg, bs.DieMessage):
             if self.node.exists():

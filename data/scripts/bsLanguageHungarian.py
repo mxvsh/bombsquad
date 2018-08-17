@@ -7,23 +7,11 @@ values = {
         'accountsText':'Fiókok',
         'achievementProgressText':'Eredmènyek: ${COUNT} a(z) ${TOTAL}-ból/ből.',
         'campaignProgressText':'Kampány haladás(nehéz mód): ${PROGRESS}',
-        'changeOncePerSeason':'Ebben a szezonban ezt csak egyszer változtathatod meg.',
-        'changeOncePerSeasonError':'Kell várjál a következő szezonig, hogy ezt megint megváltoztasd (${NUM} nap)',
         'customName':'Egyedi név',
         'deviceSpecificAccountText':'Csak erről az eszközről lehet elérni ezt a profilt: ${NAME}',
         'linkAccountsEnterCodeText':'Írd Be A Kódot',
         'linkAccountsGenerateCodeText':'Kód Generálása',
         'linkAccountsInfoText':'(vidd át előrehaladásodat akár több eszközre is)',
-        'linkAccountsInstructionsNewText':('Két fiók összekapcsolásához először hozzon létre egy kódot\n'
-                                           'és írja be a második kódot. Adatok a\n'
-                                           'a második számlát majd megosztják egymással.\n'
-                                           '(Az első fiókból származó adatok elveszhetnek)\n'
-                                           '\n'
-                                           'Összesen akár ${COUNT} fiókot is összekapcsolhat.\n'
-                                           '\n'
-                                           'FONTOS: csak az Ön tulajdonában lévő fiókokat kapcsolja össze;\n'
-                                           'Ha kapcsolatba lépsz a barátok fiókjaival, akkor nem fogsz\n'
-                                           'egyszerre tud online játszani.'),
         'linkAccountsInstructionsText':('Hogy párosíts két profilt, generálj egy kódot\n'
                                         'az egyiken majd írd be a kapott kódot a másikon.\n'
                                         'Az előrehaladás és a megvásárolt dolgok is párosításra kerülnek .\n'
@@ -45,10 +33,6 @@ values = {
                                     '(de a jegyeidet nem). Ez nem vissza vonható.\n'
                                     'Biztos vagy benne?'),
         'resetProgressText':'Haladás visszaállítása',
-        'setAccountName':'Állítsa be a fiók nevét',
-        'setAccountNameDesc':('Válassza ki a megjeleníteni kívánt fiók nevét.\n'
-                              'Használhatja a nevét az egyik kapcsoltól\n'
-                              'fiókokat, vagy egyedi egyedi nevet hozhat létre.'),
         'signInInfoText':('Lépj be, hogy tudj jegyeket gyűjteni, online versenyezni\n'
                           'és elérni az eredményeidet akár több eszközről is.'),
         'signInText':'Bejelentkezés',
@@ -387,7 +371,6 @@ values = {
     },
     'autoText':'Automatikus',
     'backText':'Vissza',
-    'banThisPlayerText':'Kitagadod ezt a játékost',
     'bestOfFinalText':'A ${COUNT} Finálé legjobbja',
     'bestOfSeriesText':'A ${COUNT} sorozat legjobbja:',
     'bestRankText':'Legjobb helyezésed:#${RANK}',
@@ -617,7 +600,6 @@ values = {
     'defaultGameListNameText':'Alapértelmezett ${PLAYMODE} lista',
     'defaultNewGameListNameText':'Saját ${PLAYMODE} listám',
     'deleteText':'Törlés',
-    'demoText':'Demo',
     'denyText':'Megtagad',
     'desktopResText':'Asztali Felbontás',
     'difficultyEasyText':'Könnyű',
@@ -1432,7 +1414,6 @@ values = {
         'alwaysUseInternalKeyboardDescriptionText':'(kontroller barát billentyűzet a szöveg szerkesztéséhez)',
         'alwaysUseInternalKeyboardText':'Használjon Belső Billentyűzetet',
         'benchmarksText':'Teljesítmény és Stressz Teszt',
-        'disableThisNotice':'(kikapcsolhatod ezt a beállítások menüben)',
         'enablePackageModsDescriptionText':'(engedélyez a plusz helyeket a modoknak, viszont letiltja a hálózati játékot)',
         'enablePackageModsText':'Helyi Modok Engedélyezése',
         'enterPromoCodeText':'Kód beírása',
@@ -1559,9 +1540,7 @@ values = {
         'teamUpAgainstComputerText':'Alkoss csapatot a számítógép ellen.'
     },
     'storeText':'Bolt',
-    'submitText':'Érvényesítsd',
     'submittingPromoCodeText':'Promóciós Kód Érvényesítése...',
-    'teamNamesColorText':'Csapatnevek/csapatszínek...',
     'telnetAccessGrantedText':'Telnet hozzáférés engedélyezve.',
     'telnetAccessText':'Telnet hozzáférés észlelve. Engedélyezed?',
     'testBuildErrorText':'Ez a teszt verzió többé nem elérhető;kérlek nézz utána egy újabb verziónak.',
@@ -1720,7 +1699,6 @@ values = {
             'Keyboard P2':'Billentyűzet P2'
         },
         'languages':{
-            'Arabic':'Arab',
             'Belarussian':'Fehér Orosz',
             'Chinese':'Kínai',
             'Croatian':'Horvát',
@@ -1792,7 +1770,6 @@ values = {
             'A reward has already been given for that address.':'Ez a kód egyszer már használva volt.',
             'Account linking successful!':'A fiók összekötése sikeres!',
             'Accounts are already linked.':'A fiókok már össze vannak kötve.',
-            'An error has occurred; (${ERROR})':'Egy valamiféle hiba történt; (${ERROR})',
             'An error has occurred; please contact support@froemling.net.':'Valamiféle hiba történt; kérlek lépj kapcsolatba velünk: support@froemling.net.',
             'An error has occurred; please try again later.':'Egy hiba lépett; kérlek próbáld újra később.',
             ('Are you sure you want to link these accounts?\n'
@@ -1819,11 +1796,6 @@ values = {
             'Invalid promo code.':'Érvénytelen promóciós kód.',
             'Invalid purchase.':'Érvénytelen vásárlás.',
             'Invalid tournament entry; score will be ignored.':'Érvénytelen verseny belépés; az eredményeid figyelmen kívül lesznek hagyva.',
-            ('Link account ${ACCOUNT} to this account?\n'
-             'All existing data on ${ACCOUNT} will be lost.\n'
-             'This can not be undone.  Are you sure?'):('Összekötöd a/az ${ACCOUNT} fiókot ehhez a fiókhoz?\n'
-                                                        'Minden létező adat a/az ${ACCOUNT} fiókon elveszik.\n'
-                                                        'Ezt nem tudod majd visszavonni. Biztos vagy benne?'),
             'Max number of playlists reached.':'Maximum listaszám elérve.',
             'Max number of profiles reached.':'Maximum profilszám elérve.',
             'Maximum friend code rewards reached.':'Maximum barát kód elérve.',
@@ -1833,16 +1805,11 @@ values = {
             ('Received ${COUNT} tickets for signing in.\n'
              'Come back tomorrow to receive ${TOMORROW_COUNT}.'):('${COUNT} jegy megkapva a bejelentkezés miatt.\n'
                                                                   'Térj vissza holnap és kapsz újabb${TOMORROW_COUNT} jegyet.'),
-            ('Server functionality is no longer supported in this version of the game;\n'
-             'Please update to a newer version.'):('A szerver nem működik a játék jelenlegi verziójával; \n'
-                                                   'Kérlek frissítsd egy új verzióra.'),
             'Sorry, there are no uses remaining on this code.':'Ez a kód már elérte a használati limitet.',
             'Sorry, this code has already been used.':'Ezt a kódot már használták.',
             'Sorry, this code has expired.':'Ez a kód már lejárt.',
             'Sorry, this code only works for new accounts.':'Ezt a kódot csak új játékosok használhatják.',
-            'Temporarily unavailable; please try again later.':'Jelenleg elérhetetlen; kérlek próbáld újra később.',
             'The tournament ended before you finished.':'A torna lezárult mielőtt te befejezted volna.',
-            'This account cannot be unlinked for ${NUM} days.':'Ezt a fiókot nem tudod leválasztani ${NUM} napig.',
             'This code cannot be used on the account that created it.':'Ez a kód nem használható fel, mivel te alkottad.',
             'This requires version ${VERSION} or newer.':'Ehhez szükséges verzió:${VERSION} vagy újabb.',
             ('Would you like to link your device account to this one?\n'

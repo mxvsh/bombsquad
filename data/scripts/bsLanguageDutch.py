@@ -415,9 +415,6 @@ values = {
     'cancelText':'Annuleer',
     'cantConfigureDeviceText':'Sorry, $ {DEVICE} niet configureerbaar.',
     'challengeEndedText':'Deze uitdaging is beëindigd.',
-    'chatMuteText':'Chat negeren',
-    'chatMutedText':'berichten gedempt',
-    'chatUnMuteText':'maak de chat ongedaan',
     'choosingPlayerText':'<speler kiezen>',
     'completeThisLevelToProceedText':('U moet dit level voltooien\n'
                                       'om door te gaan!'),
@@ -637,7 +634,6 @@ values = {
     'defaultNewTeamGameListNameText':'Mijn Team Spellen',
     'defaultTeamGameListNameText':'Standaard Team Spellen',
     'deleteText':'Verwijder',
-    'demoText':'demonstratie',
     'denyText':'Weigeren',
     'desktopResText':'Bureaublad Resolutie',
     'difficultyEasyText':'Makkelijk',
@@ -838,11 +834,11 @@ values = {
         'friendHasSentPromoCodeText':'${COUNT} ${APP_NAME} tickets van ${NAME}',
         'friendPromoCodeAwardText':'Je krijgt ${COUNT} tickets elke keer het is gebruikt.',
         'friendPromoCodeExpireText':'Deze code zal vervallen in ${EXPIRE_HOURS} uren en werkt alleen met nieuwe spelers.',
-        'friendPromoCodeInstructionsText':('Om het te gebruiken, open je ${APP_NAME} en ga je naar \'Instellingen-> Geavanceerd-> Voer code in\'.\n'
-                                           'Zie bombsquadgame.com voor downloadlinks voor alle ondersteunde platforms.'),
+        'friendPromoCodeInstructionsText':('Om dit te gebruiken, open ${APP_NAME} en ga naar "Instellingen->Geavanceerd->Voer Promo Code In".\n'
+                                           'Kijk op bombsquadgame.com voor download links voor alle ondersteunde platformen.'),
         'friendPromoCodeRedeemLongText':'Het kan ingewisseld worden voor ${COUNT} gratis tickets met tot en met ${MAX_USES} mensen.',
         'friendPromoCodeRedeemShortText':'Het kan ingewisseld worden voor ${COUNT} in het spel',
-        'friendPromoCodeWhereToEnterText':'(in "Instellingen-> Geavanceerd-> Voer code in")',
+        'friendPromoCodeWhereToEnterText':'(bij "instellingen->Geavanceerd->Voer Promo Code In")',
         'getFriendInviteCodeText':'Krijg een uitnodigingscode',
         'googlePlayDescriptionText':'Nodig Google Play spelers uit voor uw partij:',
         'googlePlayInviteText':'Uitnodigen',
@@ -1268,7 +1264,6 @@ values = {
     'onText':'Aan',
     'onslaughtRespawnText':'${PLAYER} zal respawnen in golf ${WAVE}',
     'orText':'${A} of ${B}',
-    'otherText':'Andere ...',
     'outOfText':'(#${RANK} van de ${ALL})',
     'ownFlagAtYourBaseWarning':('Uw eigen vlag moet in\n'
                                 'uw basis zijn om te scoren!'),
@@ -1348,7 +1343,7 @@ values = {
         'codeTextDescription':'Promo Code',
         'enterText':'Invoeren'
     },
-    'promoSubmitErrorText':'Fout bij het verzenden van code; Controleer je internetverbinding',
+    'promoSubmitErrorText':'Fout bij indienen promo-code; Controleer uw internetverbinding',
     'ps3ControllersWindow':{
         'macInstructionsText':('Schakel de stroom aan de achterkant van uw PS3, zorg ervoor\n'
                                'Bluetooth is ingeschakeld op uw Mac, verbind dan uw controller\n'
@@ -1490,7 +1485,7 @@ values = {
         'disableThisNotice':'(U kunt deze melding uitschakelen in de geavanceerde instellingen)',
         'enablePackageModsDescriptionText':'(Geeft extra aanpassingsmogelijkheden maar deactiveert net-spel)',
         'enablePackageModsText':'Schakel Lokale Pakket Aanpassingen in',
-        'enterPromoCodeText':'Voer code in',
+        'enterPromoCodeText':'Voer Promo Code In',
         'forTestingText':'Let op: deze waarden zijn alleen voor testen en zullen verloren gaan als de app gesloten wordt.',
         'helpTranslateText':('${APP_NAME}\'s niet-Engelse vertalingen is een gezamenlijke\n'
                              'inspanning van de gemeenschap. Als u daar aan wilt bijdragen of een vertaling\n'
@@ -1519,7 +1514,7 @@ values = {
     'shareText':'Deel',
     'sharingText':'Aan het delen...',
     'showText':'Toon',
-    'signInForPromoCodeText':'U moet inloggen op een account om de codes van kracht te laten worden.',
+    'signInForPromoCodeText':'Je moet inloggen voor promo codes effect hebben.',
     'signInWithGameCenterText':('Om een Game Center account te gebruiken,\n'
                                 'logt u in bij de Game Center app.'),
     'singleGamePlaylistNameText':'Alleen ${GAME}',
@@ -1548,7 +1543,6 @@ values = {
         'Victory':'Uiteindelijke Score Scherm'
     },
     'spaceKeyText':'spatie',
-    'statsText':'stats',
     'storagePermissionAccessText':'Dit vereist toegang tot opslag',
     'store':{
         'alreadyOwnText':'U bent al de eigenaar van ${NAME}!',
@@ -1618,9 +1612,7 @@ values = {
         'teamUpAgainstComputerText':'Vorm een team tegen de computer.'
     },
     'storeText':'Winkel',
-    'submitText':'Voorleggen',
-    'submittingPromoCodeText':'Code verzenden ...',
-    'teamNamesColorText':'Teamnamen / kleuren ...',
+    'submittingPromoCodeText':'Uploaded promo code...',
     'teamsText':'Teams',
     'telnetAccessGrantedText':'Telnet toegang ingeschakeld.',
     'telnetAccessText':'Telnet toegang gedetecteerd; toestaan?',
@@ -1847,7 +1839,6 @@ values = {
             'Portuguese':'Portugees',
             'Romanian':'Roemeens',
             'Russian':'Russisch',
-            'Serbian':'Servisch',
             'Spanish':'Spaans',
             'Swedish':'Zweeds',
             'Turkish':'Turks',
@@ -1899,8 +1890,6 @@ values = {
             'Account linking successful!':'Account succesvol gelinkt!',
             'Account unlinking successful!':'Account verbinding succesvol verbroken!',
             'Accounts are already linked.':'Accounts zijn al gelinkt.',
-            'An error has occurred; (${ERROR})':'er is een fout opgetreden; (${ERROR})',
-            'An error has occurred; please contact support. (${ERROR})':'er is een fout opgetreden, neem contact op met de ondersteuning. (${ERROR})',
             'An error has occurred; please contact support@froemling.net.':'Er is een fout opgetreden; neem alstublieft contact op met support@froemling.net.',
             'An error has occurred; please try again later.':'Er is een fout opgetreden; Probeer het later opnieuw.',
             ('Are you sure you want to link these accounts?\n'
@@ -1927,14 +1916,6 @@ values = {
             'Invalid promo code.':'Ongeldige promo code.',
             'Invalid purchase.':'Ongeldige aankoop.',
             'Invalid tournament entry; score will be ignored.':'Ongeldige toernooi; score wordt genegeerd.',
-            'Item unlocked!':'item ontgrendeld!',
-            ('LINKING DENIED. ${ACCOUNT} contains\n'
-             'significant data that would ALL BE LOST.\n'
-             'You can link in the opposite order if you\'d like\n'
-             '(and lose THIS account\'s data instead)'):('LINKENDE ONTKENNING. ${ACCOUNT} bevat\n'
-                                                         'significante gegevens die ALLES ZIJN VERLOREN.\n'
-                                                         'Je kunt in omgekeerde volgorde linken als je wilt\n'
-                                                         '(en verlies de gegevens van DIT account in plaats daarvan)'),
             ('Link account ${ACCOUNT} to this account?\n'
              'All existing data on ${ACCOUNT} will be lost.\n'
              'This can not be undone.  Are you sure?'):('Verbind account ${ACCOUNT} aan dit account?\n'
@@ -1961,8 +1942,6 @@ values = {
             'This account cannot be unlinked for ${NUM} days.':'Dit account kan gedurende ${NUM} dagen niet worden ontkoppeld.',
             'This code cannot be used on the account that created it.':'Deze code kan niet gebruikt worden op het account die het gemaakt heeft.',
             'This requires version ${VERSION} or newer.':'Dit vereist versie ${VERSION} of nieuwer.',
-            'Tournaments disabled due to rooted device.':'Toernooien uitgeschakeld vanwege geworteld apparaat',
-            'Tournaments require ${VERSION} or newer':'toernooi vereist ${VERSION} of nieuwer',
             ('Unlink ${ACCOUNT} from this account?\n'
              'All data on ${ACCOUNT} will be reset.\n'
              '(except for achievements in some cases)'):('Koppel ${ACCOUNT} los van dit account?\n'
@@ -2043,8 +2022,7 @@ values = {
         },
         'statements':{
             '${TEAM} is disqualified because ${PLAYER} left':'${TEAM} is gediskwalificeerd omdat ${PLAYER} heeft verlaten',
-            'Killing ${NAME} for skipping part of the track!':'${NAME} gedood door overslaan van de baan!',
-            'Warning to ${NAME}:  turbo / button-spamming knocks you out.':'waarschuwing voor ${NAME}: turbo / button spammen maakt je knock-out'
+            'Killing ${NAME} for skipping part of the track!':'${NAME} gedood door overslaan van de baan!'
         },
         'teamNames':{
             'Bad Guys':'Slechteriken',
@@ -2247,7 +2225,6 @@ values = {
                                   'Herhaling'),
         'myReplaysText':'Mijn Herhalingen',
         'noReplaySelectedErrorText':'Geen Herhaling Gekozen',
-        'playbackSpeedText':'afspeelsnelheid ${SPEED}',
         'renameReplayButtonText':('Hernoem\n'
                                   'Herhaling'),
         'renameReplayText':'Hernoem "${REPLAY}" naar:',

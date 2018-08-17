@@ -389,9 +389,6 @@ values = {
     'cancelText':'Batal',
     'cantConfigureDeviceText':'Maaf, ${DEVICE} tidak dapat dikonfigurasi.',
     'challengeEndedText':'Tantangan selesai',
-    'chatMuteText':'Abaikan Percakapan',
-    'chatMutedText':'Percakapan Diabaikan',
-    'chatUnMuteText':'Menampilkan kembali percakapan',
     'choosingPlayerText':'<memilih pemain>',
     'completeThisLevelToProceedText':('Kamu harus menyelesaikan\n'
                                       'level ini untuk bisa lanjut!'),
@@ -601,7 +598,6 @@ values = {
     'defaultGameListNameText':'Playlist ${PLAYMODE} Semula',
     'defaultNewGameListNameText':'Playlist ${PLAYMODE} Ku',
     'deleteText':'Hapus',
-    'demoText':'Demo',
     'denyText':'Tolak',
     'desktopResText':'Desktop Res',
     'difficultyEasyText':'Mudah',
@@ -790,11 +786,11 @@ values = {
         'friendHasSentPromoCodeText':'${COUNT} ${APP_NAME} tiket dari ${NAME}',
         'friendPromoCodeAwardText':'Kamu akan mendapatkan ${COUNT} tiket setiap kode ini digunakan.',
         'friendPromoCodeExpireText':'kode ini akan berakhir dalam ${EXPIRE_HOURS} jam dan hanya berlaku untuk pemain baru.',
-        'friendPromoCodeInstructionsText':('Untuk menggunakannya, buka ${APP_NAME} dan buka "Pengaturan-> Lanjutan-> Masukkan Kode".\n'
-                                           'Lihat bombsquadgame.com untuk tautan unduhan untuk semua platform yang didukung.'),
+        'friendPromoCodeInstructionsText':('untuk menggunakan ini, buka ${APP_NAME} lalu buka "Pengaturan->Selebihnya->Masukan Kode Promo".\n'
+                                           'lihat di bombsquadgame.com daftar link download untuk setiap perangkat yang tersedia.'),
         'friendPromoCodeRedeemLongText':'ini dapat digunakan untuk ${COUNT} tiket gratis hingga batas maksimal ${MAX_USES} orang.',
         'friendPromoCodeRedeemShortText':'ini dapat digunkanan untuk mendapatkan ${COUNT} tiket.',
-        'friendPromoCodeWhereToEnterText':'(di "Pengaturan-> Lanjutan-> Masukkan Kode")',
+        'friendPromoCodeWhereToEnterText':'(di Pengaturan->Selengkapnya->Masukkan Kode Promo")',
         'getFriendInviteCodeText':'Dapatkan Kode Undangan Teman',
         'googlePlayDescriptionText':'Undang pemain Google Play ke pestamu:',
         'googlePlayInviteText':'Undang',
@@ -1194,7 +1190,6 @@ values = {
     'onText':'Nyala',
     'onslaughtRespawnText':'${PLAYER} akan bangkit pada gelombang ${WAVE}',
     'orText':'${A} atau ${B}',
-    'otherText':'Lain...',
     'outOfText':'(#${RANK} dari ${ALL})',
     'ownFlagAtYourBaseWarning':('Benderamu harus\n'
                                 'ada di tempatnya!'),
@@ -1264,7 +1259,7 @@ values = {
         'codeText':'Kode',
         'enterText':'Masuk'
     },
-    'promoSubmitErrorText':'Kesalahan saat mengirim kode; periksa koneksi internet Anda',
+    'promoSubmitErrorText':'Error mengirimkan kode promo; cek koneksi internetmu',
     'ps3ControllersWindow':{
         'macInstructionsText':('Matikan daya pada bagian belakang PS3mu, pastikan\n'
                                'Bluetooth aktif pada Mac-mu, lalu hubungkan kontrollermu\n'
@@ -1403,7 +1398,7 @@ values = {
         'disableThisNotice':'(anda bisa matikan peringatan ini di pengaturan tambahan)',
         'enablePackageModsDescriptionText':'(menyalakan kapabilitas modding ekstra tapi tidak bisa main internet)',
         'enablePackageModsText':'Memperbolehkan Paket Mod Lokal',
-        'enterPromoCodeText':'Masukkan Kode',
+        'enterPromoCodeText':'Masukkan Kode Promo',
         'forTestingText':'NB: jumlah ini hanya untuk tes dan akan hilang saat keluar',
         'helpTranslateText':('Translasi ${APP_NAME} selain Inggris adalah bantuan \n'
                              'komunitas. Jika anda ingin membantu atau memgoreksi\n'
@@ -1430,7 +1425,7 @@ values = {
     'shareText':'Bagi',
     'sharingText':'Membagi...',
     'showText':'Lihat',
-    'signInForPromoCodeText':'Anda harus masuk ke akun agar kode berlaku.',
+    'signInForPromoCodeText':'Anda harus masuk ke sebuah akun agar kode promo bekerja.',
     'signInWithGameCenterText':('Untuk menggunakan akun Game Center,\n'
                                 'masuk ke Game Center dulu'),
     'singleGamePlaylistNameText':'Hanya ${GAME}',
@@ -1459,7 +1454,6 @@ values = {
         'Victory':'Layar Skor Akhir'
     },
     'spaceKeyText':'spasi',
-    'statsText':'Statistik',
     'storagePermissionAccessText':'Ini membutuhkan akses penyimpanan',
     'store':{
         'alreadyOwnText':'Kau sudah punya ${NAME}!',
@@ -1520,9 +1514,7 @@ values = {
         'teamUpAgainstComputerText':'Satu tim melawan NPC.'
     },
     'storeText':'Toko',
-    'submitText':'Menyerahkan',
-    'submittingPromoCodeText':'Mengirimkan Kode ...',
-    'teamNamesColorText':'Nama Tim / Warna ...',
+    'submittingPromoCodeText':'Mengirim Kode Promo...',
     'telnetAccessGrantedText':'Akses telnet aktif.',
     'telnetAccessText':'Akses telnet terdekteksi; ijinkan?',
     'testBuildErrorText':'Percobaan ini tidak aktif lagi; tolong cek versi barunya.',
@@ -1698,7 +1690,7 @@ values = {
             'Gibberish':'Sampah',
             'Hindi':'Hindi',
             'Hungarian':'Hongaria',
-            'Indonesian':'Indonesia',
+            'Indonesian':'Insdofsif',
             'Italian':'Italia',
             'Japanese':'Jepang',
             'Korean':'Korea',
@@ -1707,7 +1699,6 @@ values = {
             'Portuguese':'Portugis',
             'Romanian':'Roma',
             'Russian':'Rusia',
-            'Serbian':'Serbia',
             'Spanish':'Spanyol',
             'Swedish':'Swedia',
             'Turkish':'Turki',
@@ -1756,8 +1747,6 @@ values = {
             'Account linking successful!':'Berhasil menghubungkan akun!',
             'Account unlinking successful!':'Pemutusan akun berhasil!',
             'Accounts are already linked.':'Akun sudah dihubungkan.',
-            'An error has occurred; (${ERROR})':'Sebuah kesalahan telah terjadi; (${ERROR})',
-            'An error has occurred; please contact support. (${ERROR})':'Sebuah kesalahan telah terjadi; tolong hubungi dukungan. (${ERROR})',
             'An error has occurred; please contact support@froemling.net.':'Sebuah error telah terjadi; tolong hubungi support@froemling.net.',
             'An error has occurred; please try again later.':'Sebuah error telah terjadi; mohon coba lagi nanti.',
             ('Are you sure you want to link these accounts?\n'
@@ -1784,14 +1773,6 @@ values = {
             'Invalid promo code.':'Promo kode salah.',
             'Invalid purchase.':'Pembelian tidak valid.',
             'Invalid tournament entry; score will be ignored.':'Masukkan turnament tidak valid; skor akan diabaikan.',
-            'Item unlocked!':'Item dibuka!',
-            ('LINKING DENIED. ${ACCOUNT} contains\n'
-             'significant data that would ALL BE LOST.\n'
-             'You can link in the opposite order if you\'d like\n'
-             '(and lose THIS account\'s data instead)'):('LINKING DITOLAK. ${ACCOUNT} berisi\n'
-                                                         'data penting yang akan SEMUA HILANG.\n'
-                                                         'Anda dapat menautkan dalam urutan yang berlawanan jika Anda mau\n'
-                                                         '(Dan kehilangan data akun INI sebagai gantinya)'),
             ('Link account ${ACCOUNT} to this account?\n'
              'All existing data on ${ACCOUNT} will be lost.\n'
              'This can not be undone.  Are you sure?'):('Menghubungkan akun ${ACCOUNT} ke akun ini?\n'
@@ -1818,8 +1799,6 @@ values = {
             'This account cannot be unlinked for ${NUM} days.':'Akun ini tidak dapat diputuskan untuk ${NUM} hari.',
             'This code cannot be used on the account that created it.':'Kode ini tidak bisa dipakai di akun yang membuatnya.',
             'This requires version ${VERSION} or newer.':'Ini membutuhkan versi ${VERSION} atau versi yang baru.',
-            'Tournaments disabled due to rooted device.':'Turnamen dinonaktifkan karena perangkat yang di-rooting.',
-            'Tournaments require ${VERSION} or newer':'Turnamen membutuhkan ${VERSION} atau lebih baru',
             ('Unlink ${ACCOUNT} from this account?\n'
              'All data on ${ACCOUNT} will be reset.\n'
              '(except for achievements in some cases)'):('Memutus ${ACCOUNT} dari akun ini?\n'
@@ -1900,8 +1879,7 @@ values = {
         },
         'statements':{
             '${TEAM} is disqualified because ${PLAYER} left':'${TEAM} terdiskualifikasi karena ${PLAYER} keluar',
-            'Killing ${NAME} for skipping part of the track!':'Membunuh ${NAME} akan melewati bagian permainan ini!',
-            'Warning to ${NAME}:  turbo / button-spamming knocks you out.':'Peringatan ke ${NAME}: turbo / tombol-spamming menjatuhkan Anda.'
+            'Killing ${NAME} for skipping part of the track!':'Membunuh ${NAME} akan melewati bagian permainan ini!'
         },
         'teamNames':{
             'Bad Guys':'Si Jahat',
@@ -2086,7 +2064,6 @@ values = {
                                   'Replay'),
         'myReplaysText':'Replayku',
         'noReplaySelectedErrorText':'Tidak Ada Replay Terpilih',
-        'playbackSpeedText':'Kecepatan Putar Ulang: ${SPEED}',
         'renameReplayButtonText':('Ganti\n'
                                   'Nama'),
         'renameReplayText':'Mengubah nama"${REPLAY}" ke',

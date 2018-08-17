@@ -641,7 +641,6 @@ values = {
     'defaultNewTeamGameListNameText':'I miei giochi a squadre',
     'defaultTeamGameListNameText':'Giochi a squadre predefiniti',
     'deleteText':'Cancella',
-    'demoText':'Demo',
     'denyText':'Nega',
     'desktopResText':'Risoluzione Nativa',
     'difficultyEasyText':'Facile',
@@ -1269,7 +1268,6 @@ values = {
     'onText':'Attiva',
     'onslaughtRespawnText':'${PLAYER} ritornerà all\'ondata ${WAVE}',
     'orText':'${A} o ${B}',
-    'otherText':'Altro',
     'outOfText':'(#${RANK} su ${ALL})',
     'ownFlagAtYourBaseWarning':('Per segnare un punto la tua bandiera\n'
                                 'dev\'essere nella tua base!'),
@@ -1349,7 +1347,7 @@ values = {
         'codeTextDescription':'Codice Promozionale',
         'enterText':'Usa'
     },
-    'promoSubmitErrorText':'Errore nell\' immissione del codice; controlla la tua connessione internet',
+    'promoSubmitErrorText':'Errore nell\'immissione del codice promozionale; controlla la tua connessione internet',
     'ps3ControllersWindow':{
         'macInstructionsText':('Spegni l\'alimentazione sul retro della tua PS3, assicurati\n'
                                'che il Bluetooth sia abilitato sul tuo Mac, poi connetti i tuoi controller\n'
@@ -1517,7 +1515,7 @@ values = {
     'shareText':'Condividi',
     'sharingText':'Condividendo...',
     'showText':'Mostra',
-    'signInForPromoCodeText':'Devi accedere ad un account, per poter far funzionare i codici.',
+    'signInForPromoCodeText':'Devi fare l\'accesso ad un account per far funzionare i codici promozionali.',
     'signInWithGameCenterText':('Per utilizzare un account Game Center,\n'
                                 'accedi utilizzando l\'app Game Center.'),
     'singleGamePlaylistNameText':'Solo ${GAME}',
@@ -1571,7 +1569,7 @@ values = {
         'gameUpgradesText':'Aggiornamenti Gioco',
         'getCoinsText':'Ottieni monete',
         'holidaySpecialText':'Speciale Vacanze',
-        'howToSwitchCharactersText':'(vai a "${SETTINGS} -> ${PLAYER_PROFILES}" per assegnare o cambiare i personaggi.)',
+        'howToSwitchCharactersText':'(vai a "${SETTINGS} -> ${PLAYER_PROFILES}" per assegnare o cambiare i caratteri.)',
         'howToUseIconsText':'(crea profili giocatori globali (nella finestra "Account") per poterle usare)',
         'howToUseMapsText':'(usa queste mappe nelle tue playlist a squadre/tutti contro tutti)',
         'iconsText':'Icone',
@@ -1615,8 +1613,7 @@ values = {
         'teamUpAgainstComputerText':'Alleati contro il computer.'
     },
     'storeText':'Negozio',
-    'submitText':'Inoltra',
-    'submittingPromoCodeText':'Inoltrando il Codice...',
+    'submittingPromoCodeText':'Inoltrando Codice Promozionale...',
     'teamNamesColorText':'Colore/Nome Team',
     'teamsText':'Squadre',
     'telnetAccessGrantedText':'Accesso a telnet abilitato',
@@ -1924,7 +1921,6 @@ values = {
             'Invalid promo code.':'Codice promozionale non valido.',
             'Invalid purchase.':'Acquisto non valido.',
             'Invalid tournament entry; score will be ignored.':'Entrata in gioco non valida; il punteggio sarà ignorato.',
-            'Item unlocked!':'Oggetto sbloccato!',
             ('LINKING DENIED. ${ACCOUNT} contains\n'
              'significant data that would ALL BE LOST.\n'
              'You can link in the opposite order if you\'d like\n'
@@ -1958,7 +1954,6 @@ values = {
             'This account cannot be unlinked for ${NUM} days.':'Questo account non può essere scollegato per ${NUM} giorni.',
             'This code cannot be used on the account that created it.':'Questo codice non può essere usato sull\'account che l\'ha creato.',
             'This requires version ${VERSION} or newer.':'Richiede la versione ${VERSION} o più recente.',
-            'Tournaments require ${VERSION} or newer':'I tornei richiedono ${VERSION} o superiore',
             ('Unlink ${ACCOUNT} from this account?\n'
              'All data on ${ACCOUNT} will be reset.\n'
              '(except for achievements in some cases)'):('Scollegare l\'account ${ACCOUNT} da questo account?\n'

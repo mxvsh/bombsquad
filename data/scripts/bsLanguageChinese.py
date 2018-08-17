@@ -617,7 +617,6 @@ values = {
     'defaultGameListNameText':'默认${PLAYMODE}列表',
     'defaultNewGameListNameText':'我的${PLAYMODE}列表',
     'deleteText':'删除',
-    'demoText':'演示',
     'denyText':'拒绝',
     'desktopResText':'桌面分辨率',
     'difficultyEasyText':'简单',
@@ -1215,7 +1214,6 @@ values = {
     'onText':'开',
     'onslaughtRespawnText':'${PLAYER}将于第${WAVE}波后复活',
     'orText':'${A}或${B}',
-    'otherText':'其他。。。',
     'outOfText':'（在${ALL}名玩家中位列#${RANK}）',
     'ownFlagAtYourBaseWarning':('你的旗帜必须在\n'
                                 '你自己的基地上才能得分！'),
@@ -1291,7 +1289,7 @@ values = {
         'codeTextDescription':'促销代码',
         'enterText':'输入'
     },
-    'promoSubmitErrorText':'提交代码时出错; 检查您的互联网连接',
+    'promoSubmitErrorText':'错误提交促销代码；检查您的网络连接',
     'ps3ControllersWindow':{
         'macInstructionsText':('关闭PS3背面的电源开关，确保\n'
                                '您的Mac电脑上启用了蓝牙，然后通过USB连接线将您的手柄连接到\n'
@@ -1457,7 +1455,7 @@ values = {
     'shareText':'分享',
     'sharingText':'分享',
     'showText':'显示',
-    'signInForPromoCodeText':'您必须登录到一个帐户, 代码才能生效',
+    'signInForPromoCodeText':'您必须登录账户来使促销代码生效',
     'signInWithGameCenterText':('使用游戏中心\n'
                                 '应用程序登录。'),
     'singleGamePlaylistNameText':'仅${GAME}',
@@ -1486,7 +1484,6 @@ values = {
         'Victory':'最终得分屏幕'
     },
     'spaceKeyText':'空格',
-    'statsText':'统计',
     'storagePermissionAccessText':'需要存储权限',
     'store':{
         'alreadyOwnText':'您已拥有${NAME}！',
@@ -1555,8 +1552,7 @@ values = {
         'teamUpAgainstComputerText':'组队对抗电脑程序。'
     },
     'storeText':'商店',
-    'submitText':'提交',
-    'submittingPromoCodeText':'正在提交代码...',
+    'submittingPromoCodeText':'正在提交促销代码...',
     'teamNamesColorText':'团队名称/颜色。。。',
     'telnetAccessGrantedText':'Telnet访问已启用。',
     'telnetAccessText':'检测到Telnet访问；是否允许？',
@@ -1817,7 +1813,6 @@ values = {
             'Invalid promo code.':'促销代码无效。',
             'Invalid purchase.':'购买无效。',
             'Invalid tournament entry; score will be ignored.':'错误的联赛资料，分数会被忽略。',
-            'Item unlocked!':'项目已解除锁定!',
             ('LINKING DENIED. ${ACCOUNT} contains\n'
              'significant data that would ALL BE LOST.\n'
              'You can link in the opposite order if you\'d like\n'
@@ -1851,8 +1846,6 @@ values = {
             'This account cannot be unlinked for ${NUM} days.':'此帐户无法在${NUM}天内取消关联。',
             'This code cannot be used on the account that created it.':'此代码不可在创建其的账户上使用。',
             'This requires version ${VERSION} or newer.':'这需要版本${VERSION}或更高版本。',
-            'Tournaments disabled due to rooted device.':'该设备已禁用比赛。',
-            'Tournaments require ${VERSION} or newer':'',
             ('Unlink ${ACCOUNT} from this account?\n'
              'All data on ${ACCOUNT} will be reset.\n'
              '(except for achievements in some cases)'):('从此帐户取消 ${ACCOUNT} 的连结？\n'

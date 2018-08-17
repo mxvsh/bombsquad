@@ -613,7 +613,6 @@ values = {
     'defaultGameListNameText':'Подразумевана ${PLAYMODE} листа игара',
     'defaultNewGameListNameText':'Моја ${PLAYMODE} листа игара',
     'deleteText':'Обриши',
-    'demoText':'демо',
     'denyText':'Одбити',
     'desktopResText':'Резолуција радне површине',
     'difficultyEasyText':'Лако',
@@ -1211,7 +1210,6 @@ values = {
     'onText':'Укључи',
     'onslaughtRespawnText':'${PLAYER} ће оживети у рунди ${WAVE}',
     'orText':'${A} или ${B}',
-    'otherText':'Друго...',
     'outOfText':'(#${RANK} од ${ALL})',
     'ownFlagAtYourBaseWarning':('Ваша застава мора бити у\n'
                                 'бази да би постигли поен!'),
@@ -1283,7 +1281,7 @@ values = {
         'codeText':'Код',
         'enterText':'Уђи'
     },
-    'promoSubmitErrorText':'Грешка при прихватању кода; провери своју интенет конекцију',
+    'promoSubmitErrorText':'Грешка при прихватању кода од; провери своју интернет конекцију',
     'ps3ControllersWindow':{
         'macInstructionsText':('Искључи напајање са задње стране PS3, буди сигуран да је\n'
                                'Bluetooth омогућен на твом Mac уређају, онда повежи контролер\n'
@@ -1450,7 +1448,7 @@ values = {
     'shareText':'Подели',
     'sharingText':'Дељење...',
     'showText':'Приказује се',
-    'signInForPromoCodeText':'Мораш бити пријавњен на налог да би кодови имали ефекта.',
+    'signInForPromoCodeText':'Мораш бити пријављен на налог да би промо кодови имали ефекта.',
     'signInWithGameCenterText':('Да би користио Game Center налог,\n'
                                 'пријави се са Game Center апликацијом.'),
     'singleGamePlaylistNameText':'Само ${GAME}',
@@ -1479,7 +1477,6 @@ values = {
         'Victory':'Екран са финалним резултатима'
     },
     'spaceKeyText':'размак',
-    'statsText':'Статистике',
     'storagePermissionAccessText':'Ово треба дозволу за коришћење меморије.',
     'store':{
         'alreadyOwnText':'Већ поседујеш ${NAME}!',
@@ -1540,8 +1537,7 @@ values = {
         'teamUpAgainstComputerText':'Удружите се против компјутера.'
     },
     'storeText':'Продавница',
-    'submitText':'Унеси',
-    'submittingPromoCodeText':'Уношење кода...',
+    'submittingPromoCodeText':'Уношење промо кода...',
     'teamNamesColorText':'Тимска имена/боје...',
     'telnetAccessGrantedText':'Telnet приступ одбијен.',
     'telnetAccessText':'Телнет приступ примећен; дозволи?',
@@ -1802,7 +1798,6 @@ values = {
             'Invalid promo code.':'Неважећи промо код.',
             'Invalid purchase.':'Неважећа куповина.',
             'Invalid tournament entry; score will be ignored.':'Неважећи улазак на турнир; резултат ће бити игнорисан.',
-            'Item unlocked!':'Ствар откључана!',
             ('LINKING DENIED. ${ACCOUNT} contains\n'
              'significant data that would ALL BE LOST.\n'
              'You can link in the opposite order if you\'d like\n'
@@ -1836,8 +1831,6 @@ values = {
             'This account cannot be unlinked for ${NUM} days.':'Овај налог не може бити растављен још ${NUM} дана.',
             'This code cannot be used on the account that created it.':'Овај код не може бити употребљен на налогу који га је креирао.',
             'This requires version ${VERSION} or newer.':'Ово захтева верзију ${VERSION} или новију.',
-            'Tournaments disabled due to rooted device.':'Турнири су онемогућени због укорењеног уређаја.',
-            'Tournaments require ${VERSION} or newer':'За турнир ти треба ${VERSION} или новија',
             ('Unlink ${ACCOUNT} from this account?\n'
              'All data on ${ACCOUNT} will be reset.\n'
              '(except for achievements in some cases)'):('Растави ${ACCOUNT} од овог налога?\n'

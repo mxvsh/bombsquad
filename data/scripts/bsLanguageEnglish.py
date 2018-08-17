@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 values = {
-    'statsText':'Stats',
     'demoText':'Demo',
     'submitText':'Submit',
     'otherText':'Other...',
@@ -1765,7 +1764,6 @@ values = {
             'Time Held':None
         },
         'serverResponses':{
-            'Tournaments disabled due to rooted device.':None,
             'Tournaments require ${VERSION} or newer':None,
             ('LINKING DENIED. ${ACCOUNT} contains\n'
              'significant data that would ALL BE LOST.\n'
@@ -2033,6 +2031,7 @@ values = {
     'useDefaultText':'Use Default',
     'usesExternalControllerText':'This game uses an external controller for input.',
     'usingItunesText':'Using iTunes for soundtrack...',
+    # 'usingItunesTurnRepeatAndShuffleOnText':'Please make sure shuffle is ON and repeat is ALL in iTunes.',
     'validatingTestBuildText':'Validating Test Build...',
     'victoryText':'Victory!',
     'vsText':'vs.',

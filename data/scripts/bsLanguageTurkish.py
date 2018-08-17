@@ -602,7 +602,6 @@ values = {
     'defaultGameListNameText':'Varsayılan ${PLAYMODE} ÇalmaListesi',
     'defaultNewGameListNameText':'Benim ${PLAYMODE} ÇalmaListem',
     'deleteText':'Sil',
-    'demoText':'Tanıtım',
     'denyText':'Reddet',
     'desktopResText':'PC Çözünürlüğü',
     'difficultyEasyText':'Kolay',
@@ -1192,7 +1191,6 @@ values = {
     'onText':'Açık',
     'onslaughtRespawnText':'${PLAYER} oyuncusu ${WAVE}. dalgada yeniden doğacak',
     'orText':'${A} veya ${B}',
-    'otherText':'Diğer...',
     'outOfText':'(${ALL} için #${RANK})',
     'ownFlagAtYourBaseWarning':('Skor için kendi bayrağın\n'
                                 'kendi bölgende olmalı!'),
@@ -1264,7 +1262,7 @@ values = {
         'codeText':'Kod',
         'enterText':'Gir'
     },
-    'promoSubmitErrorText':'Kod gönderilirken hata oluştu; internet bağlantını kontrol et',
+    'promoSubmitErrorText':'Promo kodu gönderilirken hata; internet bağlantını kontrol et',
     'ps3ControllersWindow':{
         'macInstructionsText':('PS3\'ünüzü kapatıp açın. Bluetooth\'un Mac\'inizde etkin\n'
                                'olduğundan emin olun. Her ikisini eşlemek için kontrolcünüzü\n'
@@ -1429,7 +1427,7 @@ values = {
     'shareText':'Paylaş',
     'sharingText':'Paylaşılıyor...',
     'showText':'Göster',
-    'signInForPromoCodeText':'Kodlar etkisini göstermesi için bir hesap ile giriş yapmalısın.',
+    'signInForPromoCodeText':'Promo-kodlarının etkisini göstermesi için bir hesap ile giriş yapmalısın.',
     'signInWithGameCenterText':('Game Center hesabı kullanmak için\n'
                                 'Game Center uygulaması ile giriş yap.'),
     'singleGamePlaylistNameText':'Sadece ${GAME}',
@@ -1458,7 +1456,6 @@ values = {
         'Victory':'Final Skoru Ekranı'
     },
     'spaceKeyText':'boşluk',
-    'statsText':'İstatistikler',
     'storagePermissionAccessText':'Bu depolama erişimine ihtiyaç duyuyor',
     'store':{
         'alreadyOwnText':'${NAME} zaten sende var!',
@@ -1526,8 +1523,7 @@ values = {
         'teamUpAgainstComputerText':'Bilgisayara karşı takım ol.'
     },
     'storeText':'Mağaza',
-    'submitText':'Gönder',
-    'submittingPromoCodeText':'Kod Gönderiliyor...',
+    'submittingPromoCodeText':'Promo Kodu Gönderiliyor...',
     'teamNamesColorText':'Takım isimleri/Renkler...',
     'telnetAccessGrantedText':'Telnet Erişimi aktif.',
     'telnetAccessText':'Telnet erişimi algılandı; izin ver?',
@@ -1788,7 +1784,6 @@ values = {
             'Invalid promo code.':'Geçersiz promo kodu.',
             'Invalid purchase.':'Geçersiz satın alma.',
             'Invalid tournament entry; score will be ignored.':'Geçersiz turnuva girişi; skor yok sayılacak.',
-            'Item unlocked!':'Öğe kilidi açıldı!',
             ('LINKING DENIED. ${ACCOUNT} contains\n'
              'significant data that would ALL BE LOST.\n'
              'You can link in the opposite order if you\'d like\n'
@@ -1822,8 +1817,6 @@ values = {
             'This account cannot be unlinked for ${NUM} days.':'Bu hesap, ${NUM} gün boyunca kaldırılamaz.',
             'This code cannot be used on the account that created it.':'Bu kod onun yaptığı hesapta kullanılamaz.',
             'This requires version ${VERSION} or newer.':'Bu ${VERSION} veya daha üst sürümüne ihtiyaç duyuyor.',
-            'Tournaments disabled due to rooted device.':'Rootlu cihaz nedeniyle turnuvalar devre dışı',
-            'Tournaments require ${VERSION} or newer':'Turnuvalar ${VERSION} veya daha yeni bir sürümü gerektirir',
             ('Unlink ${ACCOUNT} from this account?\n'
              'All data on ${ACCOUNT} will be reset.\n'
              '(except for achievements in some cases)'):('${ACCOUNT} hesabının bağlantısını kaldırmak mı istiyorsunuz?\n'

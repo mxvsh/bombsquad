@@ -634,7 +634,6 @@ values = {
     'defaultNewTeamGameListNameText':'Moja nowa rozgrywka zespołowa',
     'defaultTeamGameListNameText':'Domyślna rozgrywka zespołowa',
     'deleteText':'Usuń',
-    'demoText':'Demo',
     'denyText':'Odmów',
     'desktopResText':'Rozdzielczość ekranu',
     'difficultyEasyText':'Łatwy',
@@ -718,7 +717,7 @@ values = {
                          'ścieżkę'),
         'editSoundtrackText':'Edytor ścieżek dźwiękowych',
         'editText':('Edytuj\n'
-                    'ścieżkę dźwiękową'),
+                    'ścieżkę'),
         'fetchingITunesText':'pobieranie listy z iTunes...',
         'musicVolumeZeroWarning':'Ostrzeżenie: głośność muzyki ustawiona na 0',
         'nameText':'Nazwa',
@@ -766,8 +765,8 @@ values = {
                                'kontrolerów do gier lub zainstaluj\n'
                                'aplikację ${REMOTE_APP_NAME} na\n'
                                'Twoich telefonach lub tabletach.'),
-    'firstToFinalText':'Wyniki Pierwsze-z-${COUNT}',
-    'firstToSeriesText':'Seria Pierwsza-z-${COUNT}',
+    'firstToFinalText':'Wyniki Pierwszy-z-${COUNT}',
+    'firstToSeriesText':'Seria Pierwszy-z-${COUNT}',
     'fiveKillText':'PIĘCIU ZABITYCH!!!',
     'flawlessWaveText':'Fala Bez Skazy!',
     'fourKillText':'CZWORO ZABITYCH!!!',
@@ -1273,7 +1272,6 @@ values = {
     'onText':'On',
     'onslaughtRespawnText':'${PLAYER} odrodzi się w fali ${WAVE}',
     'orText':'${A} lub ${B}',
-    'otherText':'Inny...',
     'outOfText':'(#${RANK} na ${ALL})',
     'ownFlagAtYourBaseWarning':('Twoja flaga musi być w\n'
                                 'Twojej bazie aby zapunktować!'),
@@ -1353,7 +1351,7 @@ values = {
         'codeTextDescription':'Kod Promocyjny',
         'enterText':'Wprowadź'
     },
-    'promoSubmitErrorText':'Błąd wprowadzonego kodu; sprawdź połączenie internetowe',
+    'promoSubmitErrorText':'Błąd wprowadzanego kodu promocyjnego; sprawdź połączenie z internetem',
     'ps3ControllersWindow':{
         'macInstructionsText':('Wyłącz zasilanie konsoli PS3, upewnij się, że masz uruchomiony\n'
                                'Bluetooth w swoim Mac\'u, następnie podłącz kontroler do portu\n'
@@ -1377,7 +1375,6 @@ values = {
                                '\n'
                                'Bluetooth powinien obsłużyć do 7 podłączonych urządzeń, chociaż\n'
                                'liczba ta może się wahać.'),
-        'macInstructionsTextScale':0.74,
         'ouyaInstructionsText':('Aby używać kontrolerów PS3 z konsolą OUYA, poprostu podłącz je kablem USB\n'
                                 'aby sparować urządzenia. Może to spowodować rozłączenie innych kontrolerów,\n'
                                 'więc powinieneś później uruchomic ponownie konsolę OUYA i odłączyć kabel USB.\n'
@@ -1385,7 +1382,6 @@ values = {
                                 'Od teraz powinien być aktywny przycisk HOME aby połączyć się bezprzewodowo.\n'
                                 'Kiedy zakończysz grę, przytrzymaj HOME przez 10 sekund aby wyłączyć kontroler;\n'
                                 'w przeciwnym razie może on wyczerpać jego baterie.'),
-        'ouyaInstructionsTextScale':0.74,
         'pairingTutorialText':'poradnik video parowania kontrolerów',
         'titleText':'Korzystanie z kontrolerów PS3 w ${APP_NAME}:'
     },
@@ -1524,7 +1520,7 @@ values = {
     'shareText':'Udostępnij',
     'sharingText':'Udostępnianie...',
     'showText':'Wyświetl',
-    'signInForPromoCodeText':'Musisz się zalogować do konta aby kody zadziałały.',
+    'signInForPromoCodeText':'Musisz się zalogować do konta aby kody promocyjne zadziałały.',
     'signInWithGameCenterText':('By użyć konta Game Center\n'
                                 'zapisz się aplikacją Game Center.'),
     'singleGamePlaylistNameText':'Tylko ${GAME}',
@@ -1553,7 +1549,6 @@ values = {
         'Victory':'Ekran Wyników Końcowych'
     },
     'spaceKeyText':'spacja',
-    'statsText':'Statystyki',
     'storagePermissionAccessText':'To wymaga dostępu do pamięci masowej',
     'store':{
         'alreadyOwnText':'Masz już ${NAME}!',
@@ -1581,7 +1576,7 @@ values = {
         'holidaySpecialText':'Świąteczne Okazje',
         'howToSwitchCharactersText':'(idź do "${SETTINGS} -> ${PLAYER_PROFILES}" aby przypisać i dostosować postacie)',
         'howToUseIconsText':'(Stwórz profil globalny (w opcjach profilowych) aby tego użyć)',
-        'howToUseMapsText':'(użyj tych plansz w twoich listach gier free-for-all/drużynowych)',
+        'howToUseMapsText':'Użyj tych plansz w twoich listach gier free-for-all/drużynowych',
         'iconsText':'Ikonki',
         'loadErrorText':('Nie można załadować strony.\n'
                          'Sprawdź połączenie internetowe.'),
@@ -1609,7 +1604,7 @@ values = {
                             '\n'
                             'Wysadź w powietrze swoich znajomych (lub komputerowych przeciwników) w turnieju z wybuchowymi mini gierkami jak np. Przechwyć Flagę, Bombowy Hokej i Epicki Mecz Śmierci w zwolnionym tempie!\n'
                             '\n'
-                            'Proste sterowanie i rozszerzone wsparcie dla kontrolerów może wprowadzić do gry aż 8 przeciwników; możesz nawet wykorzystać swoje mobilne urządzenie jako kontroler do gry dostępne jako darmowa aplikacja \'BombSquad Remote\'!\n'
+                            'Proste sterowanie i rozszerzone wsparcie dla kontrolerów może wprowadzić do gry aż 8 przeciwników; możesz nawet wykorzystać swoje mobilne urządzenie jako kontroler do gry dostępne jako darmowa aplikacja \'BombSquad Remote\'.\n'
                             '\n'
                             'Bomby w Górę!\n'
                             '\n'
@@ -1623,8 +1618,7 @@ values = {
         'teamUpAgainstComputerText':'Współpracuj przeciwko komputerowi.'
     },
     'storeText':'Sklep',
-    'submitText':'Prześlij',
-    'submittingPromoCodeText':'Przesyłanie Kodu...',
+    'submittingPromoCodeText':'Wysyłanie kodu promocyjnego...',
     'teamNamesColorText':'Nazwy Drużyn/Kolory...',
     'teamsText':'Gra Zespołowa',
     'telnetAccessGrantedText':'Dostęp telnet włączony.',
@@ -1634,7 +1628,7 @@ values = {
     'testBuildValidateErrorText':'Niemożliwe zatwierdzenie wersji testowej. (brak internetu?)',
     'testBuildValidatedText':'Wersja Testowa Zatwierdzona! Miłej zabawy!',
     'thankYouText':'Dziękuję za Twoje wsparcie! Miłej gry!',
-    'threeKillText':'POTRÓJNE ZABÓJSTWO!!',
+    'threeKillText':'POTRÓJNE ZABÓJSTWO!',
     'timeBonusText':'Bonus czasowy',
     'timeElapsedText':'Czas upłynął',
     'timeExpiredText':'Czas minął',
@@ -1663,8 +1657,8 @@ values = {
             'Butch':'Butch',
             'Easter Bunny':'Zajączek Wielkanocny',
             'Flopsy':'Flopsy',
-            'Frosty':'Frosty',
-            'Gretel':'Małgosia',
+            'Frosty':'Mrozek',
+            'Gretel':'Gretel',
             'Grumbledorf':'Grumbledorf',
             'Jack Morgan':'Jack Morgan',
             'Kronk':'Kronk',
@@ -1674,7 +1668,7 @@ values = {
             'Middle-Man':'Kapitan Niepełniak',
             'Minimus':'Minimus',
             'Pascal':'Pascal',
-            'Pixel':'Pixel',
+            'Pixel':'Dzwoneczek',
             'Sammy Slam':'Sammy Grzmot',
             'Santa Claus':'Święty Mikołaj',
             'Snake Shadow':'Snake Shadow',
@@ -1758,7 +1752,7 @@ values = {
             'Final glorious epic slow motion battle to the death.':'Ostateczna i chwalebna epicka bitwa w zwolnionym tempie do śmierci.',
             'Gather eggs!':'Zbieraj jaja!',
             'Get the flag to the enemy end zone.':'Przenieś flagę do końcowej strefy wroga.',
-            'How fast can you defeat the ninjas?':'Jak szybko jesteś w stanie pokonać ninja?',
+            'How fast can you defeat the ninjas?':'Jak szybko jesteś w stanie pokonać wojowników ninja?',
             'Kill a set number of enemies to win.':'Zabij ustaloną ilość wrogów aby wygrać.',
             'Last one standing wins.':'Ostatni stojący wygrywa.',
             'Last remaining alive wins.':'Ostatni pozostały przy życiu wygrywa.',
@@ -1839,7 +1833,7 @@ values = {
             'Finnish':'Fiński',
             'French':'Francuski',
             'German':'Niemiecki',
-            'Gibberish':'Szwargot',
+            'Gibberish':'Język testowy dewelopera',
             'Hindi':'Hinduski',
             'Hungarian':'Węgierski',
             'Indonesian':'Indonezyjski',
@@ -1880,7 +1874,7 @@ values = {
             'The Pad':'Płyta',
             'Tip Top':'Tip Top',
             'Tower D':'Wieża D',
-            'Zigzag':'Zygzag'
+            'Zigzag':'Zyg-Zag'
         },
         'playlistNames':{
             'Just Epic':'Tylko rozgrywki Epickie',
@@ -1931,7 +1925,6 @@ values = {
             'Invalid promo code.':'Nieprawidłowy kod promocyjny.',
             'Invalid purchase.':'Nieprawidłowy zakup.',
             'Invalid tournament entry; score will be ignored.':'Nieprawidłowe wejście do turnieju; wynik będzie zignorowany.',
-            'Item unlocked!':'Przedmiot odblokowany!',
             ('LINKING DENIED. ${ACCOUNT} contains\n'
              'significant data that would ALL BE LOST.\n'
              'You can link in the opposite order if you\'d like\n'
@@ -1947,12 +1940,12 @@ values = {
             'Max number of playlists reached.':'Osiągnięto maksymalną ilość playlist.',
             'Max number of profiles reached.':'Osiągnięto maksymalną liczbę profili.',
             'Maximum friend code rewards reached.':'Osiągnięto limit kodów promocyjnych.',
-            'Profile "${NAME}" upgraded successfully.':'Nazwa "${NAME}" ulepszona pomyślnie.',
+            'Profile "${NAME}" upgraded successfully.':'Nazwa "${NAME}" zapisana pomyślnie.',
             'Profile could not be upgraded.':'Profil nie może być zmieniony.',
             'Purchase successful!':'Udany zakup!',
             ('Received ${COUNT} tickets for signing in.\n'
-             'Come back tomorrow to receive ${TOMORROW_COUNT}.'):('Otrzymano ${COUNT} kuponów za zapisanie się. Wróć jutro aby otrzymać\n'
-                                                                  '${TOMORROW_COUNT}.'),
+             'Come back tomorrow to receive ${TOMORROW_COUNT}.'):('Otrzymano ${COUNT} kuponów za zapisanie się.\n'
+                                                                  'Wróć jutro aby otrzymać kolejne ${TOMORROW_COUNT}.'),
             ('Server functionality is no longer supported in this version of the game;\n'
              'Please update to a newer version.'):('Funkcje serwerowe nie są dalej wspierane na tej wersji gry;\n'
                                                    'Zaktualizuj grę i spróbuj ponownie.'),
@@ -1965,8 +1958,6 @@ values = {
             'This account cannot be unlinked for ${NUM} days.':'To konto nie może zostać rozłączone przez ${NUM} dni.',
             'This code cannot be used on the account that created it.':'Kod nie może zostać użyty na koncie, które go stworzyło.',
             'This requires version ${VERSION} or newer.':'Wymagana wersja ${VERSION} gry lub nowsza.',
-            'Tournaments disabled due to rooted device.':'Turnieje wyłączone z powodu zrootowanego urządzenia.',
-            'Tournaments require ${VERSION} or newer':'Turnieje potrzebują ${VERSION} albo nowszej',
             ('Unlink ${ACCOUNT} from this account?\n'
              'All data on ${ACCOUNT} will be reset.\n'
              '(except for achievements in some cases)'):('Rozłączyć konto ${ACCOUNT} z tego konta?\n'
@@ -1998,7 +1989,7 @@ values = {
             'You must update to a newer version of the app to do this.':'Musisz zaktualizować do nowszej wersji gry aby to zrobić.',
             'You must update to the newest version of the game to do this.':'Musisz zaktualizować grę do nowej wersji aby to zrobić.',
             'You must wait a few seconds before entering a new code.':'Musisz odczekać kilka sekund zanim wpiszesz nowy kod.',
-            'You ranked #${RANK} in the last tournament. Thanks for playing!':'Zostałeś sklasyfikowany na ${RANK} pozycji w ostatnim turnieju. Dzięki za udział!',
+            'You ranked #${RANK} in the last tournament. Thanks for playing!':'Zostałeś sklasyfikowany na ${RANK} pozycji w ostatnim turnieju!',
             ('Your copy of the game has been modified.\n'
              'Please revert any changes and try again.'):('Twoja kopia gry została zmodyfikowana.\n'
                                                           'Cofnij zmiany i spróbuj ponownie.'),
@@ -2014,7 +2005,7 @@ values = {
             '4 Seconds':'4 Sekundy',
             '5 Minutes':'5 Minut',
             '8 Seconds':'8 Sekund',
-            'Allow Negative Scores':'Pozostaw Wyniki Negatywne',
+            'Allow Negative Scores':'Pozostawić Wyniki Negatywne',
             'Balance Total Lives':'Zbalansuj ogólną ilość żyć',
             'Bomb Spawning':'Pojawianie się Bomb',
             'Chosen One Gets Gloves':'Rękawice dla Wybrańca',
@@ -2060,7 +2051,7 @@ values = {
             ('A perfectly timed running-jumping-spin-punch can kill in a single hit\n'
              'and earn you lifelong respect from your friends.'):('Perfekcyjne w czasie wykonanie biegu, skoku, obrotu i uderzenia\n'
                                                                   'może zabić jednym ruchem wzbudzając respekt wśród znajomych.'),
-            'Always remember to floss.':'Pamiętaj żeby nitkować zęby.',
+            'Always remember to floss.':'Wymyśl sobie sam jakąś ;)',
             ('Create player profiles for yourself and your friends with\n'
              'your preferred names and appearances instead of using random ones.'):('Stwórz takie profile gracza (nazwa i wygląd) dla siebie i znajomych, które\n'
                                                                                     'będą Wam najbardziej odpowiadać zamiast tych losowo dobieranych.'),
@@ -2167,7 +2158,7 @@ values = {
                                                                                       'zdobywanie punktów w rozgrywce w hokeja.'),
             ('You can judge when a bomb is going to explode based on the\n'
              'color of sparks from its fuse:  yellow..orange..red..BOOM.'):('Możesz sam kontrolować i określić czas kiedy bomba eksploduje\n'
-                                                                            'po kolorze iskier na jej loncie: żółty.. pomarańczowy.. czerwony.. BUM!'),
+                                                                            'po kolorze iskier na jej loncie: żółty.. pomarańczowy.. czerwony.. BOOM!'),
             'You can throw bombs higher if you jump just before throwing.':'Możesz rzucać bombami wyżej jeśli podskoczysz przed wyrzuceniem.',
             ('You don\'t need to edit your profile to change characters; Just press the top\n'
              'button (pick-up) when joining a game to override your default.'):('Nie musisz edytować swojego profilu aby zmienić postacie. Naciśnij górny\n'
@@ -2182,7 +2173,7 @@ values = {
                             'BombSquad i kontynuować grę?'),
     'trophiesRequiredText':'Potrzebujesz przynajmniej ${NUMBER} zdobyczy.',
     'trophiesText':'Zdobycze',
-    'trophiesThisSeasonText':'Zdobycze w tym Sezonie',
+    'trophiesThisSeasonText':'Zdobycze w tym sezonie',
     'tutorial':{
         'cpuBenchmarkText':'Wykonywanie testu szybkości (głównie testuje szybkość procesora)',
         'phrase01Text':'Hejka!',
@@ -2219,9 +2210,9 @@ values = {
         'randomName3Text':'Benio',
         'randomName4Text':'Czesio',
         'randomName5Text':'Ignaś',
-        'skipConfirmText':'Jeśli chcesz pominąć samouczek to stuknij lub naciśnij aby zatwierdzić.',
+        'skipConfirmText':'Jeśli chcesz pominąć poradnik to stuknij lub naciśnij aby zatwierdzić.',
         'skipVoteCountText':'${COUNT}/${TOTAL} pominiętych głosów',
-        'skippingText':'pomijam samouczek...',
+        'skippingText':'pomiń samouczek...',
         'toSkipPressAnythingText':'(stuknij lub naciśnij cokolwiek aby pominąć samouczek)'
     },
     'twoKillText':'PODWÓJNE ZABÓJSTWO!',
@@ -2230,7 +2221,7 @@ values = {
     'unlockThisInTheStoreText':'To musi zostać odblokowane w sklepie.',
     'unlockThisProfilesText':'By stworzyć więcej niż ${NUM} kont, potrzebujesz:',
     'unlockThisText':'Żeby to odblokować, potrzebujesz:',
-    'unsupportedHardwareText':'Przepraszam ale ten sprzęt nie jest obsługiwany przez tą wersję gry.',
+    'unsupportedHardwareText':'Przepraszam ale ten sprzęt nie jest obsługiwany przez ta wersję gry.',
     'upFirstText':'Pierwsza gra w rozgrywce:',
     'upNextText':'Kolejna, ${COUNT} gra w rozgrywce:',
     'updatingAccountText':'Aktualizowanie twojego konta...',
@@ -2247,7 +2238,7 @@ values = {
     'voteInProgressText':'Głosowanie jest już w toku.',
     'votedAlreadyText':'Już zagłosowałeś',
     'votesNeededText':'Potrzeba ${NUMBER} głosów',
-    'vsText':'kontra',
+    'vsText':'vs.',
     'waitingForHostText':'(oczekiwanie na ${HOST} aby kontynuować)',
     'waitingForLocalPlayersText':'Oczekiwanie na lokalnych graczy...',
     'waitingForPlayersText':'oczekiwanie na dołączenie graczy...',
@@ -2255,7 +2246,7 @@ values = {
     'watchAVideoText':'Zobacz Filmik',
     'watchAnAdText':'Obejrzyj reklamę',
     'watchWindow':{
-        'deleteConfirmText':'Usunąć "${REPLAY}"?',
+        'deleteConfirmText':'Usuń "${REPLAY}"?',
         'deleteReplayButtonText':('Usuń\n'
                                   'Powtórkę'),
         'myReplaysText':'Moje Powtórki',
@@ -2304,9 +2295,9 @@ values = {
                       'za wykonanie tej możliwości.'),
         'titleText':'Ustawienia Wiimote'
     },
-    'winsPlayerText':'${NAME} Wygrywa!',
-    'winsTeamText':'${NAME} Wygrywają!',
-    'winsText':'${NAME} Wygrywa!',
+    'winsPlayerText':'${NAME} wygrał!',
+    'winsTeamText':'${NAME} wygrali!',
+    'winsText':'${NAME} wygrał!',
     'worldScoresUnavailableText':'Ogólnoświatowe wyniki niedostępne.',
     'worldsBestScoresText':'Najlepsze ogólnoświatowe wyniki',
     'worldsBestTimesText':'Najlepsze ogólnoświatowe czasy',
@@ -2338,7 +2329,7 @@ values = {
                                 'kontrolerów.'),
         'titleText':'Wykorzystywanie kontrolerów Xbox360 w ${APP_NAME}'
     },
-    'yesAllowText':'Dajesz!',
+    'yesAllowText':'Tak, Pozwól!',
     'yourBestScoresText':'Twoje najlepsze wyniki',
     'yourBestTimesText':'Twoje najlepsze czasy'
 }

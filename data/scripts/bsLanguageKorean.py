@@ -2,14 +2,10 @@
 
 values = {
     'accountSettingsWindow':{
-        'accountNameRules':'계정 이름은 이모티콘이나 특수문자를 포함할수 없습니다.',
         'accountProfileText':'계정 프로파일',
         'accountsText':'계정',
         'achievementProgressText':'업적: ${TOTAL} 중 ${COUNT}',
         'campaignProgressText':'캠페인 진행 상황 [어려움]: ${PROGRESS}',
-        'changeOncePerSeason':'한 시즌마다 바꿀수 있습니다.',
-        'changeOncePerSeasonError':'다음 시즌으로 바뀔때까지 (${NUM} 일)기다려야 계정 이름을 바꿀수 있습니다.',
-        'customName':'이름 맞춤설정',
         'linkAccountsEnterCodeText':'코드 입력',
         'linkAccountsGenerateCodeText':'코드 생성',
         'linkAccountsInfoText':'(여러 플랫폼에서 진행 상황을 공유합니다)',
@@ -25,7 +21,6 @@ values = {
                                         '이 작업은 취소할 수 없으므로 주의하세요!'),
         'linkAccountsText':'계정 연동',
         'linkedAccountsText':'연동된 계정',
-        'nameChangeConfirm':'계정이름을 ${NAME}으로 바꾸시겠습니까?',
         'resetProgressConfirmNoAchievementsText':('이 옵션은 협동 모드 진행 상황 및 로컬\n'
                                                   '최고 점수를 초기화합니다 (티켓 제외).\n'
                                                   '이 작업은 취소할 수 없습니다. 괜찮습니까?'),
@@ -34,7 +29,6 @@ values = {
                                     '(티켓 제외). 이 작업은 취소할 수 없습니다.\n'
                                     '괜찮습니까?'),
         'resetProgressText':'진행 상황 초기화',
-        'setAccountName':'계정 이름 설정',
         'signInInfoText':('로그인해서 티켓을 수집하고 온라인으로 겨루며\n'
                           '여러 기기에서 진행 상황을 공유하세요.'),
         'signInText':'로그인',
@@ -54,9 +48,6 @@ values = {
                                   '계정을 다른 기기에서 불러올 수 있습니다).'),
         'ticketsText':'티켓: ${COUNT}',
         'titleText':'계정',
-        'unlinkAccountsInstructionsText':'계정 연동을 해제할 계정을 선택하세요',
-        'unlinkAccountsText':'계정 연동해제',
-        'viaAccount':'(계정 종류 ${NAME})',
         'youAreSignedInAsText':'현재 로그인된 사용자 이름:'
     },
     'achievementChallengesText':'업적 챌린지',
@@ -360,7 +351,6 @@ values = {
     },
     'autoText':'자동',
     'backText':'뒤로',
-    'banThisPlayerText':'이 플레이어를 밴한다',
     'bestOfFinalText':'베스트 ${COUNT} 최종 점수',
     'bestOfSeriesText':'Best of ${COUNT} series:',
     'bestRankText':'귀하의 최고 순위: #${RANK}',
@@ -378,9 +368,6 @@ values = {
     'cancelText':'취소',
     'cantConfigureDeviceText':'죄송합니다만 ${DEVICE}(은)는 구성할 수 없습니다.',
     'challengeEndedText':'이 챌린지는 종료되었습니다.',
-    'chatMuteText':'채팅 음소거',
-    'chatMutedText':'채팅 음소거됨.',
-    'chatUnMuteText':'채팅 음소거 해제',
     'choosingPlayerText':'<플레이어 선택>',
     'completeThisLevelToProceedText':('계속 진행하려면 이 레벨을\n'
                                       '완료해야 합니다!'),
@@ -590,7 +577,6 @@ values = {
     'defaultGameListNameText':'기본 ${PLAYMODE} 플레이 목록',
     'defaultNewGameListNameText':'내 ${PLAYMODE} 플레이 목록',
     'deleteText':'삭제',
-    'demoText':'체험판',
     'denyText':'거부',
     'desktopResText':'데스크톱 해상도',
     'difficultyEasyText':'쉬움',
@@ -780,11 +766,11 @@ values = {
         'friendHasSentPromoCodeText':'${NAME} 님이 ${APP_NAME} 티켓 ${COUNT}장을 보냄',
         'friendPromoCodeAwardText':'코드가 사용될 때마다 귀하는 티켓 ${COUNT}장을 받습니다.',
         'friendPromoCodeExpireText':'이 코드는 ${EXPIRE_HOURS}시간 후 만료되며 신규 플레이어에게만 적용됩니다.',
-        'friendPromoCodeInstructionsText':('사용하려면 ${APP_NAME} 앱을 열고 \'설정->고급->코드 입력\'으로 이동합니다.\n'
+        'friendPromoCodeInstructionsText':('사용하려면 ${APP_NAME} 앱을 열고 \'설정->고급->프로모션 코드 입력\'으로 이동합니다.\n'
                                            '지원되는 모든 플랫폼의 다운로드 링크는 bombsquadgame.com에서 확인하세요.'),
         'friendPromoCodeRedeemLongText':'최대 ${MAX_USES}명의 사람이 무료 티켓 ${COUNT}장과 교환할 수 있습니다.',
         'friendPromoCodeRedeemShortText':'게임에서 티켓 ${COUNT}장과 교환할 수 있습니다.',
-        'friendPromoCodeWhereToEnterText':'(\'설정->고급->코드 입력\')',
+        'friendPromoCodeWhereToEnterText':'(\'설정->고급->프로모션 코드 입력\')',
         'getFriendInviteCodeText':'친구 초대 코드 받기',
         'googlePlayDescriptionText':'Google Play 플레이어들을 파티에 초대하세요.',
         'googlePlayInviteText':'초대',
@@ -1015,7 +1001,7 @@ values = {
         'corruptFileText':'손상된 파일이 검색되었습니다. 다시 설치하거나 ${EMAIL}에 이메일을 보내주십시오',
         'errorPlayingMusicText':'음악 재생 오류: ${MUSIC}',
         'errorResettingAchievementsText':'온라인 업적을 재설정할 수 없습니다. 나중에 다시 시도해주십시오.',
-        'hasMenuControlText':'${NAME} 님이 메뉴 컨트롤을 보유합니다.',
+        'hasMenuControlText':'${NAME} 님이 현재 메뉴 컨트롤을 보유합니다.',
         'incompatibleNewerVersionHostText':('호스트는 게임의 최신버전을 실행중입니다.\n'
                                             '최신버전으로 업데이트 하고 다시 시도해주세요.'),
         'incompatibleVersionHostText':('호스트가 다른 게임 버전을 실행하고 있습니다.\n'
@@ -1250,7 +1236,7 @@ values = {
         'codeText':'코드',
         'enterText':'입력'
     },
-    'promoSubmitErrorText':'코드 제출 오류. 인터넷 연결 상태를 확인하세요',
+    'promoSubmitErrorText':'프로모션 코드 제출 오류. 인터넷 연결 상태를 확인하세요',
     'ps3ControllersWindow':{
         'macInstructionsText':('PS3의 전원을 끄고, 블루투스를 켠 뒤 컨트롤러를 USB로 연결하면 페어링이 됩니다.\n'
                                '그 이후, 컨트롤러의 홈 버튼을 사용하면 유선 모드(USB)와 무선 모드(블루투스)를\n'
@@ -1387,7 +1373,7 @@ values = {
         'benchmarksText':'벤치마크 및 스트레스 테스트',
         'enablePackageModsDescriptionText':'(추가 모드 기능을 활성화하지만 네트워크 플레이를 비활성화합니다)',
         'enablePackageModsText':'로컬 패키지 모드 활성화',
-        'enterPromoCodeText':'코드 입력',
+        'enterPromoCodeText':'프로모션 코드 입력',
         'forTestingText':'참고: 이 값들은 테스트용으로 앱을 종료하면 없어집니다.',
         'helpTranslateText':('${APP_NAME}의 비영어권 번역은 커뮤니티에서 지원된\n'
                              '결과입니다. 공헌하거나 번역을 교정하고 싶으면\n'
@@ -1413,7 +1399,7 @@ values = {
     'shareText':'공유',
     'sharingText':'공유 중...',
     'showText':'표시',
-    'signInForPromoCodeText':'코드가 적용되려면 계정에 로그인해야 합니다.',
+    'signInForPromoCodeText':'프로모션 코드가 적용되려면 계정에 로그인해야 합니다.',
     'signInWithGameCenterText':('Game Center 계정을 이용하려면\n'
                                 'Game Center 앱으로 로그인하세요.'),
     'singleGamePlaylistNameText':'${GAME}만',
@@ -1509,8 +1495,7 @@ values = {
         'teamUpAgainstComputerText':'팀으로 컴퓨터에 맞서세요.'
     },
     'storeText':'상점',
-    'submitText':'제출',
-    'submittingPromoCodeText':'코드 제출 중...',
+    'submittingPromoCodeText':'프로모션 코드 제출 중...',
     'telnetAccessGrantedText':'텔넷 액세스가 활성화됨.',
     'telnetAccessText':'텔넷 액세스가 검색됨, 허용하시겠습니까?',
     'testBuildErrorText':'이 테스트 빌드는 더 이상 유효하지 않습니다. 새 버전을 확인해주십시오.',
@@ -1737,10 +1722,7 @@ values = {
             'A code has already been used on this account.':'코드가 이 계정에 이미 사용되었습니다.',
             'A reward has already been given for that address.':'보상이 이미 지급되었습니다.',
             'Account linking successful!':'계정 연동 성공!',
-            'Account unlinking successful!':'계정 연동 해제 완료!',
             'Accounts are already linked.':'계정들이 이미 연동되었습니다.',
-            'An error has occurred; (${ERROR})':'에러가 발생했습니다; (${ERROR})',
-            'An error has occurred; please contact support. (${ERROR})':'심각한 에러가 발생했습니다.; 지원센터로 연락해주시오. (${ERROR})',
             'An error has occurred; please contact support@froemling.net.':'오류가 발생했습니다. support@froemling.net으로 문의해주십시오.',
             'An error has occurred; please try again later.':'에러가 발생하였습니다; 나중에 다시 시도하여 주시기 바랍니다.',
             ('Are you sure you want to link these accounts?\n'
@@ -1758,7 +1740,7 @@ values = {
             'Can\'t link 2 accounts of this type.':'이 유형의 계정 2개를 연동할 수 없습니다.',
             'Can\'t link 2 diamond league accounts.':'다이아몬드 리그 계정 2개를 연동할 수 없습니다.',
             'Can\'t link; would surpass maximum of ${COUNT} linked accounts.':'연동할 수 없습니다. 최대 연동 계정 수 ${COUNT}(을)를 초과합니다.',
-            'Cheating detected; scores and prizes suspended for ${COUNT} days.':'부정행위 사용이 감지되었습니다. ${COUNT}일 간 점수 및 상품이 중지됩니다.',
+            'Cheating detected; scores and prizes suspended for ${COUNT} days.':'치팅이 발견되었습니다. ${COUNT}일 간 점수 및 상품이 중지됩니다.',
             'Could not establish a secure connection.':'보안 연결을 수립할 수 없습니다.',
             'Daily maximum reached.':'일일 한도에 도달했습니다.',
             'Entering tournament...':'토너먼트에 참가 중...',
@@ -1767,7 +1749,6 @@ values = {
             'Invalid promo code.':'잘못된 프로모션 코드.',
             'Invalid purchase.':'잘못된 구매.',
             'Invalid tournament entry; score will be ignored.':'잘못된 토너먼트 참가. 점수는 무시됩니다.',
-            'Item unlocked!':'아이템 잠금해제!',
             'Max number of playlists reached.':'최대 플레이 목록 수에 도달했습니다.',
             'Max number of profiles reached.':'최대 프로필 수에 도달했습니다.',
             'Maximum friend code rewards reached.':'최대의 친구 코드 보상에 도달했습니다.',
@@ -1805,7 +1786,6 @@ values = {
             'You got a ${ITEM}!':'${ITEM}(을)를 받았습니다!',
             'You have been promoted to a new league; congratulations!':'새 리그로 승격되었습니다. 축하합니다!',
             'You must update to a newer version of the app to do this.':'이 작업을 하려면 새 앱 버전으로 업데이트해야 합니다.',
-            'You must update to the newest version of the game to do this.':'이 작업을 하려면 새로운 게임 버전으로 업데이트해야 합니다.',
             'You must wait a few seconds before entering a new code.':'새 코드를 입력하기 전에 수초 간 기다려야 합니다.',
             'You ranked #${RANK} in the last tournament. Thanks for playing!':'마지막 토너먼트에서 #${RANK}위에 랭크되었습니다. 플레이해주셔서 감사합니다!',
             ('Your copy of the game has been modified.\n'
@@ -2042,7 +2022,6 @@ values = {
                                   '삭제'),
         'myReplaysText':'내 다시 보기',
         'noReplaySelectedErrorText':'선택된 다시 보기 없음',
-        'playbackSpeedText':'재생 속도: ${SPEED}',
         'renameReplayButtonText':('다시 보기\n'
                                   '이름 바꾸기'),
         'renameReplayText':'"${REPLAY}" 이름 변경',

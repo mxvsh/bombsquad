@@ -2,7 +2,7 @@
 
 values = {
     'accountSettingsWindow':{
-        'accountNameRules':'Acoief coej. c woejf. cwoef ocoweofwjfj c wjefowfowef wocjoweff',
+        'accountNameRules':'Acoief coej. c woejf. cwoef ocoweofwjfj c wjefowfowef wocjowef',
         'accountProfileText':'(acczntl prfflzlf)',
         'accountsText':'Acctntzz',
         'achievementProgressText':'Achilfjasdflz: ${COUNT} ouzt of ${TOTAL}',
@@ -661,7 +661,6 @@ values = {
     'defaultNewTeamGameListNameText':'Méz Táam Gézmes',
     'defaultTeamGameListNameText':'Dzéaulzt Tzam Gámzz',
     'deleteText':'Deferf',
-    'demoText':'Dmfwef',
     'denyText':'Dénziy',
     'desktopResText':'Dzlflfjz Rzflz',
     'difficultyEasyText':'Ezrz',
@@ -1318,7 +1317,6 @@ values = {
     'onText':'Ón',
     'onslaughtRespawnText':'${PLAYER} wúll réspawn das wávz ${WAVE}',
     'orText':'${A} orz ${B}',
-    'otherText':'Ofowiejf....',
     'outOfText':'(#${RANK} oút ófz ${ALL})',
     'ownFlagAtYourBaseWarning':('Yoúr owzn flág múst bé\n'
                                 'át yzúr báse tó scóre!'),
@@ -1398,7 +1396,7 @@ values = {
         'codeTextDescription':'Prémsz Crdde',
         'enterText':'Entzzr'
     },
-    'promoSubmitErrorText':'Errór szbmítting códe; chéck yóur ínternét cznnéctión',
+    'promoSubmitErrorText':'Errór szbmítting prúmz códe; chéck yóur ínternét cznnéctión',
     'ps3ControllersWindow':{
         'macInstructionsText':('Swízch zff zhe pzwer zn zhe báck zf yzur PS3, máke sure\n'
                                'Bluezzzzh ís enábled zn yzur Mác, zhen cznnecz yzur cznzrzller\n'
@@ -1575,7 +1573,7 @@ values = {
     'shareText':'Shcwef',
     'sharingText':'Chwoefz..',
     'showText':'Shz',
-    'signInForPromoCodeText':'Yz mst singo in o accnno for cods ot thk weffets.',
+    'signInForPromoCodeText':'Yz mst singo in o accnno for profoifj cods ot thk weffets.',
     'signInWithGameCenterText':('To loci wo gamg wofiw efoiwjef.\n'
                                 'coaej goajb oaj Game foc etapp.'),
     'singleGamePlaylistNameText':'Jzff ${GAME}',
@@ -1604,7 +1602,6 @@ values = {
         'Victory':'Fínal Scóre Scréen'
     },
     'spaceKeyText':'spzz',
-    'statsText':'Sfawfwf',
     'storagePermissionAccessText':'Tho cowefj woiejowefw.',
     'store':{
         'alreadyOwnText':'Yorz alrlfzl wozl ${NAME}!',
@@ -1669,8 +1666,7 @@ values = {
         'teamUpAgainstComputerText':'Tmzls upz agansft thz cmpturzs.'
     },
     'storeText':'Stzlrle',
-    'submitText':'Scowiejfwef',
-    'submittingPromoCodeText':'Subjfoif Cdssz...',
+    'submittingPromoCodeText':'Subjfoif Prmoffz Cdssz...',
     'teamNamesColorText':'Tmcoj Conor/ Coarle...',
     'teamsText':'Tééáémés',
     'telnetAccessGrantedText':'Tzélnt acczzss énazledz.',
@@ -1979,7 +1975,6 @@ values = {
             'Invalid promo code.':'Ivnfjfo pmpwf cdffz.',
             'Invalid purchase.':'Ivnifjf cnwerojf.',
             'Invalid tournament entry; score will be ignored.':'Invoc oic owe fo; co ot coi aingoired.',
-            'Item unlocked!':'Iwerw cowefjwoeijwer!',
             ('LINKING DENIED. ${ACCOUNT} contains\n'
              'significant data that would ALL BE LOST.\n'
              'You can link in the opposite order if you\'d like\n'
@@ -2013,8 +2008,6 @@ values = {
             'This account cannot be unlinked for ${NUM} days.':'Th ow co ref w owjoso o ${NUM} dyafsoef.',
             'This code cannot be used on the account that created it.':'Thiz codf cow oicna weoiw oaijwoefoa sdoausd cjoeri wod.',
             'This requires version ${VERSION} or newer.':'Thif efowjefo f${VERSION} or wofjweor.',
-            'Tournaments disabled due to rooted device.':'Toiwfj woicw few doff our r woiwjeowods.',
-            'Tournaments require ${VERSION} or newer':'Toijfw qojwce ${VERSION} or wcoiwej',
             ('Unlink ${ACCOUNT} from this account?\n'
              'All data on ${ACCOUNT} will be reset.\n'
              '(except for achievements in some cases)'):('Uncljwf ${ACCOUNT} cowed wthosijf?\n'

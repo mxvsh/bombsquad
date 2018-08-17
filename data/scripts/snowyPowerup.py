@@ -83,9 +83,9 @@ def getDefaultPowerupDistribution():
             ('stickyBombs',3),
             ('shield',2),
             ('health',1),
-            ('bunny',2),
+            ('bunny',0),
             ('curse',1),
-            ('snoball',3))
+            ('snoball',0))
 
 class NewPowerup(Powerup):
     def __init__(self,position=(0,1,0),powerupType='tripleBombs',expire=True):

@@ -101,8 +101,7 @@ values = {
         },
         'Dual Wielding':{
             'descriptionFull':'Konektuj 2 kontrolera (hardver ili aplikacija)',
-            'descriptionFullComplete':'Konektovana 2 kontrolera (hardver ili aplikacija)',
-            'name':'Dupla Kontrola'
+            'descriptionFullComplete':'Konektovana 2 kontrolera (hardver ili aplikacija)'
         },
         'Flawless Victory':{
             'description':'Pobijedi bez primljenog udarca',
@@ -113,8 +112,7 @@ values = {
         },
         'Free Loader':{
             'descriptionFull':'Pokreni Svako-Za-Svakog igru sa 2+ igrača',
-            'descriptionFullComplete':'Pokrenuta Svako-Za-Svakog igra sa 2+ igrača',
-            'name':'Vuk Samotnjak'
+            'descriptionFullComplete':'Pokrenuta Svako-Za-Svakog igra sa 2+ igrača'
         },
         'Gold Miner':{
             'description':'Ubij 6 neprijatelja minama',
@@ -405,9 +403,6 @@ values = {
     'cancelText':'Odustani',
     'cantConfigureDeviceText':'Žao mi je, ${DEVICE} nije moguće podesiti.',
     'challengeEndedText':'Ovaj izazov je završio.',
-    'chatMuteText':'Stišaj Chat',
-    'chatMutedText':'Chat Stišan',
-    'chatUnMuteText':'Upali Chat',
     'choosingPlayerText':'<odabir igrača>',
     'completeThisLevelToProceedText':('Moraš završiti ovu\n'
                                       'razinu da nastaviš!'),
@@ -616,7 +611,6 @@ values = {
     'defaultGameListNameText':'Zadana ${PLAYMODE} lista igara',
     'defaultNewGameListNameText':'Moja ${PLAYMODE} lista igara',
     'deleteText':'Izbriši',
-    'demoText':'Demo',
     'denyText':'Odbij',
     'desktopResText':'Desktop rezolucija',
     'difficultyEasyText':'Lagano',
@@ -662,21 +656,15 @@ values = {
         'colorText':'boja',
         'getMoreCharactersText':'Još likova...',
         'getMoreIconsText':'Uzmi više ikonica...',
-        'globalProfileText':'(globalni profil)',
         'highlightText':'pozadina',
         'iconText':'Ikonica',
-        'localProfileInfoText':('Lokalni profili igrača nemaju ikone i njihova imena možda\n'
-                                'nisu jedinstvena. Nadogradi na\n'
-                                'globalni profil\n'
-                                'da rezerviraš jedinstveno ime i prilagođenu ikonu.'),
         'localProfileText':'(Lokalni profil)',
         'nameDescriptionText':'Ime Igrača',
         'nameText':'Ime',
         'randomText':'nasumično',
         'titleEditText':'Uredi Profil',
         'titleNewText':'Novi Profil',
-        'unavailableText':'"${NAME}" nije dosgupan; probaj drugo ime',
-        'upgradeToGlobalProfileText':'Nadogradi na Globalni Profil'
+        'unavailableText':'"${NAME}" nije dosgupan; probaj drugo ime'
     },
     'editSoundtrackWindow':{
         'cantDeleteDefaultText':'Ne možeš izbrisati zadanu glazbenu listu.',
@@ -711,7 +699,6 @@ values = {
         'useMusicFileText':'Glazbena Datoteka (mp3, itd.)',
         'useMusicFolderText':'Mapa s Glazbenim Datotekama'
     },
-    'editText':'Izmjeni',
     'endText':'Kraj',
     'enjoyText':'Uživaj',
     'epicDescriptionFilterText':'${DESCRIPTION} U epskom usporenom filmu.',
@@ -720,11 +707,11 @@ values = {
     'errorOutOfDiskSpaceText':'nema prostora na disku',
     'errorText':'Greška',
     'errorUnknownText':'nepoznata greška',
-    'exitGameText':'Izlaz iz ${APP_NAME}?',
+    'exitGameText':'Izlaz iz BombSquada?',
     'externalStorageText':'Vanjska Pohrana',
     'failText':'Neuspjeh',
     'fatalErrorText':('Uh oh; nešto nedostaje ili je pokvareno. \n'
-                      'Molim pokušaj ponovno instalirati aplikaciju ili\n'
+                      'Molim pokušaj ponovno instalirati BombSquad ili\n'
                       'kontaktiraj ${EMAIL} za pomoć.'),
     'fileSelectorWindow':{
         'titleFileFolderText':'Izaberi Datoteku ili Mapu',
@@ -738,7 +725,7 @@ values = {
     'finishingInstallText':'Dovršavam instalaciju; samo trenutak...',
     'fireTVRemoteWarningText':('* Za bolje iskustvo, koristi\n'
                                'Game Controller ili instaliraj\n'
-                               '\'${REMOTE_APP_NAME}\' aplikaciju na tvoje\n'
+                               '\'BombSquad Remote\' aplikaciju na tvoje\n'
                                'telefone i tablete.'),
     'firstToFinalText':'Prvi do ${COUNT} - konačni rezultat',
     'firstToSeriesText':'Prvi do ${COUNT} - rezultati',

@@ -1554,13 +1554,7 @@ values = {
         'characterNames':{
             'Bernard':'Bernard',
             'Bones':'Bones',
-            'Butch':'Butch',
-            'Easter Bunny':'Påskharen',
-            'Gretel':'Greta',
-            'Pixel':'Pixel',
-            'Santa Claus':'Jultomten',
-            'Snake Shadow':'Ormskugga',
-            'Zoe':'Zoe'
+            'Santa Claus':'Jultomten'
         },
         'coopLevelNames':{
             '${GAME} Training':'${GAME} Övning',
@@ -1593,7 +1587,6 @@ values = {
             'Defeat all enemies.':'Besegra alla fiender.',
             'Dodge the falling bombs.':'Undvik de fallande bomberna.',
             'Final glorious epic slow motion battle to the death.':'Slutlig ärofull episk slow motion dödsstrid.',
-            'Gather eggs!':'Samla ägg!',
             'Get the flag to the enemy end zone.':'Få flaggan till fiendens slutzon.',
             'How fast can you defeat the ninjas?':'Hur fort kan du besegra ninjorna?',
             'Kill a set number of enemies to win.':'Döda ett visst antal fiender för att vinna',
@@ -1645,7 +1638,6 @@ values = {
             'Chosen One':'Den Utvalda',
             'Conquest':'Erövring',
             'Death Match':'Dödsmatch',
-            'Easter Egg Hunt':'Påskäggsjakt',
             'Elimination':'Eliminering',
             'Football':'Fotboll',
             'Hockey':'Hockey',
@@ -1664,7 +1656,6 @@ values = {
             'Keyboard P2':'Tangentbord P2'
         },
         'languages':{
-            'Arabic':'Arabiska',
             'Belarussian':'Vitryska',
             'Chinese':'Kinesiska',
             'Croatian':'Kroatiska',
@@ -1682,16 +1673,12 @@ values = {
             'Italian':'Italienska',
             'Japanese':'Japanska',
             'Korean':'Koreanska',
-            'Persian':'Persiska',
             'Polish':'Polska',
             'Portuguese':'Portugisiska',
             'Romanian':'Rumänska',
             'Russian':'Ryska',
-            'Serbian':'Serbiska',
             'Spanish':'Spanska',
-            'Swedish':'Svenska',
-            'Turkish':'Turkiska',
-            'Ukrainian':'Ukrainska'
+            'Swedish':'Svenska'
         },
         'leagueNames':{
             'Bronze':'Brons',
@@ -1735,10 +1722,6 @@ values = {
         },
         'serverResponses':{
             'A code has already been used on this account.':'En kod har redan använts på det här kontot.',
-            'An error has occurred; (${ERROR})':'Ett fel har uppstått; (${ERROR})',
-            'An error has occurred; please contact support. (${ERROR})':'Ett fel har uppstått, vänligen kontakta kundtjänst. (${ERROR})',
-            'An error has occurred; please contact support@froemling.net.':'Ett fel har uppstått, vänligen kontakta support@froemling.net.',
-            'An error has occurred; please try again later.':'Ett fel har uppstått, försök igen senare.',
             ('Are you sure you want to link these accounts?\n'
              '\n'
              '${ACCOUNT1}\n'
@@ -1750,12 +1733,11 @@ values = {
                                         '${ACCOUNT2}\n'
                                         '\n'
                                         'Detta kan inte ångras!'),
-            'BombSquad Pro unlocked!':'BombSquad Pro upplåst!',
+            'BombSquad Pro unlocked!':'BombSquad Pro olåst!',
             'Cheating detected; scores and prizes suspended for ${COUNT} days.':'Fusk upptäckt; resultat och priser kommer att frysas i ${COUNT} dagar',
             'Daily maximum reached.':'Dagligt maximum nått',
             'Entering tournament...':'Ansluter till turnering...',
             'Invalid code.':'Ogiltig kod',
-            'Invalid payment; purchase canceled.':'Ogiltig betalning, köp avbrutet.',
             'Invalid promo code.':'Ogiltig rabbattkod.',
             'Invalid purchase.':'Ogiltigt köp.',
             'Max number of playlists reached.':'Max antal spellistor nåtts.',
@@ -1770,11 +1752,9 @@ values = {
             'Sorry, this code has already been used.':'Tyvärr, den här koden har redan använts.',
             'Sorry, this code has expired.':'Tyvärr, den här koden har gått ut.',
             'Sorry, this code only works for new accounts.':'Tyvärr, den här koden fungerar bara för nya konton.',
-            'Temporarily unavailable; please try again later.':'Tillfälligt otillgängligt, försök igen senare.',
             'The tournament ended before you finished.':'Turneringen slutade innan ditt resultat togs emot.',
             'This code cannot be used on the account that created it.':'Den här koden kan inte användas i samma konto den skapades i.',
             'This requires version ${VERSION} or newer.':'Detta kräver version ${VERSION} eller senare.',
-            'Tournaments disabled due to rooted device.':'Turnering avbruten på grund av rotad enhet.',
             ('Would you like to link your device account to this one?\n'
              '\n'
              'Your device account is ${ACCOUNT1}\n'
@@ -1793,8 +1773,6 @@ values = {
             'You got ${COUNT} tickets!':'Du fick ${COUNT} värdekuponger!',
             'You got a ${ITEM}!':'Du fick en ${ITEM}!',
             'You have been promoted to a new league; congratulations!':'Du har blivit befordrad till en ny liga; grattis!',
-            'You must update to a newer version of the app to do this.':'Du måste uppdatera till en nyare version av appen för att göra detta.',
-            'You must update to the newest version of the game to do this.':'Du måste uppdatera till den nyaste versionen av appen för att göra detta.',
             'You must wait a few seconds before entering a new code.':'Du måste vänta några sekunder innan du anger en ny kod.',
             'You ranked #${RANK} in the last tournament. Thanks for playing!':'Du rankades #${RANK} i senaste turneringen. Tack för ditt deltagande!',
             ('Your copy of the game has been modified.\n'
@@ -1812,7 +1790,6 @@ values = {
             '4 Seconds':'4 Sekunder',
             '5 Minutes':'5 Minuter',
             '8 Seconds':'8 Sekunder',
-            'Allow Negative Scores':'Tillåt Negativa Resultat',
             'Balance Total Lives':'Balansera totala antalet liv',
             'Chosen One Gets Gloves':'Den Utvalda Får Boxningshandskar',
             'Chosen One Gets Shield':'Den Utvalda Får Sköld',
@@ -1966,7 +1943,7 @@ values = {
         'phrase01Text':'Hejsan!',
         'phrase02Text':'Välkommen till BombSquad!',
         'phrase03Text':'Här kommer några tips för att kontrollera din spelkaraktär:',
-        'phrase04Text':'Mycket i ${APP_NAME} är FYSIK baserade.',
+        'phrase04Text':'Många saker i BombSquad baseras på FYSIK.',
         'phrase05Text':'Till exempel, när du slår,..',
         'phrase06Text':'..skada baseras på hastigheten på dina nävar.',
         'phrase07Text':'Ser du? Vi stod nästan stilla, och gjorde knappt illa ${NAME}.',

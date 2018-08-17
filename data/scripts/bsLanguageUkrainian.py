@@ -605,7 +605,6 @@ values = {
     'defaultGameListNameText':'Стандартний плейлист режиму ${PLAYMODE}',
     'defaultNewGameListNameText':'Мій плейлист ${PLAYMODE}',
     'deleteText':'Видалити',
-    'demoText':'Демо',
     'denyText':'Відхилити',
     'desktopResText':'Розширення екрану',
     'difficultyEasyText':'Легкий',
@@ -1195,7 +1194,6 @@ values = {
     'onText':'Вкл',
     'onslaughtRespawnText':'${PLAYER} відродиться в ${WAVE} хвилі',
     'orText':'${A} або ${B}',
-    'otherText':'Інші...',
     'outOfText':'(${RANK} з ${ALL})',
     'ownFlagAtYourBaseWarning':('Щоб набрати очки, ваш власний\n'
                                 'прапор повинен бути на вашій базі!'),
@@ -1267,7 +1265,7 @@ values = {
         'codeText':'Код',
         'enterText':'Відправити'
     },
-    'promoSubmitErrorText':'Помилка відправки коду, перевірте своє інтернет-з\'єднання',
+    'promoSubmitErrorText':'Помилка надсилання промо-коду, перевірте своє інтернет-з\'єднання',
     'ps3ControllersWindow':{
         'macInstructionsText':('Вимкніть живлення на задній панелі PS3, переконайтеся, що Bluetooth\n'
                                'включений на вашому комп\'ютері, а потім підключіть контролер до Mac\n'
@@ -1433,7 +1431,7 @@ values = {
     'shareText':'Поділитися',
     'sharingText':'Ділимося...',
     'showText':'Показати',
-    'signInForPromoCodeText':'Ви повинні увійти, для активації коду.',
+    'signInForPromoCodeText':'Ви повинні увійти, щоб активувати промокод.',
     'signInWithGameCenterText':('Щоб використовувати аккаунт GameCenter,\n'
                                 'увійдіть через GameCenter.'),
     'singleGamePlaylistNameText':'Просто ${GAME}',
@@ -1462,7 +1460,6 @@ values = {
         'Victory':'Табло фінального рахунку'
     },
     'spaceKeyText':'пробіл',
-    'statsText':'Статистика',
     'storagePermissionAccessText':'Це вимагає доступу до сховища',
     'store':{
         'alreadyOwnText':'У вас вже є ${NAME}!',
@@ -1523,8 +1520,7 @@ values = {
         'teamUpAgainstComputerText':'Команда проти комп\'ютера.'
     },
     'storeText':'Магазин',
-    'submitText':'Відправити',
-    'submittingPromoCodeText':'Активація коду...',
+    'submittingPromoCodeText':'Активація промокоду...',
     'teamNamesColorText':'імена/кольори команд',
     'telnetAccessGrantedText':'Доступ Telnet включений.',
     'telnetAccessText':'Виявлено доступ Telnet. Дозволити?',
@@ -1785,7 +1781,6 @@ values = {
             'Invalid promo code.':'Невірний промокод.',
             'Invalid purchase.':'Помилка транзакції.',
             'Invalid tournament entry; score will be ignored.':'Невірна заявка на турнір; рахунок буде проігнорований.',
-            'Item unlocked!':'Предмет разблоковано!',
             ('LINKING DENIED. ${ACCOUNT} contains\n'
              'significant data that would ALL BE LOST.\n'
              'You can link in the opposite order if you\'d like\n'
@@ -1819,8 +1814,6 @@ values = {
             'This account cannot be unlinked for ${NUM} days.':'Цей обліковий запис неможливо відв\'язати протягом ${NUM} днів.',
             'This code cannot be used on the account that created it.':'Цей код не може бути використаний його творцем.',
             'This requires version ${VERSION} or newer.':'Для цього необхідна версія ${VERSION} або новіша.',
-            'Tournaments disabled due to rooted device.':'Турніри вимкнені через рутований пристрій.',
-            'Tournaments require ${VERSION} or newer':'Для турнірів потрібна версія ${VERSION} або вище.',
             ('Unlink ${ACCOUNT} from this account?\n'
              'All data on ${ACCOUNT} will be reset.\n'
              '(except for achievements in some cases)'):('Відв\'язати ${ACCOUNT} від цього акаунта?\n'

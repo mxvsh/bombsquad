@@ -1,149 +1,34 @@
 {
  "Achievements": {
-  "Boom Goes the Dynamite": {
-   "Complete": false
-  }, 
-  "Boxer": {
-   "Complete": false
-  }, 
-  "Dual Wielding": {
-   "Complete": false
-  }, 
-  "Flawless Victory": {
-   "Complete": false
-  }, 
   "Free Loader": {
    "Complete": true
   }, 
-  "Gold Miner": {
-   "Complete": false
-  }, 
-  "Got the Moves": {
-   "Complete": false
-  }, 
-  "In Control": {
-   "Complete": false
-  }, 
-  "Last Stand God": {
-   "Complete": false
-  }, 
-  "Last Stand Master": {
-   "Complete": false
-  }, 
-  "Last Stand Wizard": {
-   "Complete": false
-  }, 
-  "Mine Games": {
-   "Complete": false
-  }, 
-  "Off You Go Then": {
-   "Complete": false
-  }, 
-  "Onslaught God": {
-   "Complete": false
-  }, 
-  "Onslaught Master": {
-   "Complete": false
-  }, 
-  "Onslaught Training Victory": {
-   "Complete": false
-  }, 
-  "Onslaught Wizard": {
-   "Complete": false
-  }, 
-  "Precision Bombing": {
-   "Complete": false
-  }, 
-  "Pro Boxer": {
-   "Complete": false
-  }, 
-  "Pro Football Shutout": {
-   "Complete": false
-  }, 
-  "Pro Football Victory": {
-   "Complete": false
-  }, 
-  "Pro Onslaught Victory": {
-   "Complete": false
-  }, 
-  "Pro Runaround Victory": {
-   "Complete": false
-  }, 
-  "Rookie Football Shutout": {
-   "Complete": false
-  }, 
-  "Rookie Football Victory": {
-   "Complete": false
-  }, 
-  "Rookie Onslaught Victory": {
-   "Complete": false
-  }, 
-  "Runaround God": {
-   "Complete": false
-  }, 
-  "Runaround Master": {
-   "Complete": false
-  }, 
-  "Runaround Wizard": {
-   "Complete": false
-  }, 
-  "Sharing is Caring": {
-   "Complete": false
-  }, 
-  "Stayin' Alive": {
-   "Complete": false
-  }, 
-  "Super Mega Punch": {
-   "Complete": false
-  }, 
-  "Super Punch": {
-   "Complete": false
-  }, 
-  "TNT Terror": {
-   "Complete": false
-  }, 
   "Team Player": {
    "Complete": true
-  }, 
-  "The Great Wall": {
-   "Complete": false
-  }, 
-  "The Wall": {
-   "Complete": false
-  }, 
-  "Uber Football Shutout": {
-   "Complete": false
-  }, 
-  "Uber Football Victory": {
-   "Complete": false
-  }, 
-  "Uber Onslaught Victory": {
-   "Complete": false
-  }, 
-  "Uber Runaround Victory": {
-   "Complete": false
   }
  }, 
  "Auto Account State": "Server", 
  "Auto Balance Teams": true, 
  "Campaigns": {}, 
  "Default Player Profiles": {
-  "Client Input Device #1": "\u0410\u043b\u0438\u043c\u0445\u0430\u043d", 
-  "Client Input Device #10": "dretroyer27", 
-  "Client Input Device #11": "__account__", 
+  "Client Input Device #1": "__account__", 
+  "Client Input Device #10": "__account__", 
+  "Client Input Device #11": "SINA", 
   "Client Input Device #12": "__account__", 
-  "Client Input Device #13": "Rajpoot ji", 
+  "Client Input Device #13": "__account__", 
+  "Client Input Device #14": "Tarek$", 
   "Client Input Device #15": "__account__", 
   "Client Input Device #16": "__account__", 
   "Client Input Device #17": "termineitor  2", 
   "Client Input Device #18": "__account__", 
   "Client Input Device #2": "__account__", 
   "Client Input Device #3": "__account__", 
-  "Client Input Device #4": "Agente XXX", 
-  "Client Input Device #5": "_random", 
-  "Client Input Device #6": "navid84", 
-  "Client Input Device #8": "Antonio", 
-  "Client Input Device #9": "EMPERATOOR"
+  "Client Input Device #4": "__account__", 
+  "Client Input Device #5": "Vampir", 
+  "Client Input Device #6": "Pingu  noot noot", 
+  "Client Input Device #7": "__account__", 
+  "Client Input Device #8": "__account__", 
+  "Client Input Device #9": "AMIRHOSSEIN\ud83d\ude08\ud83d\ude08"
  }, 
  "Free-for-All Playlist Randomize": true, 
  "Free-for-All Playlist Selection": "__default__", 
@@ -510,7 +395,7 @@
    "_name": "Folder"
   }
  }, 
- "launchCount": 41, 
+ "launchCount": 44, 
  "lc14": 1, 
  "lc14146": 1, 
  "lc14173": 1, 
@@ -1155,7 +1040,7 @@
      }, 
      "version": 1.1
     }, 
-    1534479954.11821
+    1534498396.358053
    ]
   }
  }
