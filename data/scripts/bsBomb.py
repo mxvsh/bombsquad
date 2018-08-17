@@ -298,7 +298,7 @@ class Blast(bs.Actor):
             'radius':self.radius,
             'big':(self.blastType == 'tnt')})
         if self.blastType == "ice":
-            explosion.color = (0.4, 0.5, 1.4)
+            explosion.color = (1.4, 0.5, 0.4)
 
         bs.gameTimer(1000,explosion.delete)
 
@@ -398,14 +398,14 @@ class Blast(bs.Actor):
         light = bs.newNode('light', attrs={
             'position':position,
             'volumeIntensityScale': 10.0,
-            'color': ((1.6, 0.6, 2.0) if self.blastType == 'ice'
-                      else (1, 1.3, 0.1))})
+            'color': ((0.6, 1.6, 2.0) if self.blastType == 'ice'
+                      else (0.6, 1.3, 0.1))})
 
         s = random.uniform(0.6,0.9)
         scorchRadius = lightRadius = self.radius
         if self.blastType == 'tnt':
-            lightRadius *= 4.4
-            scorchRadius *= 4.15
+            lightRadius *= 3.4
+            scorchRadius *= 2.15
             s *= 2.0
 
         iScale = 1.6
@@ -426,7 +426,7 @@ class Blast(bs.Actor):
             'size':scorchRadius*0.5,
             'big':(self.blastType == 'tnt')})
         if self.blastType == 'ice':
-            scorch.color = (0.1,1.4,3.5)
+            scorch.color = (1.1,1.4,3.5)
 
         bsUtils.animate(scorch,"presence",{3000:1, 13000:0})
         bs.gameTimer(13000,scorch.delete)

@@ -128,24 +128,22 @@
  "Auto Balance Teams": true, 
  "Campaigns": {}, 
  "Default Player Profiles": {
-  "Client Input Device #1": "byAnG3L", 
-  "Client Input Device #10": "Elvis", 
-  "Client Input Device #11": "jugoso", 
+  "Client Input Device #1": "\u0410\u043b\u0438\u043c\u0445\u0430\u043d", 
+  "Client Input Device #10": "dretroyer27", 
+  "Client Input Device #11": "__account__", 
   "Client Input Device #12": "__account__", 
-  "Client Input Device #13": "__account__", 
-  "Client Input Device #14": "mateuszin", 
+  "Client Input Device #13": "Rajpoot ji", 
   "Client Input Device #15": "__account__", 
   "Client Input Device #16": "__account__", 
   "Client Input Device #17": "termineitor  2", 
   "Client Input Device #18": "__account__", 
   "Client Input Device #2": "__account__", 
-  "Client Input Device #3": "\u0434\u0436\u0430\u0441", 
-  "Client Input Device #4": "__account__", 
-  "Client Input Device #5": "__account__", 
-  "Client Input Device #6": "Lancelot", 
-  "Client Input Device #7": "\ud83c\udf19Emily", 
-  "Client Input Device #8": "byAnG3L", 
-  "Client Input Device #9": "dogbone\ud83d\ude18\ud83d\ude18\ud83d\ude18"
+  "Client Input Device #3": "__account__", 
+  "Client Input Device #4": "Agente XXX", 
+  "Client Input Device #5": "Aziz", 
+  "Client Input Device #6": "navid84", 
+  "Client Input Device #8": "Antonio", 
+  "Client Input Device #9": "EMPERATOOR"
  }, 
  "Free-for-All Playlist Randomize": true, 
  "Free-for-All Playlist Selection": "__default__", 
@@ -512,7 +510,7 @@
    "_name": "Folder"
   }
  }, 
- "launchCount": 40, 
+ "launchCount": 41, 
  "lc14": 1, 
  "lc14146": 1, 
  "lc14173": 1, 
@@ -1157,7 +1155,7 @@
      }, 
      "version": 1.1
     }, 
-    1534479458.051185
+    1534479954.11821
    ]
   }
  }
