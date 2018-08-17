@@ -1238,7 +1238,7 @@ class TeamBaseSession(bs.Session):
             try:
                 return bs.getConfig()['Team Game Max Players']
             except Exception:
-                return 8
+                return 15
         else:
             try:
                 return bs.getConfig()['Free-for-All Max Players']

@@ -497,7 +497,7 @@ class Session(object):
                  teamColors=[(0.6, 0.2, 1.0)],
                  useTeamColors=True,
                  minPlayers=1,
-                 maxPlayers=8,
+                 maxPlayers=15,
                  allowMidActivityJoins=True):
         """
         Instantiate a session with the provided info about'
@@ -574,7 +574,7 @@ class Session(object):
                     bs.Lstr(
                         resource='playerLimitReachedText',
                         subs=[('${COUNT}', str(self._maxPlayers))]),
-                    color=(0.8, 0.0, 0.0),
+                    color=(0.8, 0.0, 2.0),
                     clients=[player.getInputDevice().getClientID()],
                     transient=True)
                 return False

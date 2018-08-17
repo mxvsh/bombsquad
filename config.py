@@ -3,8 +3,8 @@
 # examples (uncomment to use):
 config['partyName'] = 'XensParty'
 config['sessionType'] = 'teams'
-config['maxPartySize'] = 10
+config['maxPartySize'] = 19
 config['partyIsPublic'] = True
 
 # config['port'] = 43209
-config['playlistCode'] = 195023
+config['playlistCode'] = 195160

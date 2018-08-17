@@ -128,16 +128,24 @@
  "Auto Balance Teams": true, 
  "Campaigns": {}, 
  "Default Player Profiles": {
-  "Client Input Device #1": "__account__", 
-  "Client Input Device #10": "Jack-a-boy", 
-  "Client Input Device #2": "ZOE HR\ud83d\udc8e\ud83d\udc90", 
-  "Client Input Device #3": "__account__", 
+  "Client Input Device #1": "byAnG3L", 
+  "Client Input Device #10": "Elvis", 
+  "Client Input Device #11": "jugoso", 
+  "Client Input Device #12": "__account__", 
+  "Client Input Device #13": "__account__", 
+  "Client Input Device #14": "mateuszin", 
+  "Client Input Device #15": "__account__", 
+  "Client Input Device #16": "__account__", 
+  "Client Input Device #17": "termineitor  2", 
+  "Client Input Device #18": "__account__", 
+  "Client Input Device #2": "__account__", 
+  "Client Input Device #3": "\u0434\u0436\u0430\u0441", 
   "Client Input Device #4": "__account__", 
   "Client Input Device #5": "__account__", 
-  "Client Input Device #6": "__account__", 
-  "Client Input Device #7": "__account__", 
-  "Client Input Device #8": "__account__", 
-  "Client Input Device #9": "Amjad.Hm"
+  "Client Input Device #6": "Lancelot", 
+  "Client Input Device #7": "\ud83c\udf19Emily", 
+  "Client Input Device #8": "rospitravelina:)", 
+  "Client Input Device #9": "dogbone\ud83d\ude18\ud83d\ude18\ud83d\ude18"
  }, 
  "Free-for-All Playlist Randomize": true, 
  "Free-for-All Playlist Selection": "__default__", 
@@ -263,15 +271,6 @@
    }, 
    {
     "settings": {
-     "Respawn Times": 1.0, 
-     "Score to Win": 1, 
-     "Time Limit": 600, 
-     "map": "Hockey Stadium"
-    }, 
-    "type": "bsHockey.HockeyGame"
-   }, 
-   {
-    "settings": {
      "Hold Time": 30, 
      "Respawn Times": 1.0, 
      "Time Limit": 300, 
@@ -281,22 +280,8 @@
    }, 
    {
     "settings": {
-     "Enable Bombs": false, 
-     "Max Mines": 80, 
-     "Mines per Second": 5, 
-     "One-Way Trip": 1, 
-     "Respawn Times": 1.0, 
-     "Score to Win": 1, 
-     "Start Mines": 60, 
-     "Time Limit": 300, 
-     "map": "Football Stadium"
-    }, 
-    "type": "HazardousCargo.HazardousCargo"
-   }, 
-   {
-    "settings": {
-     "Epic Mode": 1, 
-     "KOs to Win Per Player": 7, 
+     "Epic Mode": true, 
+     "KOs to Win Per Player": 6, 
      "Respawn Times": 0.5, 
      "Time Limit": 300, 
      "map": "Football Stadium"
@@ -306,19 +291,19 @@
    {
     "settings": {
      "Balance Total Lives": false, 
-     "Epic Mode": true, 
+     "Epic Mode": 0, 
      "Lives Per Player": 1, 
      "Respawn Times": 1.0, 
-     "Solo Mode": false, 
+     "Solo Mode": 1, 
      "Time Limit": 120, 
-     "map": "Tip Top"
+     "map": "The Pad"
     }, 
     "type": "bsElimination.EliminationGame"
    }, 
    {
     "settings": {
      "Epic Mode": false, 
-     "Respawn Times": 1.0, 
+     "Respawn Times": 0.5, 
      "Score to Win": 3, 
      "Time Limit": 300, 
      "map": "Crag Castle"
@@ -353,15 +338,6 @@
      "map": "Roundabout"
     }, 
     "type": "bsCaptureTheFlag.CTFGame"
-   }, 
-   {
-    "settings": {
-     "Respawn Times": 1.0, 
-     "Score to Win": 21, 
-     "Time Limit": 600, 
-     "map": "Football Stadium"
-    }, 
-    "type": "bsFootball.FootballTeamGame"
    }, 
    {
     "settings": {
@@ -460,9 +436,9 @@
     "settings": {
      "Balance Total Lives": false, 
      "Epic Mode": false, 
-     "Lives Per Player": 3, 
+     "Lives Per Player": 2, 
      "Respawn Times": 1.0, 
-     "Solo Mode": false, 
+     "Solo Mode": 1, 
      "Time Limit": 300, 
      "map": "Crag Castle"
     }, 
@@ -488,6 +464,32 @@
      "map": "Zigzag"
     }, 
     "type": "bsConquest.ConquestGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": 1, 
+     "KOs to Win Per Player": 5, 
+     "Respawn Times": 0.25, 
+     "Time Limit": 300, 
+     "map": "Crag Castle"
+    }, 
+    "type": "boxing.DeathMatchGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Max Bomb Limit": 2.0, 
+     "Time Limit": 300, 
+     "map": "Happy Thoughts"
+    }, 
+    "type": "bomb_on_my_head.BombOnMyHead"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": 1, 
+     "map": "Rampage"
+    }, 
+    "type": "GuessTheBomb.GuessTheBombGame"
    }
   ]
  }, 
@@ -510,7 +512,7 @@
    "_name": "Folder"
   }
  }, 
- "launchCount": 35, 
+ "launchCount": 40, 
  "lc14": 1, 
  "lc14146": 1, 
  "lc14173": 1, 
@@ -1155,7 +1157,7 @@
      }, 
      "version": 1.1
     }, 
-    1534420971.183426
+    1534479458.051185
    ]
   }
  }
