@@ -6,24 +6,27 @@ import bsVector
 
 class PortalFactory(object):
     def __init__(self):
-        self.companionCubeModel = bs.getModel('agentHead')
+        self.companionCubeModel = bs.getModel('tnt')
         self.turretModel = bs.getModel('agentHead')
-        self.turretClosedModel = bs.getModel('agentHead')
-
-        self.badrockModel = bs.getModel('agentHead')
-        #self.stickyCubeModel = bs.getModel('agentHead')
-        self.bubbleGeneratorModel = bs.getModel('agentHead')
-        #self.cakeModel = bs.getModel('agentHead')
-        self.shitModel = bs.getModel('box')
+        self.turretLaser = bs.getModel('agentHead')
+        self.badrockModel = bs.getModel('agentLeg')
+        self.stickyCubeModel = bs.getModel('stickyCube')
+        self.bubbleGeneratorModel = bs.getModel('sphere')
+        self.bubbleGeneratorProModel = bs.getModel('sphere')
+        self.cakeModel = bs.getModel('cakeLowPoly')
         
         
-        #self.cakeTex = bs.getTexture('cake')    
-        self.bubbleGeneratorTex = bs.getTexture('agentHead')
-        self.minecraftTex = bs.getTexture('MinecraftTex')
-        self.companionCubeLitTex = bs.getTexture('companionCubeLit')
-        self.companionCubeTex = bs.getTexture('agentHead')
-        self.weightCubeLitTex = bs.getTexture('weightCubeLit')
-        self.weightCubeTex = bs.getTexture('weightCube')
+        self.cakeTex = bs.getTexture('cake')
+        
+        self.bubbleGeneratorTex = bs.getTexture('cyborgColor')
+        self.bubbleGeneratorProTex = bs.getTexture('ninjaColor')
+        self.minecraftTex = bs.getTexture('bombColor')
+        self.turretTex = bs.getTexture('agentColor')
+        self.companionCubeTex = bs.getTexture('bonesColor')
+        self.weightCubeTex = bs.getTexture('bonesColor')
+        
+        
+        self.bubbleTurbineCollide = bs.getCollideModel('bubbleTurbine')
         
         
         self.activateSound = bs.getSound('activateBeep')
@@ -201,13 +204,13 @@ class Apple(bs.Actor):
         self.node = bs.newNode('prop',
                             delegate=self,
                             attrs={'position':position,
-                                    'model':bs.getModel('agentHead'),
-                                    'lightModel':bs.getModel('agentHead'),
+                                    'model':bs.getModel('apple'),
+                                    'lightModel':bs.getModel('apple'),
                                     'body':'box',
                                     'modelScale':0.8,
                                     'shadowSize':0.5,
                                     'reflection':'soft',
-                                    'colorTexture':bs.getTexture('agentHead'),
+                                    'colorTexture':bs.getTexture('apple'),
                                     'materials':(bs.getSharedObject('footingMaterial'), bs.getSharedObject('objectMaterial'))})
                                     
     def handleMessage(self,m):
@@ -322,12 +325,12 @@ class Shovel(bs.Actor):
         self.node = bs.newNode('prop',
                             delegate=self,
                             attrs={'position':position,
-                                    'model':bs.getModel('agentHead'),
-                                    'lightModel':bs.getModel('agentHead'),
+                                    'model':bs.getModel('shovel'),
+                                    'lightModel':bs.getModel('shovel'),
                                     'body':'landMine',
                                     'shadowSize':0.5,
                                     'reflection':'soft',
-                                    'colorTexture':bs.getTexture('agentHead'),
+                                    'colorTexture':bs.getTexture('shovel'),
                                     'materials':(bs.getSharedObject('footingMaterial'), bs.getSharedObject('objectMaterial'))})
                                     
         m = bs.newNode('math',owner=self.node,attrs={'input1':(1,0,0),'operation':'add'})
@@ -364,15 +367,15 @@ class Nuke(bs.Actor):
         self.node = bs.newNode('prop',
                             delegate=self,
                             attrs={'position':position,
-                                    'model':bs.getModel('agentHead'),
-                                    'lightModel':bs.getModel('agentHead'),
+                                    'model':bs.getModel('nuke'),
+                                    'lightModel':bs.getModel('nuke'),
                                     'body':'box',
                                     'modelScale':1.4,
                                     'bodyScale':1.4,
                                     'shadowSize':0.5,
                                     'reflection':'soft',
                                     'extraAcceleration':(0,10,0),
-                                    'colorTexture':bs.getTexture('agentHead'),
+                                    'colorTexture':bs.getTexture('nuke'),
                                     'materials':(bs.getSharedObject('footingMaterial'), bs.getSharedObject('objectMaterial'),self.impactBlastMaterial)})
                                     
         bs.playSound(bs.getSound('nukeFalling'))
@@ -406,8 +409,8 @@ class Number(bs.Actor):
         self.node = bs.newNode('prop',
                             delegate=self,
                             attrs={'position':position,
-                                    'model':bs.getModel('agentHead') if num == 1 else bs.getModel('agentHead'),
-                                    'lightModel':bs.getModel('agentHead') if num == 1 else bs.getModel('agentHead'),
+                                    'model':bs.getModel('one') if num == 1 else bs.getModel('zero'),
+                                    'lightModel':bs.getModel('one') if num == 1 else bs.getModel('zero'),
                                     'body':'box',
                                     'velocity':velocity,
                                     'modelScale':0.8,
@@ -497,6 +500,36 @@ class Artillery(object):
         bs.gameTimer(700,bs.Call(launchBombDrop))
         bs.gameTimer(900,bs.Call(launchBombDrop))
         bs.gameTimer(1000,bs.Call(launchBombDrop))
+        bs.gameTimer(100,bs.Call(launchBombDrop))
+        bs.gameTimer(300,bs.Call(launchBombDrop))
+        bs.gameTimer(500,bs.Call(launchBombDrop))
+        bs.gameTimer(700,bs.Call(launchBombDrop))
+        bs.gameTimer(900,bs.Call(launchBombDrop))
+        bs.gameTimer(1000,bs.Call(launchBombDrop))
+        bs.gameTimer(100,bs.Call(launchBombDrop))
+        bs.gameTimer(300,bs.Call(launchBombDrop))
+        bs.gameTimer(500,bs.Call(launchBombDrop))
+        bs.gameTimer(700,bs.Call(launchBombDrop))
+        bs.gameTimer(900,bs.Call(launchBombDrop))
+        bs.gameTimer(1000,bs.Call(launchBombDrop))
+        bs.gameTimer(100,bs.Call(launchBombDrop))
+        bs.gameTimer(300,bs.Call(launchBombDrop))
+        bs.gameTimer(500,bs.Call(launchBombDrop))
+        bs.gameTimer(700,bs.Call(launchBombDrop))
+        bs.gameTimer(900,bs.Call(launchBombDrop))
+        bs.gameTimer(1000,bs.Call(launchBombDrop))
+        bs.gameTimer(100,bs.Call(launchBombDrop))
+        bs.gameTimer(300,bs.Call(launchBombDrop))
+        bs.gameTimer(500,bs.Call(launchBombDrop))
+        bs.gameTimer(700,bs.Call(launchBombDrop))
+        bs.gameTimer(900,bs.Call(launchBombDrop))
+        bs.gameTimer(1000,bs.Call(launchBombDrop))
+        bs.gameTimer(100,bs.Call(launchBombDrop))
+        bs.gameTimer(300,bs.Call(launchBombDrop))
+        bs.gameTimer(500,bs.Call(launchBombDrop))
+        bs.gameTimer(700,bs.Call(launchBombDrop))
+        bs.gameTimer(900,bs.Call(launchBombDrop))
+        bs.gameTimer(1000,bs.Call(launchBombDrop)) 
 
     
 class DirtRain(object):
@@ -843,7 +876,7 @@ class BlackHole(bs.Actor):
 
     def touchedSpaz(self):
         node = bs.getCollisionInfo('opposingNode')
-        bs.Blast(position = node.position,blastType = 'agentHead').autoRetain()
+        bs.Blast(position = node.position,blastType = 'turret').autoRetain()
         if node.exists():
             if self.owner.exists():
                 node.handleMessage(bs.HitMessage(magnitude=1000.0,sourcePlayer = self.owner.getDelegate().getPlayer()))
@@ -858,7 +891,7 @@ class BlackHole(bs.Actor):
         
     def touchedObj(self):
         node = bs.getCollisionInfo('opposingNode')
-        bs.Blast(position = node.position,blastType = 'agentHead').autoRetain()
+        bs.Blast(position = node.position,blastType = 'turret').autoRetain()
         if node.exists():
             node.handleMessage(bs.DieMessage())
             
@@ -892,7 +925,7 @@ class BlackHole(bs.Actor):
         elif isinstance(m,BlackHoleMessage):
             print 'ww'
             node = bs.getCollisionInfo('opposingNode')
-            bs.Blast(position = self.position,blastType = 'agentHead').autoRetain()
+            bs.Blast(position = self.position,blastType = 'turret').autoRetain()
             if not node.invincible:
                 node.shattered = 2
 
@@ -906,8 +939,8 @@ class Lego(bs.Actor):
         self.node = bs.newNode('prop',
                             delegate=self,
                             attrs={'position':position,
-                                    'model':bs.getModel('agentHead') if num == 1 else bs.getModel('agentHead') if num == 2 else bs.getModel('agentHead'),
-                                    'lightModel':bs.getModel('agentHead') if num == 1 else bs.getModel('agentHead') if num == 2 else bs.getModel('agentHead'),
+                                    'model':bs.getModel('lego1') if num == 1 else bs.getModel('lego2') if num == 2 else bs.getModel('lego3'),
+                                    'lightModel':bs.getModel('lego1') if num == 1 else bs.getModel('lego2') if num == 2 else bs.getModel('lego3'),
                                     'body':'landMine',
                                     'velocity':velocity,
                                     'modelScale':0.8,
@@ -1048,10 +1081,10 @@ class cCube(bs.Actor):
             self.node.handleMessage("impulse",m.pos[0],m.pos[1],m.pos[2],
                                     m.velocity[0],m.velocity[1],m.velocity[2],
                                     m.magnitude,m.velocityMagnitude,m.radius,0,m.velocity[0],m.velocity[1],m.velocity[2])
-                
+
 
 class bubbleGenerator(bs.Actor):
-    def __init__(self,position=(0,1,0),velocity = (random.random(),random.random(),random.random()),speed = 30,sound = True):
+    def __init__(self,position=(0,1,0),velocity = (random.random(),random.random(),random.random()),speed = 1000,sound = True):
     
         bs.Actor.__init__(self)
         
@@ -1064,7 +1097,8 @@ class bubbleGenerator(bs.Actor):
                                       'model':factory.bubbleGeneratorModel,
                                       'lightModel':factory.bubbleGeneratorModel,
                                       'body':'crate',
-                                      'bodyScale':1.0,
+                                      'bodyScale':2.0,
+                                      'modelScale':2.0,
                                       'shadowSize':0.5,
                                       'colorTexture':factory.bubbleGeneratorTex,
                                       'reflection':'soft',
@@ -1076,7 +1110,7 @@ class bubbleGenerator(bs.Actor):
         self.speed = speed
         if sound:
             bs.playSound(bs.getSound('motor'),position = self.node.position,volume = 0.5)
-        self.idiotizmAHeKOD()
+        self._starterWorker = bs.Timer(10,bs.Call(self.idiotizmAHeKOD))
         self._selfKiller = bs.Timer(26400,bs.Call(self.selfKill))
                                       
     @classmethod
@@ -1097,17 +1131,25 @@ class bubbleGenerator(bs.Actor):
         if isinstance(m,bs.OutOfBoundsMessage):
             if self.node.exists():
                 self.node.delete()
+    
+    @classmethod
+    def getFactory(cls):
+        activity = bs.getActivity()
+        try: return activity._sharedPortalFactory
+        except Exception:
+            f = activity._sharedPortalFactory = PortalFactory()
+            return f
             
     def idiotizmAHeKOD(self):
         self._worker = bs.Timer(self.speed,bs.WeakCall(self.work),repeat = True)
             
     def work(self):
-        Bubble(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = (random.random()*3,random.random()*3,random.random()*3),color = (random.random()+1,random.random()+1,random.random()+1),thrust = (random.random()*6)+19,size = random.random()*0.6).autoRetain()
-        
+        #bs.screenMessage('work')
+        bs.Blast(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = (random.random()*3,random.random()*3,random.random()*3),blastType = 'landMine2',blastRadius = 6,blastColor = (random.random()*2,random.random()*2,random.random()*2)).autoRetain()
         
     def selfKill(self):
-        bs.Blast(position = self.node.position).autoRetain()
-        Bubble(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = (random.random()*5,random.random()*5,random.random()*5),color = (random.random()+0.2,random.random()+0.2,random.random()+0.2),thrust = random.random()*30,size = random.random()*0.6).autoRetain()
+        bs.Blast(position = self.node.position,blastType = 'normal').autoRetain()
+        Bubble(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = (random.random()*5,random.random()*5,random.random()*5)).autoRetain()
         Bubble(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = (random.random()*5,random.random()*5,random.random()*5),color = (random.random()+0.2,random.random()+0.2,random.random()+0.2),thrust = random.random()*30,size = random.random()*0.6).autoRetain()
         Bubble(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = (random.random()*5,random.random()*5,random.random()*5),color = (random.random()+0.2,random.random()+0.2,random.random()+0.2),thrust = random.random()*30,size = random.random()*0.6).autoRetain()
         Bubble(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = (random.random()*5,random.random()*5,random.random()*5),color = (random.random()+0.2,random.random()+0.2,random.random()+0.2),thrust = random.random()*30,size = random.random()*0.6).autoRetain()
@@ -1119,6 +1161,87 @@ class bubbleGenerator(bs.Actor):
         self._motorSound = None
         self._selfKiller = None
         self.node.delete()
+
+class bubbleGeneratorPro(bs.Actor):
+    def __init__(self,position=(0,1,0),velocity = (random.random(),random.random(),random.random()),speed = 200,sound = True):
+    
+        bs.Actor.__init__(self)
+        
+        factory = self.getFactory()
+        
+        self.node = bs.newNode('prop',
+                               delegate=self,
+                               attrs={'position':position,
+                                      'velocity':velocity,
+                                      'model':factory.bubbleGeneratorProModel,
+                                      'lightModel':factory.bubbleGeneratorProModel,
+                                      'body':'crate',
+                                      'bodyScale':2.0,
+                                      'modelScale':2.0,
+                                      'shadowSize':0.5,
+                                      'colorTexture':factory.bubbleGeneratorProTex,
+                                      'reflection':'soft',
+                                      'reflectionScale':[0.23],
+                                      'materials':(factory.impactBlastMaterial,bs.getSharedObject('objectMaterial'))})
+                                      
+
+        
+        self.speed = speed
+        if sound:
+            bs.playSound(bs.getSound('motor'),position = self.node.position,volume = 0.5)
+        self._starterWorker = bs.Timer(10,bs.Call(self.idiotizmAHeKOD))
+        self._selfKiller = bs.Timer(26400,bs.Call(self.selfKill))
+                                      
+    @classmethod
+    def getFactory(cls):
+        """
+        Returns a shared bs.FlagFactory object, creating it if necessary.
+        """
+        activity = bs.getActivity()
+        try: return activity._sharedPortalFactory
+        except Exception:
+            f = activity._sharedPortalFactory = PortalFactory()
+            return f
+                                      
+    def handleMessage(self,m):
+        if isinstance(m,bs.DieMessage):
+            if self.node.exists():
+                self.node.delete()
+        if isinstance(m,bs.OutOfBoundsMessage):
+            if self.node.exists():
+                self.node.delete()
+    
+    @classmethod
+    def getFactory(cls):
+        activity = bs.getActivity()
+        try: return activity._sharedPortalFactory
+        except Exception:
+            f = activity._sharedPortalFactory = PortalFactory()
+            return f
+            
+    def idiotizmAHeKOD(self):
+        self._worker = bs.Timer(self.speed,bs.WeakCall(self.work),repeat = True)
+            
+    def work(self):
+        #bs.screenMessage('work')
+        b = bs.Bomb(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = ((random.randrange(-10,10)),(random.randrange(10,15)),(random.randrange(0,9))),bombType = 'impact').autoRetain()
+        
+    def selfKill(self):
+        bs.Blast(position = self.node.position,blastType = 'normal').autoRetain()
+        Bubble(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = (random.random()*5,random.random()*5,random.random()*5)).autoRetain()
+        Bubble(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = (random.random()*5,random.random()*5,random.random()*5),color = (random.random()+0.2,random.random()+0.2,random.random()+0.2),thrust = random.random()*30,size = random.random()*0.6).autoRetain()
+        Bubble(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = (random.random()*5,random.random()*5,random.random()*5),color = (random.random()+0.2,random.random()+0.2,random.random()+0.2),thrust = random.random()*30,size = random.random()*0.6).autoRetain()
+        Bubble(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = (random.random()*5,random.random()*5,random.random()*5),color = (random.random()+0.2,random.random()+0.2,random.random()+0.2),thrust = random.random()*30,size = random.random()*0.6).autoRetain()
+        Bubble(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = (random.random()*5,random.random()*5,random.random()*5),color = (random.random()+0.2,random.random()+0.2,random.random()+0.2),thrust = random.random()*30,size = random.random()*0.6).autoRetain()
+        Bubble(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = (random.random()*5,random.random()*5,random.random()*5),color = (random.random()+0.2,random.random()+0.2,random.random()+0.2),thrust = random.random()*30,size = random.random()*0.6).autoRetain()
+        Bubble(position = (self.node.position[0]+random.random()*0.3,self.node.position[1]+0.4,self.node.position[2]+random.random()*0.3),velocity = (random.random()*5,random.random()*5,random.random()*5),color = (random.random()+0.2,random.random()+0.2,random.random()+0.2),thrust = random.random()*30,size = random.random()*0.6).autoRetain()
+        self._starterWorker = None
+        self._worker = None
+        self._motorSound = None
+        self._selfKiller = None
+        self.node.delete()                
+
+
                                
                         
 class Bubble(bs.Actor):
@@ -1206,7 +1329,7 @@ class Clay(bs.Actor):
                                delegate=self,
                                attrs={'position':position,
                                       'velocity':velocity,
-                                      'model':bs.getModel("box") if not banana else bs.getModel('agentHead'),
+                                      'model':bs.getModel("box") if not banana else bs.getModel("slice"),
                                       'body':'sphere',
                                       'bodyScale':0.3,
                                       'modelScale':0.15 if not banana else 0.4,
@@ -1309,106 +1432,148 @@ class BadRock(bs.Actor):
 
 
 class Turret(bs.Actor):
-    def __init__(self,position=(0,2,0),velocity = (0,0,0),different = False,hasLaser = True,mute = False):
-        # hasLaser used in older versions
+    def __init__(self,position=(0,2,0),velocity = (0,0,0),different = False,hasLaser = True,alreadyActived = False):
+    
         bs.Actor.__init__(self)
         
-        self.turretModel = bs.getModel('agentHead')
-        self.turretClosedModel = bs.getModel('agentHead')
-        self.turretTex = bs.getTexture('turretTex')
-        self.mute = mute
-        self.turretMaterial = bs.Material()
-        self.turretMaterial.addActions(
-            conditions=(('weAreOlderThan',200),
-                        'and',('theyAreOlderThan',200),
-                        'and',('evalColliding',),
-                        'and',(('theyHaveMaterial',bs.getSharedObject('footingMaterial')),
-                               'or',('theyHaveMaterial',bs.getSharedObject('objectMaterial')))),
-            actions=(('message','ourNode','atConnect',TurretImpactMessage())))
-
-        self.closed = True
-        self.activated = False
-        self.phrase = 1
-        self.different = different
+        factory = self.getFactory()
         
-        self.node = bs.newNode('prop',
+        if hasLaser == True:
+            self.node = bs.newNode('prop',
                                 delegate=self,
                                 attrs={'position':position,
                                         'velocity':velocity,
-                                        'model':self.turretClosedModel,
-                                        'lightModel':self.turretClosedModel,
+                                        'model':factory.turretLaser,
+                                        'lightModel':factory.turretLaser,
                                         'body':'crate',
+                                        'bodyScale':3,
+                                        'modelScale':3,
                                         'shadowSize':0.5,
-                                        'colorTexture':self.turretTex,
+                                        'colorTexture':factory.turretTex,
                                         'reflection':'soft',
                                         'reflectionScale':[0.7],
-                                        'materials':(bs.getSharedObject('footingMaterial'), bs.getSharedObject('objectMaterial'))})
-                                        
-        if not mute and not self.different: # for scene in main menu                               
-            bs.playSound(bs.getSound(random.choice(['turret_activation','turret_autosearch','turret_hi','turret_see_you'])),position = self.node.position)
-                                        
-    def activate(self):
-        if not self.mute:
-            if not self.different:
-                self.openTurret()
-                if not self.activated:
-                    self.activated = True
-                    bs.playSound(bs.getSound(random.choice(['turret_die1','turret_die2','turret_die3'])),position = self.node.position)
-                    def shot():
-                        bs.Blast(position=(self.node.position[0]+random.uniform(-2,2),self.node.position[1]+random.uniform(-0.5,0.5),self.node.position[2]+random.uniform(-2,2)),blastType='agentHead',hitType='punch').autoRetain()
-                    self._shotTimer = bs.Timer(50,bs.Call(shot),repeat = True)
-                    def brokeTimer():
-                        self._shotTimer = None
-                        self.broke()
-                    bs.gameTimer(2000,bs.Call(brokeTimer))
-            
-    def broke(self):
-        def effect():
-            if self.node.exists():
-                bs.emitBGDynamics(position=self.node.position,count=int(2.0+random.random()*40),scale=0.5,spread=0.1,chunkType='spark')
-        self._brokeTimer = bs.Timer(200,bs.Call(effect),repeat = True)
-        self._explodeTimer = bs.Timer(8000,bs.WeakCall(self.explode))
-            
-    def openTurret(self):
-        if self.node.exists():
-            if not self.mute:
-                if self.closed:
-                    self.node.model = self.turretModel
-                    bs.playSound(bs.getSound('servomotor'),position = self.node.position)
-                    self.closed = False
-                
-    def explode(self):
-        if self.node.exists():
-            bs.Blast(position = self.node.position).autoRetain()
-            self._brokeTimer = None
-            self.node.handleMessage(bs.DieMessage())
+                                        'materials':(factory.impactBlastMaterial, bs.getSharedObject('footingMaterial'), bs.getSharedObject('objectMaterial'))})        
 
+        elif hasLaser == False:
+            self.node = bs.newNode('prop',
+                                delegate=self,
+                                attrs={'position':position,
+                                        'velocity':velocity,
+                                        'model':factory.turretModel,
+                                        'lightModel':factory.turretModel,
+                                        'body':'crate',
+                                        'bodyScale':2,
+                                        'shadowSize':0.5,
+                                        'colorTexture':factory.turretTex,
+                                        'reflection':'soft',
+                                        'reflectionScale':[0.7],
+                                        'materials':(factory.impactBlastMaterial, bs.getSharedObject('footingMaterial'), bs.getSharedObject('objectMaterial'))})                                         
+                                      
+        self.phraseNumber = 0    
+        self.dropped = False
+        self.adv = different
+        self.actived = alreadyActived
+                                      
+    @classmethod
+    def getFactory(cls):
+        """
+        Returns a shared bs.FlagFactory object, creating it if necessary.
+        """
+        activity = bs.getActivity()
+        try: return activity._sharedPortalFactory
+        except Exception:
+            f = activity._sharedPortalFactory = PortalFactory()
+            return f
+            
     def handleMessage(self,m):
         if isinstance(m,bs.DieMessage):
             if self.node.exists():
                 self.node.delete()
-        elif isinstance(m,bs.OutOfBoundsMessage):
-            self.node.handleMessage(bs.DieMessage())
-        elif isinstance(m,TurretImpactMessage):
-            if not self.different:
-                self.activate()
-        elif isinstance(m,bs.PickedUpMessage):
-            if not self.different and not self.mute:
-                if not self.activated and not self.mute:
-                    bs.playSound(bs.getSound(random.choice(['turret_pickup1','turret_pickup2','turret_pickup3'])),position = self.node.position)
-                self.openTurret()
+        if isinstance(m,bs.OutOfBoundsMessage):
+            if self.node.exists():
+                self.node.delete()
+        if isinstance(m,bs.PickedUpMessage):
+            if not self.adv == True:
+                if self.dropped == False:
+                    bs.playSound(random.choice([bs.getSound('turret_pickup_1'),bs.getSound('turret_pickup_2'),bs.getSound('turret_pickup_3'),bs.getSound('turret_pickup_4'),bs.getSound('turret_pickup_5'),bs.getSound('turret_pickup_6'),bs.getSound('turret_pickup_7'),bs.getSound('turret_pickup_8'),bs.getSound('turret_pickup_9'),bs.getSound('turret_pickup_10')]),2,position = self.node.position)
             else:
-                print str(self.node.getName()) +' is different'
-                if self.phrase < 12:
-                    bs.playSound(bs.getSound('turret_different_'+str(self.phrase)),position = self.node.position)
-                    self.phrase +=1
-        elif isinstance(m,bs.DroppedMessage):
-            def addMaterial():
-                self.node.materials = self.node.materials + (self.turretMaterial,)
-            bs.gameTimer(50,bs.Call(addMaterial))
-        elif isinstance(m,bs.HitMessage):
-            if not self.different:
-                self.activate()
+                self.differentTurretPhrases()
+        if isinstance(m,bs.DroppedMessage):
+            if not self.actived == True:
+                if not self.adv:
+                    bs.playSound(random.choice([bs.getSound('turret_search_2'),bs.getSound('turret_search_4')]),2,position = self.node.position)
+            self.dropped = True
+            print self.dropped
+        if isinstance(m,ImpactMessage):
+            if self.dropped == True:
+                self.active()       
+        if isinstance(m,bs.HitMessage):
+            if not self.actived == True:
+                self.active()
+        if isinstance(m,bs.HitMessage):
+            if not self.adv:
+                self.active()
+    
+    def differentTurretPhrases(self):
+        self.phraseNumber = self.phraseNumber + 1
+        if self.phraseNumber > 11:
+            self.phraseNumber = 1
+            
+        if self.phraseNumber == 1:
+            bs.playSound(bs.getSound('different_turret01'),1,position = self.node.position)
+        elif self.phraseNumber == 2:
+            bs.playSound(bs.getSound('different_turret02'),1,position = self.node.position)
+        elif self.phraseNumber == 3:
+            bs.playSound(bs.getSound('different_turret03'),1,position = self.node.position)
+        elif self.phraseNumber == 4:
+            bs.playSound(bs.getSound('different_turret04'),1,position = self.node.position)            
+        elif self.phraseNumber == 5:
+            bs.playSound(bs.getSound('different_turret05'),1,position = self.node.position)            
+        elif self.phraseNumber == 6:
+            bs.playSound(bs.getSound('different_turret06'),1,position = self.node.position)            
+        elif self.phraseNumber == 7:
+            bs.playSound(bs.getSound('different_turret07'),1,position = self.node.position)            
+        elif self.phraseNumber == 8:
+            bs.playSound(bs.getSound('different_turret08'),1,position = self.node.position)            
+        elif self.phraseNumber == 9:
+            bs.playSound(bs.getSound('different_turret09'),1,position = self.node.position)            
+        elif self.phraseNumber == 10:
+            bs.playSound(bs.getSound('different_turret10'),1,position = self.node.position)
+        elif self.phraseNumber == 11:
+            bs.playSound(bs.getSound('different_turret11'),1,position = self.node.position)
+
+            
+    def fire(self):
+        if self.node.exists():
+            bs.Blast(position=(self.node.position[0]+random.uniform(-2,2),self.node.position[1]+random.uniform(-0.5,0.5),self.node.position[2]+random.uniform(-2,2)),velocity=(0,0,0),blastRadius=1,blastType="turret",sourcePlayer=None,hitType='punch',hitSubType='normal').autoRetain()
+            
+            
+            
+    def selfkill(self):
+        bs.Blast(position=self.node.position,velocity=(0,0,0),blastRadius=3,blastType="normal",sourcePlayer=None,hitType='punch',hitSubType='normal').autoRetain()
+        bs.emitBGDynamics(position=self.node.position,count=600,scale=0.8,spread=1.5,chunkType='spark');
+        if self.node.exists():
+            self.node.delete()
+            
+    def brokenTurret(self):
+        if self.node.exists():
+            bs.emitBGDynamics(position=self.node.position,count=40,scale=0.5,spread=0.5,chunkType='spark');
+    
+            
+    def stopFire(self):
+        self._fireTimer = None
+        bs.playSound(bs.getSound('turret_fire'),2,position = self.node.position)
+        #self.node.velocity = (random.random()*30,(random.random()*30)+20,random.random()*30)
+
+    def active(self):
+        if self.actived == False:
+            if not self.adv == True:
+                bs.playSound(bs.getSound('turret_fire'),2,position = self.node.position)
+                self._fireTimer = bs.Timer(5,bs.WeakCall(self.fire),repeat = True)
+                self._stopFireTimer = bs.Timer(3000,bs.WeakCall(self.stopFire))                
+                self._brokeEffect = bs.Timer(700,bs.WeakCall(self.brokenTurret),repeat = True)
+                self._selfKillTimer = bs.Timer(8000,bs.WeakCall(self.selfkill))
+                self.actived = True
 
                                       
             
