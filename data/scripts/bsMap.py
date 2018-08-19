@@ -19,14 +19,15 @@ def registerMap(m):
     _maps[m.name] = m
 
 def getFilteredMapName(name):
-    """ filters a map name to account for name changes, etc so old configs still work """
-    # some legacy name fallbacks...
+    """ filters a map name to account for name changes, etc
+    so old configs still work """
+    # some legacy name fallbacks... can remove these eventually
     if name == 'AlwaysLand' or name == 'Happy Land': name = u'Happy Thoughts'
     if name == 'Hockey Arena': name = u'Hockey Stadium'
     return name
 
 def getMapDisplayString(name):
-    return bs.Lstr(translate=('mapsNames',name))
+    return bs.Lstr(translate=('mapsNames', name))
 
 def getMapsSupportingPlayType(playType):
     """
@@ -40,26 +41,27 @@ def getMapsSupportingPlayType(playType):
     
     'melee' - general fighting map - has 2+ 'spawn' pts, 1+ 'powerupSpawn' pts
 
-    'teamFlag' - for CTF, etc - has 2+ 'spawn' pts, 2+ 'flag' pts, and 1+ 'powerupSpawn' pts
+    'teamFlag' - for CTF, etc - has 2+ 'spawn' pts,
+                 2+ 'flag' pts, and 1+ 'powerupSpawn' pts
 
-    'keepAway'- has 2+ 'spawn' pts, 1+ 'flagDefault' pts, and 1+ 'powerupSpawn' pts
+    'keepAway'- has 2+ 'spawn' pts, 1+ 'flagDefault' pts,
+                and 1+ 'powerupSpawn' pts
 
-    'conquest' - has 2+ 'flag' pts, 2+ 'spawnByFlag' pts, and 1+ 'powerupSpawn' pts
+    'conquest' - has 2+ 'flag' pts, 2+ 'spawnByFlag' pts,
+                 and 1+ 'powerupSpawn' pts
 
-    'kingOfTheHill' - has 2+ 'spawn' pts, 1+ 'flagDefault' pts, and 1+ 'powerupSpawn' pts
+    'kingOfTheHill' - has 2+ 'spawn' pts, 1+ 'flagDefault' pts,
+                      and 1+ 'powerupSpawn' pts
 
-    'hockey' - has 2 'goal' pts, 2+ 'spawn' pts, 1+ 'flagDefault' pts, 1+ 'powerupSpawn' pts
+    'hockey' - has 2 'goal' pts, 2+ 'spawn' pts, 1+ 'flagDefault' pts,
+               1+ 'powerupSpawn' pts
 
-    'football' - has 2 'goal' pts, 2+ 'spawn' pts, 1+ 'flagDefault' pts, 1+ 'powerupSpawn' pts
+    'football' - has 2 'goal' pts, 2+ 'spawn' pts, 1+ 'flagDefault' pts,
+                 1+ 'powerupSpawn' pts
     
     'race' - has 2+ 'racePoint' pts
     """
-    
-    # we also want to limit results to maps we own..
-    #unOwnedMaps = _getUnOwnedMaps()
-    #maps = [m[0] for m in _maps.items() if playType in m[1].playTypes and (m[0] not in unOwnedMaps)]
     maps = [m[0] for m in _maps.items() if playType in m[1].playTypes]
-    
     maps.sort()
     return maps
 
@@ -74,7 +76,6 @@ def _getUnOwnedMaps():
                     mInfo = bsUI._getStoreItem(m)
                     unOwnedMaps.add(mInfo['mapType'].name)
     return unOwnedMaps
-    
 
 def getMapClass(name):
     """ return a map type given a name """
@@ -96,23 +97,22 @@ class Map(bs.Actor):
     @classmethod
     def preload(cls,onDemand=False):
         """ Preload map media.
-        This runs the class's onPreload function if need be to get it ready to run.
-        Preloading can be fired for a soon-to-be-needed map to speed its creation.
+        This runs the class's onPreload function if need be to prep it to run.
+        Preloading can be fired for a soon-needed map to speed its creation.
         This is a classmethod since it is not run on map instances but rather on
         the class as a whole before instances are made"""
-
         # store whether we're preloaded in the current activity
         activity = bs.getActivity()
         if activity is None: raise Exception("not in an activity")
         try: preloads = activity._mapPreloadData
         except Exception: preloads = activity._mapPreloadData = {}
-
         if not cls.name in preloads:
             if onDemand:
-                print 'WARNING: map '+cls.name+' was not preloaded; you can reduce hitches by preloading your map.'
+                print 'WARNING: map '+cls.name+(' was not preloaded; you can '
+                                                'reduce hitches by preloading'
+                                                ' your map.')
             preloads[cls.name] = cls.onPreload()
         return preloads[cls.name]
-            #preloads[cls.name] = {}
 
     @classmethod
     def getPreviewTextureName(cls):
@@ -145,57 +145,55 @@ class Map(bs.Actor):
         """
         return None
 
-    def __init__(self,vrOverlayCenterOffset=None):
+    def __init__(self, vrOverlayCenterOffset=None):
         """
         Instantiate a map.
         """
         import bsInternal
         bs.Actor.__init__(self)
-        
         self.preloadData = self.preload(onDemand=True)
-
-        #bsUtils.resetGlobals()
         
         # set some defaults
         bsGlobals = bs.getSharedObject('globals')
-        
+        # area-of-interest bounds
         aoiBounds = self.getDefBoundBox("areaOfInterestBounds")
         if aoiBounds is None:
             print 'WARNING: no "aoiBounds" found for map:',self.getName()
             aoiBounds = (-1,-1,-1,1,1,1)
         bsGlobals.areaOfInterestBounds = aoiBounds
-        
+        # map bounds
         mapBounds = self.getDefBoundBox("levelBounds")
         if mapBounds is None:
             print 'WARNING: no "levelBounds" found for map:',self.getName()
             mapBounds = (-30,-10,-30,30,100,30)
         bsInternal._setMapBounds(mapBounds)
-
-        try: bsGlobals.shadowRange = [self.defs.points[v][1] for v in ['shadowLowerBottom','shadowLowerTop','shadowUpperBottom','shadowUpperTop']]
+        # shadow ranges
+        try: bsGlobals.shadowRange = [
+                self.defs.points[v][1] for v in 
+                ['shadowLowerBottom','shadowLowerTop',
+                 'shadowUpperBottom','shadowUpperTop']]
         except Exception: pass
-
         # in vr, set a fixed point in space for the overlay to show up at..
         # by default we use the bounds center but allow the map to override it
         center = ((aoiBounds[0]+aoiBounds[3])*0.5,
                   (aoiBounds[1]+aoiBounds[4])*0.5,
                   (aoiBounds[2]+aoiBounds[5])*0.5)
-        
         if vrOverlayCenterOffset is not None:
             center = (center[0]+vrOverlayCenterOffset[0],
                       center[1]+vrOverlayCenterOffset[1],
                       center[2]+vrOverlayCenterOffset[2])
-        
         bsGlobals.vrOverlayCenter = center
         bsGlobals.vrOverlayCenterEnabled = True
-        
         self.spawnPoints = self.getDefPoints("spawn") or [(0,0,0,0,0,0)]
         self.ffaSpawnPoints = self.getDefPoints("ffaSpawn") or [(0,0,0,0,0,0)]
-        self.spawnByFlagPoints = self.getDefPoints("spawnByFlag") or [(0,0,0,0,0,0)]
+        self.spawnByFlagPoints = (self.getDefPoints("spawnByFlag")
+                                  or [(0,0,0,0,0,0)])
         self.flagPoints = self.getDefPoints("flag") or [(0,0,0)]
         self.flagPoints = [p[:3] for p in self.flagPoints] # just want points
         self.flagPointDefault = self.getDefPoint("flagDefault") or (0,1,0)
         self.powerupSpawnPoints = self.getDefPoints("powerupSpawn") or [(0,0,0)]
-        self.powerupSpawnPoints = [p[:3] for p in self.powerupSpawnPoints] # just want points
+        self.powerupSpawnPoints = \
+            [p[:3] for p in self.powerupSpawnPoints] # just want points
         self.tntPoints = self.getDefPoints("tnt") or []
         self.tntPoints = [p[:3] for p in self.tntPoints] # just want points
         self.isHockey = False
@@ -249,7 +247,8 @@ class Map(bs.Actor):
         pt = self.spawnPoints[teamIndex%len(self.spawnPoints)]
         xRange = (-0.5,0.5) if pt[3] == 0 else (-pt[3],pt[3])
         zRange = (-0.5,0.5) if pt[5] == 0 else (-pt[5],pt[5])
-        pt = (pt[0]+random.uniform(*xRange),pt[1],pt[2]+random.uniform(*zRange))
+        pt = (pt[0]+random.uniform(*xRange),
+              pt[1], pt[2]+random.uniform(*zRange))
         return pt
 
     def getFFAStartPosition(self,players):
@@ -258,7 +257,6 @@ class Map(bs.Actor):
         If a list of bs.Players is provided; the returned points will be
         as far from these players as possible.
         """
-
         # get positions for existing players
         playerPts = []
         for player in players:
@@ -269,19 +267,21 @@ class Map(bs.Actor):
             except Exception,e:
                 print 'EXC in getFFAStartPosition:',e
 
-
         def _getPt():
             pt = self.ffaSpawnPoints[self._nextFFAStartIndex]
-            self._nextFFAStartIndex = (self._nextFFAStartIndex+1)%len(self.ffaSpawnPoints)
-            xRange = (-0.5,0.5) if pt[3] == 0 else (-pt[3],pt[3])
-            zRange = (-0.5,0.5) if pt[5] == 0 else (-pt[5],pt[5])
-            pt = (pt[0]+random.uniform(*xRange),pt[1],pt[2]+random.uniform(*zRange))
+            self._nextFFAStartIndex = ((self._nextFFAStartIndex+1)
+                                       %len(self.ffaSpawnPoints))
+            xRange = (-0.5, 0.5) if pt[3] == 0 else (-pt[3], pt[3])
+            zRange = (-0.5, 0.5) if pt[5] == 0 else (-pt[5], pt[5])
+            pt = (pt[0]+random.uniform(*xRange), pt[1],
+                  pt[2]+random.uniform(*zRange))
             return pt
 
         if len(playerPts) == 0:
             return _getPt()
         else:
-            # lets calc several start points and then pick whichever is farthest from all existing players
+            # lets calc several start points and then pick whichever is
+            # farthest from all existing players
             farthestPtDist = -1.0
             farthestPt = None
             for i in range(10):
@@ -313,15 +313,11 @@ class Map(bs.Actor):
         if isinstance(msg, bs.DieMessage): self.node.delete()
         else: bs.Actor.handleMessage(self, msg)
 
-
-
 ######### now lets go ahead and register some maps #########
-
 
 class HockeyStadium(Map):
     import hockeyStadiumDefs as defs
     name = "Hockey Stadium"
-
     playTypes = ['melee','hockey','teamFlag','keepAway']
 
     @classmethod
@@ -338,58 +334,173 @@ class HockeyStadium(Map):
         data['collideModel'] = bs.getCollideModel('hockeyStadiumCollide')
         data['tex'] = bs.getTexture('hockeyStadium')
         data['standsTex'] = bs.getTexture('footballStadium')
-
         m = bs.Material()
-        m.addActions(actions=('modifyPartCollision','friction',0.01))
+        m.addActions(actions=('modifyPartCollision', 'friction',0.01))
         data['iceMaterial'] = m
         return data
     
     def __init__(self):
-        Map.__init__(self)
-        self.node = bs.newNode("terrain",
-                               delegate=self,
-                               attrs={'model':self.preloadData['models'][0],
-                                      'collideModel':self.preloadData['collideModel'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial'),self.preloadData['iceMaterial']]})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['vrFillModel'],
-                          'vrOnly':True,
-                          'lighting':False,
-                          'background':True,
-                          'colorTexture':self.preloadData['standsTex']})
-        self.floor = bs.newNode("terrain",
-                                attrs={"model":self.preloadData['models'][1],
-                                       "colorTexture":self.preloadData['tex'],
-                                       "opacity":0.92,
-                                       "opacityInLowOrMediumQuality":1.0,
-                                       "materials":[bs.getSharedObject('footingMaterial'),self.preloadData['iceMaterial']]})
-        self.stands = bs.newNode("terrain",
-                                 attrs={"model":self.preloadData['models'][2],
-                                        "visibleInReflections":False,
-                                        "colorTexture":self.preloadData['standsTex']})
+        Map.__init__(self) # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode("terrain", delegate=self, attrs={
+            'model':self.preloadData['models'][0],
+            'collideModel':self.preloadData['collideModel'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial'),
+                         self.preloadData['iceMaterial']]})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['vrFillModel'],
+            'vrOnly':True,
+            'lighting':False,
+            'background':True,
+            'colorTexture':self.preloadData['standsTex']})
+        self.floor = bs.newNode("terrain", attrs={
+            "model":self.preloadData['models'][1],
+            "colorTexture":self.preloadData['tex'],
+            "opacity":0.92,
+            "opacityInLowOrMediumQuality":1.0,
+            "materials":[bs.getSharedObject('footingMaterial'),
+                         self.preloadData['iceMaterial']]})
+        self.stands = bs.newNode("terrain", attrs={
+            "model":self.preloadData['models'][2],
+            "visibleInReflections":False,
+            "colorTexture":self.preloadData['standsTex']})
         bsGlobals = bs.getSharedObject('globals')
         bsGlobals.floorReflection = True
         bsGlobals.debrisFriction = 0.3
         bsGlobals.debrisKillHeight = -0.3
-
         bsGlobals.tint = (1.2,1.3,1.33)
         bsGlobals.ambientColor = (1.15,1.25,1.6)
         bsGlobals.vignetteOuter = (0.66,0.67,0.73)
         bsGlobals.vignetteInner = (0.93,0.93,0.95)
         bsGlobals.vrCameraOffset = (0,-0.8,-1.1)
         bsGlobals.vrNearClip = 0.5
-
         self.isHockey = True
 
 registerMap(HockeyStadium)
 
-
 class FootballStadium(Map):
     import footballStadiumDefs as defs
     name = "Football Stadium"
-
-    playTypes = ['melee','football','teamFlag','keepAway']
+    playTypes = ['melee', 'football', 'teamFlag', 'keepAway']
 
     @classmethod
     def getPreviewTextureName(cls):
@@ -405,13 +516,131 @@ class FootballStadium(Map):
         return data
 
     def __init__(self):
-        Map.__init__(self)
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'model':self.preloadData['model'],
-                                      'collideModel':self.preloadData['collideModel'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
+        Map.__init__(self) # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'model':self.preloadData['model'],
+            'collideModel':self.preloadData['collideModel'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial')]})
         bs.newNode('terrain',
                    attrs={'model':self.preloadData['vrFillModel'],
                           'lighting':False,
@@ -419,11 +648,11 @@ class FootballStadium(Map):
                           'background':True,
                           'colorTexture':self.preloadData['tex']})
         g = bs.getSharedObject('globals')
-        g.tint = (1.3,1.2,1.0)
-        g.ambientColor = (1.3,1.2,1.0)
-        g.vignetteOuter = (0.57,0.57,0.57)
-        g.vignetteInner = (0.9,0.9,0.9)
-        g.vrCameraOffset = (0,-0.8,-1.1)
+        g.tint = (1.3, 1.2, 1.0)
+        g.ambientColor = (1.3, 1.2, 1.0)
+        g.vignetteOuter = (0.57, 0.57, 0.57)
+        g.vignetteInner = (0.9, 0.9, 0.9)
+        g.vrCameraOffset = (0, -0.8, -1.1)
         g.vrNearClip = 0.5
 
     def _isPointNearEdge(self,p,running=False):
@@ -434,7 +663,6 @@ class FootballStadium(Map):
         return (x < -0.5 or x > 0.5 or z < -0.5 or z > 0.5)
 
 registerMap(FootballStadium)
-
 
 class BridgitMap(Map):
     import bridgitLevelDefs as defs
@@ -456,59 +684,177 @@ class BridgitMap(Map):
         data['tex'] = bs.getTexture("bridgitLevelColor")
         data['modelBGTex'] = bs.getTexture("natureBackgroundColor")
         data['collideBG'] = bs.getCollideModel("natureBackgroundCollide")
-
-        data['railingCollideModel'] = bs.getCollideModel("bridgitLevelRailingCollide")
-    
+        data['railingCollideModel'] = \
+            bs.getCollideModel("bridgitLevelRailingCollide")
         data['bgMaterial'] = bs.Material()
-        data['bgMaterial'].addActions(actions=('modifyPartCollision','friction',10.0))
+        data['bgMaterial'].addActions(actions=('modifyPartCollision',
+                                               'friction', 10.0))
         return data
 
     def __init__(self):
         Map.__init__(self)
-        
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'model':self.preloadData['modelTop'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
-        self.bottom = bs.newNode('terrain',
-                                 attrs={'model':self.preloadData['modelBottom'],
-                                        'lighting':False,
-                                        'colorTexture':self.preloadData['tex']})
-        self.foo = bs.newNode('terrain',
-                              attrs={'model':self.preloadData['modelBG'],
-                                     'lighting':False,
-                                     'background':True,
-                                     'colorTexture':self.preloadData['modelBGTex']})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['bgVRFillModel'],
-                          'lighting':False,
-                          'vrOnly':True,
-                          'background':True,
-                          'colorTexture':self.preloadData['modelBGTex']})
-        self.railing = bs.newNode('terrain',
-                                  attrs={'collideModel':self.preloadData['railingCollideModel'],
-                                         'materials':[bs.getSharedObject('railingMaterial')],
-                                         'bumper':True})
-        self.bgCollide = bs.newNode('terrain',
-                                    attrs={'collideModel':self.preloadData['collideBG'],
-                                           'materials':[bs.getSharedObject('footingMaterial'),
-                                                        self.preloadData['bgMaterial'],
-                                                        bs.getSharedObject('deathMaterial')]})
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'model':self.preloadData['modelTop'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial')]})
+        self.bottom = bs.newNode('terrain', attrs={
+            'model':self.preloadData['modelBottom'],
+            'lighting':False,
+            'colorTexture':self.preloadData['tex']})
+        self.foo = bs.newNode('terrain', attrs={
+            'model':self.preloadData['modelBG'],
+            'lighting':False,
+            'background':True,
+            'colorTexture':self.preloadData['modelBGTex']})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgVRFillModel'],
+            'lighting':False,
+            'vrOnly':True,
+            'background':True,
+            'colorTexture':self.preloadData['modelBGTex']})
+        self.railing = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['railingCollideModel'],
+            'materials':[bs.getSharedObject('railingMaterial')],
+            'bumper':True})
+        self.bgCollide = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['collideBG'],
+            'materials':[bs.getSharedObject('footingMaterial'),
+                         self.preloadData['bgMaterial'],
+                         bs.getSharedObject('deathMaterial')]})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.1,1.2,1.3)
-        bsGlobals.ambientColor = (1.1,1.2,1.3)
-        bsGlobals.vignetteOuter = (0.65,0.6,0.55)
-        bsGlobals.vignetteInner = (0.9,0.9,0.93)
+        bsGlobals.tint = (1.1, 1.2, 1.3)
+        bsGlobals.ambientColor = (1.1, 1.2, 1.3)
+        bsGlobals.vignetteOuter = (0.65, 0.6, 0.55)
+        bsGlobals.vignetteInner = (0.9, 0.9, 0.93)
 
 registerMap(BridgitMap)
-
 
 class BigGMap(Map):
     import bigGDefs as defs
     name = 'Big G'
-    playTypes = ['race','melee','keepAway','teamFlag','kingOfTheHill','conquest']
+    playTypes = ['race', 'melee', 'keepAway', 'teamFlag',
+                 'kingOfTheHill', 'conquest']
 
     @classmethod
     def getPreviewTextureName(cls):
@@ -527,49 +873,170 @@ class BigGMap(Map):
         data['collideBG'] = bs.getCollideModel('natureBackgroundCollide')
         data['bumperCollideModel'] = bs.getCollideModel('bigGBumper')
         data['bgMaterial'] = bs.Material()
-        data['bgMaterial'].addActions(actions=('modifyPartCollision','friction',10.0))
+        data['bgMaterial'].addActions(actions=('modifyPartCollision',
+                                               'friction', 10.0))
         return data
 
     def __init__(self):
         Map.__init__(self)
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'color':(0.7,0.7,0.7),
-                                      'model':self.preloadData['modelTop'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
-        self.bottom = bs.newNode('terrain',
-                                 attrs={'model':self.preloadData['modelBottom'],
-                                        'color':(0.7,0.7,0.7),
-                                        'lighting':False,
-                                        'colorTexture':self.preloadData['tex']})
-        self.foo = bs.newNode('terrain',
-                              attrs={'model':self.preloadData['modelBG'],
-                                     'lighting':False,
-                                     'background':True,
-                                     'colorTexture':self.preloadData['modelBGTex']})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['bgVRFillModel'],
-                          'lighting':False,
-                          'vrOnly':True,
-                          'background':True,
-                          'colorTexture':self.preloadData['modelBGTex']})
-        self.railing = bs.newNode('terrain',
-                                  attrs={'collideModel':self.preloadData['bumperCollideModel'],
-                                         'materials':[bs.getSharedObject('railingMaterial')],
-                                         'bumper':True})
-        self.bgCollide = bs.newNode('terrain',
-                                    attrs={'collideModel':self.preloadData['collideBG'],
-                                           'materials':[bs.getSharedObject('footingMaterial'),self.preloadData['bgMaterial'],bs.getSharedObject('deathMaterial')]})
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'color':(0.7,0.7,0.7),
+            'model':self.preloadData['modelTop'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial')]})
+        self.bottom = bs.newNode('terrain', attrs={
+            'model':self.preloadData['modelBottom'],
+            'color':(0.7,0.7,0.7),
+            'lighting':False,
+            'colorTexture':self.preloadData['tex']})
+        self.foo = bs.newNode('terrain', attrs={
+            'model':self.preloadData['modelBG'],
+            'lighting':False,
+            'background':True,
+            'colorTexture':self.preloadData['modelBGTex']})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgVRFillModel'],
+            'lighting':False,
+            'vrOnly':True,
+            'background':True,
+            'colorTexture':self.preloadData['modelBGTex']})
+        self.railing = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['bumperCollideModel'],
+            'materials':[bs.getSharedObject('railingMaterial')],
+            'bumper':True})
+        self.bgCollide = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['collideBG'],
+            'materials':[bs.getSharedObject('footingMaterial'),
+                         self.preloadData['bgMaterial'],
+                         bs.getSharedObject('deathMaterial')]})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.1,1.2,1.3)
-        bsGlobals.ambientColor = (1.1,1.2,1.3)
-        bsGlobals.vignetteOuter = (0.65,0.6,0.55)
-        bsGlobals.vignetteInner = (0.9,0.9,0.93)
+        bsGlobals.tint = (1.1, 1.2, 1.3)
+        bsGlobals.ambientColor = (1.1, 1.2, 1.3)
+        bsGlobals.vignetteOuter = (0.65, 0.6, 0.55)
+        bsGlobals.vignetteInner = (0.9, 0.9, 0.93)
 
 registerMap(BigGMap)
-
 
 class RoundaboutMap(Map):
     import roundaboutLevelDefs as defs
@@ -591,50 +1058,172 @@ class RoundaboutMap(Map):
         data['tex'] = bs.getTexture('roundaboutLevelColor')
         data['modelBGTex'] = bs.getTexture('natureBackgroundColor')
         data['collideBG'] = bs.getCollideModel('natureBackgroundCollide')
-        data['railingCollideModel'] = bs.getCollideModel('roundaboutLevelBumper')
+        data['railingCollideModel'] = \
+            bs.getCollideModel('roundaboutLevelBumper')
         data['bgMaterial'] = bs.Material()
-        data['bgMaterial'].addActions(actions=('modifyPartCollision','friction',10.0))
+        data['bgMaterial'].addActions(actions=('modifyPartCollision',
+                                               'friction', 10.0))
         return data
     
     def __init__(self):
         Map.__init__(self,vrOverlayCenterOffset=(0,-1,1))
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'model':self.preloadData['model'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
-        self.bottom = bs.newNode('terrain',
-                                 attrs={'model':self.preloadData['modelBottom'],
-                                        'lighting':False,
-                                        'colorTexture':self.preloadData['tex']})
-        self.bg = bs.newNode('terrain',
-                             attrs={'model':self.preloadData['modelBG'],
-                                    'lighting':False,
-                                    'background':True,
-                                    'colorTexture':self.preloadData['modelBGTex']})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['bgVRFillModel'],
-                          'lighting':False,
-                          'vrOnly':True,
-                          'background':True,
-                          'colorTexture':self.preloadData['modelBGTex']})
-        self.bgCollide = bs.newNode('terrain',
-                                    attrs={'collideModel':self.preloadData['collideBG'],
-                                           'materials':[bs.getSharedObject('footingMaterial'),self.preloadData['bgMaterial'],bs.getSharedObject('deathMaterial')]})
-        self.railing = bs.newNode('terrain',
-                                  attrs={'collideModel':self.preloadData['railingCollideModel'],
-                                         'materials':[bs.getSharedObject('railingMaterial')],
-                                         'bumper':True})
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'model':self.preloadData['model'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial')]})
+        self.bottom = bs.newNode('terrain', attrs={
+            'model':self.preloadData['modelBottom'],
+            'lighting':False,
+            'colorTexture':self.preloadData['tex']})
+        self.bg = bs.newNode('terrain', attrs={
+            'model':self.preloadData['modelBG'],
+            'lighting':False,
+            'background':True,
+            'colorTexture':self.preloadData['modelBGTex']})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgVRFillModel'],
+            'lighting':False,
+            'vrOnly':True,
+            'background':True,
+            'colorTexture':self.preloadData['modelBGTex']})
+        self.bgCollide = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['collideBG'],
+            'materials':[bs.getSharedObject('footingMaterial'),
+                         self.preloadData['bgMaterial'],
+                         bs.getSharedObject('deathMaterial')]})
+        self.railing = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['railingCollideModel'],
+            'materials':[bs.getSharedObject('railingMaterial')],
+            'bumper':True})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.0,1.05,1.1)
-        bsGlobals.ambientColor = (1.0,1.05,1.1)
+        bsGlobals.tint = (1.0, 1.05, 1.1)
+        bsGlobals.ambientColor = (1.0, 1.05, 1.1)
         bsGlobals.shadowOrtho = True
-        bsGlobals.vignetteOuter = (0.63,0.65,0.7)
-        bsGlobals.vignetteInner = (0.97,0.95,0.93)
+        bsGlobals.vignetteOuter = (0.63, 0.65, 0.7)
+        bsGlobals.vignetteInner = (0.97, 0.95, 0.93)
 
 registerMap(RoundaboutMap)
-
 
 class MonkeyFaceMap(Map):
     import monkeyFaceLevelDefs as defs
@@ -656,55 +1245,177 @@ class MonkeyFaceMap(Map):
         data['tex'] = bs.getTexture('monkeyFaceLevelColor')
         data['modelBGTex'] = bs.getTexture('natureBackgroundColor')
         data['collideBG'] = bs.getCollideModel('natureBackgroundCollide')
-        data['railingCollideModel'] = bs.getCollideModel('monkeyFaceLevelBumper')
+        data['railingCollideModel'] = \
+            bs.getCollideModel('monkeyFaceLevelBumper')
         data['bgMaterial'] = bs.Material()
-        data['bgMaterial'].addActions(actions=('modifyPartCollision','friction',10.0))
+        data['bgMaterial'].addActions(actions=('modifyPartCollision',
+                                               'friction', 10.0))
         return data
     
     def __init__(self):
         Map.__init__(self)
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'model':self.preloadData['model'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
-        self.bottom = bs.newNode('terrain',
-                                 attrs={'model':self.preloadData['bottomModel'],
-                                        'lighting':False,
-                                        'colorTexture':self.preloadData['tex']})
-        self.foo = bs.newNode('terrain',
-                              attrs={'model':self.preloadData['modelBG'],
-                                     'lighting':False,
-                                     'background':True,
-                                     'colorTexture':self.preloadData['modelBGTex']})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['bgVRFillModel'],
-                          'lighting':False,
-                          'vrOnly':True,
-                          'background':True,
-                          'colorTexture':self.preloadData['modelBGTex']})
-        self.bgCollide = bs.newNode('terrain',
-                                    attrs={'collideModel':self.preloadData['collideBG'],
-                                           'materials':[bs.getSharedObject('footingMaterial'),self.preloadData['bgMaterial'],bs.getSharedObject('deathMaterial')]})
-        self.railing = bs.newNode('terrain',
-                                  attrs={'collideModel':self.preloadData['railingCollideModel'],
-                                         'materials':[bs.getSharedObject('railingMaterial')],
-                                         'bumper':True})
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'model':self.preloadData['model'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial')]})
+        self.bottom = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bottomModel'],
+            'lighting':False,
+            'colorTexture':self.preloadData['tex']})
+        self.foo = bs.newNode('terrain', attrs={
+            'model':self.preloadData['modelBG'],
+            'lighting':False,
+            'background':True,
+            'colorTexture':self.preloadData['modelBGTex']})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgVRFillModel'],
+            'lighting':False,
+            'vrOnly':True,
+            'background':True,
+            'colorTexture':self.preloadData['modelBGTex']})
+        self.bgCollide = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['collideBG'],
+            'materials':[bs.getSharedObject('footingMaterial'),
+                         self.preloadData['bgMaterial'],
+                         bs.getSharedObject('deathMaterial')]})
+        self.railing = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['railingCollideModel'],
+            'materials':[bs.getSharedObject('railingMaterial')],
+            'bumper':True})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.1,1.2,1.2)
-        bsGlobals.ambientColor = (1.2,1.3,1.3)
-        bsGlobals.vignetteOuter = (0.60,0.62,0.66)
-        bsGlobals.vignetteInner = (0.97,0.95,0.93)
-        bsGlobals.vrCameraOffset = (-1.4,0,0)
+        bsGlobals.tint = (1.1, 1.2, 1.2)
+        bsGlobals.ambientColor = (1.2, 1.3, 1.3)
+        bsGlobals.vignetteOuter = (0.60, 0.62, 0.66)
+        bsGlobals.vignetteInner = (0.97, 0.95, 0.93)
+        bsGlobals.vrCameraOffset = (-1.4, 0, 0)
 
 registerMap(MonkeyFaceMap)
-
 
 class ZigZagMap(Map):
     import zigZagLevelDefs as defs
     name = 'Zigzag'
-    playTypes = ['melee','keepAway','teamFlag','conquest','kingOfTheHill']
+    playTypes = ['melee', 'keepAway', 'teamFlag', 'conquest', 'kingOfTheHill']
 
     @classmethod
     def getPreviewTextureName(cls):
@@ -723,47 +1434,168 @@ class ZigZagMap(Map):
         data['collideBG'] = bs.getCollideModel('natureBackgroundCollide')
         data['railingCollideModel'] = bs.getCollideModel('zigZagLevelBumper')
         data['bgMaterial'] = bs.Material()
-        data['bgMaterial'].addActions(actions=('modifyPartCollision','friction',10.0))
+        data['bgMaterial'].addActions(actions=('modifyPartCollision',
+                                               'friction', 10.0))
         return data
     
     def __init__(self):
         Map.__init__(self)
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'model':self.preloadData['model'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
-        self.foo = bs.newNode('terrain',
-                              attrs={'model':self.preloadData['modelBG'],
-                                     'lighting':False,
-                                     'colorTexture':self.preloadData['modelBGTex']})
-        self.bottom = bs.newNode('terrain',
-                                 attrs={'model':self.preloadData['modelBottom'],
-                                        'lighting':False,
-                                        'colorTexture':self.preloadData['tex']})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['bgVRFillModel'],
-                          'lighting':False,
-                          'vrOnly':True,
-                          'background':True,
-                          'colorTexture':self.preloadData['modelBGTex']})
-        self.bgCollide = bs.newNode('terrain',
-                                    attrs={'collideModel':self.preloadData['collideBG'],
-                                           'materials':[bs.getSharedObject('footingMaterial'),self.preloadData['bgMaterial'],bs.getSharedObject('deathMaterial')]})
-        self.railing = bs.newNode('terrain',
-                                  attrs={'collideModel':self.preloadData['railingCollideModel'],
-                                         'materials':[bs.getSharedObject('railingMaterial')],
-                                         'bumper':True})
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'model':self.preloadData['model'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial')]})
+        self.foo = bs.newNode('terrain', attrs={
+            'model':self.preloadData['modelBG'],
+            'lighting':False,
+            'colorTexture':self.preloadData['modelBGTex']})
+        self.bottom = bs.newNode('terrain', attrs={
+            'model':self.preloadData['modelBottom'],
+            'lighting':False,
+            'colorTexture':self.preloadData['tex']})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgVRFillModel'],
+            'lighting':False,
+            'vrOnly':True,
+            'background':True,
+            'colorTexture':self.preloadData['modelBGTex']})
+        self.bgCollide = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['collideBG'],
+            'materials':[bs.getSharedObject('footingMaterial'),
+                         self.preloadData['bgMaterial'],
+                         bs.getSharedObject('deathMaterial')]})
+        self.railing = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['railingCollideModel'],
+            'materials':[bs.getSharedObject('railingMaterial')],
+            'bumper':True})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.0,1.15,1.15)
-        bsGlobals.ambientColor = (1.0,1.15,1.15)
-        bsGlobals.vignetteOuter = (0.57,0.59,0.63)
-        bsGlobals.vignetteInner = (0.97,0.95,0.93)
-        bsGlobals.vrCameraOffset = (-1.5,0,0)
+        bsGlobals.tint = (1.0, 1.15, 1.15)
+        bsGlobals.ambientColor = (1.0, 1.15, 1.15)
+        bsGlobals.vignetteOuter = (0.57, 0.59, 0.63)
+        bsGlobals.vignetteInner = (0.97, 0.95, 0.93)
+        bsGlobals.vrCameraOffset = (-1.5, 0, 0)
 
 registerMap(ZigZagMap)
-
 
 class ThePadMap(Map):
     import thePadLevelDefs as defs
@@ -782,7 +1614,8 @@ class ThePadMap(Map):
         data['collideModel'] = bs.getCollideModel('thePadLevelCollide')
         data['tex'] = bs.getTexture('thePadLevelColor')
         data['bgTex'] = bs.getTexture('menuBG')
-        data['bgModel'] = bs.getModel('thePadBG') # fixme should chop this into vr/non-vr sections
+        # fixme should chop this into vr/non-vr sections for efficiency
+        data['bgModel'] = bs.getModel('thePadBG')
         data['railingCollideModel'] = bs.getCollideModel('thePadLevelBumper')
         data['vrFillMoundModel'] = bs.getModel('thePadVRFillMound')
         data['vrFillMoundTex'] = bs.getTexture('vrFillMound')
@@ -790,45 +1623,163 @@ class ThePadMap(Map):
 
     def __init__(self):
         Map.__init__(self)
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'model':self.preloadData['model'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
-        self.bottom = bs.newNode('terrain',
-                                 attrs={'model':self.preloadData['bottomModel'],
-                                        'lighting':False,
-                                        'colorTexture':self.preloadData['tex']})
-        self.foo = bs.newNode('terrain',
-                              attrs={'model':self.preloadData['bgModel'],
-                                     'lighting':False,
-                                     'background':True,
-                                     'colorTexture':self.preloadData['bgTex']})
-        self.railing = bs.newNode('terrain',
-                                  attrs={'collideModel':self.preloadData['railingCollideModel'],
-                                         'materials':[bs.getSharedObject('railingMaterial')],
-                                         'bumper':True})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['vrFillMoundModel'],
-                          'lighting':False,
-                          'vrOnly':True,
-                          'color':(0.56,0.55,0.47),
-                          'background':True,
-                          'colorTexture':self.preloadData['vrFillMoundTex']})
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'model':self.preloadData['model'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial')]})
+        self.bottom = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bottomModel'],
+            'lighting':False,
+            'colorTexture':self.preloadData['tex']})
+        self.foo = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgModel'],
+            'lighting':False,
+            'background':True,
+            'colorTexture':self.preloadData['bgTex']})
+        self.railing = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['railingCollideModel'],
+            'materials':[bs.getSharedObject('railingMaterial')],
+            'bumper':True})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['vrFillMoundModel'],
+            'lighting':False,
+            'vrOnly':True,
+            'color':(0.56,0.55,0.47),
+            'background':True,
+            'colorTexture':self.preloadData['vrFillMoundTex']})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.1,1.1,1.0)
-        bsGlobals.ambientColor = (1.1,1.1,1.0)
-        bsGlobals.vignetteOuter = (0.7,0.65,0.75)
-        bsGlobals.vignetteInner = (0.95,0.95,0.93)
+        bsGlobals.tint = (1.1, 1.1, 1.0)
+        bsGlobals.ambientColor = (1.1, 1.1, 1.0)
+        bsGlobals.vignetteOuter = (0.7, 0.65, 0.75)
+        bsGlobals.vignetteInner = (0.95, 0.95, 0.93)
 
 registerMap(ThePadMap)
-
 
 class DoomShroomMap(Map):
     import doomShroomLevelDefs as defs
     name = 'Doom Shroom'
-    playTypes = ['melee','keepAway','teamFlag']
+    playTypes = ['melee', 'keepAway', 'teamFlag']
 
     @classmethod
     def getPreviewTextureName(cls):
@@ -849,36 +1800,156 @@ class DoomShroomMap(Map):
     
     def __init__(self):
         Map.__init__(self)
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'model':self.preloadData['model'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
-        self.foo = bs.newNode('terrain',
-                              attrs={'model':self.preloadData['bgModel'],
-                                     'lighting':False,
-                                     'background':True,
-                                     'colorTexture':self.preloadData['bgTex']})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['vrFillModel'],
-                          'lighting':False,
-                          'vrOnly':True,
-                          'background':True,
-                          'colorTexture':self.preloadData['bgTex']})
-        self.stem = bs.newNode('terrain',
-                               attrs={'model':self.preloadData['stemModel'],
-                                      'lighting':False,
-                                      'colorTexture':self.preloadData['tex']})
-        self.bgCollide = bs.newNode('terrain',
-                                    attrs={'collideModel':self.preloadData['collideBG'],
-                                           'materials':[bs.getSharedObject('footingMaterial'),bs.getSharedObject('deathMaterial')]})
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'model':self.preloadData['model'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial')]})
+        self.foo = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgModel'],
+            'lighting':False,
+            'background':True,
+            'colorTexture':self.preloadData['bgTex']})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['vrFillModel'],
+            'lighting':False,
+            'vrOnly':True,
+            'background':True,
+            'colorTexture':self.preloadData['bgTex']})
+        self.stem = bs.newNode('terrain', attrs={
+            'model':self.preloadData['stemModel'],
+            'lighting':False,
+            'colorTexture':self.preloadData['tex']})
+        self.bgCollide = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['collideBG'],
+            'materials':[bs.getSharedObject('footingMaterial'),
+                         bs.getSharedObject('deathMaterial')]})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (0.82,1.10,1.15)
-        bsGlobals.ambientColor = (0.9,1.3,1.1)
+        bsGlobals.tint = (0.82, 1.10, 1.15)
+        bsGlobals.ambientColor = (0.9, 1.3, 1.1)
         bsGlobals.shadowOrtho = False
-        bsGlobals.vignetteOuter = (0.76,0.76,0.76)
-        bsGlobals.vignetteInner = (0.95,0.95,0.99)
+        bsGlobals.vignetteOuter = (0.76, 0.76, 0.76)
+        bsGlobals.vignetteInner = (0.95, 0.95, 0.99)
 
     def _isPointNearEdge(self,p,running=False):
         x = p.x()
@@ -895,7 +1966,7 @@ registerMap(DoomShroomMap)
 class LakeFrigidMap(Map):
     import lakeFrigidDefs as defs
     name = 'Lake Frigid'
-    playTypes = ['melee','keepAway','teamFlag','race']
+    playTypes = ['melee', 'keepAway', 'teamFlag', 'race']
 
     @classmethod
     def getPreviewTextureName(cls):
@@ -910,80 +1981,171 @@ class LakeFrigidMap(Map):
         data['collideModel'] = bs.getCollideModel('lakeFrigidCollide')
         data['tex'] = bs.getTexture('lakeFrigid')
         data['texReflections'] = bs.getTexture('lakeFrigidReflections')
-        #data['bgTex'] = bs.getTexture('lakeFrigidBGColor')
-        #data['bgModel'] = bs.getModel('lakeFrigidBG')
         data['vrFillModel'] = bs.getModel('lakeFrigidVRFill')
         m = bs.Material()
         m.addActions(actions=('modifyPartCollision','friction',0.01))
         data['iceMaterial'] = m
-        
         return data
 
     def __init__(self):
         Map.__init__(self)
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'model':self.preloadData['model'],
-                                      # 'reflection':'soft',
-                                      # 'reflectionScale':[0.65],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial'),self.preloadData['iceMaterial']]})
-        # self.foo = bs.newNode('terrain',
-        #                       attrs={'model':self.preloadData['bgModel'],
-        #                              'lighting':False,
-        #                              'background':True,
-        #                              'colorTexture':self.preloadData['bgTex']})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['modelTop'],
-                          'lighting':False,
-                          'colorTexture':self.preloadData['tex']})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['modelReflections'],
-                          'lighting':False,
-                          'overlay':True,
-                          'opacity':0.15,
-                          'colorTexture':self.preloadData['texReflections']})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['vrFillModel'],
-                          'lighting':False,
-                          'vrOnly':True,
-                          'background':True,
-                          'colorTexture':self.preloadData['tex']})
-        # self.stem = bs.newNode('terrain',
-        #                        attrs={'model':self.preloadData['stemModel'],
-        #                               'lighting':False,
-        #                               'colorTexture':self.preloadData['tex']})
-        # self.bgCollide = bs.newNode('terrain',
-        #                             attrs={'collideModel':self.preloadData['collideBG'],
-        #                                    'materials':[bs.getSharedObject('footingMaterial'),bs.getSharedObject('deathMaterial')]})
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'model':self.preloadData['model'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial'),
+                         self.preloadData['iceMaterial']]})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['modelTop'],
+            'lighting':False,
+            'colorTexture':self.preloadData['tex']})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['modelReflections'],
+            'lighting':False,
+            'overlay':True,
+            'opacity':0.15,
+            'colorTexture':self.preloadData['texReflections']})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['vrFillModel'],
+            'lighting':False,
+            'vrOnly':True,
+            'background':True,
+            'colorTexture':self.preloadData['tex']})
         g = bs.getSharedObject('globals')
-        g.tint = (1,1,1)
-        g.ambientColor = (1,1,1)
+        g.tint = (1, 1, 1)
+        g.ambientColor = (1, 1, 1)
         g.shadowOrtho = True
-        g.vignetteOuter = (0.86,0.86,0.86)
-        g.vignetteInner = (0.95,0.95,0.99)
-
+        g.vignetteOuter = (0.86, 0.86, 0.86)
+        g.vignetteInner = (0.95, 0.95, 0.99)
         g.vrNearClip = 0.5
-        
         self.isHockey = True
-        
-    # def _isPointNearEdge(self,p,running=False):
-    #     x = p.x()
-    #     z = p.z()
-    #     xAdj = x*0.125
-    #     zAdj = (z+3.7)*0.2
-    #     if running:
-    #         xAdj *= 1.4
-    #         zAdj *= 1.4
-    #     return (xAdj*xAdj+zAdj*zAdj > 1.0)
 
 registerMap(LakeFrigidMap)
 
 class TipTopMap(Map):
     import tipTopLevelDefs as defs
     name = 'Tip Top'
-    playTypes = ['melee','keepAway','teamFlag','kingOfTheHill']
+    playTypes = ['melee', 'keepAway', 'teamFlag', 'kingOfTheHill']
 
     @classmethod
     def getPreviewTextureName(cls):
@@ -1003,33 +2165,152 @@ class TipTopMap(Map):
     
     def __init__(self):
         Map.__init__(self,vrOverlayCenterOffset=(0,-0.2,2.5))
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'model':self.preloadData['model'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'color':(0.7,0.7,0.7),
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
-        self.bottom = bs.newNode('terrain',
-                                 attrs={'model':self.preloadData['bottomModel'],
-                                        'lighting':False,
-                                        'color':(0.7,0.7,0.7),
-                                        'colorTexture':self.preloadData['tex']})
-        self.bg = bs.newNode('terrain',
-                             attrs={'model':self.preloadData['bgModel'],
-                                    'lighting':False,
-                                    'color':(0.4,0.4,0.4),
-                                    'background':True,
-                                    'colorTexture':self.preloadData['bgTex']})
-        self.railing = bs.newNode('terrain',
-                                  attrs={'collideModel':self.preloadData['railingCollideModel'],
-                                         'materials':[bs.getSharedObject('railingMaterial')],
-                                         'bumper':True})
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'model':self.preloadData['model'],
+            'colorTexture':self.preloadData['tex'],
+            'color':(0.7,0.7,0.7),
+            'materials':[bs.getSharedObject('footingMaterial')]})
+        self.bottom = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bottomModel'],
+            'lighting':False,
+            'color':(0.7,0.7,0.7),
+            'colorTexture':self.preloadData['tex']})
+        self.bg = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgModel'],
+            'lighting':False,
+            'color':(0.4,0.4,0.4),
+            'background':True,
+            'colorTexture':self.preloadData['bgTex']})
+        self.railing = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['railingCollideModel'],
+            'materials':[bs.getSharedObject('railingMaterial')],
+            'bumper':True})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (0.8,0.9,1.3)
-        bsGlobals.ambientColor = (0.8,0.9,1.3)
-        bsGlobals.vignetteOuter = (0.79,0.79,0.69)
-        bsGlobals.vignetteInner = (0.97,0.97,0.99)
+        bsGlobals.tint = (0.8, 0.9, 1.3)
+        bsGlobals.ambientColor = (0.8, 0.9, 1.3)
+        bsGlobals.vignetteOuter = (0.79, 0.79, 0.69)
+        bsGlobals.vignetteInner = (0.97, 0.97, 0.99)
 
 registerMap(TipTopMap)
 
@@ -1051,57 +2332,176 @@ class CragCastleMap(Map):
         data['collideModel'] = bs.getCollideModel('cragCastleLevelCollide')
         data['tex'] = bs.getTexture('cragCastleLevelColor')
         data['bgTex'] = bs.getTexture('menuBG')
-        data['bgModel'] = bs.getModel('thePadBG') # fixme should chop this into vr/non-vr sections
-        data['railingCollideModel'] = bs.getCollideModel('cragCastleLevelBumper')
+        # fixme should chop this into vr/non-vr sections
+        data['bgModel'] = bs.getModel('thePadBG')
+        data['railingCollideModel'] = \
+            bs.getCollideModel('cragCastleLevelBumper')
         data['vrFillMoundModel'] = bs.getModel('cragCastleVRFillMound')
         data['vrFillMoundTex'] = bs.getTexture('vrFillMound')
         return data
     
     def __init__(self):
         Map.__init__(self)
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'model':self.preloadData['model'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
-        self.bottom = bs.newNode('terrain',
-                                 attrs={'model':self.preloadData['bottomModel'],
-                                        'lighting':False,
-                                        'colorTexture':self.preloadData['tex']})
-        self.bg = bs.newNode('terrain',
-                             attrs={'model':self.preloadData['bgModel'],
-                                    'lighting':False,
-                                    'background':True,
-                                    'colorTexture':self.preloadData['bgTex']})
-        self.railing = bs.newNode('terrain',
-                                  attrs={'collideModel':self.preloadData['railingCollideModel'],
-                                         'materials':[bs.getSharedObject('railingMaterial')],
-                                         'bumper':True})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['vrFillMoundModel'],
-                          'lighting':False,
-                          'vrOnly':True,
-                          'color':(0.2,0.25,0.2),
-                          'background':True,
-                          'colorTexture':self.preloadData['vrFillMoundTex']})
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'model':self.preloadData['model'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial')]})
+        self.bottom = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bottomModel'],
+            'lighting':False,
+            'colorTexture':self.preloadData['tex']})
+        self.bg = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgModel'],
+            'lighting':False,
+            'background':True,
+            'colorTexture':self.preloadData['bgTex']})
+        self.railing = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['railingCollideModel'],
+            'materials':[bs.getSharedObject('railingMaterial')],
+            'bumper':True})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['vrFillMoundModel'],
+            'lighting':False,
+            'vrOnly':True,
+            'color':(0.2,0.25,0.2),
+            'background':True,
+            'colorTexture':self.preloadData['vrFillMoundTex']})
         bsGlobals = bs.getSharedObject('globals')
         bsGlobals.shadowOrtho = True
-        bsGlobals.shadowOffset = (0,0,-5.0)
-        bsGlobals.tint = (1.15,1.05,0.75)
+        bsGlobals.shadowOffset = (0,0, -5.0)
+        bsGlobals.tint = (1.15, 1.05, 0.75)
         bsGlobals.ambientColor = (1.15,1.05,0.75)
-        bsGlobals.vignetteOuter = (0.6,0.65,0.6)
-        bsGlobals.vignetteInner = (0.95,0.95,0.95)
+        bsGlobals.vignetteOuter = (0.6, 0.65, 0.6)
+        bsGlobals.vignetteInner = (0.95, 0.95, 0.95)
         bsGlobals.vrNearClip = 1.0
 
 registerMap(CragCastleMap)
 
-
-
 class TowerDMap(Map):
     import towerDLevelDefs as defs
     name = 'Tower D'
-    playTypes = []
+    playTypes = ['melee','teamflag']
 
     @classmethod
     def getPreviewTextureName(cls):
@@ -1115,10 +2515,12 @@ class TowerDMap(Map):
         data['collideModel'] = bs.getCollideModel('towerDLevelCollide')
         data['tex'] = bs.getTexture('towerDLevelColor')
         data['bgTex'] = bs.getTexture('menuBG')
-        data['bgModel'] = bs.getModel('thePadBG') # fixme: divide this into vr and non-vr parts
+        # fixme should chop this into vr/non-vr sections
+        data['bgModel'] = bs.getModel('thePadBG')
         data['playerWallCollideModel'] = bs.getCollideModel('towerDPlayerWall')
         data['playerWallMaterial'] = bs.Material()
-        data['playerWallMaterial'].addActions(actions=(('modifyPartCollision','friction',0.0)))
+        data['playerWallMaterial'].addActions(actions=(('modifyPartCollision',
+                                                        'friction', 0.0)))
         # anything that needs to hit the wall can apply this material
         data['collideWithWallMaterial'] = bs.Material()
         data['playerWallMaterial'].addActions(
@@ -1130,38 +2532,156 @@ class TowerDMap(Map):
 
     def __init__(self):
         Map.__init__(self,vrOverlayCenterOffset=(0,1,1))
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'model':self.preloadData['model'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
-        self.nodeBottom = bs.newNode('terrain',
-                                     delegate=self,
-                                     attrs={'model':self.preloadData['modelBottom'],
-                                            'lighting':False,
-                                            'colorTexture':self.preloadData['tex']})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['vrFillMoundModel'],
-                          'lighting':False,
-                          'vrOnly':True,
-                          'color':(0.53,0.57,0.5),
-                          'background':True,
-                          'colorTexture':self.preloadData['vrFillMoundTex']})
-        self.bg = bs.newNode('terrain',
-                             attrs={'model':self.preloadData['bgModel'],
-                                    'lighting':False,
-                                    'background':True,
-                                    'colorTexture':self.preloadData['bgTex']})
-        self.playerWall = bs.newNode('terrain',
-                                     attrs={'collideModel':self.preloadData['playerWallCollideModel'],
-                                            'affectBGDynamics':False,
-                                            'materials':[self.preloadData['playerWallMaterial']]})
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'model':self.preloadData['model'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial')]})
+        self.nodeBottom = bs.newNode('terrain', delegate=self, attrs={
+            'model':self.preloadData['modelBottom'],
+            'lighting':False,
+            'colorTexture':self.preloadData['tex']})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['vrFillMoundModel'],
+            'lighting':False,
+            'vrOnly':True,
+            'color':(0.53,0.57,0.5),
+            'background':True,
+            'colorTexture':self.preloadData['vrFillMoundTex']})
+        self.bg = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgModel'],
+            'lighting':False,
+            'background':True,
+            'colorTexture':self.preloadData['bgTex']})
+        self.playerWall = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['playerWallCollideModel'],
+            'affectBGDynamics':False,
+            'materials':[self.preloadData['playerWallMaterial']]})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.15,1.11,1.03)
-        bsGlobals.ambientColor = (1.2,1.1,1.0)
-        bsGlobals.vignetteOuter = (0.7,0.73,0.7)
-        bsGlobals.vignetteInner = (0.95,0.95,0.95)
+        bsGlobals.tint = (1.15, 1.11, 1.03)
+        bsGlobals.ambientColor = (1.2, 1.1, 1.0)
+        bsGlobals.vignetteOuter = (0.7, 0.73, 0.7)
+        bsGlobals.vignetteInner = (0.95, 0.95, 0.95)
 
     def _isPointNearEdge(self,p,running=False):
         # see if we're within edgeBox
@@ -1175,15 +2695,15 @@ class TowerDMap(Map):
         x2 = (p.x() - boxPosition2[0])/boxScale2[0]
         z2 = (p.z() - boxPosition2[2])/boxScale2[2]
         # if we're outside of *both* boxes we're near the edge
-        return (x < -0.5 or x > 0.5 or z < -0.5 or z > 0.5) and (x2 < -0.5 or x2 > 0.5 or z2 < -0.5 or z2 > 0.5)
+        return ((x < -0.5 or x > 0.5 or z < -0.5 or z > 0.5)
+                and (x2 < -0.5 or x2 > 0.5 or z2 < -0.5 or z2 > 0.5))
 
 registerMap(TowerDMap)
-
 
 class AlwaysLandMap(Map):
     import alwaysLandLevelDefs as defs
     name = 'Happy Thoughts'
-    playTypes = ['melee','keepAway','teamFlag','conquest','kingOfTheHill']
+    playTypes = ['melee', 'keepAway', 'teamFlag', 'conquest', 'kingOfTheHill']
 
     @classmethod
     def getPreviewTextureName(cls):
@@ -1208,60 +2728,182 @@ class AlwaysLandMap(Map):
     
     def __init__(self):
         Map.__init__(self,vrOverlayCenterOffset=(0,-3.7,2.5))
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'model':self.preloadData['model'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
-        self.bottom = bs.newNode('terrain',
-                                 attrs={'model':self.preloadData['bottomModel'],
-                                        'lighting':False,
-                                        'colorTexture':self.preloadData['tex']})
-        self.foo = bs.newNode('terrain',
-                              attrs={'model':self.preloadData['bgModel'],
-                                     'lighting':False,
-                                     'background':True,
-                                     'colorTexture':self.preloadData['bgTex']})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['vrFillMoundModel'],
-                          'lighting':False,
-                          'vrOnly':True,
-                          'color':(0.2,0.25,0.2),
-                          'background':True,
-                          'colorTexture':self.preloadData['vrFillMoundTex']})
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'model':self.preloadData['model'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial')]})
+        self.bottom = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bottomModel'],
+            'lighting':False,
+            'colorTexture':self.preloadData['tex']})
+        self.foo = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgModel'],
+            'lighting':False,
+            'background':True,
+            'colorTexture':self.preloadData['bgTex']})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['vrFillMoundModel'],
+            'lighting':False,
+            'vrOnly':True,
+            'color':(0.2,0.25,0.2),
+            'background':True,
+            'colorTexture':self.preloadData['vrFillMoundTex']})
         g = bs.getSharedObject('globals')
         g.happyThoughtsMode = True
-        g.shadowOffset = (0.0,8.0,5.0)
-        g.tint = (1.3,1.23,1.0)
-        g.ambientColor = (1.3,1.23,1.0)
-        g.vignetteOuter = (0.64,0.59,0.69)
-        g.vignetteInner = (0.95,0.95,0.93)
+        g.shadowOffset = (0.0, 8.0, 5.0)
+        g.tint = (1.3, 1.23, 1.0)
+        g.ambientColor = (1.3, 1.23, 1.0)
+        g.vignetteOuter = (0.64, 0.59, 0.69)
+        g.vignetteInner = (0.95, 0.95, 0.93)
         g.vrNearClip = 1.0
         self.isFlying = True
 
         # throw out some tips on flying
-        t = bs.newNode('text',
-                       attrs={'text':bs.Lstr(resource='pressJumpToFlyText'),
-                              'scale':1.2,
-                              'maxWidth':800,
-                              'position':(0,200),
-                              'shadow':0.5,
-                              'flatness':0.5,
-                              'hAlign':'center',
-                              'vAttach':'bottom'})
-        c = bs.newNode('combine',owner=t,attrs={'size':4,'input0':0.3,'input1':0.9,'input2':0.0})
-        bsUtils.animate(c,'input3',{3000:0,4000:1,9000:1,10000:0})
-        c.connectAttr('output',t,'color')
-        bs.gameTimer(10000,t.delete)
+        t = bs.newNode('text', attrs={
+            'text':bs.Lstr(resource='pressJumpToFlyText'),
+            'scale':1.2,
+            'maxWidth':800,
+            'position':(0,200),
+            'shadow':0.5,
+            'flatness':0.5,
+            'hAlign':'center',
+            'vAttach':'bottom'})
+        c = bs.newNode('combine', owner=t, attrs={
+            'size':4,
+            'input0':0.3,
+            'input1':0.9,
+            'input2':0.0})
+        bsUtils.animate(c, 'input3', {3000:0, 4000:1, 9000:1, 10000:0})
+        c.connectAttr('output', t, 'color')
+        bs.gameTimer(10000, t.delete)
         
 registerMap(AlwaysLandMap)
-
 
 class StepRightUpMap(Map):
     import stepRightUpLevelDefs as defs
     name = 'Step Right Up'
-    playTypes = ['melee','keepAway','teamFlag','conquest']
+    playTypes = ['melee', 'keepAway', 'teamFlag', 'conquest']
 
     @classmethod
     def getPreviewTextureName(cls):
@@ -1275,49 +2917,167 @@ class StepRightUpMap(Map):
         data['collideModel'] = bs.getCollideModel('stepRightUpLevelCollide')
         data['tex'] = bs.getTexture('stepRightUpLevelColor')
         data['bgTex'] = bs.getTexture('menuBG')
-        data['bgModel'] = bs.getModel('thePadBG') # fixme should chop this into vr/non-vr chunks
+        # fixme should chop this into vr/non-vr chunks
+        data['bgModel'] = bs.getModel('thePadBG')
         data['vrFillMoundModel'] = bs.getModel('stepRightUpVRFillMound')
         data['vrFillMoundTex'] = bs.getTexture('vrFillMound')
         return data
     
     def __init__(self):
         Map.__init__(self,vrOverlayCenterOffset=(0,-1,2))
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'model':self.preloadData['model'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
-        self.nodeBottom = bs.newNode('terrain',
-                                     delegate=self,
-                                     attrs={'model':self.preloadData['modelBottom'],
-                                            'lighting':False,
-                                            'colorTexture':self.preloadData['tex']})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['vrFillMoundModel'],
-                          'lighting':False,
-                          'vrOnly':True,
-                          'color':(0.53,0.57,0.5),
-                          'background':True,
-                          'colorTexture':self.preloadData['vrFillMoundTex']})
-        self.bg = bs.newNode('terrain',
-                             attrs={'model':self.preloadData['bgModel'],
-                                    'lighting':False,
-                                    'background':True,
-                                    'colorTexture':self.preloadData['bgTex']})
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'model':self.preloadData['model'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial')]})
+        self.nodeBottom = bs.newNode('terrain', delegate=self, attrs={
+            'model':self.preloadData['modelBottom'],
+            'lighting':False,
+            'colorTexture':self.preloadData['tex']})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['vrFillMoundModel'],
+            'lighting':False,
+            'vrOnly':True,
+            'color':(0.53,0.57,0.5),
+            'background':True,
+            'colorTexture':self.preloadData['vrFillMoundTex']})
+        self.bg = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgModel'],
+            'lighting':False,
+            'background':True,
+            'colorTexture':self.preloadData['bgTex']})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.2,1.1,1.0)
-        bsGlobals.ambientColor = (1.2,1.1,1.0)
-        bsGlobals.vignetteOuter = (0.7,0.65,0.75)
-        bsGlobals.vignetteInner = (0.95,0.95,0.93)
+        bsGlobals.tint = (1.2, 1.1, 1.0)
+        bsGlobals.ambientColor = (1.2, 1.1, 1.0)
+        bsGlobals.vignetteOuter = (0.7, 0.65, 0.75)
+        bsGlobals.vignetteInner = (0.95, 0.95, 0.93)
 
 registerMap(StepRightUpMap)
-
 
 class CourtyardMap(Map):
     import courtyardLevelDefs as defs
     name = 'Courtyard'
-    playTypes = ['melee','keepAway','teamFlag']
+    playTypes = ['melee', 'keepAway', 'teamFlag']
 
     @classmethod
     def getPreviewTextureName(cls):
@@ -1331,65 +3091,181 @@ class CourtyardMap(Map):
         data['collideModel'] = bs.getCollideModel('courtyardLevelCollide')
         data['tex'] = bs.getTexture('courtyardLevelColor')
         data['bgTex'] = bs.getTexture('menuBG')
-        data['bgModel'] = bs.getModel('thePadBG') # fixme - chop this into vr and non-vr chunks
-        data['playerWallCollideModel'] = bs.getCollideModel('courtyardPlayerWall')
-    
+        # fixme - chop this into vr and non-vr chunks
+        data['bgModel'] = bs.getModel('thePadBG')
+        data['playerWallCollideModel'] = \
+            bs.getCollideModel('courtyardPlayerWall')
         data['playerWallMaterial'] = bs.Material()
-        data['playerWallMaterial'].addActions(actions=(('modifyPartCollision','friction',0.0)))
-
+        data['playerWallMaterial'].addActions(actions=(('modifyPartCollision',
+                                                        'friction', 0.0)))
         # anything that needs to hit the wall should apply this.
         data['collideWithWallMaterial'] = bs.Material()
         data['playerWallMaterial'].addActions(
-            conditions=('theyDontHaveMaterial',data['collideWithWallMaterial']),
-            actions=('modifyPartCollision','collide',False))
-
+            conditions=('theyDontHaveMaterial',
+                        data['collideWithWallMaterial']),
+            actions=('modifyPartCollision', 'collide', False))
         data['vrFillMoundModel'] = bs.getModel('stepRightUpVRFillMound')
         data['vrFillMoundTex'] = bs.getTexture('vrFillMound')
-        
         return data
 
     def __init__(self):
         Map.__init__(self)
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'model':self.preloadData['model'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
-        self.bg = bs.newNode('terrain',
-                             attrs={'model':self.preloadData['bgModel'],
-                                    'lighting':False,
-                                    'background':True,
-                                    'colorTexture':self.preloadData['bgTex']})
-        self.bottom = bs.newNode('terrain',
-                                 attrs={'model':self.preloadData['modelBottom'],
-                                        'lighting':False,
-                                        'colorTexture':self.preloadData['tex']})
-
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['vrFillMoundModel'],
-                          'lighting':False,
-                          'vrOnly':True,
-                          'color':(0.53,0.57,0.5),
-                          'background':True,
-                          'colorTexture':self.preloadData['vrFillMoundTex']})
-        
-        # in challenge games, put up a wall to prevent players
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'model':self.preloadData['model'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial')]})
+        self.bg = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgModel'],
+            'lighting':False,
+            'background':True,
+            'colorTexture':self.preloadData['bgTex']})
+        self.bottom = bs.newNode('terrain', attrs={
+            'model':self.preloadData['modelBottom'],
+            'lighting':False,
+            'colorTexture':self.preloadData['tex']})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['vrFillMoundModel'],
+            'lighting':False,
+            'vrOnly':True,
+            'color':(0.53,0.57,0.5),
+            'background':True,
+            'colorTexture':self.preloadData['vrFillMoundTex']})
+        # in co-op mode games, put up a wall to prevent players
         # from getting in the turrets (that would foil our brilliant AI)
-        if 'CoopSession' in str(type(bs.getSession())):
-            self.playerWall = bs.newNode('terrain',
-                                         attrs={'collideModel':self.preloadData['playerWallCollideModel'],
-                                                'affectBGDynamics':False,
-                                                'materials':[self.preloadData['playerWallMaterial']]})
+        if isinstance(bs.getSession(), bs.CoopSession):
+            self.playerWall = bs.newNode('terrain', attrs={
+                'collideModel':self.preloadData['playerWallCollideModel'],
+                'affectBGDynamics':False,
+                'materials':[self.preloadData['playerWallMaterial']]})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.2,1.17,1.1)
-        bsGlobals.ambientColor = (1.2,1.17,1.1)
-        bsGlobals.vignetteOuter = (0.6,0.6,0.64)
-        bsGlobals.vignetteInner = (0.95,0.95,0.93)
+        bsGlobals.tint = (1.2, 1.17, 1.1)
+        bsGlobals.ambientColor = (1.2, 1.17, 1.1)
+        bsGlobals.vignetteOuter = (0.6, 0.6, 0.64)
+        bsGlobals.vignetteInner = (0.95, 0.95, 0.93)
 
-    def _isPointNearEdge(self,p,running=False):
+    def _isPointNearEdge(self, p, running=False):
         # count anything off our ground level as safe (for our platforms)
-        #if p.y() > 3.1: return False
         # see if we're within edgeBox
         boxPosition = self.defs.boxes['edgeBox'][0:3]
         boxScale = self.defs.boxes['edgeBox'][6:9]
@@ -1399,11 +3275,10 @@ class CourtyardMap(Map):
 
 registerMap(CourtyardMap)
 
-
 class RampageMap(Map):
     import rampageLevelDefs as defs
     name = 'Rampage'
-    playTypes = ['melee','keepAway','teamFlag']
+    playTypes = ['melee', 'keepAway', 'teamFlag']
 
     @classmethod
     def getPreviewTextureName(cls):
@@ -1425,42 +3300,161 @@ class RampageMap(Map):
         return data
     
     def __init__(self):
-        Map.__init__(self,vrOverlayCenterOffset=(0,0,2))
-        self.node = bs.newNode('terrain',
-                               delegate=self,
-                               attrs={'collideModel':self.preloadData['collideModel'],
-                                      'model':self.preloadData['model'],
-                                      'colorTexture':self.preloadData['tex'],
-                                      'materials':[bs.getSharedObject('footingMaterial')]})
-        self.bg = bs.newNode('terrain',
-                             attrs={'model':self.preloadData['bgModel'],
-                                    'lighting':False,
-                                    'background':True,
-                                    'colorTexture':self.preloadData['bgTex']})
-        self.bottom = bs.newNode('terrain',
-                                 attrs={'model':self.preloadData['bottomModel'],
-                                        'lighting':False,
-                                        'colorTexture':self.preloadData['tex']})
-        self.bg2 = bs.newNode('terrain',
-                              attrs={'model':self.preloadData['bgModel2'],
-                                     'lighting':False,
-                                     'background':True,
-                                     'colorTexture':self.preloadData['bgTex2']})
-        bs.newNode('terrain',
-                   attrs={'model':self.preloadData['vrFillModel'],
-                          'lighting':False,
-                          'vrOnly':True,
-                          'background':True,
-                          'colorTexture':self.preloadData['bgTex2']})
-        self.railing = bs.newNode('terrain',
-                                  attrs={'collideModel':self.preloadData['railingCollideModel'],
-                                         'materials':[bs.getSharedObject('railingMaterial')],
-                                         'bumper':True})
+        Map.__init__(self, vrOverlayCenterOffset=(0,0,2))
+ # #######t0#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Welcome To Xen\'s Server\ue043',
+                              'scale':1.2,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{500:0,1000:1,4000:1,4500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(4500,t.delete)
+         # #######t1####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                              'scale':0.8,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{5000:0,5500:1,9000:1,9500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(9500,t.delete)
+         # #####t2####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue046Do Not Ask For\ue046\nADMINSHIP',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{10000:0,10500:1,14000:1,14500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(14500,t.delete)
+         # #######t3####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue047Report Any Irresponaible Admin With SS\nTo @XensParty In Telegram\ue047',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{15000:0,15500:1,19000:1,19500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(19500,t.delete)
+         # ####t4#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Asking For Adminships Can Get You BANNED\ue043',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{20000:0,20500:1,25000:1,25500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(25500,t.delete)
+         ####t5#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                              'scale':0.9,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{26500:0,27000:1,34000:1,34500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(34500,t.delete)
+           # #####t6####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue048Need Help For Your Server\ue048\nCONTACT In Telegram',
+                              'scale':1.0,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{35000:0,35500:1,39000:1,39500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(39500,t.delete)
+         #####t7#####
+        t = bs.newNode('text',
+                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                              'scale':0.7,
+                              'maxWidth':0,
+                              'position':(0,170),
+                              'shadow':0.5,
+                              'color':(1,1,0),
+                              'flatness':0.5,
+                              'hAlign':'center',
+                              'vAttach':'bottom'})
+        c = bs.newNode('combine',owner=t,attrs={'text':'hmm','size':4,'input0':0.3,'input1':0.9,'input2':0.0})
+        bsUtils.animate(c,'input3',{42000:0,42500:1,50000:1,50500:0})
+        c.connectAttr('output',t,'color')
+        bs.gameTimer(50500,t.delete)
+        self.node = bs.newNode('terrain', delegate=self, attrs={
+            'collideModel':self.preloadData['collideModel'],
+            'model':self.preloadData['model'],
+            'colorTexture':self.preloadData['tex'],
+            'materials':[bs.getSharedObject('footingMaterial')]})
+        self.bg = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgModel'],
+            'lighting':False,
+            'background':True,
+            'colorTexture':self.preloadData['bgTex']})
+        self.bottom = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bottomModel'],
+            'lighting':False,
+            'colorTexture':self.preloadData['tex']})
+        self.bg2 = bs.newNode('terrain', attrs={
+            'model':self.preloadData['bgModel2'],
+            'lighting':False,
+            'background':True,
+            'colorTexture':self.preloadData['bgTex2']})
+        bs.newNode('terrain', attrs={
+            'model':self.preloadData['vrFillModel'],
+            'lighting':False,
+            'vrOnly':True,
+            'background':True,
+            'colorTexture':self.preloadData['bgTex2']})
+        self.railing = bs.newNode('terrain', attrs={
+            'collideModel':self.preloadData['railingCollideModel'],
+            'materials':[bs.getSharedObject('railingMaterial')],
+            'bumper':True})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.2,1.1,0.97)
-        bsGlobals.ambientColor = (1.3,1.2,1.03)
-        bsGlobals.vignetteOuter = (0.62,0.64,0.69)
-        bsGlobals.vignetteInner = (0.97,0.95,0.93)
+        bsGlobals.tint = (1.2, 1.1, 0.97)
+        bsGlobals.ambientColor = (1.3, 1.2, 1.03)
+        bsGlobals.vignetteOuter = (0.62, 0.64, 0.69)
+        bsGlobals.vignetteInner = (0.97, 0.95, 0.93)
 
     def _isPointNearEdge(self,p,running=False):
         boxPosition = self.defs.boxes['edgeBox'][0:3]
