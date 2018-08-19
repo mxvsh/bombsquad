@@ -3,6 +3,7 @@ import bsUtils
 from bsVector import Vector
 import random
 import weakref
+import time
 
 
 class BombFactory(object):
@@ -239,7 +240,27 @@ class ExplodeHitMessage(object):
     "Message saying an object was hit"
     def __init__(self):
         pass
-
+def randColr(r, g, b):
+    def _chkarg(a):
+        if isinstance(a, int): # clamp to range 0--255
+            if a < 0:
+                a = 0
+            elif a > 255:
+                a = 255
+        elif isinstance(a, float): # clamp to range 0.0--1.0 and convert to integer 0--255
+            if a < 0.0:
+                a = 0
+            elif a > 1.0:
+                a = 255
+            else:
+                a = int(round(a*255))
+        else:
+            raise ValueError('Arguments must be integers or floats.')
+        return a
+    r = _chkarg(r)
+    g = _chkarg(g)
+    b = _chkarg(b)
+    return (r, g, b)
 class Blast(bs.Actor):
     """
     category: Game Flow Classes
@@ -280,9 +301,8 @@ class Blast(bs.Actor):
                                       'radius':self.radius,
                                       'big':(self.blastType == 'tnt')})
         if self.blastType == "ice":
-            explosion.color = (0.4,2.05,1.4)
-
-        bs.gameTimer(1000,explosion.delete)
+            explosion.color = (0.4,2.05,2.4)
+        bs.gameTimer(5000,explosion.delete)
 
         if self.blastType != 'ice': bs.emitBGDynamics(position=position,velocity=velocity,count=int(1.0+random.random()*4),emitType='tendrils',tendrilType='thinSmoke')
         bs.emitBGDynamics(position=position,velocity=velocity,count=int(4.0+random.random()*4),emitType='tendrils',tendrilType='ice' if self.blastType == 'ice' else 'smoke')
@@ -323,9 +343,9 @@ class Blast(bs.Actor):
                 # tnt throws splintery chunks
                 if self.blastType == 'tnt':
                     def _emitSplinters():
+                        bs.getSharedObject('globals').slowMotion = True
                         bs.emitBGDynamics(position=position,velocity=velocity,count=int(20.0+random.random()*25),scale=0.8,spread=1.0,chunkType='splinter');
                     bs.gameTimer(10,_emitSplinters)
-                
                 # every now and then do a sparky one
                 if self.blastType == 'tnt' or random.random() < 0.1:
                     def _emitExtraSparks():
@@ -336,8 +356,8 @@ class Blast(bs.Actor):
 
         light = bs.newNode('light',
                            attrs={'position':position,
-                                  'color': (0.6,0.6,1.0) if self.blastType == 'ice' else (1,0.3,0.1),
-                                  'volumeIntensityScale': 10.0})
+                                  'color': (1.6,0.6,2.0) if self.blastType == 'ice' else (1,0.3,0.1),
+                                  'volumeIntensityScale': 20.0})
 
         s = random.uniform(0.6,0.9)
         scorchRadius = lightRadius = self.radius
@@ -350,6 +370,9 @@ class Blast(bs.Actor):
         bsUtils.animate(light,"intensity",{0:2.0*iScale, int(s*20):0.1*iScale, int(s*25):0.2*iScale, int(s*50):17.0*iScale, int(s*60):5.0*iScale, int(s*80):4.0*iScale, int(s*200):0.6*iScale, int(s*2000):0.00*iScale, int(s*3000):0.0})
         bsUtils.animate(light,"radius",{0:lightRadius*0.2, int(s*50):lightRadius*0.55, int(s*100):lightRadius*0.3, int(s*300):lightRadius*0.15, int(s*1000):lightRadius*0.05})
         bs.gameTimer(int(s*3000),light.delete)
+        def _normal():
+          bs.getSharedObject('globals').slowMotion = False
+        bs.gameTimer(int(1000), _normal)
 
         # make a scorch that fades over time
         scorch = bs.newNode('scorch',
@@ -368,7 +391,6 @@ class Blast(bs.Actor):
         bs.playSound(factory.debrisFallSound,position=p)
 
         bs.shakeCamera(intensity=5.0 if self.blastType == 'tnt' else 1.0)
-
         # tnt is more epic..
         if self.blastType == 'tnt':
             bs.playSound(factory.getRandomExplodeSound(),position=p)
@@ -440,7 +462,7 @@ class Bomb(bs.Actor):
 
         self.blastRadius = blastRadius
         if self.bombType == 'ice': self.blastRadius *= 1.0
-        elif self.bombType == 'impact': self.blastRadius *= 1.2
+        elif self.bombType == 'impact': self.blastRadius *= .2
         elif self.bombType == 'landMine': self.blastRadius *= 0.7
         elif self.bombType == 'tnt': self.blastRadius *= 2.15
 

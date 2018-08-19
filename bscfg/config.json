@@ -211,6 +211,171 @@
     "type": "bsCaptureTheFlag.CTFGame"
    }
   ], 
+  "Xen": [
+   {
+    "settings": {
+     "Epic Mode": 1, 
+     "Respawn Times": 0.25, 
+     "Score to Win": 3, 
+     "Time Limit": 300, 
+     "map": "The Pad"
+    }, 
+    "type": "bsAssault.AssaultGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": 1, 
+     "KOs to Win Per Player": 5, 
+     "Respawn Times": 0.25, 
+     "Time Limit": 300, 
+     "map": "Bridgit"
+    }, 
+    "type": "boxing.DeathMatchGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": 1, 
+     "KOs to Win Per Player": 4, 
+     "Respawn Times": 0.25, 
+     "Time Limit": 300, 
+     "map": "Crag Castle"
+    }, 
+    "type": "boxing.DeathMatchGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": 1, 
+     "Kills to Win Per Player": 6, 
+     "Respawn Times": 0.5, 
+     "Time Limit": 120, 
+     "map": "The Pad"
+    }, 
+    "type": "bsDeathMatch.DeathMatchGame"
+   }, 
+   {
+    "settings": {
+     "Enable Bombs": false, 
+     "Max Mines": 40, 
+     "Mines per Second": 1, 
+     "One-Way Trip": 1, 
+     "Respawn Times": 0.5, 
+     "Score to Win": 1, 
+     "Start Mines": 20, 
+     "Time Limit": 120, 
+     "map": "Football Stadium"
+    }, 
+    "type": "HazardousCargo.HazardousCargo"
+   }, 
+   {
+    "settings": {
+     "Balance Total Lives": false, 
+     "Epic Mode": 1, 
+     "Lives Per Player": 1, 
+     "Respawn Times": 0.5, 
+     "Solo Mode": 1, 
+     "Time Limit": 120, 
+     "map": "Happy Thoughts"
+    }, 
+    "type": "bsElimination.EliminationGame"
+   }, 
+   {
+    "settings": {
+     "Balance Total Lives": false, 
+     "Epic Mode": 1, 
+     "Lives Per Player": 2, 
+     "Respawn Times": 0.5, 
+     "Solo Mode": 1, 
+     "Time Limit": 300, 
+     "map": "Doom Shroom"
+    }, 
+    "type": "bsElimination.EliminationGame"
+   }, 
+   {
+    "settings": {
+     "Hold Time": 20, 
+     "Respawn Times": 1.0, 
+     "Time Limit": 120, 
+     "map": "Zigzag"
+    }, 
+    "type": "bsKeepAway.KeepAwayGame"
+   }, 
+   {
+    "settings": {
+     "Bomb Spawning": 2000, 
+     "Entire Team Must Finish": false, 
+     "Epic Mode": false, 
+     "Laps": 3, 
+     "Mine Spawning": 8000, 
+     "Time Limit": 120, 
+     "map": "Big G"
+    }, 
+    "type": "bsRace.RaceGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": 1, 
+     "Flag Idle Return Time": 25, 
+     "Flag Touch Return Time": 0, 
+     "Respawn Times": 0.5, 
+     "Score to Win": 3, 
+     "Time Limit": 300, 
+     "map": "Step Right Up"
+    }, 
+    "type": "bsCaptureTheFlag.CTFGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "map": "Rampage"
+    }, 
+    "type": "GuessTheBomb.GuessTheBombGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": 1, 
+     "KOs to Win Per Player": 5, 
+     "Respawn Times": 0.5, 
+     "Time Limit": 300, 
+     "map": "Monkey Face"
+    }, 
+    "type": "boxing.DeathMatchGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "KOs to Win Per Player": 5, 
+     "Respawn Times": 1.0, 
+     "Time Limit": 300, 
+     "map": "Courtyard"
+    }, 
+    "type": "boxing.DeathMatchGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Frozen One Gets Gloves": 1, 
+     "Frozen One Time": 30, 
+     "Respawn Times": 1.0, 
+     "Time Limit": 300, 
+     "map": "Happy Thoughts"
+    }, 
+    "type": "frozenone.FrozenOneGame"
+   }, 
+   {
+    "settings": {
+     "Balance Total Lives": false, 
+     "Box Reduction Rate": 0.03, 
+     "Curse Box Chance (lower = more chance)": 10, 
+     "Epic Mode": 1, 
+     "Lives Per Player": 1, 
+     "Respawn Times": 0.5, 
+     "Solo Mode": 1, 
+     "Time Limit": 300, 
+     "map": "Hockey Stadium"
+    }, 
+    "type": "surviveCurse.SurviveCurseGame"
+   }
+  ], 
   "xens": [
    {
     "settings": {
@@ -511,7 +676,7 @@
    "_name": "Folder"
   }
  }, 
- "launchCount": 46, 
+ "launchCount": 64, 
  "lc14": 1, 
  "lc14146": 1, 
  "lc14173": 1, 
@@ -1156,7 +1321,7 @@
      }, 
      "version": 1.1
     }, 
-    1534512293.426415
+    1534666258.062633
    ]
   }
  }
