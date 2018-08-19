@@ -471,9 +471,9 @@ class Bomb(bs.Actor):
 
         self.blastRadius = blastRadius
         if self.bombType == 'ice': self.blastRadius *= 1.0
-        elif self.bombType == 'impact': self.blastRadius *= .2
+        elif self.bombType == 'impact': self.blastRadius *= 1.2
         elif self.bombType == 'landMine': self.blastRadius *= 0.7
-        elif self.bombType == 'tnt': self.blastRadius *= 2.15
+        elif self.bombType == 'tnt': self.blastRadius *= 1.75
 
         self._explodeCallbacks = []
         
