@@ -1441,12 +1441,12 @@ class Spaz(bs.Actor):
                     bs.shakeCamera(10)
                     
                 elif damage > 600 and damage < 800:
-                    bsUtils.PopupText("Punch tha achhaa,\nPar tu hai Bachaa",color=(1,0,0),scale=1.5,position=self.node.position).autoRetain()
+                    bsUtils.PopupText("Nice Punch!!",color=(1,0,0),scale=1.5,position=self.node.position).autoRetain()
                     self.node.handleMessage('celebrate',250)
                     bs.shakeCamera(5)
           
                 elif damage > 400 and damage < 600:
-                    bsUtils.PopupText("Noob kahika!",color=(1,0,0),scale=1.3,position=self.node.position).autoRetain()
+                    bsUtils.PopupText("Kick this noob",color=(1,0,0),scale=1.3,position=self.node.position).autoRetain()
                     self.node.handleMessage('celebrate',100)
                     bs.shakeCamera(1)
                   
