@@ -356,7 +356,7 @@ class Blast(bs.Actor):
 
         light = bs.newNode('light',
                            attrs={'position':position,
-                                  'color': (1.6,0.6,2.0) if self.blastType == 'ice' else (1,0.3,0.1),
+                                  'color': (1.6,0.6,2.0) if self.blastType == 'ice' else (1,2.3,1.1),
                                   'volumeIntensityScale': 20.0})
 
         s = random.uniform(0.6,0.9)
@@ -379,7 +379,15 @@ class Blast(bs.Actor):
         scorch = bs.newNode('scorch',
                             attrs={'position':position,'size':scorchRadius*0.5,'big':(self.blastType == 'tnt')})
         if self.blastType == 'ice':
-            scorch.color = (1,2.3,1.5)
+            scorch.color = (0.2,2.3,1.5)
+        elif self.blastType == 'tnt':
+            scorch.color = (1.2,2.3,0.5)
+        elif self.blastType == 'regular':
+            scorch.color = (1.2,0.3,2.5)
+        elif self.blastType == 'sticky':
+            scorch.color = (2.2,1.3,0.5)
+        
+        
 
         bsUtils.animate(scorch,"presence",{3000:1, 13000:0})
         bs.gameTimer(20000,scorch.delete)

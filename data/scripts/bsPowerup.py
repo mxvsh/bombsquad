@@ -1,6 +1,8 @@
 import bs
 import random
-
+import BuddyBunny
+import SnoBallz
+import bsUI
 
 defaultPowerupInterval = 8000
 
@@ -115,7 +117,7 @@ class PowerupFactory(object):
 
         self.model = bs.getModel("powerup")
         self.modelSimple = bs.getModel("powerupSimple")
-
+        self.texSpeed = bs.getTexture("achievementGotTheMoves")
         self.texBomb = bs.getTexture("powerupBomb")
         self.texPunch = bs.getTexture("powerupPunch")
         self.texIceBombs = bs.getTexture("powerupIceBombs")
@@ -125,6 +127,12 @@ class PowerupFactory(object):
         self.texHealth = bs.getTexture("powerupHealth")
         self.texLandMines = bs.getTexture("powerupLandMines")
         self.texCurse = bs.getTexture("powerupCurse")
+        self.texIvincible = bs.getTexture("achievementFlawlessVictory")
+        self.texLuckyBlock = bs.getTexture("achievementEmpty")
+        self.shockWaveTex = bs.getTexture("medalGold")
+        self.texEgg = bs.getTexture('eggTex2')
+        self.texSno = bs.getTexture("bunnyColor") #Bunny is most uniform plain white color.
+        self.snoModel = bs.getModel("frostyPelvis")
 
         self.healthPowerupSound = bs.getSound("healthPowerup")
         self.powerupSound = bs.getSound("powerup01")
@@ -188,11 +196,17 @@ def getDefaultPowerupDistribution():
     return (('tripleBombs',3),
             ('iceBombs',3),
             ('punch',3),
+            ('snoball',2),
             ('impactBombs',3),
+            ('highHealth',1),
+            ('luckyBlock',4),
+            ('shockwave',2),
             ('landMines',2),
             ('stickyBombs',3),
+            ('speed',2),
+            ('bunny',2),
             ('shield',2),
-            ('health',1),
+            ('health',2),
             ('curse',1))
 
 class Powerup(bs.Actor):
@@ -232,10 +246,18 @@ class Powerup(bs.Actor):
         elif powerupType == 'iceBombs': tex = factory.texIceBombs
         elif powerupType == 'impactBombs': tex = factory.texImpactBombs
         elif powerupType == 'landMines': tex = factory.texLandMines
+        elif powerupType == 'highHealth': tex = factory.texIvincible
         elif powerupType == 'stickyBombs': tex = factory.texStickyBombs
         elif powerupType == 'shield': tex = factory.texShield
+        elif powerupType == 'speed': tex = factory.texSpeed
         elif powerupType == 'health': tex = factory.texHealth
         elif powerupType == 'curse': tex = factory.texCurse
+        elif powerupType == 'luckyBlock': tex = factory.texLuckyBlock
+        elif powerupType == 'bunny': tex = factory.texEgg
+        elif powerupType == 'shockwave': tex = factory.shockWaveTex
+        elif powerupType == 'snoball':
+            tex = factory.texSno
+            mod = factory.snoModel
         else: raise Exception("invalid powerupType: "+str(powerupType))
 
         if len(position) != 3: raise Exception("expected 3 floats for position")
@@ -258,7 +280,7 @@ class Powerup(bs.Actor):
 
         if expire:
             bs.gameTimer(defaultPowerupInterval-2500,bs.WeakCall(self._startFlashing))
-            bs.gameTimer(defaultPowerupInterval-1000,bs.WeakCall(self.handleMessage, bs.DieMessage()))
+            bs.gameTimer(defaultPowerupInterval-1000,bs.WeakCall(self.handleMessage,bs.DieMessage()))
 
     @classmethod
     def getFactory(cls):
@@ -276,37 +298,53 @@ class Powerup(bs.Actor):
         if self.node.exists(): self.node.flashing = True
 
         
-    def handleMessage(self, msg):
+    def handleMessage(self,m):
         self._handleMessageSanityCheck()
 
-        if isinstance(msg, PowerupAcceptMessage):
+        if isinstance(m,PowerupAcceptMessage):
             factory = self.getFactory()
             if self.powerupType == 'health':
-                bs.playSound(factory.healthPowerupSound, 3, position=self.node.position)
-            bs.playSound(factory.powerupSound, 3, position=self.node.position)
+                bs.playSound(factory.healthPowerupSound,3,position=self.node.position)
+            bs.playSound(factory.powerupSound,3,position=self.node.position)
             self._powersGiven = True
             self.handleMessage(bs.DieMessage())
-
-        elif isinstance(msg, _TouchedMessage):
+            
+        elif isinstance(m,_TouchedMessage):
             if not self._powersGiven:
                 node = bs.getCollisionInfo("opposingNode")
                 if node is not None and node.exists():
-                    node.handleMessage(PowerupMessage(self.powerupType, sourceNode=self.node))
+                    #We won't tell the spaz about the bunny.  It'll just happen.
+                    if self.powerupType == 'bunny':
+                        p=node.getDelegate().getPlayer()
+                        if not 'bunnies' in p.gameData:
+                            p.gameData['bunnies'] = BuddyBunny.BunnyBotSet(p)
+                        p.gameData['bunnies'].doBunny()
+                        self._powersGiven = True
+                        self.handleMessage(bs.DieMessage())
+                    #a Spaz doesn't know what to do with a snoball powerup. All the snowball functionality
+                    #is handled through SnoBallz.py to minimize modifications to the original game files
+                    elif self.powerupType == 'snoball':
+                        spaz=node.getDelegate()
+                        SnoBallz.snoBall().getFactory().giveBallz(spaz)
+                        self._powersGiven = True
+                        self.handleMessage(bs.DieMessage())
+                    else:
+                        node.handleMessage(PowerupMessage(self.powerupType,sourceNode=self.node))
 
-        elif isinstance(msg, bs.DieMessage):
+        elif isinstance(m,bs.DieMessage):
             if self.node.exists():
-                if (msg.immediate):
+                if (m.immediate):
                     self.node.delete()
                 else:
-                    curve = bs.animate(self.node, "modelScale", {0:1,100:0})
-                    bs.gameTimer(100, self.node.delete)
+                    curve = bs.animate(self.node,"modelScale",{0:1,100:0})
+                    bs.gameTimer(100,self.node.delete)
 
-        elif isinstance(msg ,bs.OutOfBoundsMessage):
+        elif isinstance(m,bs.OutOfBoundsMessage):
             self.handleMessage(bs.DieMessage())
 
-        elif isinstance(msg, bs.HitMessage):
+        elif isinstance(m,bs.HitMessage):
             # dont die on punches (thats annoying)
-            if msg.hitType != 'punch':
+            if m.hitType != 'punch':
                 self.handleMessage(bs.DieMessage())
         else:
-            bs.Actor.handleMessage(self, msg)
+            bs.Actor.handleMessage(self,m)

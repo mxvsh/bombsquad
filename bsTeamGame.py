@@ -8,8 +8,8 @@ import bsTutorial
 import bsInternal
 
 # team info
-gTeamColors = ((0.4,2,2),
-               (3,0.05,0.05))
+gTeamColors = ((0.3,0.75,3.0),
+               (3.0,0.75,0.6))
 gTeamNames = ("JavaScript","Python")
 
 

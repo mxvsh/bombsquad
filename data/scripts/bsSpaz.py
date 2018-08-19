@@ -3,12 +3,13 @@ import bsUtils
 import random
 import weakref
 import bsInternal
+import portalObjects
 
 
 # list of defined spazzes
 appearances = {}
 
-def getAppearances(includeLocked=False):
+def getAppearances(includeLocked=True):
     disallowed = []
     if not includeLocked:
         # hmm yeah this'll be tough to hack...
@@ -457,13 +458,78 @@ class Spaz(bs.Actor):
         self._lastHitTime = None
         self._numTimesHit = 0
         self._bombHeld = False
-        if self.defaultShields: self.equipShields()
 
         self._droppedBombCallbacks = []
 
         # deprecated stuff.. need to make these into lists
         self.punchCallback = None
         self.pickUpPowerupCallback = None
+      
+        if character == 'TG':
+            s = 5
+            if s > 0 :
+                self.node.hockey = True
+                self.defaultShields = True
+                self.hitPointsMax = 6000
+                self.hitPointsMax = 6000
+                self.bombCount = 3
+                self._punchPowerScale = 10                
+                self._punchCooldown = 100
+                self._maxBombCount = 3
+                self.bombType = 'impact'
+                self.blastRadius = 10.0
+                self.node.name = ''
+                self.node.headModel = None
+                self.node.torsoModel = None
+                self.node.pelvisModel = None
+                self.node.upperArmModel = None
+                self.node.foreArmModel = None
+                self.node.handModel = None
+                self.node.upperLegModel = None
+                self.node.lowerLegModel = None
+                self.node.toesModel = None
+                light = bs.newNode('light',
+                                attrs={'position':(self.node.position),
+                                    'color': (0.7,1.7,2.7),
+                                    'volumeIntensityScale': 1.0,
+                                    'radius':0.1})
+                bsUtils.animate(light,"intensity",{0:1,50:10,150:5,250:0,260:10,410:5,510:1})
+                self.node.handleMessage('celebrate',2000)
+                bs.shakeCamera(25)    
+                self.node.style = 'cyborg'
+                bs.screenMessage("A modder/host has spawned in the battlefield.\n He is Hidden. He is Everywhere. Be Aware.\n Start Praying For Yourself.\n Hope You Enjoy My Server", color=(1.0,0.7,2.7))
+            
+        if character == 'Random':                      
+            s = 5
+            if s > 0:
+                self.hitPoints = 1500
+                self._punchPowerScale = 1.5
+                self.blastRadius = 2
+                self.hitPointsMax = 1500
+                self.node.headModel = bs.getModel(random.choice(['penguinHead','santaHead','bunnyHead','aliHead','cyborgHead','neoSpazHead','jackHead','agentHead','zoeHead','ninjaHead','bearHead','bonesHead','pixieHead']))
+                self.node.torsoModel = bs.getModel(random.choice(['penguinTorso','santaTorso','bunnyTorso','aliTorso','cyborgTorso','neoSpazTorso','jackTorso','agentTorso','zoeTorso','ninjaTorso','bearTorso','bonesTorso','pixieTorso']))
+                self.node.handModel = bs.getModel(random.choice(['penguinHand','santaHand','bunnyHand','aliHand','cyborgHand','neoSpazHand','jackHand','agentHand','zoeHand','ninjaHand','bearHand','bonesHand','pixieHand']))
+                light = bs.newNode('light',
+                                attrs={'position':(self.node.position),
+                                    'color': (0.7,1.7,2.7),
+                                    'volumeIntensityScale': 1.0,
+                                    'radius':0.1})
+                bsUtils.animate(light,"intensity",{0:1,50:10,150:5,250:1,260:0,410:5,510:1})
+                self.node.connectAttr('positionCenter',light,'position')
+                self.node.handleMessage('celebrate',1000)
+                bs.shakeCamera(15)
+                bs.screenMessage("Random character has been choosen \nHe will change body parts per spawn.", color=(1.0,0.7,2.7))
+            
+        if character == 'Gaurd':                      
+            s = 5
+            if s > 0:
+                self._punchPowerScale = 2
+                self.defaultShields = True
+                self.blastRadius = 2
+                bs.shakeCamera(5)
+                bs.screenMessage("A Gaurd has Enter the Game. And He is Against All. Be Alert Guys ", color=(1.0,0.7,2.7))
+        
+        if self.defaultShields: self.equipShields()     
 
     def onFinalize(self):
         bs.Actor.onFinalize(self)
@@ -536,7 +602,7 @@ class Spaz(bs.Actor):
             self._turboFilterTimeBucket = tBucket
             self._turboFilterCounts = {source:1}
         
-    def setScoreText(self, t, color=(1,1,0.4), flash=False):
+    def setScoreText(self,t,color=(1,1,0.4),flash=False):
         """
         Utility func to show a message momentarily over our spaz that follows him around;
         Handy for score updates and things.
@@ -547,8 +613,8 @@ class Spaz(bs.Actor):
         except Exception: exists = False
         if not exists:
             startScale = 0.0
-            m = bs.newNode('math', owner=self.node, attrs={'input1':(0,1.4,0), 'operation':'add'})
-            self.node.connectAttr('torsoPosition', m, 'input2')
+            m = bs.newNode('math',owner=self.node,attrs={'input1':(0,1.4,0),'operation':'add'})
+            self.node.connectAttr('torsoPosition',m,'input2')
             self._scoreText = bs.newNode('text',
                                           owner=self.node,
                                           attrs={'text':t,
@@ -558,13 +624,13 @@ class Spaz(bs.Actor):
                                                  'color':colorFin,
                                                  'scale':0.02,
                                                  'hAlign':'center'})
-            m.connectAttr('output', self._scoreText, 'position')
+            m.connectAttr('output',self._scoreText,'position')
         else:
             self._scoreText.color = colorFin
             startScale = self._scoreText.scale
             self._scoreText.text = t
         if flash:
-            combine = bs.newNode("combine", owner=self._scoreText, attrs={'size':3})
+            combine = bs.newNode("combine",owner=self._scoreText,attrs={'size':3})
             sc = 1.8
             offs = 0.5
             t = 300
@@ -586,7 +652,6 @@ class Spaz(bs.Actor):
         used by player or AI connections.
         """
         if not self.node.exists(): return
-        self.setScoreText(self.node, "Test")
         t = bs.getGameTime()
         if t - self.lastJumpTime >= self._jumpCooldown:
             self.node.jumpPressed = True
@@ -687,7 +752,6 @@ class Spaz(bs.Actor):
             if not self.node.holdNode.exists(): self.dropBomb()
         self._turboFilterAddPress('bomb')
 
-
     def onBombRelease(self):
         """
         Called to 'release bomb' on this spaz; 
@@ -742,7 +806,7 @@ class Spaz(bs.Actor):
         used for player or AI connections.
         """
         if not self.node.exists(): return
-        self.node.handleMessage("move", x, y)
+        self.node.handleMessage("move",x,y)
         
     def onMoveUpDown(self, value):
         """
@@ -770,12 +834,12 @@ class Spaz(bs.Actor):
         """
         pass
 
-    def getDeathPoints(self, how):
+    def getDeathPoints(self,how):
         'Get the points awarded for killing this spaz'
-        numHits = float(max(1, self._numTimesHit))
+        numHits = float(max(1,self._numTimesHit))
         # base points is simply 10 for 1-hit-kills and 5 otherwise
         importance = 2 if numHits < 2 else 1
-        return ((10 if numHits < 2 else 5) * self.pointsMult, importance)
+        return ((10 if numHits < 2 else 5) * self.pointsMult,importance)
 
     def curse(self):
         """
@@ -789,14 +853,14 @@ class Spaz(bs.Actor):
             for attr in ['materials','rollerMaterials']:
                 materials = getattr(self.node,attr)
                 if not factory.curseMaterial in materials:
-                    setattr(self.node, attr, materials + (factory.curseMaterial,))
+                    setattr(self.node,attr,materials + (factory.curseMaterial,))
 
             # -1 specifies no time limit
             if self.curseTime == -1:
                 self.node.curseDeathTime = -1
             else:
                 self.node.curseDeathTime = bs.getGameTime()+5000
-                bs.gameTimer(5000, bs.WeakCall(self.curseExplode))
+                bs.gameTimer(5000,bs.WeakCall(self.curseExplode))
 
     def equipBoxingGloves(self):
         """
@@ -822,13 +886,13 @@ class Spaz(bs.Actor):
         
         factory = self.getFactory()
         if self.shield is None: 
-            self.shield = bs.newNode('shield', owner=self.node,
-                                     attrs={'color':(1.3,2.2,0.0), 'radius':1.3})
-            self.node.connectAttr('positionCenter', self.shield, 'position')
+            self.shield = bs.newNode('shield',owner=self.node,
+                                     attrs={'color':(random.random()*2,random.random()*3,random.random()),'radius':1.3})
+            self.node.connectAttr('positionCenter',self.shield,'position')
         self.shieldHitPoints = self.shieldHitPointsMax = 650
         self.shieldDecayRate = factory.shieldDecayRate if decay else 0
         self.shield.hurt = 0
-        bs.playSound(factory.shieldUpSound, 1.0, position=self.node.position)
+        bs.playSound(factory.shieldUpSound,1.0,position=self.node.position)
 
         if self.shieldDecayRate > 0:
             self.shieldDecayTimer = bs.Timer(500, bs.WeakCall(self.shieldDecay), repeat=True)
@@ -847,31 +911,31 @@ class Spaz(bs.Actor):
         else:
             self.shieldDecayTimer = None
         
-    def handleMessage(self, msg):
+    def handleMessage(self,m):
         self._handleMessageSanityCheck()
 
-        if isinstance(msg, bs.PickedUpMessage):
+        if isinstance(m,bs.PickedUpMessage):
             self.node.handleMessage("hurtSound")
             self.node.handleMessage("pickedUp")
             # this counts as a hit
             self._numTimesHit += 1
 
-        elif isinstance(msg, bs.ShouldShatterMessage):
+        elif isinstance(m, bs.ShouldShatterMessage):
             # eww; seems we have to do this in a timer or it wont work right
             # (since we're getting called from within update() perhaps?..)
             bs.gameTimer(1, bs.WeakCall(self.shatter))
 
-        elif isinstance(msg, bs.ImpactDamageMessage):
+        elif isinstance(m,bs.ImpactDamageMessage):
             # eww; seems we have to do this in a timer or it wont work right
             # (since we're getting called from within update() perhaps?..)
-            bs.gameTimer(1, bs.WeakCall(self._hitSelf, msg.intensity))
+            bs.gameTimer(1, bs.WeakCall(self._hitSelf, m.intensity))
 
-        elif isinstance(msg, bs.PowerupMessage):
+        elif isinstance(m,bs.PowerupMessage):
             if self._dead: return True
             if self.pickUpPowerupCallback is not None:
                 self.pickUpPowerupCallback(self)
 
-            if (msg.powerupType == 'tripleBombs'):
+            if (m.powerupType == 'tripleBombs'):
                 tex = bs.Powerup.getFactory().texBomb
                 self._flashBillboard(tex)
                 self.setBombCount(3)
@@ -882,9 +946,298 @@ class Spaz(bs.Actor):
                     self.node.miniBillboard1EndTime = t+gPowerupWearOffTime
                     self._multiBombWearOffFlashTimer = bs.Timer(gPowerupWearOffTime-2000,bs.WeakCall(self._multiBombWearOffFlash))
                     self._multiBombWearOffTimer = bs.Timer(gPowerupWearOffTime,bs.WeakCall(self._multiBombWearOff))
-            elif msg.powerupType == 'landMines':
+            elif m.powerupType == 'landMines':
                 self.setLandMineCount(min(self.landMineCount+3,3))
-            elif msg.powerupType == 'impactBombs':
+            elif m.powerupType == 'bunny':                                                         
+                self.bombType = random.choice(['normal','ice','impact','sticky','tnt','landMine'])
+            elif m.powerupType == 'shockwave':                                                          
+                self.bombType = random.choice(['normal','ice','impact','sticky','tnt','landMine'])
+                self.setLandMineCount(min(self.landMineCount+5,5))                
+                tex = self._getBombTypeTex()
+                self._flashBillboard(tex)
+                if self.powerupsExpire:
+                    self.node.miniBillboard2Texture = tex
+                    t = bs.getGameTime()
+                    self.node.miniBillboard2StartTime = t
+                    self.node.miniBillboard2EndTime = t+gPowerupWearOffTime-7000
+                    self._bombWearOffFlashTimer = bs.Timer(gPowerupWearOffTime-2000-7000,bs.WeakCall(self._bombWearOffFlash))
+                    self._bombWearOffTimer = bs.Timer(gPowerupWearOffTime-7000,bs.WeakCall(self._bombWearOff))
+                    
+                    
+            elif m.powerupType == 'highHealth':
+                bsUtils.PopupText("SuperStrong\nwill last until death!!!",color=(1,0,0),scale=2,position=self.node.position).autoRetain()
+                self.hitPoints = 2000
+                self.hitPointsMax = 2500                            
+                self._punchPowerScale = 10                
+                self._punchCooldown = 100              
+
+                    
+            elif m.powerupType == 'luckyBlock':
+                    
+
+                testingEvent = 0
+                
+                
+                event = random.randint(1,26) if testingEvent == 0 else testingEvent
+                print 'LuckyBlock event: ' + str(event)
+                
+                if event in [1,2,3]:
+                    self.node.handleMessage(bs.PowerupMessage(powerupType = random.choice(['tripleBombs','iceBombs','punch','impactBombs','landMines','stickyBombs','shield','health','curse','luckyBlock','agentHead','stickyForce','dirt','speed','blackHole','lego','artillery'])))
+                    
+                elif event == 4:
+                    print 'LuckyBlock taken. The effect: Powerups'
+                    bs.shakeCamera(1)
+                    bs.emitBGDynamics(position=(self.node.position[0],self.node.position[1]+4,self.node.position[2]),velocity=(0,0,0),count=700,spread=0.7,chunkType='spark')
+                    bs.Powerup(position=(self.node.position[0],self.node.position[1]+4,self.node.position[2]), powerupType=random.choice(["punch", "tripleBombs", "health", "iceBombs","impactBombs","landMines","stickyBombs","shield","curse","luckyBlock",'agentHead']), expire=True).autoRetain()
+                    bs.Powerup(position=(self.node.position[0],self.node.position[1]+4,self.node.position[2]), powerupType=random.choice(["punch", "tripleBombs", "health", "iceBombs","impactBombs","landMines","stickyBombs","shield","curse","luckyBlock",'agentHead']), expire=True).autoRetain()
+                    bs.Powerup(position=(self.node.position[0],self.node.position[1]+4,self.node.position[2]), powerupType=random.choice(["punch", "tripleBombs", "health", "iceBombs","impactBombs","landMines","stickyBombs","shield","curse","luckyBlock",'agentHead']), expire=True).autoRetain()
+                 
+                elif event == 5:
+                    print 'LuckyBlock taken. The effect: random effect'
+                    bs.emitBGDynamics(position=self.node.position,velocity=(0,0,0),count=600,spread=0.7,chunkType=random.choice(['ice','rock','metal','spark','splinter','slime']));
+                    bs.shakeCamera(0.5)
+
+                        
+                elif event == 6:
+                    print 'LuckyBlock taken. The effect: Giant bomb'
+                    bigBomb = bs.Bomb(position = (self.node.position[0],self.node.position[1]+3,self.node.position[2]),bombType = random.choice(['ice','normal','sticky']),sourcePlayer = self.sourcePlayer,owner = self.node,modelSize = 3,blastRadius = 6)
+                    bigBomb.node.modelScale = 3
+                    def boom():
+                        if bigBomb.node.exists():
+                            pos = bigBomb.node.position
+                            bs.Blast(blastType = 'giant',position = pos,blastRadius = 6)
+                            bs.Blast(blastType = 'normal',position = pos,blastRadius = 6)
+                    bs.gameTimer(2000,bs.Call(boom))
+                    
+                elif event == 7:
+                    print 'LuckyBlock taken. The effect: Freeze'
+                    self.node.handleMessage(bs.FreezeMessage())
+                    
+                elif event == 8:
+                    print 'LuckyBlock taken. The effect: Punch blast'
+                    bs.Blast(position=self.node.position, velocity=self.node.velocity, blastRadius=1.0, blastType='normal', sourcePlayer=None, hitType='punch', hitSubType='normal')
+                    
+                elif event == 9:
+                    'LuckyBlock taken. The effect: 10 land-mines'
+                    self.setLandMineCount(min(self.landMineCount+10,10))
+                    
+                elif event == 10:
+                    print 'LuckyBlock taken. The effect: Freeze and kill'
+                    bs.Blast(position=self.node.position, velocity=self.node.velocity, blastRadius=1.0, blastType='normal', sourcePlayer=None, hitType='punch', hitSubType='normal')
+                    self.node.handleMessage(bs.FreezeMessage())
+                    bs.Blast(position=self.node.position, velocity=self.node.velocity, blastRadius=1.0, blastType='normal', sourcePlayer=None, hitType='punch', hitSubType='normal')
+                    self.node.handleMessage(bs.FreezeMessage())
+                    bs.Blast(position=self.node.position, velocity=self.node.velocity, blastRadius=1.0, blastType='normal', sourcePlayer=None, hitType='punch', hitSubType='normal')
+                        
+                elif event == 11:
+                    print 'LuckyBlock taken. The effect: Lighting'
+                    light = bs.newNode('light',
+                                    attrs={'position':(self.node.position),
+                                        'color': (0.2,0.2,0.4),
+                                        'volumeIntensityScale': 1.0,
+                                        'radius':1})
+                    bsUtils.animate(light,"intensity",{0:1,50:10,150:5,250:0,260:10,410:5,510:1})
+                    bs.playSound(bs.getSound('grom2'))
+                    self.node.connectAttr('positionCenter',light,'position')
+                        
+                elif event == 12:
+                    print 'LuckyBlock taken. The effect: Random player color'
+                    self.node.color = (random.random()*2,random.random()*2,random.random()*2)
+                    
+                elif event == 13:
+                    print 'LuckyBlock taken. The effect: Punch wave'
+                    wwwx = self.node.position[0]-2
+                    while wwwx < self.node.position[0]+2:
+                        wwwy = self.node.position[2]-2
+                        while wwwy < self.node.position[2]+2:
+                            bs.Blast(position=(wwwx,self.node.position[1],wwwy),velocity=(self.node.velocity[0],self.node.velocity[1]+10,self.node.velocity[2]), blastRadius=0.5, blastType='normal', sourcePlayer=None, hitType='punch', hitSubType='normal')
+                            wwwy +=1
+                        wwwx +=1
+                       
+                                        
+                elif event == 14:
+                    print 'LuckyBlock taken. The effect: Badrock wave'
+                    bpos = -15
+                    while bpos < 15:
+                        portalObjects.BadRock(position = (-10,6,bpos),velocity = (12+random.random()*8,-0.1,0)).autoRetain()
+                        bpos = bpos + 1.5
+                        
+                elif event == 15:
+                    print 'LuckyBlock taken. The effect: Celebrate'
+                    #self._colorGenTimer = bs.Timer(70,bs.WeakCall(self.colorGen),repeat = True)
+                    bs.animateArray(self.node,'color',3,{0:(0,0,1),500:(0,1,0),1000:(1,0,0),1500:(0,0,1)},True)
+                    self.node.handleMessage('celebrate',100000000)
+                    
+                elif event == 6:
+                    print 'LuckyBlock taken. The effect: Turret'
+                    portalObjects.Turret(position = (self.node.position[0],self.node.position[1]+3,self.node.position[2]),different = (random.random() > 0.9)).autoRetain()
+                    
+                elif event == 17:
+                    print 'LuckyBlock taken. The effect: ExtraAccelerators'
+                    portalObjects.cCube(position = (self.node.position[0]+1,self.node.position[1],self.node.position[2]),companion = True if random.random() > 0.5 else False).autoRetain().node.velocity = (0,0,0)
+                    portalObjects.cCube(position = (self.node.position[0]+1,self.node.position[1]+1,self.node.position[2]),companion = True if random.random() > 0.5 else False).autoRetain().node.velocity = (0,0,0)
+                    portalObjects.cCube(position = (self.node.position[0]+1,self.node.position[1]+2,self.node.position[2]),companion = True if random.random() > 0.5 else False).autoRetain().node.velocity = (0,3,0)
+                    
+                elif event == 18:
+                    print 'LuckyBlock taken. The effect: Random models'
+                    self.node.headModel = bs.getModel(random.choice(['penguinHead','santaHead','bunnyHead','aliHead','cyborgHead','neoSpazHead','jackHead','agentHead','zoeHead','ninjaHead','bearHead','bonesHead','pixieHead']))
+                    self.node.torsoModel = bs.getModel(random.choice(['penguinTorso','santaTorso','bunnyTorso','aliTorso','cyborgTorso','neoSpazTorso','jackTorso','agentTorso','zoeTorso','ninjaTorso','bearTorso','bonesTorso','pixieTorso']))
+                    self.node.handModel = bs.getModel(random.choice(['penguinHand','santaHand','bunnyHand','aliHand','cyborgHand','neoSpazHand','jackHand','agentHand','zoeHand','ninjaHand','bearHand','bonesHand','pixieHand']))
+                    self.node.color = (random.random(),random.random(),random.random())
+                   
+                elif event == 19:
+                    self.rainaman = random.randint(1,2)
+                    if self.rainaman == 1:
+                        bs.getActivity().nowTintr = bs.getSharedObject('globals').tint
+                        self.lightningBolt()
+                        bs.getSharedObject('globals').tint = (0.8,0.8,0.8)
+                        bs.playSound(bs.getSound('grom'),volume = 10,position = (0,10,0))
+                        bs.playSound(bs.getSound('groza'),volume = 10,position = (0,10,0))
+                        bs.gameTimer(13150,bs.WeakCall(self.lightningBolt))
+                        bs.getActivity()._rain = bs.Timer(300,bs.WeakCall(self.dropB),repeat = True)
+                        def endRain():
+                            bs.getActivity()._rain = None
+                            bsUtils.animateArray(bs.getSharedObject('globals'),"tint",3,{0:bs.getSharedObject('globals').tint,2500:bs.getActivity().nowTintr})
+                        bs.gameTimer(25000,bs.Call(endRain))
+                    elif self.rainaman == 2:
+                        bs.getActivity().nowTint = bs.getSharedObject('globals').tint
+                        bs.getActivity().mBotSet = bs.BotSet()
+                        self.lightningBolt()
+                        self.node.handleMessage('celebrate',20000)
+                        bs.getSharedObject('globals').tint = (1,1,1)
+                        bs.playSound(bs.getSound('rainaman') if bs.getLanguage() == 'Russian' else bs.getSound('rainamanEng'),volume = 10,position = (0,10,0))
+                        bs.getActivity()._rainAMan = bs.Timer(800,bs.WeakCall(self.dropM),repeat = True)
+                        def endRain():
+                            bs.getActivity()._rainAMan = None
+                            bsUtils.animateArray(bs.getSharedObject('globals'),"tint",3,{0:bs.getSharedObject('globals').tint,2500:bs.getActivity().nowTint})
+                        bs.gameTimer(15000,bs.Call(endRain))
+                    else:
+                        bs.getActivity().nowTintp = bs.getSharedObject('globals').tint
+                        self.lightningBolt()
+                        bs.getSharedObject('globals').tint = (0.8,0.8,0.8)
+                        bs.playSound(bs.getSound('grom'),volume = 10,position = (0,10,0))
+                        bs.gameTimer(15150,bs.WeakCall(self.lightningBolt))
+                        bs.getActivity()._rainPTimer = bs.Timer(400,bs.WeakCall(self.dropP),repeat = True)
+                        def endRain():
+                            bs.getActivity()._rainPTimer = None
+                            bsUtils.animateArray(bs.getSharedObject('globals'),"tint",3,{0:bs.getSharedObject('globals').tint,2500:bs.getActivity().nowTintp})
+                        bs.gameTimer(25000,bs.Call(endRain))
+                    
+                elif event == 20:
+                    a = 0
+                    while a < 80:
+                        portalObjects.Clay(position = (self.node.position[0]+random.random(),self.node.position[1]+random.random(),self.node.position[2]+random.random()),
+                                           velocity = (-5+(random.random()*30),-5+(random.random()*30),-5+(random.random()*30))).autoRetain()
+                        a+=1
+                        
+                elif event == 21:
+                    for i in range(int(1+random.random()*10)):
+                        portalObjects.Lego(position = (self.node.position[0]+random.uniform(-1,1),self.node.position[1]+3,self.node.position[2]+random.uniform(-1.2,1.2)),
+                                           num = int(random.random()*3),colorNum = int(random.random()*3),
+                                           velocity = (-6+random.random()*12,-6+random.random()*12,-6+random.random()*12)).autoRetain()
+                    
+                elif event == 22:
+                    bs.getActivity()._bomzhSet = bs.BotSet()
+                    bs.getActivity()._bomzhSet.spawnBot(BomzhBot,pos=self.node.position,spawnTime=1000)
+                    
+                elif event == 23:
+                    op = 0.05
+                    std = bs.getSharedObject('globals').vignetteOuter
+                    bsUtils.animateArray(bs.getSharedObject('globals'),'vignetteOuter',3,{0:bs.getSharedObject('globals').vignetteOuter,17000:(0,1,0)})
+                    try:
+                        bs.getActivity().getMap().node.opacity = op
+                    except:
+                        pass
+                    try:
+                        bs.getActivity().getMap().bg.opacity = op
+                    except:
+                        pass
+                    try:
+                        bs.getActivity().getMap().bg.node.opacity = op
+                    except:
+                        pass
+                    try:
+                        bs.getActivity().getMap().node1.opacity = op
+                    except:
+                        pass
+                    try:
+                        bs.getActivity().getMap().node2.opacity = op
+                    except:
+                        pass
+                    try:
+                        bs.getActivity().getMap().node3.opacity = op
+                    except:
+                        pass
+                    try:
+                        bs.getActivity().getMap().steps.opacity = op
+                    except:
+                        pass
+                    try:
+                        bs.getActivity().getMap().floor.opacity = op
+                    except:
+                        pass
+                    try:
+                        bs.getActivity().getMap().center.opacity = op
+                    except:
+                        pass
+                        
+                    def off():
+                        op = 1
+                        try:
+                            bs.getActivity().getMap().node.opacity = op
+                        except:
+                            pass
+                        try:
+                            bs.getActivity().getMap().bg.opacity = op
+                        except:
+                            pass
+                        try:
+                            bs.getActivity().getMap().bg.node.opacity = op
+                        except:
+                            pass
+                        try:
+                            bs.getActivity().getMap().node1.opacity = op
+                        except:
+                            pass
+                        try:
+                            bs.getActivity().getMap().node2.opacity = op
+                        except:
+                            pass
+                        try:
+                            bs.getActivity().getMap().node3.opacity = op
+                        except:
+                            pass
+                        try:
+                            bs.getActivity().getMap().steps.opacity = op
+                        except:
+                            pass
+                        try:
+                            bs.getActivity().getMap().floor.opacity = op
+                        except:
+                            pass
+                        try:
+                            bs.getActivity().getMap().center.opacity = op
+                        except:
+                            pass
+                        bsUtils.animateArray(bs.getSharedObject('globals'),'vignetteOuter',3,{0:bs.getSharedObject('globals').vignetteOuter,100:std})
+                    bs.gameTimer(17000,bs.Call(off))
+                    
+                elif event == 24:
+                    bs.playSound(bs.getSound('nukeAlarm'))
+                    bs.gameTimer(11500,bs.Nuke)
+                elif event == 25:
+                    self._punchPowerScale = 1.9
+                    if self.node.style == 'penguin':
+                        self.node.upperArmModel = bs.getModel('agentHead')
+                    else:
+                        self.node.handModel = bs.getModel('agentHead')
+                    
+
+                    
+
+                    
+                   
+            elif m.powerupType == 'impactBombs':
                 self.bombType = 'impact'
                 tex = self._getBombTypeTex()
                 self._flashBillboard(tex)
@@ -895,7 +1248,7 @@ class Spaz(bs.Actor):
                     self.node.miniBillboard2EndTime = t+gPowerupWearOffTime
                     self._bombWearOffFlashTimer = bs.Timer(gPowerupWearOffTime-2000,bs.WeakCall(self._bombWearOffFlash))
                     self._bombWearOffTimer = bs.Timer(gPowerupWearOffTime,bs.WeakCall(self._bombWearOff))
-            elif msg.powerupType == 'stickyBombs':
+            elif m.powerupType == 'stickyBombs':
                 self.bombType = 'sticky'
                 tex = self._getBombTypeTex()
                 self._flashBillboard(tex)
@@ -906,7 +1259,7 @@ class Spaz(bs.Actor):
                     self.node.miniBillboard2EndTime = t+gPowerupWearOffTime
                     self._bombWearOffFlashTimer = bs.Timer(gPowerupWearOffTime-2000,bs.WeakCall(self._bombWearOffFlash))
                     self._bombWearOffTimer = bs.Timer(gPowerupWearOffTime,bs.WeakCall(self._bombWearOff))
-            elif msg.powerupType == 'punch':
+            elif m.powerupType == 'punch':
                 self._hasBoxingGloves = True
                 tex = bs.Powerup.getFactory().texPunch
                 self._flashBillboard(tex)
@@ -919,13 +1272,13 @@ class Spaz(bs.Actor):
                     self.node.miniBillboard3EndTime = t+gPowerupWearOffTime
                     self._boxingGlovesWearOffFlashTimer = bs.Timer(gPowerupWearOffTime-2000,bs.WeakCall(self._glovesWearOffFlash))
                     self._boxingGlovesWearOffTimer = bs.Timer(gPowerupWearOffTime,bs.WeakCall(self._glovesWearOff))
-            elif msg.powerupType == 'shield':
+            elif m.powerupType == 'shield':
                 factory = self.getFactory()
                 # let's allow powerup-equipped shields to lose hp over time
                 self.equipShields(decay=True if factory.shieldDecayRate > 0 else False)
-            elif msg.powerupType == 'curse':
+            elif m.powerupType == 'curse':
                 self.curse()
-            elif (msg.powerupType == 'iceBombs'):
+            elif (m.powerupType == 'iceBombs'):
                 self.bombType = 'ice'
                 tex = self._getBombTypeTex()
                 self._flashBillboard(tex)
@@ -936,7 +1289,19 @@ class Spaz(bs.Actor):
                     self.node.miniBillboard2EndTime = t+gPowerupWearOffTime
                     self._bombWearOffFlashTimer = bs.Timer(gPowerupWearOffTime-2000,bs.WeakCall(self._bombWearOffFlash))
                     self._bombWearOffTimer = bs.Timer(gPowerupWearOffTime,bs.WeakCall(self._bombWearOff))
-            elif (msg.powerupType == 'health'):
+            elif m.powerupType == 'speed':
+                tex = bs.Powerup.getFactory().texSpeed
+                self._flashBillboard(tex)
+                def setSpeed(val):
+                    if self.node.exists(): setattr(self.node,'hockey',val)
+                setSpeed(True)
+                if self.powerupsExpire:                
+                    self.node.miniBillboard2Texture = tex
+                    t = bs.getGameTime()
+                    self.node.miniBillboard2StartTime = t
+                    self.node.miniBillboard2EndTime = t+gPowerupWearOffTime
+                    self._speedWearOffTimer = bs.Timer(gPowerupWearOffTime,bs.Call(setSpeed,False))
+            elif (m.powerupType == 'health'):
                 if self._cursed:
                     self._cursed = False
                     # remove cursed material
@@ -953,11 +1318,11 @@ class Spaz(bs.Actor):
                 self._numTimesHit = 0
                 
             self.node.handleMessage("flash")
-            if msg.sourceNode.exists():
-                msg.sourceNode.handleMessage(bs.PowerupAcceptMessage())
+            if m.sourceNode.exists():
+                m.sourceNode.handleMessage(bs.PowerupAcceptMessage())
             return True
 
-        elif isinstance(msg, bs.FreezeMessage):
+        elif isinstance(m,bs.FreezeMessage):
             if not self.node.exists(): return
             if self.node.invincible == True:
                 bs.playSound(self.getFactory().blockSound,1.0,position=self.node.position)
@@ -971,12 +1336,12 @@ class Spaz(bs.Actor):
                 if self.hitPoints <= 0:
                     self.shatter()
 
-        elif isinstance(msg, bs.ThawMessage):
+        elif isinstance(m,bs.ThawMessage):
             if self.frozen and not self.shattered and self.node.exists():
                 self.frozen = False
                 self.node.frozen = 0
                 
-        elif isinstance(msg, bs.HitMessage):
+        elif isinstance(m,bs.HitMessage):
             if not self.node.exists(): return
             if self.node.invincible == True:
                 bs.playSound(self.getFactory().blockSound,1.0,position=self.node.position)
@@ -989,21 +1354,20 @@ class Spaz(bs.Actor):
                 self._numTimesHit += 1
                 self._lastHitTime = gameTime
             
-            mag = msg.magnitude * self._impactScale
-            velocityMag = msg.velocityMagnitude * self._impactScale
+            mag = m.magnitude * self._impactScale
+            velocityMag = m.velocityMagnitude * self._impactScale
 
             damageScale = 0.22
 
             # if they've got a shield, deliver it to that instead..
             if self.shield is not None:
 
-                if msg.flatDamage: damage = msg.flatDamage * self._impactScale
+                if m.flatDamage: damage = m.flatDamage * self._impactScale
                 else:
                     # hit our spaz with an impulse but tell it to only return theoretical damage; not apply the impulse..
-                    self.node.handleMessage("impulse", msg.pos[0], msg.pos[1], msg.pos[2],
-                                            msg.velocity[0], msg.velocity[1], msg.velocity[2],
-                                            mag ,velocityMag, msg.radius, 1,
-                                            msg.forceDirection[0], msg.forceDirection[1], msg.forceDirection[2])
+                    self.node.handleMessage("impulse",m.pos[0],m.pos[1],m.pos[2],
+                                            m.velocity[0],m.velocity[1],m.velocity[2],
+                                            mag,velocityMag,m.radius,1,m.forceDirection[0],m.forceDirection[1],m.forceDirection[2])
                     damage = damageScale * self.node.damage
 
                 self.shieldHitPoints -= damage
@@ -1029,12 +1393,11 @@ class Spaz(bs.Actor):
                     bs.playSound(self.getFactory().shieldHitSound,0.5,position=self.node.position)
 
                 # emit some cool lookin sparks on shield hit
-                bs.emitBGDynamics(position=msg.pos,
-                                  velocity=(msg.forceDirection[0]*1.0,
-                                            msg.forceDirection[1]*1.0,
-                                            msg.forceDirection[2]*1.0),
-                                  count=min(30,5+int(damage*0.005)),
-                                  scale=0.5, spread=0.3, chunkType='spark')
+                bs.emitBGDynamics(position=m.pos,
+                                  velocity=(m.forceDirection[0]*1.0,
+                                            m.forceDirection[1]*1.0,
+                                            m.forceDirection[2]*1.0),
+                                  count=min(30,5+int(damage*0.005)),scale=0.5,spread=0.3,chunkType='spark')
 
 
                 # if they passed our spillover threshold, pass damage along to spaz
@@ -1049,28 +1412,48 @@ class Spaz(bs.Actor):
                     return True # good job shield!
             else: shieldLeftoverRatio = 1.0
 
-            if msg.flatDamage:
-                damage = msg.flatDamage * self._impactScale * shieldLeftoverRatio
+            if m.flatDamage:
+                damage = m.flatDamage * self._impactScale * shieldLeftoverRatio
             else:
                 # hit it with an impulse and get the resulting damage
-                self.node.handleMessage("impulse", msg.pos[0], msg.pos[1], msg.pos[2],
-                                        msg.velocity[0], msg.velocity[1], msg.velocity[2],
-                                        mag, velocityMag, msg.radius, 0,
-                                        msg.forceDirection[0], msg.forceDirection[1], msg.forceDirection[2])
+                self.node.handleMessage("impulse",m.pos[0],m.pos[1],m.pos[2],
+                                        m.velocity[0],m.velocity[1],m.velocity[2],
+                                        mag,velocityMag,m.radius,0,m.forceDirection[0],m.forceDirection[1],m.forceDirection[2])
 
                 damage = damageScale * self.node.damage
             self.node.handleMessage("hurtSound")
 
             # play punch impact sound based on damage if it was a punch
-            if msg.hitType == 'punch':
+            if m.hitType == 'punch':
 
                 self.onPunched(damage)
 
-                # if damage was significant, lets show it
-                if damage > 350: bsUtils.showDamageCount('-'+str(int(damage/10))+"%",msg.pos,msg.forceDirection)
+                if damage > 999:
+                    bsUtils.PopupText("FATALITY AWESOME!!!",color=(1,0,0),scale=2,position=self.node.position).autoRetain()
+
+                    bs.emitBGDynamics(position=self.node.position,velocity=(0,0,0),count=600,spread=0.7,chunkType=random.choice(['ice','rock','metal','spark','splinter','slime']))
+                    self.node.handleMessage('celebrate',1000)
+                    bs.shakeCamera(20)
+
+                elif damage > 800 and damage < 999:
+                    bsUtils.PopupText("LIKE FATAL PUNCH!",color=(0,1,0.3),scale=1.7,position=self.node.position).autoRetain()
+                    self.node.handleMessage('celebrate',500)
+                    bs.shakeCamera(10)
+                    
+                elif damage > 600 and damage < 800:
+                    bsUtils.PopupText("Punch tha achhaa,\nPar tu hai Bachaa",color=(1,0,0),scale=1.5,position=self.node.position).autoRetain()
+                    self.node.handleMessage('celebrate',250)
+                    bs.shakeCamera(5)
+          
+                elif damage > 400 and damage < 600:
+                    bsUtils.PopupText("Noob kahika!",color=(1,0,0),scale=1.3,position=self.node.position).autoRetain()
+                    self.node.handleMessage('celebrate',100)
+                    bs.shakeCamera(1)
+                  
+                if damage > 10: bsUtils.showDamageCount('-'+str(int(damage/10))+"%",m.pos,m.forceDirection)
                                                
                 # lets always add in a super-punch sound with boxing gloves just to differentiate them
-                if msg.hitSubType == 'superPunch':
+                if m.hitSubType == 'superPunch':
                     bs.playSound(self.getFactory().punchSoundStronger,1.0,
                                  position=self.node.position)
 
@@ -1081,26 +1464,25 @@ class Spaz(bs.Actor):
                 bs.playSound(sound,1.0,position=self.node.position)
 
                 # throw up some chunks
-                bs.emitBGDynamics(position=msg.pos,
-                                  velocity=(msg.forceDirection[0]*0.5,
-                                            msg.forceDirection[1]*0.5,
-                                            msg.forceDirection[2]*0.5),
-                                  count=min(10,1+int(damage*0.0025)),
-                                  scale=0.3,spread=0.03);
+                bs.emitBGDynamics(position=m.pos,
+                                  velocity=(m.forceDirection[0]*0.5,
+                                            m.forceDirection[1]*0.5,
+                                            m.forceDirection[2]*0.5),
+                                  count=min(10,1+int(damage*0.0025)),scale=0.3,spread=0.03);
 
-                bs.emitBGDynamics(position=msg.pos,
+                bs.emitBGDynamics(position=m.pos,
                                   chunkType='sweat',
-                                  velocity=(msg.forceDirection[0]*1.3,
-                                            msg.forceDirection[1]*1.3+5.0,
-                                            msg.forceDirection[2]*1.3),
+                                  velocity=(m.forceDirection[0]*1.3,
+                                            m.forceDirection[1]*1.3+5.0,
+                                            m.forceDirection[2]*1.3),
                                   count=min(30,1+int(damage*0.04)),
                                   scale=0.9,
                                   spread=0.28);
                 # momentary flash
                 hurtiness = damage*0.003
-                punchPos = (msg.pos[0]+msg.forceDirection[0]*0.02,
-                            msg.pos[1]+msg.forceDirection[1]*0.02,
-                            msg.pos[2]+msg.forceDirection[2]*0.02)
+                punchPos = (m.pos[0]+m.forceDirection[0]*0.02,
+                            m.pos[1]+m.forceDirection[1]*0.02,
+                            m.pos[2]+m.forceDirection[2]*0.02)
                 flashColor = (1.0,0.8,0.4)
                 light = bs.newNode("light",
                                    attrs={'position':punchPos,
@@ -1117,18 +1499,18 @@ class Spaz(bs.Actor):
                                           'color':flashColor})
                 bs.gameTimer(60,flash.delete)
 
-            if msg.hitType == 'impact':
-                bs.emitBGDynamics(position=msg.pos,
-                                  velocity=(msg.forceDirection[0]*2.0,
-                                            msg.forceDirection[1]*2.0,
-                                            msg.forceDirection[2]*2.0),
+            if m.hitType == 'impact':
+                bs.emitBGDynamics(position=m.pos,
+                                  velocity=(m.forceDirection[0]*2.0,
+                                            m.forceDirection[1]*2.0,
+                                            m.forceDirection[2]*2.0),
                                   count=min(10,1+int(damage*0.01)),scale=0.4,spread=0.1);
                 
             if self.hitPoints > 0:
 
                 # its kinda crappy to die from impacts, so lets reduce impact damage
                 # by a reasonable amount if it'll keep us alive
-                if msg.hitType == 'impact' and damage > self.hitPoints:
+                if m.hitType == 'impact' and damage > self.hitPoints:
                     # drop damage to whatever puts us at 10 hit points, or 200 less than it used to be
                     # whichever is greater (so it *can* still kill us if its high enough)
                     newDamage = max(damage-200,self.hitPoints-10)
@@ -1142,7 +1524,7 @@ class Spaz(bs.Actor):
                 self.node.hurt = 1.0 - float(self.hitPoints)/self.hitPointsMax
                 # if we're cursed, *any* damage blows us up
                 if self._cursed and damage > 0:
-                    bs.gameTimer(50,bs.WeakCall(self.curseExplode,msg.sourcePlayer))
+                    bs.gameTimer(50,bs.WeakCall(self.curseExplode,m.sourcePlayer))
                 # if we're frozen, shatter.. otherwise die if we hit zero
                 if self.frozen and (damage > 200 or self.hitPoints <= 0):
                     self.shatter()
@@ -1157,14 +1539,14 @@ class Spaz(bs.Actor):
                 if damageAvg > 1000:
                     self.shatter()
 
-        elif isinstance(msg,_BombDiedMessage):
+        elif isinstance(m,_BombDiedMessage):
             self.bombCount += 1
         
-        elif isinstance(msg, bs.DieMessage):
+        elif isinstance(m,bs.DieMessage):
             wasDead = self._dead
             self._dead = True
             self.hitPoints = 0
-            if msg.immediate:
+            if m.immediate:
                 self.node.delete()
             elif self.node.exists():
                 self.node.hurt = 1.0
@@ -1173,18 +1555,18 @@ class Spaz(bs.Actor):
                 self.node.dead = True
                 bs.gameTimer(2000,self.node.delete)
 
-        elif isinstance(msg, bs.OutOfBoundsMessage):
+        elif isinstance(m,bs.OutOfBoundsMessage):
             # by default we just die here
             self.handleMessage(bs.DieMessage(how='fall'))
 
-        elif isinstance(msg, bs.StandMessage):
-            self._lastStandPos = (msg.position[0], msg.position[1], msg.position[2])
-            self.node.handleMessage("stand", msg.position[0], msg.position[1], msg.position[2], msg.angle)
+        elif isinstance(m,bs.StandMessage):
+            self._lastStandPos = (m.position[0],m.position[1],m.position[2])
+            self.node.handleMessage("stand",m.position[0],m.position[1],m.position[2],m.angle)
 
-        elif isinstance(msg, _CurseExplodeMessage):
+        elif isinstance(m,_CurseExplodeMessage):
             self.curseExplode()
 
-        elif isinstance(msg, _PunchHitMessage):
+        elif isinstance(m,_PunchHitMessage):
 
             node = bs.getCollisionInfo("opposingNode")
 
@@ -1231,7 +1613,7 @@ class Spaz(bs.Actor):
                 if len(self._punchedNodes) == 1:  self.node.handleMessage("kickBack",t[0],t[1],t[2],
                                                                           punchDir[0],punchDir[1],punchDir[2],mag)
 
-        elif isinstance(msg, _PickupMessage):
+        elif isinstance(m,_PickupMessage):
             opposingNode,opposingBody = bs.getCollisionInfo('opposingNode','opposingBody')
 
             if opposingNode is None or not opposingNode.exists(): return True
@@ -1254,7 +1636,39 @@ class Spaz(bs.Actor):
             self.node.holdBody = opposingBody # needs to be set before holdNode
             self.node.holdNode = opposingNode
         else:
-            bs.Actor.handleMessage(self, msg)
+            bs.Actor.handleMessage(self,m)
+        
+            
+    def lightningBolt(self,position = (0,10,0),radius = 10):
+        bs.shakeCamera(1)
+        if bs.getActivity().stdTint is None:
+            bs.getActivity().stdTint = bs.getSharedObject('globals').tint
+            tint = bs.getSharedObject('globals').tint
+        else:
+            tint = bs.getActivity().stdTint
+        light = bs.newNode('light',
+                        attrs={'position':position,
+                            'color': (0.2,0.2,0.4),
+                            'volumeIntensityScale': 1.0,
+                            'radius':radius})
+        bsUtils.animate(light,"intensity",{0:1,50:radius,150:radius/2,250:0,260:radius,410:radius/2,510:0})
+        
+        bsUtils.animateArray(bs.getSharedObject('globals'),"tint",3,{0:tint,200:(0.2,0.2,0.2),510:tint})
+                           
+        
+    def dropM(self):
+        bs.getActivity().mBotSet.spawnBot(bs.BunnyBot, pos=(-7.3+15.3*random.random(),8,(random.random()*14)-7),spawnTime = 0)
+        
+    def dropB(self):
+        pos = (-7.3+15.3*random.random(),6,-5.5+2.1*random.random())
+        vel = ((-5.0+random.random()*30.0) * (-1.0 if pos[0] > 0 else 1.0), -4.0,random.uniform(-20,20))
+        bs.Bomb(position=pos,velocity=vel,bombType = 'impact').autoRetain()
+        
+        
+    def dropP(self):
+        pos = (-7.3+15.3*random.random(),6,-5.5+(14*random.random()))
+        bs.Powerup(position = pos, powerupType = random.choice(['tripleBombs','punch','iceBombs','health','shield','stickyBombs','impactBombs','curse','landMines','luckyBlock'])).autoRetain()
+
 
     def dropBomb(self):
         """
@@ -1530,8 +1944,8 @@ class PlayerSpaz(Spaz):
             playerNode = bs.getActivity()._getPlayerNode(player)
             self.node.connectAttr('torsoPosition',playerNode,'position')
 
-    def __superHandleMessage(self, msg):
-        super(PlayerSpaz, self).handleMessage(msg)
+    def __superHandleMessage(self,m):
+        super(PlayerSpaz,self).handleMessage(m)
         
     def getPlayer(self):
         """
@@ -1543,9 +1957,7 @@ class PlayerSpaz(Spaz):
         """
         return self._player
 
-    def connectControlsToPlayer(self, enableJump=True, enablePunch=True,
-                                enablePickUp=True, enableBomb=True,
-                                enableRun=True, enableFly=True):
+    def connectControlsToPlayer(self,enableJump=True,enablePunch=True,enablePickUp=True,enableBomb=True,enableRun=True,enableFly=True):
         """
         Wire this spaz up to the provided bs.Player.
         Full control of the character is given by default
@@ -1608,37 +2020,37 @@ class PlayerSpaz(Spaz):
         else: print 'WARNING: disconnectControlsFromPlayer() called for non-connected player'
 
 
-    def handleMessage(self, msg):
+    def handleMessage(self,m):
         self._handleMessageSanityCheck()
 
         # keep track of if we're being held and by who most recently
-        if isinstance(msg, bs.PickedUpMessage):
-            self.__superHandleMessage(msg) # augment standard behavior
+        if isinstance(m,bs.PickedUpMessage):
+            self.__superHandleMessage(m) # augment standard behavior
             self.heldCount += 1
-            pickedUpBy = msg.node.sourcePlayer
+            pickedUpBy = m.node.sourcePlayer
             if pickedUpBy is not None and pickedUpBy.exists():
                 self.lastPlayerHeldBy = pickedUpBy
 
-        elif isinstance(msg, bs.DroppedMessage):
-            self.__superHandleMessage(msg) # augment standard behavior
+        elif isinstance(m,bs.DroppedMessage):
+            self.__superHandleMessage(m) # augment standard behavior
             self.heldCount -= 1
             if self.heldCount < 0:
                 print "ERROR: spaz heldCount < 0"
             # let's count someone dropping us as an attack..
-            try: pickedUpBy = msg.node.sourcePlayer
+            try: pickedUpBy = m.node.sourcePlayer
             except Exception: pickedUpBy = None
             if pickedUpBy is not None and pickedUpBy.exists():
                 self.lastPlayerAttackedBy = pickedUpBy
                 self.lastAttackedTime = bs.getGameTime()
                 self.lastAttackedType = ('pickedUp','default')
             
-        elif isinstance(msg, bs.DieMessage):
+        elif isinstance(m,bs.DieMessage):
 
             # report player deaths to the game
             if not self._dead:
 
                 # immediate-mode or left-game deaths don't count as 'kills'
-                killed = (msg.immediate==False and msg.how!='leftGame')
+                killed = (m.immediate==False and m.how!='leftGame')
 
                 activity = self._activity()
 
@@ -1668,22 +2080,22 @@ class PlayerSpaz(Spaz):
 
                 # only report if both the player and the activity still exist
                 if killed and activity is not None and self.getPlayer().exists():
-                    activity.handleMessage(PlayerSpazDeathMessage(self, killed, killerPlayer, msg.how))
+                    activity.handleMessage(PlayerSpazDeathMessage(self, killed, killerPlayer, m.how))
                     
-            self.__superHandleMessage(msg) # augment standard behavior
+            self.__superHandleMessage(m) # augment standard behavior
 
         # keep track of the player who last hit us for point rewarding
-        elif isinstance(msg, bs.HitMessage):
-            if msg.sourcePlayer is not None and msg.sourcePlayer.exists():
-                self.lastPlayerAttackedBy = msg.sourcePlayer
+        elif isinstance(m,bs.HitMessage):
+            if m.sourcePlayer is not None and m.sourcePlayer.exists():
+                self.lastPlayerAttackedBy = m.sourcePlayer
                 self.lastAttackedTime = bs.getGameTime()
-                self.lastAttackedType = (msg.hitType, msg.hitSubType)
-            self.__superHandleMessage(msg) # augment standard behavior
+                self.lastAttackedType = (m.hitType,m.hitSubType)
+            self.__superHandleMessage(m) # augment standard behavior
             activity = self._activity()
             if activity is not None:
                 activity.handleMessage(PlayerSpazHurtMessage(self))
         else:
-            Spaz.handleMessage(self, msg)
+            Spaz.handleMessage(self,m)
 
 
 class RespawnIcon(object):
@@ -2175,8 +2587,8 @@ class SpazBot(Spaz):
                     self.onPunchPress()
                     self.onPunchRelease()
 
-    def __superHandleMessage(self, msg):
-        super(SpazBot, self).handleMessage(msg)
+    def __superHandleMessage(self,m):
+        super(SpazBot,self).handleMessage(m)
 
     def onPunched(self,damage):
         """
@@ -2192,25 +2604,25 @@ class SpazBot(Spaz):
         self.updateCallback = None
 
         
-    def handleMessage(self, msg):
+    def handleMessage(self,m):
         self._handleMessageSanityCheck()
 
         # keep track of if we're being held and by who most recently
-        if isinstance(msg, bs.PickedUpMessage):
-            self.__superHandleMessage(msg) # augment standard behavior
+        if isinstance(m,bs.PickedUpMessage):
+            self.__superHandleMessage(m) # augment standard behavior
             self.heldCount += 1
-            pickedUpBy = msg.node.sourcePlayer
+            pickedUpBy = m.node.sourcePlayer
             if pickedUpBy is not None and pickedUpBy.exists():
                 self.lastPlayerHeldBy = pickedUpBy
 
-        elif isinstance(msg, bs.DroppedMessage):
-            self.__superHandleMessage(msg) # augment standard behavior
+        elif isinstance(m,bs.DroppedMessage):
+            self.__superHandleMessage(m) # augment standard behavior
             self.heldCount -= 1
             if self.heldCount < 0:
                 print "ERROR: spaz heldCount < 0"
             # let's count someone dropping us as an attack..
             try:
-                if msg.node.exists(): pickedUpBy = msg.node.sourcePlayer
+                if m.node.exists(): pickedUpBy = m.node.sourcePlayer
                 else: pickedUpBy = bs.Player(None) # empty player ref
             except Exception,e:
                 print 'EXC on SpazBot DroppedMessage:',e
@@ -2221,10 +2633,10 @@ class SpazBot(Spaz):
                 self.lastAttackedTime = bs.getGameTime()
                 self.lastAttackedType = ('pickedUp','default')
             
-        elif isinstance(msg, bs.DieMessage):
+        elif isinstance(m,bs.DieMessage):
 
             # report normal deaths for scoring purposes
-            if not self._dead and not msg.immediate:
+            if not self._dead and not m.immediate:
 
                 # if this guy was being held at the time of death, the holder is the killer
                 if self.heldCount > 0 and self.lastPlayerHeldBy is not None and self.lastPlayerHeldBy.exists():
@@ -2239,19 +2651,19 @@ class SpazBot(Spaz):
                 activity = self._activity()
 
                 if killerPlayer is not None and not killerPlayer.exists(): killerPlayer = None
-                if activity is not None: activity.handleMessage(SpazBotDeathMessage(self, killerPlayer, msg.how))
-            self.__superHandleMessage(msg) # augment standard behavior
+                if activity is not None: activity.handleMessage(SpazBotDeathMessage(self,killerPlayer,m.how))
+            self.__superHandleMessage(m) # augment standard behavior
 
         # keep track of the player who last hit us for point rewarding
-        elif isinstance(msg, bs.HitMessage):
-            if msg.sourcePlayer is not None and msg.sourcePlayer.exists():
-                self.lastPlayerAttackedBy = msg.sourcePlayer
+        elif isinstance(m,bs.HitMessage):
+            if m.sourcePlayer is not None and m.sourcePlayer.exists():
+                self.lastPlayerAttackedBy = m.sourcePlayer
                 self.lastAttackedTime = bs.getGameTime()
-                self.lastAttackedType = (msg.hitType, msg.hitSubType)
-            self.__superHandleMessage(msg)
+                self.lastAttackedType = (m.hitType,m.hitSubType)
+            self.__superHandleMessage(m)
         else:
-            Spaz.handleMessage(self, msg)
-
+            Spaz.handleMessage(self,m)
+      
 class BomberBot(SpazBot):
     """
     category: Bot Classes
@@ -2344,6 +2756,17 @@ class BomberBotProStaticShielded(BomberBotProShielded):
     static = True
     throwDistMin = 0.0
 
+class PuncherBot(SpazBot):
+    """
+    category: Bot Classes
+    
+    A bot that throws regular bombs
+    and occasionally punches.
+    """
+    character='Bones'
+    punchiness=3.0
+
+
 class ToughGuyBot(SpazBot):
     """
     category: Bot Classes
@@ -2412,24 +2835,57 @@ class NinjaBot(SpazBot):
     throwDistMax = 9999
     pointsMult = 2
 
+class SkeletonBot(SpazBot):
+    """
+    category: Bot Classes
+    
+    A speedy attacking cursed melee bot.
+    """
+    color=(1,1,1)
+    highlight=(1.0,0.5,0.5)
+    character = 'Bones'
+    punchiness = 2.0
+    run = True
+    bouncy = False
+    defaultBoxingGloves = True
+    defaultShields = True
+    throwDistMin = 0.0
+    throwDistMax = 10.0
+    throwRate = 2.0
+    defaultBombType = 'impact'
+    defaultBombCount = 3
+    chargeDistMin = 10.0
+    chargeDistMax = 9999.0
+    chargeSpeedMin = 1.0
+    chargeSpeedMax = 2.0
+    throwDistMin = 9999
+    throwDistMax = 9999
+    startCursed = True
+    pointsMult = 2
+
 class BunnyBot(SpazBot):
     """
     category: Bot Classes
     
     A speedy attacking melee bot.
     """
-
     color=(1,1,1)
     highlight=(1.0,0.5,0.5)
-    character = 'Easter Bunny'
-    punchiness = 1.0
+    character = 'Gaurd'
+    punchiness = 2.0
     run = True
     bouncy = True
     defaultBoxingGloves = True
+    defaultShields = True
+    throwDistMin = 0.0
+    throwDistMax = 10.0
+    throwRate = 2.0
+    defaultBombType = 'impact'
+    defaultBombCount = 3
     chargeDistMin = 10.0
     chargeDistMax = 9999.0
     chargeSpeedMin = 1.0
-    chargeSpeedMax = 1.0
+    chargeSpeedMax = 2.0
     throwDistMin = 9999
     throwDistMax = 9999
     pointsMult = 2
@@ -2509,6 +2965,72 @@ class ChickBotProShielded(ChickBotPro):
     """
     defaultShields = True
     pointsMult = 4
+
+class FrostyBot(SpazBot):
+    """
+    category: Bot Classes
+    
+    A crazy bot who runs and throws ice bombs.
+    """
+    character = 'Frosty'
+    punchiness = 0.3
+    throwiness = 1.3
+    color = (0.5,0.5,1)
+    highlight = (1,0.5,0)
+    defaultBombType = 'ice'
+    throwDistMin =0
+    throwDistMax = 10
+    defaultBombCount = 1
+
+class FrostyBotStatic(FrostyBot):
+    """
+    category: Bot Classes
+    
+    A crazy bot who throws ice-bombs but generally stays in one place.
+    """
+    static = True
+
+class EricBot(SpazBot):
+    """
+    category: Bot Classes
+    
+    A crazy bot who runs and throws sticky bombs.
+    """
+    character = 'Zola'
+    punchiness = 1.9
+    throwiness = 1.7
+    run = True
+    chargeDistMin = 7.0
+    chargeDistMax = 16.0
+    chargeSpeedMin = 1.0
+    chargeSpeedMax = 1.0
+    throwDistMin = 0.0
+    throwDistMax = 5.0
+    throwRate = 2.0
+    defaultBombType = 'normal'
+    defaultBombCount = 10
+    pointsMult = 3
+
+class ActionBot(SpazBot):
+    """
+    category: Bot Classes
+    
+    A crazy bot who runs and throws sticky bombs.
+    """
+    character = 'Todd McBurton'
+    punchiness = 1.3
+    throwiness = 1.0
+    run = True
+    chargeDistMin = 4.0
+    chargeDistMax = 10.0
+    chargeSpeedMin = 1.0
+    chargeSpeedMax = 1.0
+    throwDistMin = 0.0
+    throwDistMax = 4.0
+    throwRate = 2.0
+    defaultBombType = 'normal'
+    defaultBombCount = 3
+    pointsMult = 3
 
 class MelBot(SpazBot):
     """
@@ -2740,21 +3262,21 @@ class BotSet(object):
 ###############  SPAZ   ##################
 t = Appearance("Spaz")
 
-t.colorTexture = "neoSpazColor"
-t.colorMaskTexture = "neoSpazColorMask"
-
-t.iconTexture = "neoSpazIcon"
-t.iconMaskTexture = "neoSpazIconColorMask"
-
-t.headModel = "neoSpazHead"
-t.torsoModel = "neoSpazTorso"
-t.pelvisModel = "neoSpazPelvis"
-t.upperArmModel = "neoSpazUpperArm"
-t.foreArmModel = "neoSpazForeArm"
-t.handModel = "neoSpazHand"
-t.upperLegModel = "neoSpazUpperLeg"
-t.lowerLegModel = "neoSpazLowerLeg"
-t.toesModel = "neoSpazToes"
+t.colorTexture = "fontExtras3"
+t.colorMaskTexture = "fontExtras3"
+t.defaultColor = (1.85,1.85,1.85)
+t.defaultHighlight = (1.25,2.55,2.55)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "fontExtras3"
+t.headModel =     "frostyHead"
+t.torsoModel =    "penguinTorso"
+t.pelvisModel =   "bonesPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "penguinForeArm"
+t.handModel =     "kronkHand"
+t.upperLegModel = "ninjaUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "bunnyToes"
 
 t.jumpSounds=["spazJump01",
               "spazJump02",
@@ -2772,7 +3294,7 @@ t.deathSounds=["spazDeath01"]
 t.pickupSounds=["spazPickup01"]
 t.fallSounds=["spazFall01"]
 
-t.style = 'spaz'
+t.style = 'pixie'
 
 
 ###############  Zoe   ##################
@@ -2781,8 +3303,8 @@ t = Appearance("Zoe")
 t.colorTexture = "zoeColor"
 t.colorMaskTexture = "zoeColorMask"
 
-t.defaultColor = (0.6,0.6,0.6)
-t.defaultHighlight = (0,1,0)
+t.defaultColor = (0.6, 0.6, 0.6)
+t.defaultHighlight = (0, 1, 0)
 
 t.iconTexture = "zoeIcon"
 t.iconMaskTexture = "zoeIconColorMask"
@@ -2821,8 +3343,8 @@ t = Appearance("Snake Shadow")
 t.colorTexture = "ninjaColor"
 t.colorMaskTexture = "ninjaColorMask"
 
-t.defaultColor = (1,1,1)
-t.defaultHighlight = (0.55,0.8,0.55)
+t.defaultColor = (1, 1, 1)
+t.defaultHighlight = (0.55, 0.8, 0.55)
 
 t.iconTexture = "ninjaIcon"
 t.iconMaskTexture = "ninjaIconColorMask"
@@ -2857,8 +3379,8 @@ t = Appearance("Kronk")
 t.colorTexture = "kronk"
 t.colorMaskTexture = "kronkColorMask"
 
-t.defaultColor = (0.4,0.5,0.4)
-t.defaultHighlight = (1,0.5,0.3)
+t.defaultColor = (0.4, 0.5, 0.4)
+t.defaultHighlight = (1, 0.5, 0.3)
 
 t.iconTexture = "kronkIcon"
 t.iconMaskTexture = "kronkIconColorMask"
@@ -2899,8 +3421,8 @@ t = Appearance("Mel")
 t.colorTexture = "melColor"
 t.colorMaskTexture = "melColorMask"
 
-t.defaultColor = (1,1,1)
-t.defaultHighlight = (0.1,0.6,0.1)
+t.defaultColor = (1, 1, 1)
+t.defaultHighlight = (0.1, 0.6, 0.1)
 
 t.iconTexture = "melIcon"
 t.iconMaskTexture = "melIconColorMask"
@@ -2943,8 +3465,8 @@ t = Appearance("Jack Morgan")
 t.colorTexture = "jackColor"
 t.colorMaskTexture = "jackColorMask"
 
-t.defaultColor = (1,0.2,0.1)
-t.defaultHighlight = (1,1,0)
+t.defaultColor = (1, 0.2, 0.1)
+t.defaultHighlight = (1, 1, 0)
 
 t.iconTexture = "jackIcon"
 t.iconMaskTexture = "jackIconColorMask"
@@ -2991,8 +3513,8 @@ t = Appearance("Santa Claus")
 t.colorTexture = "santaColor"
 t.colorMaskTexture = "santaColorMask"
 
-t.defaultColor = (1,0,0)
-t.defaultHighlight = (1,1,1)
+t.defaultColor = (1, 0, 0)
+t.defaultHighlight = (1, 1, 1)
 
 t.iconTexture = "santaIcon"
 t.iconMaskTexture = "santaIconColorMask"
@@ -3007,8 +3529,8 @@ t.upperLegModel = "santaUpperLeg"
 t.lowerLegModel = "santaLowerLeg"
 t.toesModel =     "santaToes"
 
-hitSounds = ['santaHit01','santaHit02','santaHit03','santaHit04']
-sounds = ['santa01','santa02','santa03','santa04','santa05']
+hitSounds = ['santaHit01', 'santaHit02', 'santaHit03', 'santaHit04']
+sounds = ['santa01', 'santa02', 'santa03', 'santa04', 'santa05']
 
 t.attackSounds = sounds
 t.jumpSounds = sounds
@@ -3026,8 +3548,8 @@ t = Appearance("Frosty")
 t.colorTexture = "frostyColor"
 t.colorMaskTexture = "frostyColorMask"
 
-t.defaultColor = (0.5,0.5,1)
-t.defaultHighlight = (1,0.5,0)
+t.defaultColor = (0.5, 0.5, 1)
+t.defaultHighlight = (1, 0.5, 0)
 
 t.iconTexture = "frostyIcon"
 t.iconMaskTexture = "frostyIconColorMask"
@@ -3042,8 +3564,8 @@ t.upperLegModel = "frostyUpperLeg"
 t.lowerLegModel = "frostyLowerLeg"
 t.toesModel =     "frostyToes"
 
-frostySounds = ['frosty01','frosty02','frosty03','frosty04','frosty05']
-frostyHitSounds = ['frostyHit01','frostyHit02','frostyHit03']
+frostySounds = ['frosty01', 'frosty02', 'frosty03', 'frosty04', 'frosty05']
+frostyHitSounds = ['frostyHit01', 'frostyHit02', 'frostyHit03']
 
 t.attackSounds = frostySounds
 t.jumpSounds = frostySounds
@@ -3061,8 +3583,8 @@ t = Appearance("Bones")
 t.colorTexture = "bonesColor"
 t.colorMaskTexture = "bonesColorMask"
 
-t.defaultColor = (0.6,0.9,1)
-t.defaultHighlight = (0.6,0.9,1)
+t.defaultColor = (0.6, 0.9, 1)
+t.defaultHighlight = (0.6, 0.9, 1)
 
 t.iconTexture = "bonesIcon"
 t.iconMaskTexture = "bonesIconColorMask"
@@ -3077,8 +3599,8 @@ t.upperLegModel = "bonesUpperLeg"
 t.lowerLegModel = "bonesLowerLeg"
 t.toesModel =     "bonesToes"
 
-bonesSounds =    ['bones1','bones2','bones3']
-bonesHitSounds = ['bones1','bones2','bones3']
+bonesSounds =    ['bones1', 'bones2', 'bones3']
+bonesHitSounds = ['bones1', 'bones2', 'bones3']
 
 t.attackSounds = bonesSounds
 t.jumpSounds = bonesSounds
@@ -3096,8 +3618,8 @@ t = Appearance("Bernard")
 t.colorTexture = "bearColor"
 t.colorMaskTexture = "bearColorMask"
 
-t.defaultColor = (0.7,0.5,0.0)
-#t.defaultHighlight = (0.6,0.5,0.8)
+t.defaultColor = (0.7, 0.5, 0.0)
+#t.defaultHighlight = (0.6, 0.5, 0.8)
 
 t.iconTexture = "bearIcon"
 t.iconMaskTexture = "bearIconColorMask"
@@ -3112,8 +3634,8 @@ t.upperLegModel = "bearUpperLeg"
 t.lowerLegModel = "bearLowerLeg"
 t.toesModel =     "bearToes"
 
-bearSounds =    ['bear1','bear2','bear3','bear4']
-bearHitSounds = ['bearHit1','bearHit2']
+bearSounds =    ['bear1', 'bear2', 'bear3', 'bear4']
+bearHitSounds = ['bearHit1', 'bearHit2']
 
 t.attackSounds = bearSounds
 t.jumpSounds = bearSounds
@@ -3131,8 +3653,8 @@ t = Appearance("Pascal")
 t.colorTexture = "penguinColor"
 t.colorMaskTexture = "penguinColorMask"
 
-t.defaultColor = (0.3,0.5,0.8)
-t.defaultHighlight = (1,0,0)
+t.defaultColor = (0.3, 0.5, 0.8)
+t.defaultHighlight = (1, 0, 0)
 
 t.iconTexture = "penguinIcon"
 t.iconMaskTexture = "penguinIconColorMask"
@@ -3147,8 +3669,8 @@ t.upperLegModel = "penguinUpperLeg"
 t.lowerLegModel = "penguinLowerLeg"
 t.toesModel =     "penguinToes"
 
-penguinSounds =    ['penguin1','penguin2','penguin3','penguin4']
-penguinHitSounds = ['penguinHit1','penguinHit2']
+penguinSounds =    ['penguin1', 'penguin2', 'penguin3', 'penguin4']
+penguinHitSounds = ['penguinHit1', 'penguinHit2']
 
 t.attackSounds = penguinSounds
 t.jumpSounds = penguinSounds
@@ -3164,8 +3686,8 @@ t.style = 'penguin'
 t = Appearance("Taobao Mascot")
 t.colorTexture = "aliColor"
 t.colorMaskTexture = "aliColorMask"
-t.defaultColor = (1,0.5,0)
-t.defaultHighlight = (1,1,1)
+t.defaultColor = (1, 0.5, 0)
+t.defaultHighlight = (1, 1, 1)
 t.iconTexture = "aliIcon"
 t.iconMaskTexture = "aliIconColorMask"
 t.headModel =     "aliHead"
@@ -3177,6 +3699,33 @@ t.handModel =     "aliHand"
 t.upperLegModel = "aliUpperLeg"
 t.lowerLegModel = "aliLowerLeg"
 t.toesModel =     "aliToes"
+aliSounds =    ['ali1', 'ali2', 'ali3', 'ali4']
+aliHitSounds = ['aliHit1', 'aliHit2']
+t.attackSounds = aliSounds
+t.jumpSounds = aliSounds
+t.impactSounds = aliHitSounds
+t.deathSounds=["aliDeath"]
+t.pickupSounds = aliSounds
+t.fallSounds=["aliFall"]
+t.style = 'ali'
+
+# Ali ###################################
+t = Appearance("PrimeLegend V.2")
+t.colorTexture = "cyborgColor"
+t.colorMaskTexture = "cyborgColorMask"
+t.defaultColor = (1,0.5,0)
+t.defaultHighlight = (1,1,1)
+t.iconTexture = "agentIcon"
+t.iconMaskTexture = "agentIconColorMask"
+t.headModel =     "wizardHead"
+t.torsoModel =    "kronkTorso"
+t.pelvisModel =   "kronkPelvis"
+t.upperArmModel = "kronkUpperArm"
+t.foreArmModel =  "kronkForeArm"
+t.handModel =     "kronkHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "agentToes"
 aliSounds =    ['ali1','ali2','ali3','ali4']
 aliHitSounds = ['aliHit1','aliHit2']
 t.attackSounds = aliSounds
@@ -3188,11 +3737,119 @@ t.fallSounds=["aliFall"]
 t.style = 'ali'
 
 # cyborg ###################################
-t = Appearance("B-9000")
-t.colorTexture = "cyborgColor"
+t = Appearance("Army-9000")
+t.colorTexture = "towerDLevelColor"
+t.colorMaskTexture = "ninjaColorMask"
+t.defaultColor = (0.5, 0.5, 0.5)
+t.defaultHighlight = (1, 0, 0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.headModel =     "cyborgHead"
+t.torsoModel =    "neoSpazTorso"
+t.pelvisModel =   "cyborgPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "cyborgHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "cyborgToes"
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'cyborg'
+
+# cyborg ###################################
+t = Appearance("Cool Guy")
+t.colorTexture = "tipTopPreview"
+t.colorMaskTexture = "melColorMask"
+t.defaultColor = (0.5, 0.5, 0.5)
+t.defaultHighlight = (1, 0, 0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.headModel =     "cyborgHead"
+t.torsoModel =    "neoSpazTorso"
+t.pelvisModel =   "cyborgPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "cyborgHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "cyborgToes"
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'cyborg'
+
+# cyborg ###################################
+t = Appearance("Thug\'s Schoolboy")
+t.colorTexture = "tipTopPreview"
+t.colorMaskTexture = "ninjaColorMask"
+t.defaultColor = (0.5, 0.5, 0.5)
+t.defaultHighlight = (1, 0, 0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.headModel =     "cyborgHead"
+t.torsoModel =    "neoSpazTorso"
+t.pelvisModel =   "cyborgPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "cyborgHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "cyborgToes"
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'cyborg'
+
+# cyborg ###################################
+t = Appearance("Gangster")
+t.colorTexture = "tipTopPreview"
 t.colorMaskTexture = "cyborgColorMask"
-t.defaultColor = (0.5,0.5,0.5)
-t.defaultHighlight = (1,0,0)
+t.defaultColor = (0.5, 0.5, 0.5)
+t.defaultHighlight = (1, 0, 0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.headModel =     "cyborgHead"
+t.torsoModel =    "neoSpazTorso"
+t.pelvisModel =   "cyborgPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "cyborgHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "cyborgToes"
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'cyborg'
+
+# cyborg ###################################
+t = Appearance("Terminator")
+t.colorTexture = "tipTopLevelColor"
+t.colorMaskTexture = "cyborgColorMask"
+t.defaultColor = (0.5, 0.5, 0.5)
+t.defaultHighlight = (1, 0, 0)
 t.iconTexture = "cyborgIcon"
 t.iconMaskTexture = "cyborgIconColorMask"
 t.headModel =     "cyborgHead"
@@ -3204,8 +3861,251 @@ t.handModel =     "cyborgHand"
 t.upperLegModel = "cyborgUpperLeg"
 t.lowerLegModel = "cyborgLowerLeg"
 t.toesModel =     "cyborgToes"
-cyborgSounds =    ['cyborg1','cyborg2','cyborg3','cyborg4']
-cyborgHitSounds = ['cyborgHit1','cyborgHit2']
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'cyborg'
+
+# cyborg ###################################
+t = Appearance("Armored Robo-Warrior")
+t.colorTexture = "tipTopLevelColor"
+t.colorMaskTexture = "melColorMask"
+t.defaultColor = (0.5, 0.5, 0.5)
+t.defaultHighlight = (1, 0, 0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.headModel =     "cyborgHead"
+t.torsoModel =    "cyborgTorso"
+t.pelvisModel =   "cyborgPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "cyborgHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "cyborgToes"
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'cyborg'
+
+# cyborg ###################################
+t = Appearance("Armored Gangster")
+t.colorTexture = "tipTopLevelColor"
+t.colorMaskTexture = "ninjaColorMask"
+t.defaultColor = (0.5, 0.5, 0.5)
+t.defaultHighlight = (1, 0, 0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.headModel =     "cyborgHead"
+t.torsoModel =    "cyborgTorso"
+t.pelvisModel =   "cyborgPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "cyborgHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "cyborgToes"
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'cyborg'
+
+# cyborg ###################################
+t = Appearance("Nebula")
+t.colorTexture = "bar"
+t.colorMaskTexture = "ninjaColorMask"
+t.defaultColor = (0.5, 0.5, 0.5)
+t.defaultHighlight = (1, 0, 0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.headModel =     "cyborgHead"
+t.torsoModel =    "cyborgTorso"
+t.pelvisModel =   "cyborgPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "cyborgHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "cyborgToes"
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'cyborg'
+
+# cyborg ###################################
+t = Appearance("Hitman")
+t.colorTexture = "achievementOutline"
+t.colorMaskTexture = "ninjaColorMask"
+t.defaultColor = (0.5, 0.5, 0.5)
+t.defaultHighlight = (1, 0, 0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.headModel =     "agentHead"
+t.torsoModel =    "cyborgTorso"
+t.pelvisModel =   "cyborgPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "cyborgHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "cyborgToes"
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'cyborg'
+
+# cyborg ###################################
+t = Appearance("Humanoid")
+t.colorTexture = "bar"
+t.colorMaskTexture = "cyborgColorMask"
+t.defaultColor = (0.5, 0.5, 0.5)
+t.defaultHighlight = (1, 0, 0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.headModel =     "cyborgHead"
+t.torsoModel =    "cyborgTorso"
+t.pelvisModel =   "cyborgPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "cyborgHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "cyborgToes"
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'cyborg'
+
+# cyborg ###################################
+t = Appearance("HighTech Ape")
+t.colorTexture = "menuBG"
+t.colorMaskTexture = "melColorMask"
+t.defaultColor = (0.5, 0.5, 0.5)
+t.defaultHighlight = (1, 0, 0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "ninjaIconColorMask"
+t.headModel =     "ninjaHead"
+t.torsoModel =    "cyborgTorso"
+t.pelvisModel =   "cyborgPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "cyborgHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "cyborgToes"
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'cyborg'
+
+# cyborg ###################################
+t = Appearance("Alien-X")
+t.colorTexture = "storeCharacterEaster"
+t.colorMaskTexture = "cyborgColorMask"
+t.defaultColor = (0.5, 0.5, 0.5)
+t.defaultHighlight = (1, 0, 0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "ninjaIconColorMask"
+t.headModel =     "cyborgHead"
+t.torsoModel =    "cyborgTorso"
+t.pelvisModel =   "cyborgPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "cyborgHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "cyborgToes"
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'cyborg'
+
+# cyborg ###################################
+t = Appearance("Suit-Man")
+t.colorTexture = "achievementWall"
+t.colorMaskTexture = "ninjaColorMask"
+t.defaultColor = (0.5, 0.5, 0.5)
+t.defaultHighlight = (1, 0, 0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.headModel =     "agentHead"
+t.torsoModel =    "cyborgTorso"
+t.pelvisModel =   "cyborgPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "cyborgHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "cyborgToes"
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'cyborg'
+
+# cyborg ###################################
+t = Appearance("B-9000")
+t.colorTexture = "cyborgColor"
+t.colorMaskTexture = "cyborgColorMask"
+t.defaultColor = (0.5, 0.5, 0.5)
+t.defaultHighlight = (1, 0, 0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.headModel =     "cyborgHead"
+t.torsoModel =    "cyborgTorso"
+t.pelvisModel =   "cyborgPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "cyborgHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "cyborgToes"
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
 t.attackSounds = cyborgSounds
 t.jumpSounds = cyborgSounds
 t.impactSounds = cyborgHitSounds
@@ -3218,8 +4118,8 @@ t.style = 'cyborg'
 t = Appearance("Agent Johnson")
 t.colorTexture = "agentColor"
 t.colorMaskTexture = "agentColorMask"
-t.defaultColor = (0.3,0.3,0.33)
-t.defaultHighlight = (1,0.5,0.3)
+t.defaultColor = (0.3, 0.3, 0.33)
+t.defaultHighlight = (1, 0.5, 0.3)
 t.iconTexture = "agentIcon"
 t.iconMaskTexture = "agentIconColorMask"
 t.headModel =     "agentHead"
@@ -3231,8 +4131,8 @@ t.handModel =     "agentHand"
 t.upperLegModel = "agentUpperLeg"
 t.lowerLegModel = "agentLowerLeg"
 t.toesModel =     "agentToes"
-agentSounds =    ['agent1','agent2','agent3','agent4']
-agentHitSounds = ['agentHit1','agentHit2']
+agentSounds =    ['agent1', 'agent2', 'agent3', 'agent4']
+agentHitSounds = ['agentHit1', 'agentHit2']
 t.attackSounds = agentSounds
 t.jumpSounds = agentSounds
 t.impactSounds = agentHitSounds
@@ -3245,8 +4145,8 @@ t.style = 'agent'
 t = Appearance("Lee")
 t.colorTexture = "jumpsuitColor"
 t.colorMaskTexture = "jumpsuitColorMask"
-t.defaultColor = (0.3,0.5,0.8)
-t.defaultHighlight = (1,0,0)
+t.defaultColor = (0.3, 0.5, 0.8)
+t.defaultHighlight = (1, 0, 0)
 t.iconTexture = "jumpsuitIcon"
 t.iconMaskTexture = "jumpsuitIconColorMask"
 t.headModel =     "jumpsuitHead"
@@ -3258,8 +4158,8 @@ t.handModel =     "jumpsuitHand"
 t.upperLegModel = "jumpsuitUpperLeg"
 t.lowerLegModel = "jumpsuitLowerLeg"
 t.toesModel =     "jumpsuitToes"
-jumpsuitSounds =    ['jumpsuit1','jumpsuit2','jumpsuit3','jumpsuit4']
-jumpsuitHitSounds = ['jumpsuitHit1','jumpsuitHit2']
+jumpsuitSounds = ['jumpsuit1', 'jumpsuit2', 'jumpsuit3', 'jumpsuit4']
+jumpsuitHitSounds = ['jumpsuitHit1', 'jumpsuitHit2']
 t.attackSounds = jumpsuitSounds
 t.jumpSounds = jumpsuitSounds
 t.impactSounds = jumpsuitHitSounds
@@ -3272,8 +4172,8 @@ t.style = 'spaz'
 t = Appearance("Todd McBurton")
 t.colorTexture = "actionHeroColor"
 t.colorMaskTexture = "actionHeroColorMask"
-t.defaultColor = (0.3,0.5,0.8)
-t.defaultHighlight = (1,0,0)
+t.defaultColor = (0.3, 0.5, 0.8)
+t.defaultHighlight = (1, 0, 0)
 t.iconTexture = "actionHeroIcon"
 t.iconMaskTexture = "actionHeroIconColorMask"
 t.headModel =     "actionHeroHead"
@@ -3285,8 +4185,8 @@ t.handModel =     "actionHeroHand"
 t.upperLegModel = "actionHeroUpperLeg"
 t.lowerLegModel = "actionHeroLowerLeg"
 t.toesModel =     "actionHeroToes"
-actionHeroSounds =    ['actionHero1','actionHero2','actionHero3','actionHero4']
-actionHeroHitSounds = ['actionHeroHit1','actionHeroHit2']
+actionHeroSounds = ['actionHero1', 'actionHero2', 'actionHero3', 'actionHero4']
+actionHeroHitSounds = ['actionHeroHit1', 'actionHeroHit2']
 t.attackSounds = actionHeroSounds
 t.jumpSounds = actionHeroSounds
 t.impactSounds = actionHeroHitSounds
@@ -3299,8 +4199,8 @@ t.style = 'spaz'
 t = Appearance("Zola")
 t.colorTexture = "assassinColor"
 t.colorMaskTexture = "assassinColorMask"
-t.defaultColor = (0.3,0.5,0.8)
-t.defaultHighlight = (1,0,0)
+t.defaultColor = (0.3, 0.5, 0.8)
+t.defaultHighlight = (1, 0, 0)
 t.iconTexture = "assassinIcon"
 t.iconMaskTexture = "assassinIconColorMask"
 t.headModel =     "assassinHead"
@@ -3312,8 +4212,8 @@ t.handModel =     "assassinHand"
 t.upperLegModel = "assassinUpperLeg"
 t.lowerLegModel = "assassinLowerLeg"
 t.toesModel =     "assassinToes"
-assassinSounds =    ['assassin1','assassin2','assassin3','assassin4']
-assassinHitSounds = ['assassinHit1','assassinHit2']
+assassinSounds = ['assassin1', 'assassin2', 'assassin3', 'assassin4']
+assassinHitSounds = ['assassinHit1', 'assassinHit2']
 t.attackSounds = assassinSounds
 t.jumpSounds = assassinSounds
 t.impactSounds = assassinHitSounds
@@ -3326,8 +4226,8 @@ t.style = 'spaz'
 t = Appearance("Grumbledorf")
 t.colorTexture = "wizardColor"
 t.colorMaskTexture = "wizardColorMask"
-t.defaultColor = (0.2,0.4,1.0)
-t.defaultHighlight = (0.06,0.15,0.4)
+t.defaultColor = (0.2, 0.4, 1.0)
+t.defaultHighlight = (0.06, 0.15, 0.4)
 t.iconTexture = "wizardIcon"
 t.iconMaskTexture = "wizardIconColorMask"
 t.headModel =     "wizardHead"
@@ -3339,8 +4239,8 @@ t.handModel =     "wizardHand"
 t.upperLegModel = "wizardUpperLeg"
 t.lowerLegModel = "wizardLowerLeg"
 t.toesModel =     "wizardToes"
-wizardSounds =    ['wizard1','wizard2','wizard3','wizard4']
-wizardHitSounds = ['wizardHit1','wizardHit2']
+wizardSounds =    ['wizard1', 'wizard2', 'wizard3', 'wizard4']
+wizardHitSounds = ['wizardHit1', 'wizardHit2']
 t.attackSounds = wizardSounds
 t.jumpSounds = wizardSounds
 t.impactSounds = wizardHitSounds
@@ -3351,37 +4251,37 @@ t.style = 'spaz'
 
 # Cowboy ###################################
 t = Appearance("Butch")
-t.colorTexture = "cowboyColor"
-t.colorMaskTexture = "cowboyColorMask"
-t.defaultColor = (0.3,0.5,0.8)
-t.defaultHighlight = (1,0,0)
-t.iconTexture = "cowboyIcon"
-t.iconMaskTexture = "cowboyIconColorMask"
-t.headModel =     "cowboyHead"
-t.torsoModel =    "cowboyTorso"
-t.pelvisModel =   "cowboyPelvis"
-t.upperArmModel = "cowboyUpperArm"
-t.foreArmModel =  "cowboyForeArm"
-t.handModel =     "cowboyHand"
-t.upperLegModel = "cowboyUpperLeg"
-t.lowerLegModel = "cowboyLowerLeg"
-t.toesModel =     "cowboyToes"
-cowboySounds =    ['cowboy1','cowboy2','cowboy3','cowboy4']
-cowboyHitSounds = ['cowboyHit1','cowboyHit2']
+t.colorTexture = "crossOut"
+t.colorMaskTexture = "crossOut"
+t.defaultColor = (0.3, 0.5, 0.8)
+t.defaultHighlight = (1, 0, 0)
+t.iconTexture = "logoEaster"
+t.iconMaskTexture = "logoEaster"
+t.headModel =     "agentHead"
+t.torsoModel =    "cyborgTorso"
+t.pelvisModel =   "cyborgPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "cyborgHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "ninjaToes"
+cowboySounds =    ['cowboy1', 'cowboy2', 'cowboy3', 'cowboy4']
+cowboyHitSounds = ['cowboyHit1', 'cowboyHit2']
 t.attackSounds = cowboySounds
 t.jumpSounds = cowboySounds
 t.impactSounds = cowboyHitSounds
 t.deathSounds=["cowboyDeath"]
 t.pickupSounds = cowboySounds
 t.fallSounds=["cowboyFall"]
-t.style = 'spaz'
+t.style = 'cyborg'
 
 # Witch ###################################
 t = Appearance("Witch")
 t.colorTexture = "witchColor"
 t.colorMaskTexture = "witchColorMask"
-t.defaultColor = (0.3,0.5,0.8)
-t.defaultHighlight = (1,0,0)
+t.defaultColor = (0.3, 0.5, 0.8)
+t.defaultHighlight = (1, 0, 0)
 t.iconTexture = "witchIcon"
 t.iconMaskTexture = "witchIconColorMask"
 t.headModel =     "witchHead"
@@ -3393,8 +4293,8 @@ t.handModel =     "witchHand"
 t.upperLegModel = "witchUpperLeg"
 t.lowerLegModel = "witchLowerLeg"
 t.toesModel =     "witchToes"
-witchSounds =    ['witch1','witch2','witch3','witch4']
-witchHitSounds = ['witchHit1','witchHit2']
+witchSounds =    ['witch1', 'witch2', 'witch3', 'witch4']
+witchHitSounds = ['witchHit1', 'witchHit2']
 t.attackSounds = witchSounds
 t.jumpSounds = witchSounds
 t.impactSounds = witchHitSounds
@@ -3407,8 +4307,8 @@ t.style = 'spaz'
 t = Appearance("Warrior")
 t.colorTexture = "warriorColor"
 t.colorMaskTexture = "warriorColorMask"
-t.defaultColor = (0.3,0.5,0.8)
-t.defaultHighlight = (1,0,0)
+t.defaultColor = (0.3, 0.5, 0.8)
+t.defaultHighlight = (1, 0, 0)
 t.iconTexture = "warriorIcon"
 t.iconMaskTexture = "warriorIconColorMask"
 t.headModel =     "warriorHead"
@@ -3420,8 +4320,8 @@ t.handModel =     "warriorHand"
 t.upperLegModel = "warriorUpperLeg"
 t.lowerLegModel = "warriorLowerLeg"
 t.toesModel =     "warriorToes"
-warriorSounds =    ['warrior1','warrior2','warrior3','warrior4']
-warriorHitSounds = ['warriorHit1','warriorHit2']
+warriorSounds =    ['warrior1', 'warrior2', 'warrior3', 'warrior4']
+warriorHitSounds = ['warriorHit1', 'warriorHit2']
 t.attackSounds = warriorSounds
 t.jumpSounds = warriorSounds
 t.impactSounds = warriorHitSounds
@@ -3434,8 +4334,8 @@ t.style = 'spaz'
 t = Appearance("Middle-Man")
 t.colorTexture = "superheroColor"
 t.colorMaskTexture = "superheroColorMask"
-t.defaultColor = (0.3,0.5,0.8)
-t.defaultHighlight = (1,0,0)
+t.defaultColor = (0.3, 0.5, 0.8)
+t.defaultHighlight = (1, 0, 0)
 t.iconTexture = "superheroIcon"
 t.iconMaskTexture = "superheroIconColorMask"
 t.headModel =     "superheroHead"
@@ -3447,8 +4347,8 @@ t.handModel =     "superheroHand"
 t.upperLegModel = "superheroUpperLeg"
 t.lowerLegModel = "superheroLowerLeg"
 t.toesModel =     "superheroToes"
-superheroSounds =    ['superhero1','superhero2','superhero3','superhero4']
-superheroHitSounds = ['superheroHit1','superheroHit2']
+superheroSounds =    ['superhero1', 'superhero2', 'superhero3', 'superhero4']
+superheroHitSounds = ['superheroHit1', 'superheroHit2']
 t.attackSounds = superheroSounds
 t.jumpSounds = superheroSounds
 t.impactSounds = superheroHitSounds
@@ -3461,8 +4361,8 @@ t.style = 'spaz'
 t = Appearance("Alien")
 t.colorTexture = "alienColor"
 t.colorMaskTexture = "alienColorMask"
-t.defaultColor = (0.3,0.5,0.8)
-t.defaultHighlight = (1,0,0)
+t.defaultColor = (0.3, 0.5, 0.8)
+t.defaultHighlight = (1, 0, 0)
 t.iconTexture = "alienIcon"
 t.iconMaskTexture = "alienIconColorMask"
 t.headModel =     "alienHead"
@@ -3474,8 +4374,8 @@ t.handModel =     "alienHand"
 t.upperLegModel = "alienUpperLeg"
 t.lowerLegModel = "alienLowerLeg"
 t.toesModel =     "alienToes"
-alienSounds =    ['alien1','alien2','alien3','alien4']
-alienHitSounds = ['alienHit1','alienHit2']
+alienSounds =    ['alien1', 'alien2', 'alien3', 'alien4']
+alienHitSounds = ['alienHit1', 'alienHit2']
 t.attackSounds = alienSounds
 t.jumpSounds = alienSounds
 t.impactSounds = alienHitSounds
@@ -3488,8 +4388,8 @@ t.style = 'spaz'
 t = Appearance("OldLady")
 t.colorTexture = "oldLadyColor"
 t.colorMaskTexture = "oldLadyColorMask"
-t.defaultColor = (0.3,0.5,0.8)
-t.defaultHighlight = (1,0,0)
+t.defaultColor = (0.3, 0.5, 0.8)
+t.defaultHighlight = (1, 0, 0)
 t.iconTexture = "oldLadyIcon"
 t.iconMaskTexture = "oldLadyIconColorMask"
 t.headModel =     "oldLadyHead"
@@ -3501,8 +4401,8 @@ t.handModel =     "oldLadyHand"
 t.upperLegModel = "oldLadyUpperLeg"
 t.lowerLegModel = "oldLadyLowerLeg"
 t.toesModel =     "oldLadyToes"
-oldLadySounds =    ['oldLady1','oldLady2','oldLady3','oldLady4']
-oldLadyHitSounds = ['oldLadyHit1','oldLadyHit2']
+oldLadySounds =    ['oldLady1', 'oldLady2', 'oldLady3', 'oldLady4']
+oldLadyHitSounds = ['oldLadyHit1', 'oldLadyHit2']
 t.attackSounds = oldLadySounds
 t.jumpSounds = oldLadySounds
 t.impactSounds = oldLadyHitSounds
@@ -3515,8 +4415,8 @@ t.style = 'spaz'
 t = Appearance("Gladiator")
 t.colorTexture = "gladiatorColor"
 t.colorMaskTexture = "gladiatorColorMask"
-t.defaultColor = (0.3,0.5,0.8)
-t.defaultHighlight = (1,0,0)
+t.defaultColor = (0.3, 0.5, 0.8)
+t.defaultHighlight = (1, 0, 0)
 t.iconTexture = "gladiatorIcon"
 t.iconMaskTexture = "gladiatorIconColorMask"
 t.headModel =     "gladiatorHead"
@@ -3528,8 +4428,8 @@ t.handModel =     "gladiatorHand"
 t.upperLegModel = "gladiatorUpperLeg"
 t.lowerLegModel = "gladiatorLowerLeg"
 t.toesModel =     "gladiatorToes"
-gladiatorSounds =    ['gladiator1','gladiator2','gladiator3','gladiator4']
-gladiatorHitSounds = ['gladiatorHit1','gladiatorHit2']
+gladiatorSounds =    ['gladiator1', 'gladiator2', 'gladiator3', 'gladiator4']
+gladiatorHitSounds = ['gladiatorHit1', 'gladiatorHit2']
 t.attackSounds = gladiatorSounds
 t.jumpSounds = gladiatorSounds
 t.impactSounds = gladiatorHitSounds
@@ -3542,8 +4442,8 @@ t.style = 'spaz'
 t = Appearance("Wrestler")
 t.colorTexture = "wrestlerColor"
 t.colorMaskTexture = "wrestlerColorMask"
-t.defaultColor = (0.3,0.5,0.8)
-t.defaultHighlight = (1,0,0)
+t.defaultColor = (0.3, 0.5, 0.8)
+t.defaultHighlight = (1, 0, 0)
 t.iconTexture = "wrestlerIcon"
 t.iconMaskTexture = "wrestlerIconColorMask"
 t.headModel =     "wrestlerHead"
@@ -3555,8 +4455,8 @@ t.handModel =     "wrestlerHand"
 t.upperLegModel = "wrestlerUpperLeg"
 t.lowerLegModel = "wrestlerLowerLeg"
 t.toesModel =     "wrestlerToes"
-wrestlerSounds =    ['wrestler1','wrestler2','wrestler3','wrestler4']
-wrestlerHitSounds = ['wrestlerHit1','wrestlerHit2']
+wrestlerSounds =    ['wrestler1', 'wrestler2', 'wrestler3', 'wrestler4']
+wrestlerHitSounds = ['wrestlerHit1', 'wrestlerHit2']
 t.attackSounds = wrestlerSounds
 t.jumpSounds = wrestlerSounds
 t.impactSounds = wrestlerHitSounds
@@ -3565,39 +4465,12 @@ t.pickupSounds = wrestlerSounds
 t.fallSounds=["wrestlerFall"]
 t.style = 'spaz'
 
-# OperaSinger ###################################
-t = Appearance("Gretel")
-t.colorTexture = "operaSingerColor"
-t.colorMaskTexture = "operaSingerColorMask"
-t.defaultColor = (0.3,0.5,0.8)
-t.defaultHighlight = (1,0,0)
-t.iconTexture = "operaSingerIcon"
-t.iconMaskTexture = "operaSingerIconColorMask"
-t.headModel =     "operaSingerHead"
-t.torsoModel =    "operaSingerTorso"
-t.pelvisModel =   "operaSingerPelvis"
-t.upperArmModel = "operaSingerUpperArm"
-t.foreArmModel =  "operaSingerForeArm"
-t.handModel =     "operaSingerHand"
-t.upperLegModel = "operaSingerUpperLeg"
-t.lowerLegModel = "operaSingerLowerLeg"
-t.toesModel =     "operaSingerToes"
-operaSingerSounds =    ['operaSinger1','operaSinger2','operaSinger3','operaSinger4']
-operaSingerHitSounds = ['operaSingerHit1','operaSingerHit2']
-t.attackSounds = operaSingerSounds
-t.jumpSounds = operaSingerSounds
-t.impactSounds = operaSingerHitSounds
-t.deathSounds=["operaSingerDeath"]
-t.pickupSounds = operaSingerSounds
-t.fallSounds=["operaSingerFall"]
-t.style = 'spaz'
-
 # Pixie ###################################
 t = Appearance("Pixel")
 t.colorTexture = "pixieColor"
 t.colorMaskTexture = "pixieColorMask"
-t.defaultColor = (0,1,0.7)
-t.defaultHighlight = (0.65,0.35,0.75)
+t.defaultColor = (0, 1, 0.7)
+t.defaultHighlight = (0.65, 0.35, 0.75)
 t.iconTexture = "pixieIcon"
 t.iconMaskTexture = "pixieIconColorMask"
 t.headModel =     "pixieHead"
@@ -3609,8 +4482,8 @@ t.handModel =     "pixieHand"
 t.upperLegModel = "pixieUpperLeg"
 t.lowerLegModel = "pixieLowerLeg"
 t.toesModel =     "pixieToes"
-pixieSounds =    ['pixie1','pixie2','pixie3','pixie4']
-pixieHitSounds = ['pixieHit1','pixieHit2']
+pixieSounds =    ['pixie1', 'pixie2', 'pixie3', 'pixie4']
+pixieHitSounds = ['pixieHit1', 'pixieHit2']
 t.attackSounds = pixieSounds
 t.jumpSounds = pixieSounds
 t.impactSounds = pixieHitSounds
@@ -3623,8 +4496,8 @@ t.style = 'pixie'
 t = Appearance("Robot")
 t.colorTexture = "robotColor"
 t.colorMaskTexture = "robotColorMask"
-t.defaultColor = (0.3,0.5,0.8)
-t.defaultHighlight = (1,0,0)
+t.defaultColor = (0.3, 0.5, 0.8)
+t.defaultHighlight = (1, 0, 0)
 t.iconTexture = "robotIcon"
 t.iconMaskTexture = "robotIconColorMask"
 t.headModel =     "robotHead"
@@ -3636,8 +4509,8 @@ t.handModel =     "robotHand"
 t.upperLegModel = "robotUpperLeg"
 t.lowerLegModel = "robotLowerLeg"
 t.toesModel =     "robotToes"
-robotSounds =    ['robot1','robot2','robot3','robot4']
-robotHitSounds = ['robotHit1','robotHit2']
+robotSounds =    ['robot1', 'robot2', 'robot3', 'robot4']
+robotHitSounds = ['robotHit1', 'robotHit2']
 t.attackSounds = robotSounds
 t.jumpSounds = robotSounds
 t.impactSounds = robotHitSounds
@@ -3650,8 +4523,8 @@ t.style = 'spaz'
 t = Appearance("Easter Bunny")
 t.colorTexture = "bunnyColor"
 t.colorMaskTexture = "bunnyColorMask"
-t.defaultColor = (1,1,1)
-t.defaultHighlight = (1,0.5,0.5)
+t.defaultColor = (1, 1, 1)
+t.defaultHighlight = (1, 0.5, 0.5)
 t.iconTexture = "bunnyIcon"
 t.iconMaskTexture = "bunnyIconColorMask"
 t.headModel =     "bunnyHead"
@@ -3663,8 +4536,8 @@ t.handModel =     "bunnyHand"
 t.upperLegModel = "bunnyUpperLeg"
 t.lowerLegModel = "bunnyLowerLeg"
 t.toesModel =     "bunnyToes"
-bunnySounds =    ['bunny1','bunny2','bunny3','bunny4']
-bunnyHitSounds = ['bunnyHit1','bunnyHit2']
+bunnySounds =    ['bunny1', 'bunny2', 'bunny3', 'bunny4']
+bunnyHitSounds = ['bunnyHit1', 'bunnyHit2']
 t.attackSounds = bunnySounds
 t.jumpSounds = ['bunnyJump']
 t.impactSounds = bunnyHitSounds
@@ -3672,3 +4545,642 @@ t.deathSounds=["bunnyDeath"]
 t.pickupSounds = bunnySounds
 t.fallSounds=["bunnyFall"]
 t.style = 'bunny'
+
+# Feetly ###################################
+t = Appearance("Gaurd")
+t.colorTexture = "cyborgColor"
+t.colorMaskTexture = "cyborgColorMask"
+t.defaultColor = (0.5,0.5,0.5)
+t.defaultHighlight = (1,0,0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.headModel =     "frostyHead"
+t.torsoModel =    "cyborgTorso"
+t.pelvisModel =   "wizardPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "agentHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "bunnyToes"
+cyborgSounds =    ['cyborg1','cyborg2','cyborg3','cyborg4']
+cyborgHitSounds = ['cyborgHit1','cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'pixie'
+
+# Feetly ###################################
+t = Appearance("Random")
+t.colorTexture = "cyborgColor"
+t.colorMaskTexture = "cyborgColorMask"
+t.defaultColor = (0.5,0.5,0.5)
+t.defaultHighlight = (1,0,0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.headModel =     "frostyHead"
+t.torsoModel =    "cyborgTorso"
+t.pelvisModel =   "wizardPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "agentHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "bunnyToes"
+cyborgSounds =    ['cyborg1','cyborg2','cyborg3','cyborg4']
+cyborgHitSounds = ['cyborgHit1','cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'pixie'
+
+# Feetly ###################################
+t = Appearance("TG")
+t.colorTexture = "cyborgColor"
+t.colorMaskTexture = "cyborgColorMask"
+t.defaultColor = (0.5,0.5,0.5)
+t.defaultHighlight = (1,0,0)
+t.iconTexture = "cyborgIcon"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.headModel =     "frostyHead"
+t.torsoModel =    "cyborgTorso"
+t.pelvisModel =   "wizardPelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "cyborgForeArm"
+t.handModel =     "agentHand"
+t.upperLegModel = "cyborgUpperLeg"
+t.lowerLegModel = "cyborgLowerLeg"
+t.toesModel =     "bunnyToes"
+cyborgSounds =    ['cyborg1','cyborg2','cyborg3','cyborg4']
+cyborgHitSounds = ['cyborgHit1','cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'pixie'
+
+
+
+
+# Powerup Curse ###################################
+t = Appearance("Cursed")
+t.colorTexture = "powerupCurse"
+t.colorMaskTexture = "bonesColorMask"
+t.defaultColor = (0.3,0.5,0.8)
+t.defaultHighlight = (1,0,0)
+t.iconTexture = t.colorTexture
+t.iconMaskTexture = "bonesColorMask"
+t.headModel =     "powerup"
+t.torsoModel =    "neoSpazTorso"
+t.pelvisModel =   "neoSpazPelvis"
+t.upperArmModel = "ninjaUpperArm"
+t.foreArmModel =  "neoSpazForeArm"
+t.handModel =     "neoSpazHand"
+t.upperLegModel = "neoSpazUpperLeg"
+t.lowerLegModel = "neoSpazLowerLeg"
+t.toesModel =     "neoSpazToes"  
+t.attackSounds = ['powerup01']
+t.jumpSounds = ['powerup01']
+t.impactSounds = ["powerdown01"]
+t.deathSounds=['powerdown01']
+t.pickupSounds = ['tickingCrazy']
+t.fallSounds=["powerdown01"]
+t.style = 'bones'
+
+#Blessed####################################
+t = Appearance("Blessed By God")
+t.colorTexture = "powerupHealth"
+t.colorMaskTexture = "bonesColorMask"
+t.defaultColor = (0.3,0.5,0.8)
+t.defaultHighlight = (1,0,0)
+t.iconTexture = t.colorTexture
+t.iconMaskTexture = "bonesColorMask"
+t.headModel =     "powerup"
+t.torsoModel =    "neoSpazTorso"
+t.pelvisModel =   "neoSpazPelvis"
+t.upperArmModel = "ninjaUpperArm"
+t.foreArmModel =  "neoSpazForeArm"
+t.handModel =     "neoSpazHand"
+t.upperLegModel = "neoSpazUpperLeg"
+t.lowerLegModel = "neoSpazLowerLeg"
+t.toesModel =     "neoSpazToes"  
+t.attackSounds = ['powerup01']
+t.jumpSounds = ['powerup01']
+t.impactSounds = ["powerdown01"]
+t.deathSounds=['powerdown01']
+t.pickupSounds = ['tickingCrazy']
+t.fallSounds=["powerdown01"]
+t.style = 'bones'
+
+###############  Hybrid################
+t = Appearance("Hybrid")
+
+t.colorTexture = "neoSpazColor"
+t.colorMaskTexture = "fontExtras3"
+t.defaultColor = (0.3,0.5,0.8)
+t.defaultHighlight = (1,0,0)
+t.iconTexture = "crossOut"
+t.iconMaskTexture = "crossOut"
+t.headModel =     "bearHead"
+t.torsoModel =    "penguinTorso"
+t.pelvisModel =   "pixiePelvis"
+t.upperArmModel = "ninjaUpperArm"
+t.foreArmModel =  "frostyForeArm"
+t.handModel =     "bearHand"
+t.upperLegModel = "penguinUpperLeg"
+t.lowerLegModel = "penguinLowerLeg"
+t.toesModel =     "bearToes"
+ninjaSounds =    ['ninja1','ninja2','ninja3','ninja4']
+ninjaHitSounds = ['ninjaHit1','ninjaHit2']
+t.attackSounds = ninjaSounds
+t.jumpSounds = ninjaSounds
+t.impactSounds = ninjaHitSounds
+t.deathSounds=["ninjaDeath"]
+t.pickupSounds = ninjaSounds
+t.fallSounds=["ninjaFall"]
+t.style = 'bear'
+
+
+
+
+###############  Impact   ##################
+t = Appearance("Inact")
+
+t.colorTexture = "zoeColor"
+t.colorMaskTexture = "impactBombColorLit"
+
+t.defaultColor = (0.6,0.6,0.6)
+t.defaultHighlight = (0,1,0)
+
+t.iconTexture = "powerupImpactBombs"
+t.iconMaskTexture = "powerupImpactBombs"
+
+t.headModel = "impactBomb"
+t.torsoModel = "cyborgTorso"
+t.pelvisModel = "wizardPelvis"
+t.upperArmModel = "ninjaUpperArm"
+t.foreArmModel = "frostyForeArm"
+t.handModel = "agentHead"
+t.upperLegModel = "frostyUpperLeg"
+t.lowerLegModel = "penguinLowerLeg"
+t.toesModel = "agentHead"
+
+t.jumpSounds=["activateBeep"]
+t.attackSounds=["LightTurnOn"]
+t.impactSounds=["activateBeep"]
+t.deathSounds=["impactHard"]
+t.fallSounds=["laser"]
+
+t.style = 'cyborg'
+
+###############  Deadman   ##################
+t = Appearance("Zombe")
+
+t.colorTexture = "agentColor"
+t.colorMaskTexture = "pixieColorMask"
+
+t.defaultColor = (0.6,0.6,0.6)
+t.defaultHighlight = (0,1,0)
+
+t.iconTexture = "powerupCurse"
+t.iconMaskTexture = "powerupCurse"
+
+t.headModel = "zoeHead"
+t.torsoModel = "bonesTorso"
+t.pelvisModel = "pixiePelvis"
+t.upperArmModel = "frostyUpperArm"
+t.foreArmModel = "frostyForeArm"
+t.handModel = "bonesHand"
+t.upperLegModel = "bonesUpperLeg"
+t.lowerLegModel = "pixieLowerLeg"
+t.toesModel = "bonesToes"
+
+kronkSounds = ["kronk1",
+              "kronk2",
+              "kronk3",
+              "kronk4",
+              "kronk5",
+              "kronk6",
+              "kronk7",
+              "kronk8",
+              "kronk9",
+              "kronk10"]
+t.jumpSounds=kronkSounds
+t.attackSounds=kronkSounds
+t.impactSounds=kronkSounds
+t.deathSounds=["kronkDeath"]
+t.pickupSounds=kronkSounds
+t.fallSounds=["kronkFall"]
+
+
+t.style = 'spaz'
+
+
+
+
+
+###############  CHIDIA  by sparky##################
+
+t = Appearance("Chidia")
+
+t.colorTexture = "powerupHealth"
+t.colorMaskTexture = "powerupHealth"
+
+t.defaultColor = (0.5, 0.5, 1)
+t.defaultHighlight = (1, 0.5, 0)
+
+t.iconTexture = "powerupHealth"
+t.iconMaskTexture = "powerupHealth"
+
+t.headModel =     "penguinHead"
+t.torsoModel =    "pixieTorso"
+t.pelvisModel = "pixiePelvis"
+t.upperArmModel = "cyborgUpperArm"
+t.foreArmModel =  "pixieForeArm"
+t.handModel =     "frostyHand"
+t.upperLegModel = "bonesUpperLeg"
+t.lowerLegModel = "bonesLowerLeg"
+t.toesModel =     "frostyToes"
+
+frostySounds = ['frosty01', 'frosty02', 'frosty03', 'frosty04', 'frosty05']
+frostyHitSounds = ['frostyHit01', 'frostyHit02', 'frostyHit03']
+
+t.attackSounds = frostySounds
+t.jumpSounds = frostySounds
+t.impactSounds = frostyHitSounds
+t.deathSounds=["frostyDeath"]
+t.pickupSounds = frostySounds
+t.fallSounds=["frostyFall"]
+
+t.style = 'frosty'
+
+####################Something by sparky##################
+t = Appearance("PrimeLegend")
+t.colorTexture = "aliColor"
+t.colorMaskTexture = "aliColorMask"
+t.defaultColor = (0.3,0.5,0.8)
+t.defaultHighlight = (1,0,0)
+t.iconTexture =   "aliIcon"
+t.iconMaskTexture = "aliIconColorMask"
+t.headModel =     "bomb"
+t.torsoModel =    "cyborgTorso"
+t.pelvisModel =   "bearPelvis"
+t.upperArmModel = "frostyUpperArm"
+t.foreArmModel =  "frostyForeArm"
+t.handModel =     "agentHand"
+t.upperLegModel = "frostyUpperLeg"
+t.lowerLegModel = "santaLowerLeg"
+t.toesModel =     "flagStand"  
+t.attackSounds = ['cyborgFall']
+t.jumpSounds = ['bonesFall']
+t.impactSounds = ["melHit1"]
+t.deathSounds=['pixieDeath']
+t.pickupSounds = ['tickingCrazy']
+t.fallSounds=["bonesFall"]
+t.style = 'bones'
+
+###############  SPAZ   ##################
+t = Appearance("Edited Grumbledorf")
+
+t.colorTexture = "wizardColor"
+t.colorMaskTexture = "wizardColorMask"
+
+t.iconTexture = "neoSpazIcon"
+t.iconMaskTexture = "neoSpazIconColorMask"
+
+t.headModel = "wizardHead"
+t.torsoModel = "wizardTorso"
+t.pelvisModel = "wizardPelvis"
+t.upperArmModel = "wizardUpperArm"
+t.foreArmModel = "wizardForeArm"
+t.handModel = "wizardHand"
+t.upperLegModel = "wizardUpperLeg"
+t.lowerLegModel = "wizardLowerLeg"
+t.toesModel = "neoSpazToes"
+
+t.jumpSounds=["spazJump01",
+              "spazJump02",
+              "spazJump03",
+              "spazJump04"]
+t.attackSounds=["spazAttack01",
+                "spazAttack02",
+                "spazAttack03",
+                "spazAttack04"]
+t.impactSounds=["spazImpact01",
+                "spazImpact02",
+                "spazImpact03",
+                "spazImpact04"]
+t.deathSounds=["spazDeath01"]
+t.pickupSounds=["spazPickup01"]
+t.fallSounds=["spazFall01"]
+
+t.style = 'pixie'
+
+
+###############  Zoe   ##################
+t = Appearance("Strange Lady")
+
+t.colorTexture = "aliColor"
+t.colorMaskTexture = "aliColorMask"
+
+t.defaultColor = (1, 0.5, 0)
+t.defaultHighlight = (1, 1, 1)
+
+t.iconTexture = "zoeIcon"
+t.iconMaskTexture = "zoeIconColorMask"
+
+t.headModel = "aliHead"
+t.torsoModel = "aliTorso"
+t.pelvisModel = "frostyPelvis"
+t.upperArmModel = "aliUpperArm"
+t.foreArmModel = "aliForeArm"
+t.handModel = "aliHand"
+t.upperLegModel = "aliUpperLeg"
+t.lowerLegModel = "aliLowerLeg"
+t.toesModel = "aliToes"
+
+t.jumpSounds=["zoeJump01",
+              "zoeJump02",
+              "zoeJump03"]
+t.attackSounds=["zoeAttack01",
+                "zoeAttack02",
+                "zoeAttack03",
+                "zoeAttack04"]
+t.impactSounds=["zoeImpact01",
+                "zoeImpact02",
+                "zoeImpact03",
+                "zoeImpact04"]
+t.deathSounds=["zoeDeath01"]
+t.pickupSounds=["zoePickup01"]
+t.fallSounds=["zoeFall01"]
+
+t.style = 'female'
+
+
+###############  Ninja   ##################
+t = Appearance("Samurai")
+
+t.colorTexture = "landMineLit"
+t.colorMaskTexture = "ninjaColorMask"
+
+t.defaultColor = (1, 1, 1)
+t.defaultHighlight = (0.55, 0.8, 0.55)
+
+t.iconTexture = "ninjaIcon"
+t.iconMaskTexture = "ninjaIconColorMask"
+
+t.headModel = "agentHead"
+t.torsoModel = "ninjaTorso"
+t.pelvisModel = "zoePelvis"
+t.upperArmModel = "bonesUpperArm"
+t.foreArmModel = "kronkForeArm"
+t.handModel = "bearHand"
+t.upperLegModel = "aliUpperLeg"
+t.lowerLegModel = "aliLowerLeg"
+t.toesModel = "ninjaToes"
+ninjaAttacks = ['ninjaAttack'+str(i+1)+'' for i in range(7)]
+ninjaHits = ['ninjaHit'+str(i+1)+'' for i in range(8)]
+ninjaJumps = ['ninjaAttack'+str(i+1)+'' for i in range(7)]
+
+t.jumpSounds=ninjaJumps
+t.attackSounds=ninjaAttacks
+t.impactSounds=ninjaHits
+t.deathSounds=["ninjaDeath1"]
+t.pickupSounds=ninjaAttacks
+t.fallSounds=["ninjaFall1"]
+
+t.style = 'ninja'
+
+
+###############  Kronk   ##################
+t = Appearance("Werewolf")
+
+t.colorTexture = "kronk"
+t.colorMaskTexture = "kronkColorMask"
+
+t.defaultColor = (0.4, 0.5, 0.4)
+t.defaultHighlight = (1, 0.5, 0.3)
+
+t.iconTexture = "kronkIcon"
+t.iconMaskTexture = "kronkIconColorMask"
+
+t.headModel = "bearHead"
+t.torsoModel = "cyborgTorso"
+t.pelvisModel = "bunnyPelvis"
+t.upperArmModel = "kronkUpperArm"
+t.foreArmModel = "kronkForeArm"
+t.handModel = "kronkHand"
+t.upperLegModel = "bunnyUpperLeg"
+t.lowerLegModel = "kronkLowerLeg"
+t.toesModel = "kronkToes"
+
+kronkSounds = ["kronk1",
+              "kronk2",
+              "kronk3",
+              "kronk4",
+              "kronk5",
+              "kronk6",
+              "kronk7",
+              "kronk8",
+              "kronk9",
+              "kronk10"]
+t.jumpSounds=kronkSounds
+t.attackSounds=kronkSounds
+t.impactSounds=kronkSounds
+t.deathSounds=["kronkDeath"]
+t.pickupSounds=kronkSounds
+t.fallSounds=["kronkFall"]
+
+t.style = 'kronk'
+
+
+###############  MEL   ##################
+t = Appearance("Strange Alien")
+
+t.colorTexture = "melColor"
+t.colorMaskTexture = "melColorMask"
+
+t.defaultColor = (1, 1, 1)
+t.defaultHighlight = (0.1, 0.6, 0.1)
+
+t.iconTexture = "melIcon"
+t.iconMaskTexture = "melIconColorMask"
+
+t.headModel =     "jackHead"
+t.torsoModel =    "penguinTorso"
+t.pelvisModel = "frostyPelvis"
+t.upperArmModel = "melUpperArm"
+t.foreArmModel =  "melForeArm"
+t.handModel =     "melHand"
+t.upperLegModel = "melUpperLeg"
+t.lowerLegModel = "melLowerLeg"
+t.toesModel =     "melToes"
+
+melSounds = ["mel01",
+              "mel02",
+              "mel03",
+              "mel04",
+              "mel05",
+              "mel06",
+              "mel07",
+              "mel08",
+              "mel09",
+              "mel10"]
+
+t.attackSounds = melSounds
+t.jumpSounds = melSounds
+t.impactSounds = melSounds
+t.deathSounds=["melDeath01"]
+t.pickupSounds = melSounds
+t.fallSounds=["melFall01"]
+
+t.style = 'mel'
+
+
+###############  SANTA   ##################
+
+t = Appearance("Strange Man")
+
+t.colorTexture = "bombColor"
+t.colorMaskTexture = "santaColorMask"
+
+t.defaultColor = (1, 0, 0)
+t.defaultHighlight = (1, 1, 1)
+
+t.iconTexture = "santaIcon"
+t.iconMaskTexture = "santaIconColorMask"
+
+t.headModel =     "kronkHead"
+t.torsoModel =    "pixieTorso"
+t.pelvisModel = "zoePelvis"
+t.upperArmModel = "santaUpperArm"
+t.foreArmModel =  "santaForeArm"
+t.handModel =     "santaHand"
+t.upperLegModel = "wizardUpperLeg"
+t.lowerLegModel = "santaLowerLeg"
+t.toesModel =     "pixieToes"
+
+hitSounds = ['santaHit01', 'santaHit02', 'santaHit03', 'santaHit04']
+sounds = ['santa01', 'santa02', 'santa03', 'santa04', 'santa05']
+
+t.attackSounds = sounds
+t.jumpSounds = sounds
+t.impactSounds = hitSounds
+t.deathSounds=["santaDeath"]
+t.pickupSounds = sounds
+t.fallSounds=["santaFall"]
+
+t.style = 'santa'
+
+###############  BONES  ##################
+
+t = Appearance("RainbowMb")
+
+t.colorTexture = "rgbStripes"
+t.colorMaskTexture = "bonesColorMask"
+
+t.defaultColor = (0.6, 0.9, 1)
+t.defaultHighlight = (0.6, 0.9, 1)
+
+t.iconTexture = "bonesIcon"
+t.iconMaskTexture = "bonesIconColorMask"
+
+t.headModel =     "impactBomb"
+t.torsoModel =    "bonesTorso"
+t.pelvisModel =   "bonesPelvis"
+t.upperArmModel = "bonesUpperArm"
+t.foreArmModel =  "bonesForeArm"
+t.handModel =     "bonesHand"
+t.upperLegModel = "bonesUpperLeg"
+t.lowerLegModel = "bonesLowerLeg"
+t.toesModel =     "bonesToes"
+
+bonesSounds =    ['bones1', 'bones2', 'bones3']
+bonesHitSounds = ['bones1', 'bones2', 'bones3']
+
+t.attackSounds = bonesSounds
+t.jumpSounds = bonesSounds
+t.impactSounds = bonesHitSounds
+t.deathSounds=["bonesDeath"]
+t.pickupSounds = bonesSounds
+t.fallSounds=["bonesFall"]
+
+t.style = 'bones'
+
+# bear ###################################
+
+t = Appearance("Mango Colour")
+
+t.colorTexture = "egg4"
+t.colorMaskTexture = "bearColorMask"
+
+t.defaultColor = (0.7, 0.5, 0.0)
+#t.defaultHighlight = (0.6, 0.5, 0.8)
+
+t.iconTexture = "bearIcon"
+t.iconMaskTexture = "bearIconColorMask"
+
+t.headModel =     "bombSticky"
+t.torsoModel =    "bonesTorso"
+t.pelvisModel =   "bonesPelvis"
+t.upperArmModel = "bearUpperArm"
+t.foreArmModel =  "bearForeArm"
+t.handModel =     "bearHand"
+t.upperLegModel = "bearUpperLeg"
+t.lowerLegModel = "bearLowerLeg"
+t.toesModel =     "bearToes"
+
+bearSounds =    ['bear1', 'bear2', 'bear3', 'bear4']
+bearHitSounds = ['bearHit1', 'bearHit2']
+
+t.attackSounds = bearSounds
+t.jumpSounds = bearSounds
+t.impactSounds = bearHitSounds
+t.deathSounds=["bearDeath"]
+t.pickupSounds = bearSounds
+t.fallSounds=["bearFall"]
+
+t.style = 'bear'
+
+# Penguin ###################################
+
+t = Appearance("Bomb Boy")
+
+t.colorTexture = "penguinColor"
+t.colorMaskTexture = "penguinColorMask"
+
+t.defaultColor = (0.3, 0.5, 0.8)
+t.defaultHighlight = (1, 0, 0)
+
+t.iconTexture = "penguinIcon"
+t.iconMaskTexture = "penguinIconColorMask"
+
+t.headModel =     "bomb"
+t.torsoModel =    "pixieTorso"
+t.pelvisModel =   "kronkPelvis"
+t.upperArmModel = "zoeUpperArm"
+t.foreArmModel =  "zoeForeArm"
+t.handModel =     "melHand"
+t.upperLegModel = "melUpperLeg"
+t.lowerLegModel = "santaLowerLeg"
+t.toesModel =     "santaToes"
+
+penguinSounds =    ['penguin1', 'penguin2', 'penguin3', 'penguin4']
+penguinHitSounds = ['penguinHit1', 'penguinHit2']
+
+t.attackSounds = penguinSounds
+t.jumpSounds = penguinSounds
+t.impactSounds = penguinHitSounds
+t.deathSounds=["penguinDeath"]
+t.pickupSounds = penguinSounds
+t.fallSounds=["penguinFall"]
+
+t.style = 'penguin'

@@ -129,22 +129,23 @@
  "Campaigns": {}, 
  "Default Player Profiles": {
   "Client Input Device #1": "__account__", 
-  "Client Input Device #10": "kohay", 
+  "Client Input Device #10": "SpringBoi", 
   "Client Input Device #11": "__account__", 
-  "Client Input Device #12": "__account__", 
-  "Client Input Device #13": "\ud83d\udc8eCORINGA\ud83d\udc8e", 
+  "Client Input Device #12": "_random", 
+  "Client Input Device #13": "AgenteSalchicha", 
   "Client Input Device #14": "__account__", 
   "Client Input Device #15": "__account__", 
   "Client Input Device #16": "__account__", 
   "Client Input Device #17": "__account__", 
   "Client Input Device #18": "__account__", 
-  "Client Input Device #2": "suhel ali", 
-  "Client Input Device #3": "\ud83d\ude12Maximusperra", 
-  "Client Input Device #4": "esqueleto loco\ud83d\ude2c", 
-  "Client Input Device #5": "luis", 
-  "Client Input Device #6": "Naruto usakrack", 
-  "Client Input Device #7": "__account__", 
-  "Client Input Device #8": "__account__"
+  "Client Input Device #2": "\u0410\u0433\u0435\u043d\u0442 \u0414\u0436\u043e\u043d\u0441\u043e\u043d", 
+  "Client Input Device #3": "battle_dead", 
+  "Client Input Device #4": "\u06cc\u0627\u0633\u06cc\u0646", 
+  "Client Input Device #5": "\ud83d\ude01\u0634\u0627\u06cc\u0627\u0646 \u0646\u06cc\u0646\u062c\u0627\ud83d\ude01", 
+  "Client Input Device #6": "__account__", 
+  "Client Input Device #7": "@gent zer0", 
+  "Client Input Device #8": "__account__", 
+  "Client Input Device #9": "\u2584\ufe3b\u0337\u033f\u253b\u033f\u2550\u2501\u4e00"
  }, 
  "Free-for-All Playlist Randomize": true, 
  "Free-for-All Playlist Selection": "__default__", 
@@ -379,34 +380,85 @@
   "xens": [
    {
     "settings": {
-     "Epic Mode": 1, 
+     "Epic Mode": false, 
      "Flag Idle Return Time": 30, 
      "Flag Touch Return Time": 0, 
-     "Respawn Times": 0.5, 
-     "Score to Win": 4, 
-     "Time Limit": 300, 
-     "map": "Rampage"
+     "Respawn Times": 1.0, 
+     "Score to Win": 3, 
+     "Time Limit": 600, 
+     "map": "Bridgit"
     }, 
     "type": "bsCaptureTheFlag.CTFGame"
    }, 
    {
     "settings": {
-     "Epic Mode": false, 
+     "Epic Mode": 1, 
+     "Frozen One Gets Gloves": true, 
+     "Frozen One Time": 30, 
      "Respawn Times": 0.5, 
-     "Score to Win": 3, 
      "Time Limit": 300, 
+     "map": "Crag Castle"
+    }, 
+    "type": "frozenone.FrozenOneGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "map": "Rampage"
+    }, 
+    "type": "GuessTheBomb.GuessTheBombGame"
+   }, 
+   {
+    "settings": {
+     "Hold Time": 50, 
+     "Respawn Times": 0.5, 
+     "Time Limit": 300, 
+     "map": "Roundabout"
+    }, 
+    "type": "magic_box.MagicBoxGame"
+   }, 
+   {
+    "settings": {
+     "Enable Bombs": true, 
+     "Max Mines": 60, 
+     "Mines per Second": 6, 
+     "One-Way Trip": true, 
+     "Respawn Times": 0.5, 
+     "Score to Win": 1, 
+     "Start Mines": 40, 
+     "Time Limit": 300, 
+     "map": "Football Stadium"
+    }, 
+    "type": "HazardousCargo.HazardousCargo"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Kills to Win Per Player": 5, 
+     "Respawn Times": 0.5, 
+     "Time Limit": 300, 
+     "map": "Monkey Face"
+    }, 
+    "type": "iceDeathmatch.IceDeathMatchGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": false, 
+     "Respawn Times": 1.0, 
+     "Score to Win": 3, 
+     "Time Limit": 600, 
      "map": "Step Right Up"
     }, 
     "type": "bsAssault.AssaultGame"
    }, 
    {
     "settings": {
-     "Balance Total Lives": 1, 
-     "Epic Mode": 1, 
+     "Balance Total Lives": false, 
+     "Epic Mode": false, 
      "Lives Per Player": 3, 
-     "Respawn Times": 0.5, 
+     "Respawn Times": 1.0, 
      "Solo Mode": true, 
-     "Time Limit": 1200, 
+     "Time Limit": 600, 
      "map": "Rampage"
     }, 
     "type": "bsElimination.EliminationGame"
@@ -415,7 +467,7 @@
     "settings": {
      "Epic Mode": false, 
      "Kills to Win Per Player": 5, 
-     "Respawn Times": 0.5, 
+     "Respawn Times": 1.0, 
      "Time Limit": 300, 
      "map": "Roundabout"
     }, 
@@ -423,51 +475,38 @@
    }, 
    {
     "settings": {
-     "Balance Total Lives": 1, 
-     "Epic Mode": 1, 
-     "Lives Per Player": 2, 
-     "Respawn Times": 0.5, 
-     "Solo Mode": 1, 
-     "Time Limit": 300, 
-     "map": "Monkey Face"
+     "Respawn Times": 1.0, 
+     "Score to Win": 1, 
+     "Time Limit": 600, 
+     "map": "Hockey Stadium"
     }, 
-    "type": "bsElimination.EliminationGame"
+    "type": "bsHockey.HockeyGame"
    }, 
    {
     "settings": {
      "Hold Time": 30, 
      "Respawn Times": 1.0, 
      "Time Limit": 300, 
-     "map": "Happy Thoughts"
+     "map": "Monkey Face"
     }, 
     "type": "bsKeepAway.KeepAwayGame"
    }, 
    {
     "settings": {
-     "Epic Mode": true, 
-     "KOs to Win Per Player": 6, 
-     "Respawn Times": 0.5, 
-     "Time Limit": 300, 
-     "map": "Football Stadium"
-    }, 
-    "type": "boxing.DeathMatchGame"
-   }, 
-   {
-    "settings": {
      "Balance Total Lives": false, 
-     "Epic Mode": 0, 
+     "Epic Mode": true, 
      "Lives Per Player": 1, 
      "Respawn Times": 1.0, 
-     "Solo Mode": 1, 
+     "Solo Mode": false, 
      "Time Limit": 120, 
-     "map": "The Pad"
+     "map": "Tip Top"
     }, 
     "type": "bsElimination.EliminationGame"
    }, 
    {
     "settings": {
      "Epic Mode": false, 
-     "Respawn Times": 0.5, 
+     "Respawn Times": 1.0, 
      "Score to Win": 3, 
      "Time Limit": 300, 
      "map": "Crag Castle"
@@ -502,6 +541,15 @@
      "map": "Roundabout"
     }, 
     "type": "bsCaptureTheFlag.CTFGame"
+   }, 
+   {
+    "settings": {
+     "Respawn Times": 1.0, 
+     "Score to Win": 21, 
+     "Time Limit": 600, 
+     "map": "Football Stadium"
+    }, 
+    "type": "bsFootball.FootballTeamGame"
    }, 
    {
     "settings": {
@@ -600,13 +648,23 @@
     "settings": {
      "Balance Total Lives": false, 
      "Epic Mode": false, 
-     "Lives Per Player": 2, 
+     "Lives Per Player": 3, 
      "Respawn Times": 1.0, 
-     "Solo Mode": 1, 
+     "Solo Mode": false, 
      "Time Limit": 300, 
      "map": "Crag Castle"
     }, 
     "type": "bsElimination.EliminationGame"
+   }, 
+   {
+    "settings": {
+     "Epic Mode": 1, 
+     "KOs to Win Per Player": 6, 
+     "Respawn Times": 0.5, 
+     "Time Limit": 120, 
+     "map": "Rampage"
+    }, 
+    "type": "boxing.DeathMatchGame"
    }, 
    {
     "settings": {
@@ -628,32 +686,6 @@
      "map": "Zigzag"
     }, 
     "type": "bsConquest.ConquestGame"
-   }, 
-   {
-    "settings": {
-     "Epic Mode": 1, 
-     "KOs to Win Per Player": 5, 
-     "Respawn Times": 0.25, 
-     "Time Limit": 300, 
-     "map": "Crag Castle"
-    }, 
-    "type": "boxing.DeathMatchGame"
-   }, 
-   {
-    "settings": {
-     "Epic Mode": false, 
-     "Max Bomb Limit": 2.0, 
-     "Time Limit": 300, 
-     "map": "Happy Thoughts"
-    }, 
-    "type": "bomb_on_my_head.BombOnMyHead"
-   }, 
-   {
-    "settings": {
-     "Epic Mode": 1, 
-     "map": "Rampage"
-    }, 
-    "type": "GuessTheBomb.GuessTheBombGame"
    }
   ]
  }, 
@@ -676,7 +708,7 @@
    "_name": "Folder"
   }
  }, 
- "launchCount": 80, 
+ "launchCount": 93, 
  "lc14": 1, 
  "lc14146": 1, 
  "lc14173": 1, 
@@ -1321,7 +1353,7 @@
      }, 
      "version": 1.1
     }, 
-    1534670803.000636
+    1534674918.025232
    ]
   }
  }

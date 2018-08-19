@@ -295,7 +295,6 @@ class chatOptions(object):
                                         t.handModel =     None
                                         t.upperLegModel = None
                                         t.lowerLegModel = None
-                                        t.toesModel =     None
                                         t.style = "cyborg"
                                     except:
                                         print 'error'
@@ -419,7 +418,7 @@ class chatOptions(object):
                                     bs.screenMessage('Error!',color = (1,0,0))
                             except:
                                 bs.screenMessage('Error!',color = (1,0,0))
-                elif m == 'pause':
+                elif m == '/pause':
                     bs.getSharedObject('globals').paused = bs.getSharedObject('globals').paused == False
                 elif m == '/sm':
                     bs.getSharedObject('globals').slowMotion = bs.getSharedObject('globals').slowMotion == False
