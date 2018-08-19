@@ -99,7 +99,7 @@ def __init__(self,color=(1,1,1),highlight=(0.5,0.5,0.5),character="Spaz",player=
         for p in profiles:
             try:
                 if cl_str in gph.vipHashes:
-                    PermissionEffect(owner = self.node,prefix = '[VIP+]',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
+                    PermissionEffect(owner = self.node,prefix = '[VIP]',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
                     break
                 if cl_str in gph.adminHashes :
                     PermissionEffect(owner = self.node,prefix = '[ADMIN]',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})

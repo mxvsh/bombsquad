@@ -373,7 +373,7 @@ class HockeyStadium(Map):
         bsGlobals.debrisFriction = 0.3
         bsGlobals.debrisKillHeight = -0.3
 
-        bsGlobals.tint = (1.2,1.3,1.33)
+        bsGlobals.tint = (1.2,1.3,1.33) 
         bsGlobals.ambientColor = (1.15,1.25,1.6)
         bsGlobals.vignetteOuter = (0.66,0.67,0.73)
         bsGlobals.vignetteInner = (0.93,0.93,0.95)
@@ -497,7 +497,7 @@ class BridgitMap(Map):
                                                         self.preloadData['bgMaterial'],
                                                         bs.getSharedObject('deathMaterial')]})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.1,1.2,1.3)
+        bsGlobals.tint = (0.5, 0.7, 1)
         bsGlobals.ambientColor = (1.1,1.2,1.3)
         bsGlobals.vignetteOuter = (0.65,0.6,0.55)
         bsGlobals.vignetteInner = (0.9,0.9,0.93)
@@ -563,7 +563,7 @@ class BigGMap(Map):
                                     attrs={'collideModel':self.preloadData['collideBG'],
                                            'materials':[bs.getSharedObject('footingMaterial'),self.preloadData['bgMaterial'],bs.getSharedObject('deathMaterial')]})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.1,1.2,1.3)
+        bsGlobals.tint = (0.5, 0.7, 1)
         bsGlobals.ambientColor = (1.1,1.2,1.3)
         bsGlobals.vignetteOuter = (0.65,0.6,0.55)
         bsGlobals.vignetteInner = (0.9,0.9,0.93)
@@ -692,7 +692,7 @@ class MonkeyFaceMap(Map):
                                          'materials':[bs.getSharedObject('railingMaterial')],
                                          'bumper':True})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.1,1.2,1.2)
+        bsGlobals.tint = (0.5, 0.7, 1)
         bsGlobals.ambientColor = (1.2,1.3,1.3)
         bsGlobals.vignetteOuter = (0.60,0.62,0.66)
         bsGlobals.vignetteInner = (0.97,0.95,0.93)
@@ -817,7 +817,7 @@ class ThePadMap(Map):
                           'background':True,
                           'colorTexture':self.preloadData['vrFillMoundTex']})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.1,1.1,1.0)
+        bsGlobals.tint = (0.5, 0.7, 1)
         bsGlobals.ambientColor = (1.1,1.1,1.0)
         bsGlobals.vignetteOuter = (0.7,0.65,0.75)
         bsGlobals.vignetteInner = (0.95,0.95,0.93)
@@ -1026,7 +1026,7 @@ class TipTopMap(Map):
                                          'materials':[bs.getSharedObject('railingMaterial')],
                                          'bumper':True})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (0.8,0.9,1.3)
+        bsGlobals.tint = (0.5, 0.7, 1)
         bsGlobals.ambientColor = (0.8,0.9,1.3)
         bsGlobals.vignetteOuter = (0.79,0.79,0.69)
         bsGlobals.vignetteInner = (0.97,0.97,0.99)
@@ -1306,7 +1306,7 @@ class StepRightUpMap(Map):
                                     'background':True,
                                     'colorTexture':self.preloadData['bgTex']})
         bsGlobals = bs.getSharedObject('globals')
-        bsGlobals.tint = (1.2,1.1,1.0)
+        bsGlobals.tint = (0.5, 0.7, 1)
         bsGlobals.ambientColor = (1.2,1.1,1.0)
         bsGlobals.vignetteOuter = (0.7,0.65,0.75)
         bsGlobals.vignetteInner = (0.95,0.95,0.93)

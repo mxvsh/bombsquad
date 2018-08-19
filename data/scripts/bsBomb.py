@@ -122,7 +122,7 @@ class BombFactory(object):
         You shouldn't need to do this; call bs.Bomb.getFactory() to get a shared instance.
         """
 
-        self.bombModel = bs.getModel('zoeHead')
+        self.bombModel = bs.getModel('frostyHead')
         self.stickyBombModel = bs.getModel('bombSticky')
         self.impactBombModel = bs.getModel('impactBomb')
         self.landMineModel = bs.getModel('landMine')
@@ -372,13 +372,14 @@ class Blast(bs.Actor):
         bs.gameTimer(int(s*3000),light.delete)
         def _normal():
           bs.getSharedObject('globals').slowMotion = False
-        bs.gameTimer(int(1000), _normal)
+        if self.blastType == 'tnt' and bs.getSharedObject('globals').slowMotion == False:
+          bs.gameTimer(int(1000), _normal)
 
         # make a scorch that fades over time
         scorch = bs.newNode('scorch',
                             attrs={'position':position,'size':scorchRadius*0.5,'big':(self.blastType == 'tnt')})
         if self.blastType == 'ice':
-            scorch.color = (1,0.3,1.5)
+            scorch.color = (1,2.3,1.5)
 
         bsUtils.animate(scorch,"presence",{3000:1, 13000:0})
         bs.gameTimer(20000,scorch.delete)

@@ -586,6 +586,7 @@ class Spaz(bs.Actor):
         used by player or AI connections.
         """
         if not self.node.exists(): return
+        self.setScoreText(self.node, "Test")
         t = bs.getGameTime()
         if t - self.lastJumpTime >= self._jumpCooldown:
             self.node.jumpPressed = True
@@ -685,6 +686,7 @@ class Spaz(bs.Actor):
             self.node.bombPressed = True
             if not self.node.holdNode.exists(): self.dropBomb()
         self._turboFilterAddPress('bomb')
+
 
     def onBombRelease(self):
         """
@@ -821,7 +823,7 @@ class Spaz(bs.Actor):
         factory = self.getFactory()
         if self.shield is None: 
             self.shield = bs.newNode('shield', owner=self.node,
-                                     attrs={'color':(0.3,0.2,2.0), 'radius':1.3})
+                                     attrs={'color':(1.3,2.2,0.0), 'radius':1.3})
             self.node.connectAttr('positionCenter', self.shield, 'position')
         self.shieldHitPoints = self.shieldHitPointsMax = 650
         self.shieldDecayRate = factory.shieldDecayRate if decay else 0
