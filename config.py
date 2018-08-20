@@ -3,7 +3,7 @@
 # examples (uncomment to use):
 config['partyName'] = 'XensParty'
 config['sessionType'] = 'teams'
-config['maxPartySize'] = 13
+config['maxPartySize'] = 11
 config['partyIsPublic'] = True
 
 # config['port'] = 43209

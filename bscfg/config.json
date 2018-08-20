@@ -128,24 +128,24 @@
  "Auto Balance Teams": true, 
  "Campaigns": {}, 
  "Default Player Profiles": {
-  "Client Input Device #1": "__account__", 
-  "Client Input Device #10": "SpringBoi", 
+  "Client Input Device #1": "nico007pro", 
+  "Client Input Device #10": "\ud83d\udc51Brian\ud83d\udc51", 
   "Client Input Device #11": "__account__", 
-  "Client Input Device #12": "_random", 
+  "Client Input Device #12": "',.-?", 
   "Client Input Device #13": "AgenteSalchicha", 
   "Client Input Device #14": "__account__", 
   "Client Input Device #15": "__account__", 
   "Client Input Device #16": "__account__", 
   "Client Input Device #17": "__account__", 
   "Client Input Device #18": "__account__", 
-  "Client Input Device #2": "\u0410\u0433\u0435\u043d\u0442 \u0414\u0436\u043e\u043d\u0441\u043e\u043d", 
-  "Client Input Device #3": "battle_dead", 
-  "Client Input Device #4": "\u06cc\u0627\u0633\u06cc\u0646", 
-  "Client Input Device #5": "\ud83d\ude01\u0634\u0627\u06cc\u0627\u0646 \u0646\u06cc\u0646\u062c\u0627\ud83d\ude01", 
-  "Client Input Device #6": "__account__", 
-  "Client Input Device #7": "@gent zer0", 
+  "Client Input Device #2": "__account__", 
+  "Client Input Device #3": "__account__", 
+  "Client Input Device #4": "JASHAN BEDI", 
+  "Client Input Device #5": "__account__", 
+  "Client Input Device #6": "MR.nice", 
+  "Client Input Device #7": "\ud83c\udf1fMyn\ud83c\udf1f", 
   "Client Input Device #8": "__account__", 
-  "Client Input Device #9": "\u2584\ufe3b\u0337\u033f\u253b\u033f\u2550\u2501\u4e00"
+  "Client Input Device #9": "__account__"
  }, 
  "Free-for-All Playlist Randomize": true, 
  "Free-for-All Playlist Selection": "__default__", 
@@ -708,7 +708,7 @@
    "_name": "Folder"
   }
  }, 
- "launchCount": 95, 
+ "launchCount": 98, 
  "lc14": 1, 
  "lc14146": 1, 
  "lc14173": 1, 
@@ -1353,7 +1353,7 @@
      }, 
      "version": 1.1
     }, 
-    1534697627.168149
+    1534762626.010268
    ]
   }
  }

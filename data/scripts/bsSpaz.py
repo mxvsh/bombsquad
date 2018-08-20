@@ -464,7 +464,7 @@ class Spaz(bs.Actor):
         # deprecated stuff.. need to make these into lists
         self.punchCallback = None
         self.pickUpPowerupCallback = None
-      
+			
         if character == 'TG':
             s = 5
             if s > 0 :
@@ -498,7 +498,7 @@ class Spaz(bs.Actor):
                 bs.shakeCamera(25)    
                 self.node.style = 'cyborg'
                 bs.screenMessage("A modder/host has spawned in the battlefield.\n He is Hidden. He is Everywhere. Be Aware.\n Start Praying For Yourself.\n Hope You Enjoy My Server", color=(1.0,0.7,2.7))
-            
+						
         if character == 'Random':                      
             s = 5
             if s > 0:
@@ -519,7 +519,7 @@ class Spaz(bs.Actor):
                 self.node.handleMessage('celebrate',1000)
                 bs.shakeCamera(15)
                 bs.screenMessage("Random character has been choosen \nHe will change body parts per spawn.", color=(1.0,0.7,2.7))
-            
+						
         if character == 'Gaurd':                      
             s = 5
             if s > 0:
@@ -528,8 +528,8 @@ class Spaz(bs.Actor):
                 self.blastRadius = 2
                 bs.shakeCamera(5)
                 bs.screenMessage("A Gaurd has Enter the Game. And He is Against All. Be Alert Guys ", color=(1.0,0.7,2.7))
-        
-        if self.defaultShields: self.equipShields()     
+				
+        if self.defaultShields: self.equipShields()			
 
     def onFinalize(self):
         bs.Actor.onFinalize(self)
@@ -965,7 +965,7 @@ class Spaz(bs.Actor):
                     
                     
             elif m.powerupType == 'highHealth':
-                bsUtils.PopupText("SuperStrong\nwill last until death!!!",color=(1,0,0),scale=2,position=self.node.position).autoRetain()
+            bsUtils.PopupText("SuperStrong\nwill last until death!!!",color=(1,0,0),scale=2,position=self.node.position).autoRetain()
                 self.hitPoints = 2000
                 self.hitPointsMax = 2500                            
                 self._punchPowerScale = 10                
@@ -1431,9 +1431,9 @@ class Spaz(bs.Actor):
                 if damage > 999:
                     bsUtils.PopupText("FATALITY AWESOME!!!",color=(1,0,0),scale=2,position=self.node.position).autoRetain()
 
-                    bs.emitBGDynamics(position=self.node.position,velocity=(0,0,0),count=600,spread=0.7,chunkType=random.choice(['ice','rock','metal','spark','splinter','slime']))
-                    self.node.handleMessage('celebrate',1000)
-                    bs.shakeCamera(20)
+bs.emitBGDynamics(position=self.node.position,velocity=(0,0,0),count=600,spread=0.7,chunkType=random.choice(['ice','rock','metal','spark','splinter','slime'])
+                             self.node.handleMessage('celebrate',1000)
+                    bs.shakeCamera(20)                               
 
                 elif damage > 800 and damage < 999:
                     bsUtils.PopupText("LIKE FATAL PUNCH!",color=(0,1,0.3),scale=1.7,position=self.node.position).autoRetain()
@@ -1441,12 +1441,12 @@ class Spaz(bs.Actor):
                     bs.shakeCamera(10)
                     
                 elif damage > 600 and damage < 800:
-                    bsUtils.PopupText("Nice Punch!!",color=(1,0,0),scale=1.5,position=self.node.position).autoRetain()
+                    bsUtils.PopupText("Punch tha achhaa,\nPar tu hai Bachaa",color=(1,0,0),scale=1.5,position=self.node.position).autoRetain()
                     self.node.handleMessage('celebrate',250)
                     bs.shakeCamera(5)
-          
+					
                 elif damage > 400 and damage < 600:
-                    bsUtils.PopupText("Kick this noob",color=(1,0,0),scale=1.3,position=self.node.position).autoRetain()
+                    bsUtils.PopupText("Noob kahika!",color=(1,0,0),scale=1.3,position=self.node.position).autoRetain()
                     self.node.handleMessage('celebrate',100)
                     bs.shakeCamera(1)
                   
@@ -2663,7 +2663,7 @@ class SpazBot(Spaz):
             self.__superHandleMessage(m)
         else:
             Spaz.handleMessage(self,m)
-      
+			
 class BomberBot(SpazBot):
     """
     category: Bot Classes

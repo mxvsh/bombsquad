@@ -198,9 +198,9 @@ def getDefaultPowerupDistribution():
             ('punch',3),
             ('snoball',2),
             ('impactBombs',3),
-            ('highHealth',2),
+            ('highHealth',1),
             ('luckyBlock',0),
-            ('shockwave',3),
+            ('shockwave',2),
             ('landMines',2),
             ('stickyBombs',3),
             ('speed',2),
@@ -308,7 +308,7 @@ class Powerup(bs.Actor):
             bs.playSound(factory.powerupSound,3,position=self.node.position)
             self._powersGiven = True
             self.handleMessage(bs.DieMessage())
-            
+			
         elif isinstance(m,_TouchedMessage):
             if not self._powersGiven:
                 node = bs.getCollisionInfo("opposingNode")
