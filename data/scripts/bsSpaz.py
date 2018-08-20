@@ -965,7 +965,7 @@ class Spaz(bs.Actor):
                     
                     
             elif m.powerupType == 'highHealth':
-            bsUtils.PopupText("SuperStrong\nwill last until death!!!",color=(1,0,0),scale=2,position=self.node.position).autoRetain()
+                bsUtils.PopupText("SuperStrong\nwill last until death!!!",color=(1,0,0),scale=2,position=self.node.position).autoRetain()
                 self.hitPoints = 2000
                 self.hitPointsMax = 2500                            
                 self._punchPowerScale = 10                
@@ -1430,10 +1430,9 @@ class Spaz(bs.Actor):
 
                 if damage > 999:
                     bsUtils.PopupText("FATALITY AWESOME!!!",color=(1,0,0),scale=2,position=self.node.position).autoRetain()
-
-bs.emitBGDynamics(position=self.node.position,velocity=(0,0,0),count=600,spread=0.7,chunkType=random.choice(['ice','rock','metal','spark','splinter','slime'])
-                             self.node.handleMessage('celebrate',1000)
-                    bs.shakeCamera(20)                               
+                    bs.emitBGDynamics(position=self.node.position,velocity=(0,0,0),count=600,spread=0.7,chunkType=random.choice(['ice','rock','metal','spark','splinter','slime']))
+                    self.node.handleMessage('celebrate',1000)
+                    bs.shakeCamera(20)
 
                 elif damage > 800 and damage < 999:
                     bsUtils.PopupText("LIKE FATAL PUNCH!",color=(0,1,0.3),scale=1.7,position=self.node.position).autoRetain()
