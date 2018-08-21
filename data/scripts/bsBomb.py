@@ -4,7 +4,7 @@ from bsVector import Vector
 import random
 import weakref
 import time
-
+from random import uniform
 
 class BombFactory(object):
     """
@@ -136,6 +136,7 @@ class BombFactory(object):
         self.landMineTex = bs.getTexture('landMine')
         self.landMineLitTex = bs.getTexture('landMineLit')
         self.tntTex = bs.getTexture('tnt')
+        self.atomTex = bs.getTexture('tnt')
 
         self.hissSound = bs.getSound('hiss')
         self.debrisFallSound = bs.getSound('debrisFall')
@@ -301,7 +302,7 @@ class Blast(bs.Actor):
                                       'radius':self.radius,
                                       'big':(self.blastType == 'tnt')})
         if self.blastType == "ice":
-            explosion.color = (0.4,2.05,2.4)
+            explosion.color = (uniform(0, 10),uniform(0, 10),uniform(0, 10))
         bs.gameTimer(5000,explosion.delete)
 
         if self.blastType != 'ice': bs.emitBGDynamics(position=position,velocity=velocity,count=int(1.0+random.random()*4),emitType='tendrils',tendrilType='thinSmoke')
@@ -331,7 +332,12 @@ class Blast(bs.Actor):
                 bs.emitBGDynamics(position=position,velocity=velocity,count=20,scale=0.7,chunkType='spark',emitType='stickers');
                 bs.emitBGDynamics(position=position,velocity=velocity,count=int(8.0+random.random()*15),scale=0.8,spread=1.5,chunkType='spark');
             bs.gameTimer(50,_doEmit) # looks better if we delay a bit
-
+        elif self.blastType == 'atom': # regular bomb shrapnel
+            def _doEmit():
+                bs.emitBGDynamics(position=position,velocity=velocity,count=30,scale=1.0,chunkType='spark',emitType='stickers');
+                bs.emitBGDynamics(position=position,velocity=velocity,count=int(18.0+random.random()*30),scale=1.0,spread=2.5,chunkType='spark');
+            bs.gameTimer(50,_doEmit) # looks better if we delay a bit
+        
         else: # regular or land mine bomb shrapnel
             def _tntNormal():
                 bs.getSharedObject('globals').slowMotion = False
@@ -341,8 +347,6 @@ class Blast(bs.Actor):
                   bs.gameTimer(int(1200), _tntNormal)
             def _doEmit():
                 if self.blastType != 'tnt':
-                    bs.getSharedObject('globals').slowMotion = True
-                    bs.gameTimer(int(200), _tntSlow)
                     bs.emitBGDynamics(position=position,velocity=velocity,count=int(4.0+random.random()*8),chunkType='rock');
                     bs.emitBGDynamics(position=position,velocity=velocity,count=int(4.0+random.random()*8),scale=0.5,chunkType='rock');
                 bs.emitBGDynamics(position=position,velocity=velocity,count=30,scale=1.0 if self.blastType=='tnt' else 0.7,chunkType='spark',emitType='stickers');
@@ -351,6 +355,7 @@ class Blast(bs.Actor):
                 # tnt throws splintery chunks
                 if self.blastType == 'tnt':
                     def _emitSplinters():
+                        bs.emitBGDynamics(position=position,velocity=(0,0,0),count=400,spread=1.7,chunkType='rock');
                         bs.getSharedObject('globals').slowMotion = True
                         bs.emitBGDynamics(position=position,velocity=velocity,count=int(20.0+random.random()*25),scale=0.8,spread=1.0,chunkType='splinter');
                     bs.gameTimer(10,_emitSplinters)
@@ -364,7 +369,7 @@ class Blast(bs.Actor):
 
         light = bs.newNode('light',
                            attrs={'position':position,
-                                  'color': (1.6,0.6,2.0) if self.blastType == 'ice' else (1,2.3,1.1),
+                                  'color': (uniform(0, 2),uniform(0, 2),uniform(0, 5)) if self.blastType == 'ice' else (uniform(0, 2),uniform(0, 2),uniform(0, 2)),
                                   'volumeIntensityScale': 20.0})
 
         s = random.uniform(0.6,0.9)
@@ -373,6 +378,10 @@ class Blast(bs.Actor):
             lightRadius *= 2.4
             scorchRadius *= 2.75
             s *= 3.0
+        elif self.blastType == 'atom':
+            lightRadius *= 3.2
+            scorchRadius *= 3.4
+            s *= 5.0
 
         iScale = 1.6
         bsUtils.animate(light,"intensity",{0:2.0*iScale, int(s*20):0.1*iScale, int(s*25):0.2*iScale, int(s*50):17.0*iScale, int(s*60):5.0*iScale, int(s*80):4.0*iScale, int(s*200):0.6*iScale, int(s*2000):0.00*iScale, int(s*3000):0.0})
@@ -387,11 +396,11 @@ class Blast(bs.Actor):
         scorch = bs.newNode('scorch',
                             attrs={'position':position,'size':scorchRadius*0.5,'big':(self.blastType == 'tnt')})
         if self.blastType == 'ice':
-            scorch.color = (3.2,2.3,1.5)
+            scorch.color = (uniform(0, 5),uniform(0, 5),uniform(0, 4))
         elif self.blastType == 'tnt':
-            scorch.color = (1.2,2.3,3.5)
+            scorch.color = (uniform(0, 2),uniform(0, 3),uniform(0, 3))
         elif self.blastType == 'regular':
-            scorch.color = (2.2,4.3,0.5)
+            scorch.color = (uniform(0, 10),uniform(0, 10),uniform(0, 10))
         elif self.blastType == 'sticky':
             scorch.color = (2.2,1.3,5.5)
         
@@ -470,7 +479,7 @@ class Bomb(bs.Actor):
 
         factory = self.getFactory()
 
-        if not bombType in ('ice','impact','landMine','normal','sticky','tnt'): raise Exception("invalid bomb type: " + bombType)
+        if not bombType in ('ice','impact','landMine','normal','sticky','tnt', 'atom'): raise Exception("invalid bomb type: " + bombType)
         self.bombType = bombType
 
         self._exploded = False
@@ -482,7 +491,7 @@ class Bomb(bs.Actor):
         elif self.bombType == 'impact': self.blastRadius *= 1.2
         elif self.bombType == 'landMine': self.blastRadius *= 0.7
         elif self.bombType == 'tnt': self.blastRadius *= 1.75
-
+        elif self.bombType == 'atom' : self.blastRadius *= 3.0
         self._explodeCallbacks = []
         
         # the player this came from
@@ -556,7 +565,21 @@ class Bomb(bs.Actor):
                                           'materials':materials})
             self.armTimer = bs.Timer(200,bs.WeakCall(self.handleMessage, ArmMessage()))
             self.warnTimer = bs.Timer(fuseTime-1700,bs.WeakCall(self.handleMessage, WarnMessage()))
-
+        elif self.bombType == 'atom':
+            fuseTime = 20000
+            self.node = bs.newNode('prop',
+                                   delegate=self,
+                                   attrs={'position':position,
+                                          'velocity':velocity,
+                                          'body':'sphere',
+                                          'model':factory.impactBombModel,
+                                          'shadowSize':1.0,
+                                          'colorTexture':factory.atomTex,
+                                          'reflection':'powerup',
+                                          'reflectionScale':[2.5],
+                                          'materials':materials})
+            self.armTimer = bs.Timer(200,bs.WeakCall(self.handleMessage, ArmMessage()))
+            self.warnTimer = bs.Timer(fuseTime-1700,bs.WeakCall(self.handleMessage, WarnMessage()))
         else:
             fuseTime = 3000
             if self.bombType == 'sticky':

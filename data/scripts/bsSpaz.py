@@ -1255,8 +1255,22 @@ class Spaz(bs.Actor):
                     self.node.miniBillboard2EndTime = t+gPowerupWearOffTime
                     self._bombWearOffFlashTimer = bs.Timer(gPowerupWearOffTime-2000,bs.WeakCall(self._bombWearOffFlash))
                     self._bombWearOffTimer = bs.Timer(gPowerupWearOffTime,bs.WeakCall(self._bombWearOff))
+            elif m.powerupType == 'atomBombs':
+                self.bombType = 'atomBombs'
+                tex = self._getBombTypeTex()
+                self._flashBillboard(tex)
+                if self.powerupsExpire:
+                    self.node.miniBillboard2Texture = tex
+                    t = bs.getGameTime()
+                    self.node.miniBillboard2StartTime = t
+                    self.node.miniBillboard2EndTime = t+gPowerupWearOffTime
+                    self._bombWearOffFlashTimer = bs.Timer(gPowerupWearOffTime-2000,bs.WeakCall(self._bombWearOffFlash))
+                    self._bombWearOffTimer = bs.Timer(gPowerupWearOffTime,bs.WeakCall(self._bombWearOff))
+            
             elif m.powerupType == 'punch':
                 self._hasBoxingGloves = True
+                self.node.handleMessage('celebrate',2000)
+                bs.shakeCamera(25)    
                 tex = bs.Powerup.getFactory().texPunch
                 self._flashBillboard(tex)
                 self.equipBoxingGloves()
@@ -1315,7 +1329,29 @@ class Spaz(bs.Actor):
             elif (m.powerupType == 'slowmo'):
                 bs.getSharedObject('globals').slowMotion = True
                 bs.shakeCamera(0.5)
-
+            elif (m.powerupType == 'inv'):                                
+                t = self.node
+                t.headModel =     None
+                t.torsoModel =    None
+                t.pelvisModel =   None
+                t.upperArmModel = None
+                t.foreArmModel =  None
+                t.handModel =     None
+                t.upperLegModel = None
+                t.lowerLegModel = None
+                t.toesModel =     None
+                t.style = "cyborg"
+            elif (m.powerupType == 'night'):
+                def _doNormal():
+                    bs.getSharedObject('globals').tint = (0.3, 0.6, 1)
+                bs.getSharedObject('globals').tint = (0.0,0.0,0.1)
+                bs.gameTimer(int(4000), _doNormal)
+                light = bs.newNode('light',
+                                attrs={'position':(self.node.position),
+                                    'color': (uniform(1, 3),uniform(1, 3),uniform(1, 3)),
+                                    'volumeIntensityScale': 1.0,
+                                    'radius':uniform(0, 1)})
+                bsUtils.animate(light,"intensity",{0:1,50:10,150:5,250:0,260:10,410:5,510:1})
                 
             self.node.handleMessage("flash")
             if m.sourceNode.exists():
@@ -1424,16 +1460,16 @@ class Spaz(bs.Actor):
             self.node.handleMessage("hurtSound")
 
             # play punch impact sound based on damage if it was a punch
-            def _normal():
-              bs.getSharedObject('globals').slowMotion = False
             if m.hitType == 'punch':
 
                 self.onPunched(damage)
 
                 if damage > 999:
-                    bs.getSharedObject('globals').slowMotion = True
-                    if self.blastType != 'tnt' and bs.getSharedObject('globals').slowMotion == True:
+                    def _normal():
+                        bs.getSharedObject('globals').slowMotion = False
+                    if bs.getSharedObject('globals').slowMotion == False:
                       bs.gameTimer(int(600), _normal)
+                    bs.getSharedObject('globals').slowMotion = True
                     bsUtils.PopupText("FATALITY AWESOME!!!",color=(1,0,0),scale=2,position=self.node.position).autoRetain()
                     bs.emitBGDynamics(position=self.node.position,velocity=(0,0,0),count=600,spread=0.7,chunkType=random.choice(['ice','rock','metal','spark','splinter','slime']))
                     self.node.handleMessage('celebrate',1000)
@@ -1666,7 +1702,7 @@ class Spaz(bs.Actor):
         
     def dropP(self):
         pos = (-7.3+15.3*random.random(),6,-5.5+(14*random.random()))
-        bs.Powerup(position = pos, powerupType = random.choice(['tripleBombs','punch','iceBombs','health','shield','stickyBombs','impactBombs','curse','landMines','luckyBlock','slowmo'])).autoRetain()
+        bs.Powerup(position = pos, powerupType = random.choice(['tripleBombs','punch','iceBombs','health','shield','stickyBombs','impactBombs','curse','landMines','luckyBlock','slowmo','night','atomBombs'])).autoRetain()
 
 
     def dropBomb(self):

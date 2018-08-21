@@ -122,6 +122,7 @@ class PowerupFactory(object):
         self.texPunch = bs.getTexture("powerupPunch")
         self.texIceBombs = bs.getTexture("powerupIceBombs")
         self.texStickyBombs = bs.getTexture("powerupStickyBombs")
+        self.texAtomBombs = bs.getTexture('eggTex')
         self.texShield = bs.getTexture("powerupShield")
         self.texImpactBombs = bs.getTexture("powerupImpactBombs")
         self.texHealth = bs.getTexture("powerupHealth")
@@ -134,6 +135,8 @@ class PowerupFactory(object):
         self.texSno = bs.getTexture("bunnyColor") #Bunny is most uniform plain white color.
         self.snoModel = bs.getModel("frostyPelvis")
         self.texSlow = bs.getTexture('coin')
+        self.texNight = bs.getTexture('empty')
+        self.inv = bs.getTexture('spark')
 
         self.healthPowerupSound = bs.getSound("healthPowerup")
         self.powerupSound = bs.getSound("powerup01")
@@ -195,6 +198,7 @@ class PowerupFactory(object):
 
 def getDefaultPowerupDistribution():
     return (('tripleBombs',3),
+            ('atomBombs', 0),
             ('iceBombs',3),
             ('punch',3),
             ('snoball',2),
@@ -209,7 +213,9 @@ def getDefaultPowerupDistribution():
             ('shield',2),
             ('health',2),
             ('curse',1),
-            ('slowmo', 2))
+            ('slowmo',2),
+            ('night', 2),
+            ('inv', 20))
 
 class Powerup(bs.Actor):
     """
@@ -241,8 +247,8 @@ class Powerup(bs.Actor):
 
         factory = self.getFactory()
         self.powerupType = powerupType;
-        self._powersGiven = False
 
+        self._powersGiven = False
         if powerupType == 'tripleBombs': tex = factory.texBomb
         elif powerupType == 'punch': tex = factory.texPunch
         elif powerupType == 'iceBombs': tex = factory.texIceBombs
@@ -257,6 +263,9 @@ class Powerup(bs.Actor):
         elif powerupType == 'luckyBlock': tex = factory.texLuckyBlock
         elif powerupType == 'bunny': tex = factory.texEgg
         elif powerupType == 'shockwave': tex = factory.shockWaveTex
+        elif powerupType == 'night': tex = factory.texNight
+        elif powerupType == 'atomBombs': tex = factory.texAtom
+        elif powerupType == 'inv': tex = factory.inv
         elif powerupType == 'snoball':
             tex = factory.texSno
             mod = factory.snoModel
