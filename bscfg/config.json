@@ -128,7 +128,7 @@
  "Auto Balance Teams": true, 
  "Campaigns": {}, 
  "Default Player Profiles": {
-  "Client Input Device #1": "nico007pro", 
+  "Client Input Device #1": "__account__", 
   "Client Input Device #10": "\ud83d\udc51Brian\ud83d\udc51", 
   "Client Input Device #11": "__account__", 
   "Client Input Device #12": "',.-?", 
@@ -708,7 +708,7 @@
    "_name": "Folder"
   }
  }, 
- "launchCount": 99, 
+ "launchCount": 116, 
  "lc14": 1, 
  "lc14146": 1, 
  "lc14173": 1, 
@@ -1353,7 +1353,7 @@
      }, 
      "version": 1.1
     }, 
-    1534784389.794824
+    1534819291.390941
    ]
   }
  }

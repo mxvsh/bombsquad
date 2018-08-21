@@ -333,8 +333,16 @@ class Blast(bs.Actor):
             bs.gameTimer(50,_doEmit) # looks better if we delay a bit
 
         else: # regular or land mine bomb shrapnel
+            def _tntNormal():
+                bs.getSharedObject('globals').slowMotion = False
+            def _tntSlow():
+                bs.getSharedObject('globals').slowMotion = True
+                if self.blastType != 'tnt' and bs.getSharedObject('globals').slowMotion == True:
+                  bs.gameTimer(int(1200), _tntNormal)
             def _doEmit():
                 if self.blastType != 'tnt':
+                    bs.getSharedObject('globals').slowMotion = True
+                    bs.gameTimer(int(200), _tntSlow)
                     bs.emitBGDynamics(position=position,velocity=velocity,count=int(4.0+random.random()*8),chunkType='rock');
                     bs.emitBGDynamics(position=position,velocity=velocity,count=int(4.0+random.random()*8),scale=0.5,chunkType='rock');
                 bs.emitBGDynamics(position=position,velocity=velocity,count=30,scale=1.0 if self.blastType=='tnt' else 0.7,chunkType='spark',emitType='stickers');
@@ -363,29 +371,29 @@ class Blast(bs.Actor):
         scorchRadius = lightRadius = self.radius
         if self.blastType == 'tnt':
             lightRadius *= 2.4
-            scorchRadius *= 3.15
+            scorchRadius *= 2.75
             s *= 3.0
 
         iScale = 1.6
         bsUtils.animate(light,"intensity",{0:2.0*iScale, int(s*20):0.1*iScale, int(s*25):0.2*iScale, int(s*50):17.0*iScale, int(s*60):5.0*iScale, int(s*80):4.0*iScale, int(s*200):0.6*iScale, int(s*2000):0.00*iScale, int(s*3000):0.0})
-        bsUtils.animate(light,"radius",{0:lightRadius*0.2, int(s*50):lightRadius*0.55, int(s*100):lightRadius*0.3, int(s*300):lightRadius*0.15, int(s*1000):lightRadius*0.05})
+        bsUtils.animate(light,"radius",{0:lightRadius*0.2, int(s*50):lightRadius*0.65, int(s*100):lightRadius*0.3, int(s*300):lightRadius*0.15, int(s*1000):lightRadius*0.25})
         bs.gameTimer(int(s*3000),light.delete)
         def _normal():
           bs.getSharedObject('globals').slowMotion = False
         if self.blastType == 'tnt' and bs.getSharedObject('globals').slowMotion == False:
-          bs.gameTimer(int(1000), _normal)
+          bs.gameTimer(int(1700), _normal)
 
         # make a scorch that fades over time
         scorch = bs.newNode('scorch',
                             attrs={'position':position,'size':scorchRadius*0.5,'big':(self.blastType == 'tnt')})
         if self.blastType == 'ice':
-            scorch.color = (0.2,2.3,1.5)
+            scorch.color = (3.2,2.3,1.5)
         elif self.blastType == 'tnt':
-            scorch.color = (1.2,2.3,0.5)
+            scorch.color = (1.2,2.3,3.5)
         elif self.blastType == 'regular':
-            scorch.color = (1.2,0.3,2.5)
+            scorch.color = (2.2,4.3,0.5)
         elif self.blastType == 'sticky':
-            scorch.color = (2.2,1.3,0.5)
+            scorch.color = (2.2,1.3,5.5)
         
         
 

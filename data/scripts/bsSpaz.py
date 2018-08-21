@@ -978,13 +978,9 @@ class Spaz(bs.Actor):
                 testingEvent = 0
                 
                 
-                event = random.randint(1,26) if testingEvent == 0 else testingEvent
+                event = random.randint(4,26) if testingEvent == 0 else testingEvent
                 print 'LuckyBlock event: ' + str(event)
-                
-                if event in [1,2,3]:
-                    self.node.handleMessage(bs.PowerupMessage(powerupType = random.choice(['tripleBombs','iceBombs','punch','impactBombs','landMines','stickyBombs','shield','health','curse','luckyBlock','agentHead','stickyForce','dirt','speed','blackHole','lego','artillery'])))
-                    
-                elif event == 4:
+                if event == 4:
                     print 'LuckyBlock taken. The effect: Powerups'
                     bs.shakeCamera(1)
                     bs.emitBGDynamics(position=(self.node.position[0],self.node.position[1]+4,self.node.position[2]),velocity=(0,0,0),count=700,spread=0.7,chunkType='spark')
@@ -1316,6 +1312,10 @@ class Spaz(bs.Actor):
                 self.node.hurt = 0
                 self._lastHitTime = None
                 self._numTimesHit = 0
+            elif (m.powerupType == 'slowmo'):
+                bs.getSharedObject('globals').slowMotion = True
+                bs.shakeCamera(0.5)
+
                 
             self.node.handleMessage("flash")
             if m.sourceNode.exists():
@@ -1424,11 +1424,16 @@ class Spaz(bs.Actor):
             self.node.handleMessage("hurtSound")
 
             # play punch impact sound based on damage if it was a punch
+            def _normal():
+              bs.getSharedObject('globals').slowMotion = False
             if m.hitType == 'punch':
 
                 self.onPunched(damage)
 
                 if damage > 999:
+                    bs.getSharedObject('globals').slowMotion = True
+                    if self.blastType != 'tnt' and bs.getSharedObject('globals').slowMotion == True:
+                      bs.gameTimer(int(600), _normal)
                     bsUtils.PopupText("FATALITY AWESOME!!!",color=(1,0,0),scale=2,position=self.node.position).autoRetain()
                     bs.emitBGDynamics(position=self.node.position,velocity=(0,0,0),count=600,spread=0.7,chunkType=random.choice(['ice','rock','metal','spark','splinter','slime']))
                     self.node.handleMessage('celebrate',1000)
@@ -1440,14 +1445,9 @@ class Spaz(bs.Actor):
                     bs.shakeCamera(10)
                     
                 elif damage > 600 and damage < 800:
-                    bsUtils.PopupText("Punch tha achhaa,\nPar tu hai Bachaa",color=(1,0,0),scale=1.5,position=self.node.position).autoRetain()
+                    bsUtils.PopupText("Nice Puch",color=(1,0,0),scale=1.5,position=self.node.position).autoRetain()
                     self.node.handleMessage('celebrate',250)
                     bs.shakeCamera(5)
-					
-                elif damage > 400 and damage < 600:
-                    bsUtils.PopupText("Noob kahika!",color=(1,0,0),scale=1.3,position=self.node.position).autoRetain()
-                    self.node.handleMessage('celebrate',100)
-                    bs.shakeCamera(1)
                   
                 if damage > 10: bsUtils.showDamageCount('-'+str(int(damage/10))+"%",m.pos,m.forceDirection)
                                                
@@ -1666,7 +1666,7 @@ class Spaz(bs.Actor):
         
     def dropP(self):
         pos = (-7.3+15.3*random.random(),6,-5.5+(14*random.random()))
-        bs.Powerup(position = pos, powerupType = random.choice(['tripleBombs','punch','iceBombs','health','shield','stickyBombs','impactBombs','curse','landMines','luckyBlock'])).autoRetain()
+        bs.Powerup(position = pos, powerupType = random.choice(['tripleBombs','punch','iceBombs','health','shield','stickyBombs','impactBombs','curse','landMines','luckyBlock','slowmo'])).autoRetain()
 
 
     def dropBomb(self):
@@ -3263,11 +3263,11 @@ t = Appearance("Spaz")
 
 t.colorTexture = "fontExtras3"
 t.colorMaskTexture = "fontExtras3"
-t.defaultColor = (1.85,1.85,1.85)
-t.defaultHighlight = (1.25,2.55,2.55)
+t.defaultColor = (4.85,3.85,3.85)
+t.defaultHighlight = (4.25,5.55,5.55)
 t.iconTexture = "cyborgIcon"
 t.iconMaskTexture = "fontExtras3"
-t.headModel =     "frostyHead"
+t.headModel =     "ninjaHead"
 t.torsoModel =    "penguinTorso"
 t.pelvisModel =   "bonesPelvis"
 t.upperArmModel = "cyborgUpperArm"

@@ -133,6 +133,7 @@ class PowerupFactory(object):
         self.texEgg = bs.getTexture('eggTex2')
         self.texSno = bs.getTexture("bunnyColor") #Bunny is most uniform plain white color.
         self.snoModel = bs.getModel("frostyPelvis")
+        self.texSlow = bs.getTexture('coin')
 
         self.healthPowerupSound = bs.getSound("healthPowerup")
         self.powerupSound = bs.getSound("powerup01")
@@ -200,14 +201,15 @@ def getDefaultPowerupDistribution():
             ('impactBombs',3),
             ('highHealth',1),
             ('luckyBlock',0),
-            ('shockwave',2),
+            ('shockwave',5),
             ('landMines',2),
             ('stickyBombs',3),
             ('speed',2),
             ('bunny',0),
             ('shield',2),
             ('health',2),
-            ('curse',1))
+            ('curse',1),
+            ('slowmo', 2))
 
 class Powerup(bs.Actor):
     """
@@ -258,6 +260,7 @@ class Powerup(bs.Actor):
         elif powerupType == 'snoball':
             tex = factory.texSno
             mod = factory.snoModel
+        elif powerupType == 'slowmo' : tex = factory.texSlow
         else: raise Exception("invalid powerupType: "+str(powerupType))
 
         if len(position) != 3: raise Exception("expected 3 floats for position")
@@ -268,10 +271,10 @@ class Powerup(bs.Actor):
                                       'position':position,
                                       'model':factory.model,
                                       'lightModel':factory.modelSimple,
-                                      'shadowSize':0.5,
+                                      'shadowSize':1,
                                       'colorTexture':tex,
                                       'reflection':'powerup',
-                                      'reflectionScale':[1.0],
+                                      'reflectionScale':[1.3],
                                       'materials':(factory.powerupMaterial,bs.getSharedObject('objectMaterial'))})
 
         # animate in..
