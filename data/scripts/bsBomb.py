@@ -274,7 +274,6 @@ class Blast(bs.Actor):
         """
         bs.Actor.__init__(self)
 
-        
         factory = Bomb.getFactory()
 
         self.blastType = blastType
@@ -385,8 +384,8 @@ class Blast(bs.Actor):
 
         iScale = 1.6
         bsUtils.animate(light,"intensity",{0:2.0*iScale, int(s*20):0.1*iScale, int(s*25):0.2*iScale, int(s*50):17.0*iScale, int(s*60):5.0*iScale, int(s*80):4.0*iScale, int(s*200):0.6*iScale, int(s*2000):0.00*iScale, int(s*3000):0.0})
-        bsUtils.animate(light,"radius",{0:lightRadius*0.2, int(s*50):lightRadius*0.65, int(s*100):lightRadius*0.3, int(s*300):lightRadius*0.15, int(s*1000):lightRadius*0.25})
-        bs.gameTimer(int(s*3000),light.delete)
+        bsUtils.animate(light,"radius",{0:lightRadius*0.2, int(s*50):lightRadius*0.65, int(s*100):lightRadius*0.3, int(s*300):lightRadius*0.15, int(s*1000):lightRadius*1.25})
+        bs.gameTimer(int(s*10000),light.delete)
         def _normal():
           bs.getSharedObject('globals').slowMotion = False
         if self.blastType == 'tnt' and bs.getSharedObject('globals').slowMotion == False:

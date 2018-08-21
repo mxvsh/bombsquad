@@ -27,6 +27,7 @@ from bsVector import Vector
 
 # change everything's listed module to ours
 import bs
+import glow
 for obj in [getattr(bs,attr) for attr in dir(bs) if not attr.startswith('_')]:
     if getattr(obj,'__module__',None) not in [None,'bs']: obj.__module__ = 'bs'
 del bs

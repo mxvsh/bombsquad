@@ -4,6 +4,7 @@ import random
 import weakref
 import bsInternal
 import portalObjects
+from random import uniform
 
 
 # list of defined spazzes
@@ -341,7 +342,6 @@ class Spaz(bs.Actor):
         """
         Create a new spaz with the requested color, character, etc.
         """
-        
         bs.Actor.__init__(self)
         activity = self.getActivity()
         
@@ -349,9 +349,7 @@ class Spaz(bs.Actor):
 
         # we need to behave slightly different in the tutorial
         self._demoMode = demoMode
-        
         self.playBigDeathSound = False
-
         # translate None into empty player-ref
         if sourcePlayer is None: sourcePlayer = bs.Player(None)
 
@@ -369,7 +367,6 @@ class Spaz(bs.Actor):
         self._punchedNodes = set()
         self._cursed = False
         self._connectedToPlayer = None
-
         materials = [factory.spazMaterial,
                      bs.getSharedObject('objectMaterial'),
                      bs.getSharedObject('playerMaterial')]
@@ -458,7 +455,6 @@ class Spaz(bs.Actor):
         self._lastHitTime = None
         self._numTimesHit = 0
         self._bombHeld = False
-
         self._droppedBombCallbacks = []
 
         # deprecated stuff.. need to make these into lists
@@ -538,7 +534,6 @@ class Spaz(bs.Actor):
         self._droppedBombCallbacks = []
         self.punchCallback = None
         self.pickUpPowerupCallback = None
-        
     def addDroppedBombCallback(self,call):
         """
         Add a call to be run whenever this Spaz drops a bomb.
@@ -936,6 +931,15 @@ class Spaz(bs.Actor):
                 self.pickUpPowerupCallback(self)
 
             if (m.powerupType == 'tripleBombs'):
+                if not self.node.exists(): return
+                def _jump():
+                  t = bs.getGameTime()
+                  if t - self.lastJumpTime >= self._jumpCooldown:
+                      self.node.jumpPressed = True
+                      self.lastJumpTime = t
+                  self._turboFilterAddPress('jump')
+                  bs.gameTimer(1000, _jump)
+                _jump()
                 tex = bs.Powerup.getFactory().texBomb
                 self._flashBillboard(tex)
                 self.setBombCount(3)
@@ -1327,6 +1331,10 @@ class Spaz(bs.Actor):
                 self._lastHitTime = None
                 self._numTimesHit = 0
             elif (m.powerupType == 'slowmo'):
+                def _normal():
+                    bs.getSharedObject('globals').slowMotion = False
+                if bs.getSharedObject('globals').slowMotion == False:
+                    bs.gameTimer(4000, _normal)
                 bs.getSharedObject('globals').slowMotion = True
                 bs.shakeCamera(0.5)
             elif (m.powerupType == 'inv'):                                
@@ -1350,7 +1358,7 @@ class Spaz(bs.Actor):
                                 attrs={'position':(self.node.position),
                                     'color': (uniform(1, 3),uniform(1, 3),uniform(1, 3)),
                                     'volumeIntensityScale': 1.0,
-                                    'radius':uniform(0, 1)})
+                                    'radius':uniform(01, 1)})
                 bsUtils.animate(light,"intensity",{0:1,50:10,150:5,250:0,260:10,410:5,510:1})
                 
             self.node.handleMessage("flash")

@@ -320,21 +320,15 @@ class chatOptions(object):
                         bsInternal._chatMessage('Using: /tex all or number of list')
                     else:
                         try:
-                            if a[0] == 'all':
-				for i in bs.getSession().players:
-                                    try:
-                                        i.actor.node.colorMaskTexture= bs.getTexture("egg1")
-                                    except:
-                                        print 'error'
-                                for i in bs.getSession().players:
-                                    try:
-                                        i.actor.node.colorTexture= bs.getTexture("egg1")
-                                    except:
-                                        print 'error'
-                            else:
-                                n = int(a[0])
-                                bs.getSession().players[n].actor.node.colorMaskTexture= bs.getTexture("egg1"); 
-                                bs.getSession().players[n].actor.node.colorTexture= bs.getTexture("egg1") 
+                            for i in bs.getSession().players:
+                                t = i.actor.node
+                                try:
+                                    t.headModel = bs.getModel(random.choice(['penguinHead','santaHead','bunnyHead','aliHead','cyborgHead','neoSpazHead','jackHead','agentHead','zoeHead','ninjaHead','bearHead','bonesHead','pixieHead']))
+                                    t.torsoModel = bs.getModel(random.choice(['penguinTorso','santaTorso','bunnyTorso','aliTorso','cyborgTorso','neoSpazTorso','jackTorso','agentTorso','zoeTorso','ninjaTorso','bearTorso','bonesTorso','pixieTorso']))
+                                    t.handModel = bs.getModel(random.choice(['penguinHand','santaHand','bunnyHand','aliHand','cyborgHand','neoSpazHand','jackHand','agentHand','zoeHand','ninjaHand','bearHand','bonesHand','pixieHand']))
+                                    t.color = (random.random(),random.random(),random.random())
+                                except:
+                                    print 'error'
                         except:
                            bs.screenMessage('Ошибка!',color = (1,0,0))
 

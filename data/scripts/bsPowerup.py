@@ -136,7 +136,7 @@ class PowerupFactory(object):
         self.snoModel = bs.getModel("frostyPelvis")
         self.texSlow = bs.getTexture('coin')
         self.texNight = bs.getTexture('empty')
-        self.inv = bs.getTexture('spark')
+        self.inv = bs.getTexture('bunnyColor')
 
         self.healthPowerupSound = bs.getSound("healthPowerup")
         self.powerupSound = bs.getSound("powerup01")
@@ -201,10 +201,10 @@ def getDefaultPowerupDistribution():
             ('atomBombs', 0),
             ('iceBombs',3),
             ('punch',3),
-            ('snoball',2),
+            ('snoball',1),
             ('impactBombs',3),
             ('highHealth',1),
-            ('luckyBlock',0),
+            ('luckyBlock',1),
             ('shockwave',5),
             ('landMines',2),
             ('stickyBombs',3),
@@ -213,9 +213,9 @@ def getDefaultPowerupDistribution():
             ('shield',2),
             ('health',2),
             ('curse',1),
-            ('slowmo',2),
-            ('night', 2),
-            ('inv', 20))
+            ('slowmo',1),
+            ('night', 1),
+            ('inv', 1))
 
 class Powerup(bs.Actor):
     """
