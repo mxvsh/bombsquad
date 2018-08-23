@@ -374,17 +374,17 @@ class Blast(bs.Actor):
         s = random.uniform(0.6,0.9)
         scorchRadius = lightRadius = self.radius
         if self.blastType == 'tnt':
-            lightRadius *= 2.4
-            scorchRadius *= 2.75
+            lightRadius *= 2.0
+            scorchRadius *= 2.35
             s *= 3.0
         elif self.blastType == 'atom':
-            lightRadius *= 3.2
+            lightRadius *= 2.2
             scorchRadius *= 3.4
             s *= 5.0
 
-        iScale = 1.6
+        iScale = 1.2
         bsUtils.animate(light,"intensity",{0:2.0*iScale, int(s*20):0.1*iScale, int(s*25):0.2*iScale, int(s*50):17.0*iScale, int(s*60):5.0*iScale, int(s*80):4.0*iScale, int(s*200):0.6*iScale, int(s*2000):0.00*iScale, int(s*3000):0.0})
-        bsUtils.animate(light,"radius",{0:lightRadius*0.2, int(s*50):lightRadius*0.65, int(s*100):lightRadius*0.3, int(s*300):lightRadius*0.15, int(s*1000):lightRadius*1.25})
+        bsUtils.animate(light,"radius",{0:lightRadius*0.2, int(s*50):lightRadius*0.65, int(s*100):lightRadius*0.3, int(s*300):lightRadius*0.15, int(s*1000):lightRadius*0.25})
         bs.gameTimer(int(s*10000),light.delete)
         def _normal():
           bs.getSharedObject('globals').slowMotion = False
@@ -401,7 +401,7 @@ class Blast(bs.Actor):
         elif self.blastType == 'regular':
             scorch.color = (uniform(0, 10),uniform(0, 10),uniform(0, 10))
         elif self.blastType == 'sticky':
-            scorch.color = (2.2,1.3,5.5)
+            scorch.color = (uniform(0, 10),uniform(0, 10),uniform(0, 10))
         
         
 

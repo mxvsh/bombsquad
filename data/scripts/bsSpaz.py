@@ -1476,7 +1476,7 @@ class Spaz(bs.Actor):
                     def _normal():
                         bs.getSharedObject('globals').slowMotion = False
                     if bs.getSharedObject('globals').slowMotion == False:
-                      bs.gameTimer(int(600), _normal)
+                      bs.gameTimer(int(1000), _normal)
                     bs.getSharedObject('globals').slowMotion = True
                     bsUtils.PopupText("FATALITY AWESOME!!!",color=(1,0,0),scale=2,position=self.node.position).autoRetain()
                     bs.emitBGDynamics(position=self.node.position,velocity=(0,0,0),count=600,spread=0.7,chunkType=random.choice(['ice','rock','metal','spark','splinter','slime']))
@@ -1489,6 +1489,11 @@ class Spaz(bs.Actor):
                     bs.shakeCamera(10)
                     
                 elif damage > 600 and damage < 800:
+                    def _normal():
+                        bs.getSharedObject('globals').slowMotion = False
+                    if bs.getSharedObject('globals').slowMotion == False:
+                        bs.gameTimer(int(600), _normal)
+                    bs.getSharedObject('globals').slowMotion = True
                     bsUtils.PopupText("Nice Puch",color=(1,0,0),scale=1.5,position=self.node.position).autoRetain()
                     self.node.handleMessage('celebrate',250)
                     bs.shakeCamera(5)
