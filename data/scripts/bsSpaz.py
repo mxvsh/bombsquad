@@ -1350,15 +1350,17 @@ class Spaz(bs.Actor):
                 t.toesModel =     None
                 t.style = "cyborg"
             elif (m.powerupType == 'night'):
-                def _doNormal():
-                    bs.getSharedObject('globals').tint = (0.3, 0.6, 1)
-                bs.getSharedObject('globals').tint = (0.0,0.0,0.1)
-                bs.gameTimer(int(4000), _doNormal)
                 light = bs.newNode('light',
                                 attrs={'position':(self.node.position),
                                     'color': (uniform(1, 3),uniform(1, 3),uniform(1, 3)),
-                                    'volumeIntensityScale': 1.0,
-                                    'radius':uniform(01, 1)})
+                                    'volumeIntensityScale': 0.4,
+                                    'radius':uniform(0.1, 1)})
+                def _doNormal():
+                    bs.getSharedObject('globals').tint = (0.3, 0.6, 1)
+                    light.delete()
+                bs.getSharedObject('globals').tint = (0.0,0.0,0.0)
+                bs.gameTimer(int(4000), _doNormal)
+                
                 bsUtils.animate(light,"intensity",{0:1,50:10,150:5,250:0,260:10,410:5,510:1})
                 
             self.node.handleMessage("flash")
