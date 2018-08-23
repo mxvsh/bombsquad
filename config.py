@@ -6,5 +6,5 @@ config['sessionType'] = 'teams'
 config['maxPartySize'] = 11
 config['partyIsPublic'] = True
 
-# config['port'] = 43209
+config['port'] = 43209
 config['playlistCode'] = 194835

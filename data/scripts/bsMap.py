@@ -357,7 +357,7 @@ class HockeyStadium(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -417,7 +417,7 @@ class HockeyStadium(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -447,7 +447,7 @@ class HockeyStadium(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -533,7 +533,7 @@ class FootballStadium(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -593,7 +593,7 @@ class FootballStadium(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -623,7 +623,7 @@ class FootballStadium(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -710,7 +710,7 @@ class BridgitMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -770,7 +770,7 @@ class BridgitMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -800,7 +800,7 @@ class BridgitMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -896,7 +896,7 @@ class BigGMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -956,7 +956,7 @@ class BigGMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -986,7 +986,7 @@ class BigGMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1083,7 +1083,7 @@ class RoundaboutMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1143,7 +1143,7 @@ class RoundaboutMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1173,7 +1173,7 @@ class RoundaboutMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1270,7 +1270,7 @@ class MonkeyFaceMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1330,7 +1330,7 @@ class MonkeyFaceMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1360,7 +1360,7 @@ class MonkeyFaceMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1456,7 +1456,7 @@ class ZigZagMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1516,7 +1516,7 @@ class ZigZagMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1546,7 +1546,7 @@ class ZigZagMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1639,7 +1639,7 @@ class ThePadMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1699,7 +1699,7 @@ class ThePadMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1729,7 +1729,7 @@ class ThePadMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1816,7 +1816,7 @@ class DoomShroomMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1876,7 +1876,7 @@ class DoomShroomMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -1906,7 +1906,7 @@ class DoomShroomMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2005,7 +2005,7 @@ class LakeFrigidMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2065,7 +2065,7 @@ class LakeFrigidMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2095,7 +2095,7 @@ class LakeFrigidMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2181,7 +2181,7 @@ class TipTopMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2241,7 +2241,7 @@ class TipTopMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2271,7 +2271,7 @@ class TipTopMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2358,7 +2358,7 @@ class CragCastleMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2418,7 +2418,7 @@ class CragCastleMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2448,7 +2448,7 @@ class CragCastleMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2548,7 +2548,7 @@ class TowerDMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2608,7 +2608,7 @@ class TowerDMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2638,7 +2638,7 @@ class TowerDMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2744,7 +2744,7 @@ class AlwaysLandMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2804,7 +2804,7 @@ class AlwaysLandMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2834,7 +2834,7 @@ class AlwaysLandMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -2941,7 +2941,7 @@ class StepRightUpMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -3001,7 +3001,7 @@ class StepRightUpMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -3031,7 +3031,7 @@ class StepRightUpMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -3125,7 +3125,7 @@ class CourtyardMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -3185,7 +3185,7 @@ class CourtyardMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -3215,7 +3215,7 @@ class CourtyardMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
@@ -3316,7 +3316,7 @@ class RampageMap(Map):
         bs.gameTimer(4500,t.delete)
          # #######t1####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue048To Get VIP+\n1)Be Regular\n2)Be A Good Player',
+                       attrs={ 'text':u'\ue048To get VIP\nJoin our Telegram Group',
                               'scale':0.8,
                               'maxWidth':0,
                               'position':(0,170),
@@ -3376,7 +3376,7 @@ class RampageMap(Map):
         bs.gameTimer(25500,t.delete)
          ####t5#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Telegram FOR SUGGESTIONS\ue043\n\ue047@XensParty\ue047',
+                       attrs={ 'text':u'\ue043Join Telegram group for support\n\ue047 http://t.me/XensParty \ue047',
                               'scale':0.9,
                               'maxWidth':0,
                               'position':(0,170),
@@ -3406,7 +3406,7 @@ class RampageMap(Map):
         bs.gameTimer(39500,t.delete)
          #####t7#####
         t = bs.newNode('text',
-                       attrs={ 'text':u'\ue043Thanks to join\ue043',
+                       attrs={ 'text':u'\ue043Thanks for playing on XensParty\ue043',
                               'scale':0.7,
                               'maxWidth':0,
                               'position':(0,170),
