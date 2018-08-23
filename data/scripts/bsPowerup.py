@@ -204,7 +204,11 @@ def getDefaultPowerupDistribution():
             ('snoball',1),
             ('impactBombs',3),
             ('highHealth',1),
+<<<<<<< HEAD
             ('luckyBlock',10),
+=======
+            ('luckyBlock',0),
+>>>>>>> 3b80d183944d582c2962a300ff32a7e6a55ec8fd
             ('shockwave',5),
             ('landMines',2),
             ('stickyBombs',3),
