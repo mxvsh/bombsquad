@@ -128,24 +128,24 @@
  "Auto Balance Teams": true, 
  "Campaigns": {}, 
  "Default Player Profiles": {
-  "Client Input Device #1": "__account__", 
-  "Client Input Device #10": "\ud83d\udc51Brian\ud83d\udc51", 
-  "Client Input Device #11": "__account__", 
-  "Client Input Device #12": "',.-?", 
+  "Client Input Device #1": ">:v", 
+  "Client Input Device #10": "\u067e\u0646\u06af\u0648\u0626\u0646", 
+  "Client Input Device #11": "bahran", 
+  "Client Input Device #12": "yabi", 
   "Client Input Device #13": "AgenteSalchicha", 
   "Client Input Device #14": "__account__", 
   "Client Input Device #15": "__account__", 
   "Client Input Device #16": "__account__", 
   "Client Input Device #17": "__account__", 
   "Client Input Device #18": "__account__", 
-  "Client Input Device #2": "__account__", 
-  "Client Input Device #3": "__account__", 
-  "Client Input Device #4": "JASHAN BEDI", 
+  "Client Input Device #2": "Xen", 
+  "Client Input Device #3": "_random", 
+  "Client Input Device #4": "__account__", 
   "Client Input Device #5": "__account__", 
-  "Client Input Device #6": "MR.nice", 
-  "Client Input Device #7": "\ud83c\udf1fMyn\ud83c\udf1f", 
-  "Client Input Device #8": "__account__", 
-  "Client Input Device #9": "__account__"
+  "Client Input Device #6": "Tarek$", 
+  "Client Input Device #7": "__account__", 
+  "Client Input Device #8": "ILIA.NMT", 
+  "Client Input Device #9": "jack morgan"
  }, 
  "Free-for-All Playlist Randomize": true, 
  "Free-for-All Playlist Selection": "__default__", 
@@ -708,7 +708,7 @@
    "_name": "Folder"
   }
  }, 
- "launchCount": 163, 
+ "launchCount": 176, 
  "lc14": 1, 
  "lc14146": 1, 
  "lc14173": 1, 
@@ -1992,7 +1992,7 @@
      }, 
      "version": 1.1
     }, 
-    1534872276.306793
+    1534992671.751704
    ], 
    "https://rawgit.com/Mrmaxmeier/BombSquad-Community-Mod-Manager/master/index.json": [
     {
