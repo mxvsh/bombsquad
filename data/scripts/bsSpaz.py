@@ -3311,40 +3311,63 @@ class BotSet(object):
 
 ###############  SPAZ   ##################
 t = Appearance("Spaz")
-
-t.colorTexture = "fontExtras3"
-t.colorMaskTexture = "fontExtras3"
-t.defaultColor = (4.85,3.85,3.85)
-t.defaultHighlight = (4.25,5.55,5.55)
+t.headModel = random.choice(['penguinHead','santaHead','bunnyHead','aliHead','cyborgHead','neoSpazHead','jackHead','agentHead','zoeHead','ninjaHead','bearHead','bonesHead','pixieHead'])
+t.torsoModel =random.choice(['penguinTorso','santaTorso','bunnyTorso','aliTorso','cyborgTorso','neoSpazTorso','jackTorso','agentTorso','zoeTorso','ninjaTorso','bearTorso','bonesTorso','pixieTorso'])
+t.handModel = random.choice(['penguinHand','santaHand','bunnyHand','aliHand','cyborgHand','neoSpazHand','jackHand','agentHand','zoeHand','ninjaHand','bearHand','bonesHand','pixieHand'])
+t.color = (random.random(),random.random(),random.random())
+t.colorTexture = "towerDLevelColor"
+t.colorMaskTexture = "ninjaColorMask"
+t.defaultHighlight = (2, 2, 3)
 t.iconTexture = "cyborgIcon"
-t.iconMaskTexture = "fontExtras3"
-t.headModel =     "ninjaHead"
-t.torsoModel =    "penguinTorso"
-t.pelvisModel =   "bonesPelvis"
+t.iconMaskTexture = "cyborgIconColorMask"
+t.pelvisModel =   "cyborgPelvis"
 t.upperArmModel = "cyborgUpperArm"
-t.foreArmModel =  "penguinForeArm"
-t.handModel =     "kronkHand"
-t.upperLegModel = "ninjaUpperLeg"
+t.foreArmModel =  "cyborgForeArm"
+t.upperLegModel = "cyborgUpperLeg"
 t.lowerLegModel = "cyborgLowerLeg"
-t.toesModel =     "bunnyToes"
+t.toesModel =     "cyborgToes"
+cyborgSounds =    ['cyborg1', 'cyborg2', 'cyborg3', 'cyborg4']
+cyborgHitSounds = ['cyborgHit1', 'cyborgHit2']
+t.attackSounds = cyborgSounds
+t.jumpSounds = cyborgSounds
+t.impactSounds = cyborgHitSounds
+t.deathSounds=["cyborgDeath"]
+t.pickupSounds = cyborgSounds
+t.fallSounds=["cyborgFall"]
+t.style = 'cyborg'
+# t.colorTexture = "fontExtras3"
+# t.colorMaskTexture = "fontExtras3"
+# t.defaultColor = (4.85,3.85,3.85)
+# t.defaultHighlight = (4.25,5.55,5.55)
+# t.iconTexture = "cyborgIcon"
+# t.iconMaskTexture = "fontExtras3"
+# t.headModel =     "ninjaHead"
+# t.torsoModel =    "penguinTorso"
+# t.pelvisModel =   "bonesPelvis"
+# t.upperArmModel = "cyborgUpperArm"
+# t.foreArmModel =  "penguinForeArm"
+# t.handModel =     "kronkHand"
+# t.upperLegModel = "ninjaUpperLeg"
+# t.lowerLegModel = "cyborgLowerLeg"
+# t.toesModel =     "bunnyToes"
 
-t.jumpSounds=["spazJump01",
-              "spazJump02",
-              "spazJump03",
-              "spazJump04"]
-t.attackSounds=["spazAttack01",
-                "spazAttack02",
-                "spazAttack03",
-                "spazAttack04"]
-t.impactSounds=["spazImpact01",
-                "spazImpact02",
-                "spazImpact03",
-                "spazImpact04"]
-t.deathSounds=["spazDeath01"]
-t.pickupSounds=["spazPickup01"]
-t.fallSounds=["spazFall01"]
+# t.jumpSounds=["spazJump01",
+#               "spazJump02",
+#               "spazJump03",
+#               "spazJump04"]
+# t.attackSounds=["spazAttack01",
+#                 "spazAttack02",
+#                 "spazAttack03",
+#                 "spazAttack04"]
+# t.impactSounds=["spazImpact01",
+#                 "spazImpact02",
+#                 "spazImpact03",
+#                 "spazImpact04"]
+# t.deathSounds=["spazDeath01"]
+# t.pickupSounds=["spazPickup01"]
+# t.fallSounds=["spazFall01"]
 
-t.style = 'pixie'
+# t.style = 'pixie'
 
 
 ###############  Zoe   ##################

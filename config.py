@@ -2,9 +2,9 @@
 # see bombsquad_server for details on what you can override
 # examples (uncomment to use):
 config['partyName'] = 'XensParty'
-config['sessionType'] = 'teams'
+config['sessionType'] = 'ffa'
 config['maxPartySize'] = 11
 config['partyIsPublic'] = True
 
 config['port'] = 43209
-config['playlistCode'] = 194835
+config['playlistCode'] = 196221
