@@ -982,7 +982,7 @@ class Spaz(bs.Actor):
                 testingEvent = 0
                 
                 
-                event = random.randint(4,26) if testingEvent == 0 else testingEvent
+                event = random.randint(4,25) if testingEvent == 0 else testingEvent
                 print 'LuckyBlock event: ' + str(event)
                 if event == 4:
                     print 'LuckyBlock taken. The effect: Powerups'
@@ -1068,7 +1068,7 @@ class Spaz(bs.Actor):
                     bs.animateArray(self.node,'color',3,{0:(0,0,1),500:(0,1,0),1000:(1,0,0),1500:(0,0,1)},True)
                     self.node.handleMessage('celebrate',100000000)
                     
-                elif event == 6:
+                elif event == 16:
                     print 'LuckyBlock taken. The effect: Turret'
                     portalObjects.Turret(position = (self.node.position[0],self.node.position[1]+3,self.node.position[2]),different = (random.random() > 0.9)).autoRetain()
                     
@@ -1129,13 +1129,11 @@ class Spaz(bs.Actor):
                         portalObjects.Clay(position = (self.node.position[0]+random.random(),self.node.position[1]+random.random(),self.node.position[2]+random.random()),
                                            velocity = (-5+(random.random()*30),-5+(random.random()*30),-5+(random.random()*30))).autoRetain()
                         a+=1
-                        
                 elif event == 21:
-                    for i in range(int(1+random.random()*10)):
-                        portalObjects.Lego(position = (self.node.position[0]+random.uniform(-1,1),self.node.position[1]+3,self.node.position[2]+random.uniform(-1.2,1.2)),
-                                           num = int(random.random()*3),colorNum = int(random.random()*3),
-                                           velocity = (-6+random.random()*12,-6+random.random()*12,-6+random.random()*12)).autoRetain()
-                    
+                    self.node.name = ''
+                    self.node.headModel = ''
+                    self.node.torsoModel = ''
+                    self.node.handModel = ''
                 elif event == 22:
                     bs.getActivity()._bomzhSet = bs.BotSet()
                     bs.getActivity()._bomzhSet.spawnBot(BomzhBot,pos=self.node.position,spawnTime=1000)
@@ -1339,6 +1337,7 @@ class Spaz(bs.Actor):
                 bs.shakeCamera(0.5)
             elif (m.powerupType == 'inv'):                                
                 t = self.node
+                t.name =          None
                 t.headModel =     None
                 t.torsoModel =    None
                 t.pelvisModel =   None
@@ -1359,7 +1358,7 @@ class Spaz(bs.Actor):
                     bs.getSharedObject('globals').tint = (0.3, 0.6, 1)
                     light.delete()
                 bs.getSharedObject('globals').tint = (0.0,0.0,0.0)
-                bs.gameTimer(int(4000), _doNormal)
+                bs.gameTimer(int(5000), _doNormal)
                 
                 bsUtils.animate(light,"intensity",{0:1,50:10,150:5,250:0,260:10,410:5,510:1})
                 
@@ -3322,7 +3321,7 @@ t.iconTexture = "cyborgIcon"
 t.iconMaskTexture = "cyborgIconColorMask"
 t.pelvisModel =   "cyborgPelvis"
 t.upperArmModel = "cyborgUpperArm"
-t.foreArmModel =  "cyborgForeArm"
+t.foreArmModel =  random.choice(["cyborgForeArm", 'zoeForeArm'])
 t.upperLegModel = "cyborgUpperLeg"
 t.lowerLegModel = "cyborgLowerLeg"
 t.toesModel =     "cyborgToes"
