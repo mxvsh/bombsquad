@@ -1337,7 +1337,7 @@ class Spaz(bs.Actor):
                 bs.shakeCamera(0.5)
             elif (m.powerupType == 'inv'):                                
                 t = self.node
-                t.name =          None
+                t.name =          ' '
                 t.headModel =     None
                 t.torsoModel =    None
                 t.pelvisModel =   None

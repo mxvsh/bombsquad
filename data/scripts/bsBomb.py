@@ -301,7 +301,7 @@ class Blast(bs.Actor):
                                       'radius':self.radius,
                                       'big':(self.blastType == 'tnt')})
         if self.blastType == "ice":
-            explosion.color = (uniform(0, 10),uniform(0, 10),uniform(0, 10))
+            explosion.color = (uniform(0, 10)*2,uniform(0, 10)*2,uniform(0, 10)*2)
         bs.gameTimer(5000,explosion.delete)
 
         if self.blastType != 'ice': bs.emitBGDynamics(position=position,velocity=velocity,count=int(1.0+random.random()*4),emitType='tendrils',tendrilType='thinSmoke')
@@ -368,7 +368,7 @@ class Blast(bs.Actor):
 
         light = bs.newNode('light',
                            attrs={'position':position,
-                                  'color': (uniform(0, 2),uniform(0, 2),uniform(0, 5)) if self.blastType == 'ice' else (uniform(0, 2),uniform(0, 2),uniform(0, 2)),
+                                  'color': (uniform(0, 2)*2,uniform(0, 2)*2,uniform(0, 5)*3) if self.blastType == 'ice' else (uniform(0, 2)*2,uniform(0, 2)*3,uniform(0, 2)*3),
                                   'volumeIntensityScale': 20.0})
 
         s = random.uniform(0.6,0.9)
@@ -395,13 +395,13 @@ class Blast(bs.Actor):
         scorch = bs.newNode('scorch',
                             attrs={'position':position,'size':scorchRadius*0.5,'big':(self.blastType == 'tnt')})
         if self.blastType == 'ice':
-            scorch.color = (uniform(0, 5),uniform(0, 5),uniform(0, 4))
+            scorch.color = (uniform(0, 5)*2,uniform(0, 5)*3,uniform(0, 4)*2)
         elif self.blastType == 'tnt':
-            scorch.color = (uniform(0, 2),uniform(0, 3),uniform(0, 3))
+            scorch.color = (uniform(0, 2)*2,uniform(0, 3)*3,uniform(0, 3)*3)
         elif self.blastType == 'regular':
-            scorch.color = (uniform(0, 10),uniform(0, 10),uniform(0, 10))
+            scorch.color = (uniform(0, 10)*3,uniform(0, 10)*3,uniform(0, 10)*2)
         elif self.blastType == 'sticky':
-            scorch.color = (uniform(0, 10),uniform(0, 10),uniform(0, 10))
+            scorch.color = (uniform(0, 10)*3,uniform(0, 10)*2,uniform(0, 10)*5)
         
         
 
