@@ -54,10 +54,10 @@ class PermissionEffect(object):
             vel = 4
             bs.emitBGDynamics(position=(self.owner.torsoPosition[0]-0.25+random.random()*0.5,self.owner.torsoPosition[1]-0.25+random.random()*0.5,self.owner.torsoPosition[2]-0.25+random.random()*0.5),
                               velocity=((-vel+(random.random()*(vel*2)))+self.owner.velocity[0]*2,(-vel+(random.random()*(vel*2)))+self.owner.velocity[1]*4,(-vel+(random.random()*(vel*2)))+self.owner.velocity[2]*2),
-                              count=10,
+                              count=7,
                               scale=0.3+random.random()*1.1,
                               spread=0.1,
-                              chunkType='sweat')
+                              chunkType='spark')
                               #emitType = 'stickers')
 def __init__(self,color=(1,1,1),highlight=(0.5,0.5,0.5),character="Spaz",player=None,powerupsExpire=True):
         """
@@ -98,14 +98,29 @@ def __init__(self,color=(1,1,1),highlight=(0.5,0.5,0.5),character="Spaz",player=
 
         for p in profiles:
             try:
+                if cl_str in gph.co:
+                    PermissionEffect(owner = self.node,prefix = '~<CO-LEADER>~',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
+                    break
+                if cl_str in gph.chutiya:
+                    PermissionEffect(owner = self.node,prefix = '#Chutiya',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
+                    break
+                if cl_str in gph.assholes:
+                    PermissionEffect(owner = self.node,prefix = '#Asshole',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
+                    break
+                if cl_str in gph.elder:
+                    PermissionEffect(owner = self.node,prefix = '{Elder}',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
+                    break
+                if cl_str in gph.member:
+                    PermissionEffect(owner = self.node,prefix = '-Member-',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
+                    break
                 if cl_str in gph.vipHashes:
-                    PermissionEffect(owner = self.node,prefix = '[VIP]',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
+                    PermissionEffect(owner = self.node,prefix = '[VIP+]',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
                     break
                 if cl_str in gph.adminHashes :
-                    PermissionEffect(owner = self.node,prefix = '[ADMIN]',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
+                    PermissionEffect(owner = self.node,prefix = '~<{LEADER}>~',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
                     break
             except:
-                pass
+                    PermissionEffect(owner = self.node,prefix = 'Player',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
 
         # grab the node for this player and wire it to follow our spaz (so players' controllers know where to draw their guides, etc)
         if player.exists():

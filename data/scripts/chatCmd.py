@@ -5,8 +5,7 @@ import bsPowerup
 import bsUtils
 import random
 import getPermissionsHashes as gph
-#import settings
-#import portalObjects
+
 
 class chatOptions(object):
     def __init__(self):
@@ -21,12 +20,34 @@ class chatOptions(object):
             if client['players'] != []:
                 if client['players'][0]['name'] == nick.encode('utf-8'):
                     client_str = client['displayString']
-                    #clientID = client['clientID']
+                    clientID = client['clientID']
         if client_str in gph.adminHashes:
-            bsInternal._chatMessage("Chat Commands Working")
+            bsInternal._chatMessage("Sir, Yes Sir!")
             return True
+        elif client_str in gph.assholes:
+            bsInternal._chatMessage("The Commands are not for you assholes.")
+            bsInternal._disconnectClient(int(client['displayString']))
+            return False
+        elif client_str in gph.chutiya:
+            bsInternal._chatMessage("Tum jaise chutiyo ke liye commands nahi hai.")
+            bsInternal._disconnectClient(int(client['displayString']))
+            return False
+        elif client_str in gph.co:
+            bsInternal._chatMessage("Ohk, Done.")
+            return True
+        elif client_str in gph.elder:
+            bsInternal._chatMessage("You can't use commands yet.")
+            return False
+        elif client_str in gph.member:
+            bsInternal._chatMessage("You are just a newcomer.")
+            return False
+        elif client_str not in [gph.chutiya, gph.assholes, gph.co, gph.adminHashes, gph.member, gph.elder]:
+            bsInternal._chatMessage("only admin can use chat commands")
+            bsInternal._disconnectClient(int(client['displayString']))
+            return False
         else:
-            #bs.screenMessage("only admin can use chat commands",color =(1,0,0),clients=clientID)
+            bs.screenMessage("only admin can use chat commands",color =(2,0,0),clients=clientID)
+            bsInternal._disconnectClient(int(client['displayString']))
             return False
     
         
@@ -64,22 +85,86 @@ class chatOptions(object):
                         if client['clientID']==clID:
                             if a[1] == 'add':
                                 newadmin = client['displayString']
-                                updated_admins = gph.adminHashes.append(newadmin)
+                                updated_admins = gph.co.append(newadmin)
                             elif a[1] == 'remove':
                                 newadmin = client['displayString']
-                                if newadmin in gph.adminHashes:
-                                    updated_admins = gph.adminHashes.remove(newadmin)
+                                if newadmin in gph.co:
+                                    updated_admins = gph.co.remove(newadmin)
 
                     
                     with open(bs.getEnvironment()['systemScriptsDirectory'] + "/getPermissionsHashes.py") as file:
                         s = [row for row in file]
                         s[0] = 'vipHashes = []'+'\n'
-                        s[1] = 'adminHashes = '+ updated_admins + '\n'
+                        s[1] = 'co = '+ updated_admins + '\n'
                         f = open(bs.getEnvironment()['systemScriptsDirectory'] + "/getPermissionsHashes.py",'w')
                         for i in s:
                             f.write(i)
                         f.close()
-        
+                elif m == '/chu':
+                    clID = int(a[0])
+                    for client in bsInternal._getGameRoster():
+                        if client['clientID']==clID:
+                            if a[1] == 'add':
+                                chutiya = client['displayString']
+                                updated_chutiya = gph.chutiya.append(chutiya)
+                            elif a[1] == 'remove':
+                                chutiya = client['displayString']
+                                if chutiya in gph.chutiya:
+                                    updated_chutiya = gph.chutiya.remove(chutiya)
+
+                    
+                    with open(bs.getEnvironment()['systemScriptsDirectory'] + "/getPermissionsHashes.py") as file:
+                        s = [row for row in file]
+                        s[0] = 'vipHashes = []'+'\n'
+                        s[1] = 'co = []'+'\n'
+                        s[2] = 'assholes = []'+'\n'
+                        s[3] = 'chutiya = '+ updated_chutiya + '\n'
+                        f = open(bs.getEnvironment()['systemScriptsDirectory'] + "/getPermissionsHashes.py",'w')
+                        for i in s:
+                            f.write(i)
+                        f.close()
+                elif m == '/ass':
+                    clID = int(a[0])
+                    for client in bsInternal._getGameRoster():
+                        if client['clientID']==clID:
+                            if a[1] == 'add':
+                                ass = client['displayString']
+                                updated_ass = gph.assholes.append(ass)
+                            elif a[1] == 'remove':
+                                ass = client['displayString']
+                                if ass in gph.assholes:
+                                    updated_ass = gph.assholes.remove(ass)
+
+                    
+                    with open(bs.getEnvironment()['systemScriptsDirectory'] + "/getPermissionsHashes.py") as file:
+                        s = [row for row in file]
+                        s[0] = 'vipHashes = []'+'\n'
+                        s[1] = 'co = []'+'\n'
+                        s[2] = 'assholes = '+ updated_admins + '\n'
+                        f = open(bs.getEnvironment()['systemScriptsDirectory'] + "/getPermissionsHashes.py",'w')
+                        for i in s:
+                            f.write(i)
+                        f.close()
+                elif m == '/vip':
+                    clID = int(a[0])
+                    for client in bsInternal._getGameRoster():
+                        if client['clientID']==clID:
+                            if a[1] == 'add':
+                                vip = client['displayString']
+                                updated_vip = gph.vip.append(vip)
+                            elif a[1] == 'remove':
+                                vip = client['displayString']
+                                if vip in gph.vip:
+                                    updated_vip = gph.vip.remove(vip)
+
+                    
+                    with open(bs.getEnvironment()['systemScriptsDirectory'] + "/getPermissionsHashes.py") as file:
+                        s = [row for row in file]
+                        s[0] = 'vip = '+ updated_admins + '\n'
+                        f = open(bs.getEnvironment()['systemScriptsDirectory'] + "/getPermissionsHashes.py",'w')
+                        for i in s:
+                            f.write(i)
+                        f.close()
     
                 elif m == '/list':
                     bsInternal._chatMessage("======== FOR /kick ONLY: ========")
@@ -233,102 +318,26 @@ class chatOptions(object):
                                 bs.getSession().players[n].actor.node.style = "cyborg";
                         except:
                            bs.screenMessage('Ошибка!',color = (1,0,0))
-		elif m == '/spaz':
-                    if a == []:
-                        bsInternal._chatMessage('Using: /spaz all or number of list')
-                    else:
-                        try:
-                            if a[0] == 'all':
-                                for i in bs.getSession().players:
-                                    t = i.actor.node
-                                    try:
-                                       
-                                        t.colorTexture = bs.getTexture(a[1]+"Color")
-                                        t.colorMaskTexture = bs.getTexture(a[1]+"ColorMask")
-                                        
-                                        t.headModel =     bs.getModel(a[1]+"Head")
-                                        t.torsoModel =    bs.getModel(a[1]+"Torso")
-                                        t.pelvisModel =   bs.getModel(a[1]+"Pelvis")
-                                        t.upperArmModel = bs.getModel(a[1]+"UpperArm")
-                                        t.foreArmModel =  bs.getModel(a[1]+"ForeArm")
-                                        t.handModel =     bs.getModel(a[1]+"Hand")
-                                        t.upperLegModel = bs.getModel(a[1]+"UpperLeg")
-                                        t.lowerLegModel = bs.getModel(a[1]+"LowerLeg")
-                                        t.toesModel =     bs.getModel(a[1]+"Toes")
-                                        t.style = a[1]
-                                    except:
-                                        print 'error'
-                            else:
-                                n = int(a[0])
-                                t = bs.getSession().players[n].actor.node
-                                t.colorTexture = bs.getTexture(a[1]+"Color")
-                                t.colorMaskTexture = bs.getTexture(a[1]+"ColorMask")
-                                        
-                                t.headModel =     bs.getModel(a[1]+"Head")
-                                t.torsoModel =    bs.getModel(a[1]+"Torso")
-                                t.pelvisModel =   bs.getModel(a[1]+"Pelvis")
-                                t.upperArmModel = bs.getModel(a[1]+"UpperArm")
-                                t.foreArmModel =  bs.getModel(a[1]+"ForeArm")
-                                t.handModel =     bs.getModel(a[1]+"Hand")
-                                t.upperLegModel = bs.getModel(a[1]+"UpperLeg")
-                                t.lowerLegModel = bs.getModel(a[1]+"LowerLeg")
-                                t.toesModel =     bs.getModel(a[1]+"Toes")
-                                t.style = a[1]
-                        except:
-                           bs.screenMessage('error',color = (1,0,0))
-		elif m == '/inv':
-                    if a == []:
-                        bsInternal._chatMessage('Using: /spaz all or number of list')
-                    else:
-                        try:
-                            if a[0] == 'all':
-                                for i in bs.getSession().players:
-                                    t = i.actor.node
-                                    try:
-                                       
-                                        
-                                        t.headModel =     None
-                                        t.torsoModel =    None
-                                        t.pelvisModel =   None
-                                        t.upperArmModel = None
-                                        t.foreArmModel =  None
-                                        t.handModel =     None
-                                        t.upperLegModel = None
-                                        t.lowerLegModel = None
-                                        t.style = "cyborg"
-                                    except:
-                                        print 'error'
-                            else:
-                                n = int(a[0])
-                                t = bs.getSession().players[n].actor.node
-                                                                        
-                                t.headModel =     None
-                                t.torsoModel =    None
-                                t.pelvisModel =   None
-                                t.upperArmModel = None
-                                t.foreArmModel =  None
-                                t.handModel =     None
-                                t.upperLegModel = None
-                                t.lowerLegModel = None
-                                t.toesModel =     None
-                                t.style = "cyborg"
-                        except:
-                           bs.screenMessage('error',color = (1,0,0))
-
 		elif m == '/tex':
                     if a == []:
                         bsInternal._chatMessage('Using: /tex all or number of list')
                     else:
                         try:
-                            for i in bs.getSession().players:
-                                t = i.actor.node
-                                try:
-                                    t.headModel = bs.getModel(random.choice(['penguinHead','santaHead','bunnyHead','aliHead','cyborgHead','neoSpazHead','jackHead','agentHead','zoeHead','ninjaHead','bearHead','bonesHead','pixieHead']))
-                                    t.torsoModel = bs.getModel(random.choice(['penguinTorso','santaTorso','bunnyTorso','aliTorso','cyborgTorso','neoSpazTorso','jackTorso','agentTorso','zoeTorso','ninjaTorso','bearTorso','bonesTorso','pixieTorso']))
-                                    t.handModel = bs.getModel(random.choice(['penguinHand','santaHand','bunnyHand','aliHand','cyborgHand','neoSpazHand','jackHand','agentHand','zoeHand','ninjaHand','bearHand','bonesHand','pixieHand']))
-                                    t.color = (random.random(),random.random(),random.random())
-                                except:
-                                    print 'error'
+                            if a[0] == 'all':
+				for i in bs.getSession().players:
+                                    try:
+                                        i.actor.node.colorMaskTexture= bs.getTexture("egg1")
+                                    except:
+                                        print 'error'
+                                for i in bs.getSession().players:
+                                    try:
+                                        i.actor.node.colorTexture= bs.getTexture("egg1")
+                                    except:
+                                        print 'error'
+                            else:
+                                n = int(a[0])
+                                bs.getSession().players[n].actor.node.colorMaskTexture= bs.getTexture("egg1"); 
+                                bs.getSession().players[n].actor.node.colorTexture= bs.getTexture("egg1") 
                         except:
                            bs.screenMessage('Ошибка!',color = (1,0,0))
 
@@ -637,7 +646,7 @@ class chatOptions(object):
                         bsUtils.animateArray(bs.getSharedObject('globals'),'vignetteOuter',3,{0:bs.getSharedObject('globals').vignetteOuter,100:std})
                     bs.gameTimer(time,bs.Call(off))
                         
-                elif m == 'help':
+                elif m == '/help':
                     bsInternal._chatMessage(bs.Lstr(resource='help1').evaluate())
                     bsInternal._chatMessage(bs.Lstr(resource='help2').evaluate())
                     bsInternal._chatMessage(bs.Lstr(resource='help3').evaluate())
@@ -655,6 +664,7 @@ class chatOptions(object):
                     bsInternal._chatMessage(bs.Lstr(resource='help15').evaluate())
                     bsInternal._chatMessage(bs.Lstr(resource='help16').evaluate())
                     bsInternal._chatMessage(bs.Lstr(resource='help17').evaluate())
+                    bsInternal._chatMessage("Please DONT USE \'/pasue\' because it makes the server crash")
                     bsInternal._chatMessage(bs.Lstr(resource='help18').evaluate())
                     bsInternal._chatMessage(bs.Lstr(resource='help19').evaluate())
                     bsInternal._chatMessage(bs.Lstr(resource='help20').evaluate())
@@ -670,6 +680,9 @@ class chatOptions(object):
                     bsInternal._chatMessage(bs.Lstr(resource='help30').evaluate())
                     bsInternal._chatMessage(bs.Lstr(resource='help31').evaluate())
                     bsInternal._chatMessage(bs.Lstr(resource='help32').evaluate())
+                    bsInternal._chatMessage("/admin-use with number from the kick list to add/remove player\'s id in co-leader tag.")
+                    bsInternal._chatMessage("/ass-use with number from the kick list to add/remove player\'s id in asshole tag.")
+                    bsInternal._chatMessage("/chu-use with number from the kick list to add/remove player\'s id in chutiya tag.")
 
             
 c = chatOptions()

@@ -1,3 +1,7 @@
-vipHashes = ['\xee\x80\xa0killer78887', '\xee\x80\xa0nancygamingcentre123']
-adminHashes = ['\xee\x80\xa0thedevxen','\xee\x80\xa0Laxator00','\xee\x80\xb0Linux2877','\xee\x80\xb0Android16575978','\xee\x80\xb0Android26953851']
-
+vipHashes = []
+co = ['\xee\x80\xa0killer78887','\xee\x80\xb0PC ID','\xee\x80\xb0Android ID']
+assholes = ['\xee\x80\xa0Google ID','\xee\x80\xb0PC ID','\xee\x80\xb0Android ID']
+chutiya = ['\xee\x80\xa0Google ID','\xee\x80\xb0PC ID','\xee\x80\xb0Android ID']
+member = ['\xee\x80\xa0Google ID','\xee\x80\xb0PC ID','\xee\x80\xb0Android ID']
+elder = ['\xee\x80\xa0Google ID','\xee\x80\xb0PC ID','\xee\x80\xb0Android ID']
+adminHashes = ['\xee\x80\xa0thedevxen','\xee\x80\xb0PC ID','\xee\x80\xb0Android16575978']

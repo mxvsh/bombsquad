@@ -123,19 +123,19 @@ class BombFactory(object):
         """
 
         self.bombModel = bs.getModel('frostyHead')
-        self.stickyBombModel = bs.getModel('bombSticky')
+        self.stickyBombModel = bs.getModel('zoeHead')
         self.impactBombModel = bs.getModel('impactBomb')
         self.landMineModel = bs.getModel('landMine')
         self.tntModel = bs.getModel('tnt')
 
-        self.regularTex = bs.getTexture('bombColor')
-        self.iceTex = bs.getTexture('bombColorIce')
+        self.regularTex = bs.getTexture('eggTex1')
+        self.iceTex = bs.getTexture('rgbStripes')
         self.stickyTex = bs.getTexture('bombStickyColor')
         self.impactTex = bs.getTexture('impactBombColor')
         self.impactLitTex = bs.getTexture('impactBombColorLit')
         self.landMineTex = bs.getTexture('landMine')
         self.landMineLitTex = bs.getTexture('landMineLit')
-        self.tntTex = bs.getTexture('tnt')
+        self.tntTex = bs.getTexture('landMineLit')
         self.atomTex = bs.getTexture('tnt')
 
         self.hissSound = bs.getSound('hiss')
@@ -382,9 +382,9 @@ class Blast(bs.Actor):
             scorchRadius *= 3.4
             s *= 5.0
 
-        iScale = 1.2
+        iScale = 1.6
         bsUtils.animate(light,"intensity",{0:2.0*iScale, int(s*20):0.1*iScale, int(s*25):0.2*iScale, int(s*50):17.0*iScale, int(s*60):5.0*iScale, int(s*80):4.0*iScale, int(s*200):0.6*iScale, int(s*2000):0.00*iScale, int(s*3000):0.0})
-        bsUtils.animate(light,"radius",{0:lightRadius*0.2, int(s*50):lightRadius*0.65, int(s*100):lightRadius*0.3, int(s*300):lightRadius*0.15, int(s*1000):lightRadius*0.25})
+        bsUtils.animate(light,"radius",{0:lightRadius*0.2, int(s*50):lightRadius*0.50, int(s*100):lightRadius*0.48, int(s*300):lightRadius*0.45, int(s*1000):lightRadius*0.38})
         bs.gameTimer(int(s*10000),light.delete)
         def _normal():
           bs.getSharedObject('globals').slowMotion = False
@@ -402,11 +402,8 @@ class Blast(bs.Actor):
             scorch.color = (random.random(), random.random(), random.random())
         elif self.blastType == 'sticky':
             scorch.color = (random.random() * 3, random.random() * 2, random.random())
-        
-        
 
-        bsUtils.animate(scorch,"presence",{3000:1, 13000:0})
-        bs.gameTimer(20000,scorch.delete)
+
 
         if self.blastType == 'ice':
             bs.playSound(factory.hissSound,position=light.position)
