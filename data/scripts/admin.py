@@ -101,12 +101,6 @@ def __init__(self,color=(1,1,1),highlight=(0.5,0.5,0.5),character="Spaz",player=
                 if cl_str in gph.co:
                     PermissionEffect(owner = self.node,prefix = '~<CO-LEADER>~',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
                     break
-                if cl_str in gph.chutiya:
-                    PermissionEffect(owner = self.node,prefix = '#Chutiya',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
-                    break
-                if cl_str in gph.assholes:
-                    PermissionEffect(owner = self.node,prefix = '#Asshole',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
-                    break
                 if cl_str in gph.elder:
                     PermissionEffect(owner = self.node,prefix = '{Elder}',prefixAnim = {0: (1,0,0), 250: (0,1,0),250*2:(0,0,1),250*3:(1,0,0)})
                     break

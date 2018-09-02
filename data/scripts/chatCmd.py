@@ -100,51 +100,6 @@ class chatOptions(object):
                         for i in s:
                             f.write(i)
                         f.close()
-                elif m == '/chu':
-                    clID = int(a[0])
-                    for client in bsInternal._getGameRoster():
-                        if client['clientID']==clID:
-                            if a[1] == 'add':
-                                chutiya = client['displayString']
-                                updated_chutiya = gph.chutiya.append(chutiya)
-                            elif a[1] == 'remove':
-                                chutiya = client['displayString']
-                                if chutiya in gph.chutiya:
-                                    updated_chutiya = gph.chutiya.remove(chutiya)
-
-                    
-                    with open(bs.getEnvironment()['systemScriptsDirectory'] + "/getPermissionsHashes.py") as file:
-                        s = [row for row in file]
-                        s[0] = 'vipHashes = []'+'\n'
-                        s[1] = 'co = []'+'\n'
-                        s[2] = 'assholes = []'+'\n'
-                        s[3] = 'chutiya = '+ updated_chutiya + '\n'
-                        f = open(bs.getEnvironment()['systemScriptsDirectory'] + "/getPermissionsHashes.py",'w')
-                        for i in s:
-                            f.write(i)
-                        f.close()
-                elif m == '/ass':
-                    clID = int(a[0])
-                    for client in bsInternal._getGameRoster():
-                        if client['clientID']==clID:
-                            if a[1] == 'add':
-                                ass = client['displayString']
-                                updated_ass = gph.assholes.append(ass)
-                            elif a[1] == 'remove':
-                                ass = client['displayString']
-                                if ass in gph.assholes:
-                                    updated_ass = gph.assholes.remove(ass)
-
-                    
-                    with open(bs.getEnvironment()['systemScriptsDirectory'] + "/getPermissionsHashes.py") as file:
-                        s = [row for row in file]
-                        s[0] = 'vipHashes = []'+'\n'
-                        s[1] = 'co = []'+'\n'
-                        s[2] = 'assholes = '+ updated_admins + '\n'
-                        f = open(bs.getEnvironment()['systemScriptsDirectory'] + "/getPermissionsHashes.py",'w')
-                        for i in s:
-                            f.write(i)
-                        f.close()
                 elif m == '/vip':
                     clID = int(a[0])
                     for client in bsInternal._getGameRoster():
