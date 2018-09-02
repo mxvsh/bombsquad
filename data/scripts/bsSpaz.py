@@ -1353,13 +1353,21 @@ class Spaz(bs.Actor):
                                 attrs={'position':(self.node.position),
                                     'color': (uniform(1, 3),uniform(1, 3),uniform(1, 3)),
                                     'volumeIntensityScale': 0.4,
-                                    'radius':uniform(0.1, 1)})
+                                    'radius':uniform(0.1, 0.5)})
                 def _doNormal():
                     bs.getSharedObject('globals').tint = (0.3, 0.6, 1)
                     light.delete()
-                bs.getSharedObject('globals').tint = (0.0,0.0,0.0)
-                bs.gameTimer(int(5000), _doNormal)
-                
+                global c
+                c = 1.3
+                def _x():
+                    global c
+                    if c >= 0.0:
+                        bs.getSharedObject('globals').tint = (c, c, c)
+                        c = c - 0.1;
+                        bs.gameTimer(int(500), _x)
+                    else:
+                      bs.gameTimer(int(5000), _doNormal)
+                _x()
                 bsUtils.animate(light,"intensity",{0:1,50:10,150:5,250:0,260:10,410:5,510:1})
                 
             self.node.handleMessage("flash")
@@ -3311,10 +3319,10 @@ class BotSet(object):
 ###############  SPAZ   ##################
 t = Appearance("Spaz")
 t.headModel = random.choice(['penguinHead','santaHead','bunnyHead','aliHead','cyborgHead','neoSpazHead','jackHead','agentHead','zoeHead','ninjaHead','bearHead','bonesHead','pixieHead'])
-t.torsoModel =random.choice(['penguinTorso','santaTorso','bunnyTorso','aliTorso','cyborgTorso','neoSpazTorso','jackTorso','agentTorso','zoeTorso','ninjaTorso','bearTorso','bonesTorso','pixieTorso'])
-t.handModel = random.choice(['penguinHand','santaHand','bunnyHand','aliHand','cyborgHand','neoSpazHand','jackHand','agentHand','zoeHand','ninjaHand','bearHand','bonesHand','pixieHand'])
-t.color = (random.random(),random.random(),random.random())
-t.colorTexture = "towerDLevelColor"
+t.torsoModel =random.choice(['penguinTorso', 'santaTorso','bunnyTorso','aliTorso','cyborgTorso','neoSpazTorso','jackTorso','agentTorso','zoeTorso','ninjaTorso','bearTorso','bonesTorso','pixieTorso'])
+t.handModel = random.choice(['penguinHand','santaHand', 'bunnyHand','aliHand','', 'cyborgHand','neoSpazHand','jackHand','agentHand','zoeHand','ninjaHand','bearHand','bonesHand','pixieHand'])
+t.color = (1, 1, 2)
+t.colorTexture = random.choice(['penguinHead','santaHead','bunnyHead','aliHead','cyborgHead','neoSpazHead','jackHead','agentHead','zoeHead','ninjaHead','bearHead','bonesHead','pixieHead'])
 t.colorMaskTexture = "ninjaColorMask"
 t.defaultHighlight = (2, 2, 3)
 t.iconTexture = "cyborgIcon"

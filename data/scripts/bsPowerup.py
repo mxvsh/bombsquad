@@ -214,7 +214,7 @@ def getDefaultPowerupDistribution():
             ('health',2),
             ('curse',1),
             ('slowmo',1),
-            ('night', 1),
+            ('night', 2),
             ('inv', 2))
 
 class Powerup(bs.Actor):

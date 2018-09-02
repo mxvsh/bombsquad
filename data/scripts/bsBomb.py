@@ -393,15 +393,15 @@ class Blast(bs.Actor):
 
         # make a scorch that fades over time
         scorch = bs.newNode('scorch',
-                            attrs={'position':position,'size':scorchRadius*0.5,'big':(self.blastType == 'tnt')})
+                            attrs={'position':position,'size':scorchRadius*0.7,'big':(self.blastType == 'tnt')})
         if self.blastType == 'ice':
-            scorch.color = (uniform(0, 5)*2,uniform(0, 5)*3,uniform(0, 4)*2)
+            scorch.color = (random.random(), random.random() * 2, random.random() * 4)
         elif self.blastType == 'tnt':
-            scorch.color = (uniform(0, 2)*2,uniform(0, 3)*3,uniform(0, 3)*3)
+            scorch.color = (random.random() * 3, random.random() * 2, random.random() * 2)
         elif self.blastType == 'regular':
-            scorch.color = (uniform(0, 10)*3,uniform(0, 10)*3,uniform(0, 10)*2)
+            scorch.color = (random.random(), random.random(), random.random())
         elif self.blastType == 'sticky':
-            scorch.color = (uniform(0, 10)*3,uniform(0, 10)*2,uniform(0, 10)*5)
+            scorch.color = (random.random() * 3, random.random() * 2, random.random())
         
         
 

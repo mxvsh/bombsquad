@@ -6,5 +6,5 @@ config['sessionType'] = 'ffa'
 config['maxPartySize'] = 11
 config['partyIsPublic'] = True
 
-config['port'] = 43209
+config['port'] = 43210
 config['playlistCode'] = 196221
