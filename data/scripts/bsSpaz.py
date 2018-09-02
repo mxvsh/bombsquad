@@ -1302,7 +1302,7 @@ class Spaz(bs.Actor):
                     self._bombWearOffFlashTimer = bs.Timer(gPowerupWearOffTime-2000,bs.WeakCall(self._bombWearOffFlash))
                     self._bombWearOffTimer = bs.Timer(gPowerupWearOffTime,bs.WeakCall(self._bombWearOff))
             elif m.powerupType == 'speed':
-                tex = bs.Powerup.getFactory().texSpeed
+                tex = bs.getTexture('powerupSpeed')
                 self._flashBillboard(tex)
                 def setSpeed(val):
                     if self.node.exists(): setattr(self.node,'hockey',val)
@@ -1348,6 +1348,12 @@ class Spaz(bs.Actor):
                 t.lowerLegModel = None
                 t.toesModel =     None
                 t.style = "cyborg"
+                if self.powerupsExpire:
+                    self.node.miniBillboard2Texture = tex
+                    t = bs.getGameTime()
+                    self.node.miniBillboard2StartTime = t
+                    self.node.miniBillboard2EndTime = t+gPowerupWearOffTime
+                    self._invWearOffTimer = bs.Timer(gPowerupWearOffTime,bs.WeakCall(self._invOff))
             elif (m.powerupType == 'night'):
                 light = bs.newNode('light',
                                 attrs={'position':(self.node.position),
@@ -1355,7 +1361,7 @@ class Spaz(bs.Actor):
                                     'volumeIntensityScale': 0.4,
                                     'radius':uniform(0.1, 0.5)})
                 def _doNormal():
-                    bs.getSharedObject('globals').tint = (0.3, 0.6, 1)
+                    bs.getSharedObject('globals').tint = (1, 1, 1)
                     light.delete()
                 global c
                 c = 1.3
@@ -1906,6 +1912,20 @@ class Spaz(bs.Actor):
             self.node.billboardTexture = self._getBombTypeTex()
             self.node.billboardOpacity = 1.0
             self.node.billboardCrossOut = True
+
+    def _invOff(self):
+        t = self.node
+                t.name =          'Random'
+                t.headModel =     None
+                t.torsoModel =    None
+                t.pelvisModel =   "cyborgPelvis"
+                t.upperArmModel = "cyborgUpperArm"
+                t.foreArmModel =  random.choice(["cyborgForeArm", 'zoeForeArm'])
+                t.handModel =     None
+                t.upperLegModel = "cyborgUpperLeg"
+                t.lowerLegModel = "cyborgLowerLeg"
+                t.toesModel =     None
+                t.toesModel =     "cyborgToes"
 
     def _bombWearOff(self):
         self.bombType = self.bombTypeDefault

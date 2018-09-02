@@ -125,11 +125,11 @@ class BombFactory(object):
         self.bombModel = bs.getModel('frostyHead')
         self.stickyBombModel = bs.getModel('zoeHead')
         self.impactBombModel = bs.getModel('impactBomb')
-        self.landMineModel = bs.getModel('landMine')
+        self.landMineModel = bs.getModel('flagPole')
         self.tntModel = bs.getModel('tnt')
 
         self.regularTex = bs.getTexture('eggTex1')
-        self.iceTex = bs.getTexture('rgbStripes')
+        self.iceTex = bs.getTexture('egg2')
         self.stickyTex = bs.getTexture('bombStickyColor')
         self.impactTex = bs.getTexture('impactBombColor')
         self.impactLitTex = bs.getTexture('impactBombColorLit')
@@ -382,7 +382,7 @@ class Blast(bs.Actor):
             scorchRadius *= 3.4
             s *= 5.0
 
-        iScale = 1.6
+        iScale = 1.9
         bsUtils.animate(light,"intensity",{0:2.0*iScale, int(s*20):0.1*iScale, int(s*25):0.2*iScale, int(s*50):17.0*iScale, int(s*60):5.0*iScale, int(s*80):4.0*iScale, int(s*200):0.6*iScale, int(s*2000):0.00*iScale, int(s*3000):0.0})
         bsUtils.animate(light,"radius",{0:lightRadius*0.2, int(s*50):lightRadius*0.50, int(s*100):lightRadius*0.48, int(s*300):lightRadius*0.45, int(s*1000):lightRadius*0.38})
         bs.gameTimer(int(s*10000),light.delete)
@@ -391,17 +391,17 @@ class Blast(bs.Actor):
         if self.blastType == 'tnt' and bs.getSharedObject('globals').slowMotion == False:
           bs.gameTimer(int(1700), _normal)
 
-        # make a scorch that fades over time
+        # make a scorch that does not fade over time
         scorch = bs.newNode('scorch',
                             attrs={'position':position,'size':scorchRadius*0.7,'big':(self.blastType == 'tnt')})
         if self.blastType == 'ice':
-            scorch.color = (random.random(), random.random() * 2, random.random() * 4)
+            scorch.color = (random.random(),random.random()*1.3,random.random()*1.3)
         elif self.blastType == 'tnt':
-            scorch.color = (random.random() * 3, random.random() * 2, random.random() * 2)
+            scorch.color = (random.random()*1.3,random.random()*1.3,random.random()*1.3)
         elif self.blastType == 'regular':
-            scorch.color = (random.random(), random.random(), random.random())
+            scorch.color = (random.random(),random.random(),random.random())
         elif self.blastType == 'sticky':
-            scorch.color = (random.random() * 3, random.random() * 2, random.random())
+            scorch.color = (random.random()*1.3,random.random()*1.3,random.random())
 
 
 
@@ -463,7 +463,7 @@ class Bomb(bs.Actor):
     """
 
     def __init__(self, position=(0,1,0), velocity=(0,0,0), bombType='normal',
-                 blastRadius=2.0, sourcePlayer=None, owner=None):
+                 blastRadius=1.8, sourcePlayer=None, owner=None):
         """
         Create a new Bomb.
         
