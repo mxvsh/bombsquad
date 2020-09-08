@@ -123,8 +123,8 @@ class BombFactory(object):
         """
 
         self.bombModel = bs.getModel('bomb')
-        self.stickyBombModel = bs.getModel('stickyBomb')
-        self.impactBombModel = bs.getModel('impactBomb')
+        self.stickyBombModel = bs.getModel('bombSticky')
+        self.impactBombModel = bs.getModel('bombImpact')
         self.landMineModel = bs.getModel('landMine')
         self.tntModel = bs.getModel('tnt')
 
