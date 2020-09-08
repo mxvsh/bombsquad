@@ -122,10 +122,10 @@ class BombFactory(object):
         You shouldn't need to do this; call bs.Bomb.getFactory() to get a shared instance.
         """
 
-        self.bombModel = bs.getModel('frostyHead')
-        self.stickyBombModel = bs.getModel('zoeHead')
+        self.bombModel = bs.getModel('bomb')
+        self.stickyBombModel = bs.getModel('stickyBomb')
         self.impactBombModel = bs.getModel('impactBomb')
-        self.landMineModel = bs.getModel('flagPole')
+        self.landMineModel = bs.getModel('landMine')
         self.tntModel = bs.getModel('tnt')
 
         self.regularTex = bs.getTexture('eggTex1')
