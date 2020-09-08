@@ -200,7 +200,7 @@ def getDefaultPowerupDistribution():
     return (('tripleBombs',3),
             ('atomBombs', 0),
             ('iceBombs',3),
-            ('punch',3),
+            ('punch',0),
             ('snoball',1),
             ('impactBombs',3),
             ('highHealth',1),
@@ -208,14 +208,14 @@ def getDefaultPowerupDistribution():
             ('shockwave',5),
             ('landMines',2),
             ('stickyBombs',3),
-            ('speed',2),
+            ('speed',0),
             ('bunny',0),
             ('shield',2),
             ('health',2),
             ('curse',1),
             ('slowmo',1),
-            ('night', 2),
-            ('inv', 2))
+            ('night', 1),
+            ('inv', 0))
 
 class Powerup(bs.Actor):
     """
