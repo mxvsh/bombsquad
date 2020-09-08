@@ -1915,17 +1915,17 @@ class Spaz(bs.Actor):
 
     def _invOff(self):
         t = self.node
-                t.name =          'Random'
-                t.headModel =     None
-                t.torsoModel =    None
-                t.pelvisModel =   "cyborgPelvis"
-                t.upperArmModel = "cyborgUpperArm"
-                t.foreArmModel =  random.choice(["cyborgForeArm", 'zoeForeArm'])
-                t.handModel =     None
-                t.upperLegModel = "cyborgUpperLeg"
-                t.lowerLegModel = "cyborgLowerLeg"
-                t.toesModel =     None
-                t.toesModel =     "cyborgToes"
+        t.name =          'Random'
+        t.headModel =     None
+        t.torsoModel =    None
+        t.pelvisModel =   "cyborgPelvis"
+        t.upperArmModel = "cyborgUpperArm"
+        t.foreArmModel =  random.choice(["cyborgForeArm", 'zoeForeArm'])
+        t.handModel =     None
+        t.upperLegModel = "cyborgUpperLeg"
+        t.lowerLegModel = "cyborgLowerLeg"
+        t.toesModel =     None
+        t.toesModel =     "cyborgToes"
 
     def _bombWearOff(self):
         self.bombType = self.bombTypeDefault
