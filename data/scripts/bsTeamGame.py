@@ -10,7 +10,7 @@ import bsInternal
 # team info
 gTeamColors = ((0.4,2,2),
                (3,0.05,0.05))
-gTeamNames = ("JavaScript","Python")
+gTeamNames = ("Ironman","Batman")
 
 
 class TeamGameResults(object):
