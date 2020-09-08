@@ -822,7 +822,7 @@ class TeamGameActivity(bs.GameActivity):
                 bs.gameTimer(100,bs.Call(bs.playSound,bs.getSound("boxingBell")))
             bs.GameActivity.end(self,results,delay=delay,force=force)
             
-gTeamSeriesLength = 7
+gTeamSeriesLength = 14
 gFFASeriesLength = 24
 
 class TeamBaseSession(bs.Session):
